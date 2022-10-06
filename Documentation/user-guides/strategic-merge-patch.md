@@ -13,7 +13,7 @@ This field allows injecting additional containers, and the existing configuratio
 The following manifest overwrites the `failureThreshold` value of the readiness probe for the Prometheus container.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   labels:
@@ -32,7 +32,7 @@ spec:
 The following manifest overwrites the `failureThreshold` values of the readiness and liveness probes for the Alertmanager container.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   labels:

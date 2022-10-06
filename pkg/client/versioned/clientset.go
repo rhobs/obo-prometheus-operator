@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"net/http"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1"
-	monitoringv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1"
+	monitoringv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"

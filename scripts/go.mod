@@ -1,4 +1,4 @@
-module github.com/prometheus-operator/prometheus-operator/tooling
+module github.com/rhobs/obo-prometheus-operator/tooling
 
 go 1.18
 

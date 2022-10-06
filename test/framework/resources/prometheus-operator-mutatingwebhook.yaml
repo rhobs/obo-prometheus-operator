@@ -10,11 +10,11 @@ webhooks:
         path: /admission-prometheusrules/mutate
 
     failurePolicy: Fail
-    name: prometheusrulemutate.monitoring.coreos.com
+    name: prometheusrulemutate.monitoring.rhobs
     namespaceSelector: {}
     rules:
       - apiGroups:
-          - monitoring.coreos.com
+          - monitoring.rhobs
         apiVersions:
           - '*'
         operations:

@@ -14,7 +14,7 @@ The easiest way to expose Prometheus or Alertmanager is to use a Service of type
 Create a simple Prometheus object with one replica:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: main
@@ -48,7 +48,7 @@ After creating a Service with the above manifest, the web UI of Prometheus will 
 Exposing the Alertmanager works in the same fashion, with the selector `alertmanager: <alertmanager-name>`.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   name: main
@@ -111,7 +111,7 @@ spec:
 Prometheus and Alertmanager must be configured with the full URL at which they will be exposed. Therefore the Prometheus manifest requires an entry for `externalUrl`:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: main
@@ -129,7 +129,7 @@ Once the Prometheus Pods are running they are reachable under the specified `ext
 The Alertmanager object's manifest follows the same rules:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   name: main
@@ -232,7 +232,7 @@ spec:
 Finally, the Prometheus and `Alertmanager` objects must be created, specifying the `externalUrl` at which they will be found.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: main
@@ -242,7 +242,7 @@ spec:
     requests:
       memory: 400Mi
 ---
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   name: main

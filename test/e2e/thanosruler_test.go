@@ -103,7 +103,7 @@ func testThanosRulerPrometheusRuleInDifferentNamespace(t *testing.T) {
 
 	// Remove the selecting label from ruleNamespace and wait until the rule is
 	// removed from the Thanos ruler.
-	// See https://github.com/prometheus-operator/prometheus-operator/issues/3847
+	// See https://github.com/rhobs/obo-prometheus-operator/issues/3847
 	if err := framework.RemoveLabelsFromNamespace(context.Background(), ruleNamespace, "monitored"); err != nil {
 		t.Fatal(err)
 	}

@@ -32,7 +32,7 @@ For best results, use volumes that have high I/O throughput. These examples use 
 The `StorageClass` that was created can be specified in the `storage` section in the `Prometheus` resource (note that if you're using [kube-prometheus](https://github.com/prometheus-operator/kube-prometheus), then instead of making the following change to your `Prometheus` resource, see the [prometheus-pvc.jsonnet](https://github.com/prometheus-operator/kube-prometheus/blob/main/examples/prometheus-pvc.jsonnet) example).
 
 ```yaml mdox-exec="cat example/storage/persisted-prometheus.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: persisted
@@ -46,7 +46,7 @@ spec:
             storage: 40Gi
 ```
 
-> The full documentation of the `storage` field can be found in the [API documentation](../api.md#monitoring.coreos.com/v1.StorageSpec).
+> The full documentation of the `storage` field can be found in the [API documentation](../api.md#monitoring.rhobs/v1.StorageSpec).
 
 When creating the Prometheus object, a PersistentVolumeClaim is used for each Pod in the StatefulSet, and the storage should automatically be provisioned, mounted and used.
 
@@ -59,7 +59,7 @@ The easiest way to use a volume that cannot be automatically provisioned (for wh
 For example, using an NFS volume might be accomplished with the following specifications:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: my-example-prometheus-name

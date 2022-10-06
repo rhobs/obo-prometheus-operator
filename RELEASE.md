@@ -58,7 +58,7 @@ make update-go-deps
 
 ## Update operand versions
 
-A couple of days before the release, update the [default versions](https://github.com/prometheus-operator/prometheus-operator/blob/f6ce472ecd6064fb6769e306b55b149dfb6af903/pkg/operator/defaults.go#L20-L31) of Prometheus, Alertmanager and Thanos if newer versions are available.
+A couple of days before the release, update the [default versions](https://github.com/rhobs/obo-prometheus-operator/blob/f6ce472ecd6064fb6769e306b55b149dfb6af903/pkg/operator/defaults.go#L20-L31) of Prometheus, Alertmanager and Thanos if newer versions are available.
 
 ## Prepare your release
 
@@ -75,9 +75,9 @@ make clean generate
 Bump the version of the `pkg/apis/monitoring` and `pkg/client` packages in `go.mod`:
 
 ```bash
-go mod edit -require "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring@v$(< VERSION)" pkg/client/go.mod
-go mod edit -require "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring@v$(< VERSION)"
-go mod edit -require "github.com/prometheus-operator/prometheus-operator/pkg/client@v$(< VERSION)"
+go mod edit -require "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring@v$(< VERSION)" pkg/client/go.mod
+go mod edit -require "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring@v$(< VERSION)"
+go mod edit -require "github.com/rhobs/obo-prometheus-operator/pkg/client@v$(< VERSION)"
 ```
 
 Now that all version information has been updated, an entry for the new version can be added to the `CHANGELOG.md` file.
@@ -102,7 +102,7 @@ git push origin release-<major>.<minor>
 
 From now on, all work happens on the `release-<major>.<minor>` branch.
 
-Tag the new release with a tag named `v<major>.<minor>.<patch>`, e.g. `v2.1.3`. Note the `v` prefix. Tag also the `github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring` module with `pkg/apis/monitoring/v<major>.<minor>.<patch>` and the `github.com/prometheus-operator/prometheus-operator/pkg/client` module with `pkg/client/v<major>.<minor>.<patch>`. You can do the tagging on the commandline:
+Tag the new release with a tag named `v<major>.<minor>.<patch>`, e.g. `v2.1.3`. Note the `v` prefix. Tag also the `github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring` module with `pkg/apis/monitoring/v<major>.<minor>.<patch>` and the `github.com/rhobs/obo-prometheus-operator/pkg/client` module with `pkg/client/v<major>.<minor>.<patch>`. You can do the tagging on the commandline:
 
 ```bash
 tag="v$(< VERSION)"
@@ -114,9 +114,9 @@ git push origin "${tag}" "pkg/apis/monitoring/${tag}" "pkg/client/${tag}"
 
 Signed tag with a GPG key is appreciated, but in case you can't add a GPG key to your Github account using the following [procedure](https://docs.github.com/articles/generating-a-gpg-key), you can replace the `-s` flag by `-a` flag of the `git tag` command to only annotate the tag without signing.
 
-Our CI pipeline will automatically push the container images to [quay.io](https://quay.io/organization/prometheus-operator) and [ghcr.io](https://github.com/prometheus-operator/prometheus-operator/pkgs/container/prometheus-operator)
+Our CI pipeline will automatically push the container images to [quay.io](https://quay.io/organization/prometheus-operator) and [ghcr.io](https://github.com/rhobs/obo-prometheus-operator/pkgs/container/prometheus-operator)
 
-Go to https://github.com/prometheus-operator/prometheus-operator/releases/new, associate the new release with the before pushed tag, paste in changes made to `CHANGELOG.md` and click "Publish release".
+Go to https://github.com/rhobs/obo-prometheus-operator/releases/new, associate the new release with the before pushed tag, paste in changes made to `CHANGELOG.md` and click "Publish release".
 
 For patch releases, submit a pull request to merge back the release branch into the `main` branch.
 

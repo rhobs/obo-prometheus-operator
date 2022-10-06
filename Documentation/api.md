@@ -13,31 +13,31 @@ toc: true
 <p>Packages:</p>
 <ul>
 <li>
-<a href="#monitoring.coreos.com%2fv1">monitoring.coreos.com/v1</a>
+<a href="#monitoring.rhobs%2fv1">monitoring.rhobs/v1</a>
 </li>
 <li>
-<a href="#monitoring.coreos.com%2fv1alpha1">monitoring.coreos.com/v1alpha1</a>
+<a href="#monitoring.rhobs%2fv1alpha1">monitoring.rhobs/v1alpha1</a>
 </li>
 <li>
-<a href="#monitoring.coreos.com%2fv1beta1">monitoring.coreos.com/v1beta1</a>
+<a href="#monitoring.rhobs%2fv1beta1">monitoring.rhobs/v1beta1</a>
 </li>
 </ul>
-<h2 id="monitoring.coreos.com/v1">monitoring.coreos.com/v1</h2>
+<h2 id="monitoring.rhobs/v1">monitoring.rhobs/v1</h2>
 Resource Types:
 <ul><li>
-<a href="#monitoring.coreos.com/v1.Alertmanager">Alertmanager</a>
+<a href="#monitoring.rhobs/v1.Alertmanager">Alertmanager</a>
 </li><li>
-<a href="#monitoring.coreos.com/v1.PodMonitor">PodMonitor</a>
+<a href="#monitoring.rhobs/v1.PodMonitor">PodMonitor</a>
 </li><li>
-<a href="#monitoring.coreos.com/v1.Probe">Probe</a>
+<a href="#monitoring.rhobs/v1.Probe">Probe</a>
 </li><li>
-<a href="#monitoring.coreos.com/v1.Prometheus">Prometheus</a>
+<a href="#monitoring.rhobs/v1.Prometheus">Prometheus</a>
 </li><li>
-<a href="#monitoring.coreos.com/v1.PrometheusRule">PrometheusRule</a>
+<a href="#monitoring.rhobs/v1.PrometheusRule">PrometheusRule</a>
 </li><li>
-<a href="#monitoring.coreos.com/v1.ServiceMonitor">ServiceMonitor</a>
+<a href="#monitoring.rhobs/v1.ServiceMonitor">ServiceMonitor</a>
 </li></ul>
-<h3 id="monitoring.coreos.com/v1.Alertmanager">Alertmanager
+<h3 id="monitoring.rhobs/v1.Alertmanager">Alertmanager
 </h3>
 <div>
 <p>Alertmanager describes an Alertmanager cluster.</p>
@@ -56,7 +56,7 @@ Resource Types:
 string</td>
 <td>
 <code>
-monitoring.coreos.com/v1
+monitoring.rhobs/v1
 </code>
 </td>
 </tr>
@@ -85,7 +85,7 @@ Refer to the Kubernetes API documentation for the fields of the
 <td>
 <code>spec</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AlertmanagerSpec">
+<a href="#monitoring.rhobs/v1.AlertmanagerSpec">
 AlertmanagerSpec
 </a>
 </em>
@@ -100,7 +100,7 @@ AlertmanagerSpec
 <td>
 <code>podMetadata</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.EmbeddedObjectMetadata">
+<a href="#monitoring.rhobs/v1.EmbeddedObjectMetadata">
 EmbeddedObjectMetadata
 </a>
 </em>
@@ -274,7 +274,7 @@ size.</p>
 <td>
 <code>retention</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.GoDuration">
+<a href="#monitoring.rhobs/v1.GoDuration">
 GoDuration
 </a>
 </em>
@@ -288,7 +288,7 @@ and must match the regular expression <code>[0-9]+(ms|s|m|h)</code> (millisecond
 <td>
 <code>storage</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.StorageSpec">
+<a href="#monitoring.rhobs/v1.StorageSpec">
 StorageSpec
 </a>
 </em>
@@ -546,7 +546,7 @@ Needs to be provided for non RFC1918 <a href="public">1</a> addresses.
 <td>
 <code>clusterGossipInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.GoDuration">
+<a href="#monitoring.rhobs/v1.GoDuration">
 GoDuration
 </a>
 </em>
@@ -559,7 +559,7 @@ GoDuration
 <td>
 <code>clusterPushpullInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.GoDuration">
+<a href="#monitoring.rhobs/v1.GoDuration">
 GoDuration
 </a>
 </em>
@@ -572,7 +572,7 @@ GoDuration
 <td>
 <code>clusterPeerTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.GoDuration">
+<a href="#monitoring.rhobs/v1.GoDuration">
 GoDuration
 </a>
 </em>
@@ -651,7 +651,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <td>
 <code>hostAliases</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.HostAlias">
+<a href="#monitoring.rhobs/v1.HostAlias">
 []HostAlias
 </a>
 </em>
@@ -664,7 +664,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <td>
 <code>web</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AlertmanagerWebSpec">
+<a href="#monitoring.rhobs/v1.AlertmanagerWebSpec">
 AlertmanagerWebSpec
 </a>
 </em>
@@ -677,7 +677,7 @@ AlertmanagerWebSpec
 <td>
 <code>alertmanagerConfiguration</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AlertmanagerConfiguration">
+<a href="#monitoring.rhobs/v1.AlertmanagerConfiguration">
 AlertmanagerConfiguration
 </a>
 </em>
@@ -695,7 +695,7 @@ This field may change in future releases.</p>
 <td>
 <code>status</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AlertmanagerStatus">
+<a href="#monitoring.rhobs/v1.AlertmanagerStatus">
 AlertmanagerStatus
 </a>
 </em>
@@ -709,7 +709,7 @@ Operator API itself. More info:
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PodMonitor">PodMonitor
+<h3 id="monitoring.rhobs/v1.PodMonitor">PodMonitor
 </h3>
 <div>
 <p>PodMonitor defines monitoring for a set of pods.</p>
@@ -728,7 +728,7 @@ Operator API itself. More info:
 string</td>
 <td>
 <code>
-monitoring.coreos.com/v1
+monitoring.rhobs/v1
 </code>
 </td>
 </tr>
@@ -757,7 +757,7 @@ Refer to the Kubernetes API documentation for the fields of the
 <td>
 <code>spec</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PodMonitorSpec">
+<a href="#monitoring.rhobs/v1.PodMonitorSpec">
 PodMonitorSpec
 </a>
 </em>
@@ -793,7 +793,7 @@ string
 <td>
 <code>podMetricsEndpoints</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PodMetricsEndpoint">
+<a href="#monitoring.rhobs/v1.PodMetricsEndpoint">
 []PodMetricsEndpoint
 </a>
 </em>
@@ -819,7 +819,7 @@ Kubernetes meta/v1.LabelSelector
 <td>
 <code>namespaceSelector</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.NamespaceSelector">
+<a href="#monitoring.rhobs/v1.NamespaceSelector">
 NamespaceSelector
 </a>
 </em>
@@ -890,7 +890,7 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 <td>
 <code>attachMetadata</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AttachMetadata">
+<a href="#monitoring.rhobs/v1.AttachMetadata">
 AttachMetadata
 </a>
 </em>
@@ -905,7 +905,7 @@ Only valid in Prometheus versions 2.35.0 and newer.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.Probe">Probe
+<h3 id="monitoring.rhobs/v1.Probe">Probe
 </h3>
 <div>
 <p>Probe defines monitoring for a set of static targets or ingresses.</p>
@@ -924,7 +924,7 @@ Only valid in Prometheus versions 2.35.0 and newer.</p>
 string</td>
 <td>
 <code>
-monitoring.coreos.com/v1
+monitoring.rhobs/v1
 </code>
 </td>
 </tr>
@@ -953,7 +953,7 @@ Refer to the Kubernetes API documentation for the fields of the
 <td>
 <code>spec</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ProbeSpec">
+<a href="#monitoring.rhobs/v1.ProbeSpec">
 ProbeSpec
 </a>
 </em>
@@ -978,7 +978,7 @@ string
 <td>
 <code>prober</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ProberSpec">
+<a href="#monitoring.rhobs/v1.ProberSpec">
 ProberSpec
 </a>
 </em>
@@ -1005,7 +1005,7 @@ Example module configuring in the blackbox exporter:
 <td>
 <code>targets</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ProbeTargets">
+<a href="#monitoring.rhobs/v1.ProbeTargets">
 ProbeTargets
 </a>
 </em>
@@ -1018,7 +1018,7 @@ ProbeTargets
 <td>
 <code>interval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -1032,7 +1032,7 @@ If not specified Prometheus&rsquo; global scrape interval is used.</p>
 <td>
 <code>scrapeTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -1046,7 +1046,7 @@ If not specified, the Prometheus global scrape interval is used.</p>
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ProbeTLSConfig">
+<a href="#monitoring.rhobs/v1.ProbeTLSConfig">
 ProbeTLSConfig
 </a>
 </em>
@@ -1074,7 +1074,7 @@ the Prometheus Operator.</p>
 <td>
 <code>basicAuth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.BasicAuth">
+<a href="#monitoring.rhobs/v1.BasicAuth">
 BasicAuth
 </a>
 </em>
@@ -1088,7 +1088,7 @@ More info: <a href="https://prometheus.io/docs/operating/configuration/#endpoint
 <td>
 <code>oauth2</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.OAuth2">
+<a href="#monitoring.rhobs/v1.OAuth2">
 OAuth2
 </a>
 </em>
@@ -1101,7 +1101,7 @@ OAuth2
 <td>
 <code>metricRelabelings</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RelabelConfig">
+<a href="#monitoring.rhobs/v1.RelabelConfig">
 []RelabelConfig
 </a>
 </em>
@@ -1114,7 +1114,7 @@ OAuth2
 <td>
 <code>authorization</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeAuthorization">
+<a href="#monitoring.rhobs/v1.SafeAuthorization">
 SafeAuthorization
 </a>
 </em>
@@ -1186,7 +1186,7 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.Prometheus">Prometheus
+<h3 id="monitoring.rhobs/v1.Prometheus">Prometheus
 </h3>
 <div>
 <p>Prometheus defines a Prometheus deployment.</p>
@@ -1205,7 +1205,7 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 string</td>
 <td>
 <code>
-monitoring.coreos.com/v1
+monitoring.rhobs/v1
 </code>
 </td>
 </tr>
@@ -1234,7 +1234,7 @@ Refer to the Kubernetes API documentation for the fields of the
 <td>
 <code>spec</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusSpec">
+<a href="#monitoring.rhobs/v1.PrometheusSpec">
 PrometheusSpec
 </a>
 </em>
@@ -1249,7 +1249,7 @@ PrometheusSpec
 <td>
 <code>podMetadata</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.EmbeddedObjectMetadata">
+<a href="#monitoring.rhobs/v1.EmbeddedObjectMetadata">
 EmbeddedObjectMetadata
 </a>
 </em>
@@ -1477,7 +1477,7 @@ string
 <td>
 <code>scrapeInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -1490,7 +1490,7 @@ Duration
 <td>
 <code>scrapeTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -1574,7 +1574,7 @@ under a different route prefix. For example for use with <code>kubectl proxy</co
 <td>
 <code>storage</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.StorageSpec">
+<a href="#monitoring.rhobs/v1.StorageSpec">
 StorageSpec
 </a>
 </em>
@@ -1616,7 +1616,7 @@ that are generated as a result of StorageSpec objects.</p>
 <td>
 <code>web</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusWebSpec">
+<a href="#monitoring.rhobs/v1.PrometheusWebSpec">
 PrometheusWebSpec
 </a>
 </em>
@@ -1730,7 +1730,7 @@ Kubernetes core/v1.Affinity
 <td>
 <code>remoteWrite</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RemoteWriteSpec">
+<a href="#monitoring.rhobs/v1.RemoteWriteSpec">
 []RemoteWriteSpec
 </a>
 </em>
@@ -1835,7 +1835,7 @@ Prometheus after the upgrade.</p>
 <td>
 <code>apiserverConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.APIServerConfig">
+<a href="#monitoring.rhobs/v1.APIServerConfig">
 APIServerConfig
 </a>
 </em>
@@ -1874,7 +1874,7 @@ This defaults to web</p>
 <td>
 <code>arbitraryFSAccessThroughSMs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ArbitraryFSAccessThroughSMsConfig">
+<a href="#monitoring.rhobs/v1.ArbitraryFSAccessThroughSMsConfig">
 ArbitraryFSAccessThroughSMsConfig
 </a>
 </em>
@@ -2027,7 +2027,7 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 <td>
 <code>enforcedBodySizeLimit</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ByteSize">
+<a href="#monitoring.rhobs/v1.ByteSize">
 ByteSize
 </a>
 </em>
@@ -2061,7 +2061,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <td>
 <code>hostAliases</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.HostAlias">
+<a href="#monitoring.rhobs/v1.HostAlias">
 []HostAlias
 </a>
 </em>
@@ -2074,7 +2074,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <td>
 <code>additionalArgs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Argument">
+<a href="#monitoring.rhobs/v1.Argument">
 []Argument
 </a>
 </em>
@@ -2106,7 +2106,7 @@ only available in versions of Prometheus &gt;= 2.11.0.</p>
 <td>
 <code>excludedFromEnforcement</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ObjectReference">
+<a href="#monitoring.rhobs/v1.ObjectReference">
 []ObjectReference
 </a>
 </em>
@@ -2162,7 +2162,7 @@ as part of the image URL.</p>
 <td>
 <code>retention</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -2177,7 +2177,7 @@ retentionSize is not set, and must match the regular expression <code>[0-9]+(ms|
 <td>
 <code>retentionSize</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ByteSize">
+<a href="#monitoring.rhobs/v1.ByteSize">
 ByteSize
 </a>
 </em>
@@ -2201,7 +2201,7 @@ bool
 <td>
 <code>rules</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Rules">
+<a href="#monitoring.rhobs/v1.Rules">
 Rules
 </a>
 </em>
@@ -2214,7 +2214,7 @@ Rules
 <td>
 <code>prometheusRulesExcludedFromEnforce</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusRuleExcludeConfig">
+<a href="#monitoring.rhobs/v1.PrometheusRuleExcludeConfig">
 []PrometheusRuleExcludeConfig
 </a>
 </em>
@@ -2230,7 +2230,7 @@ Deprecated: use excludedFromEnforcement instead.</p>
 <td>
 <code>query</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.QuerySpec">
+<a href="#monitoring.rhobs/v1.QuerySpec">
 QuerySpec
 </a>
 </em>
@@ -2274,7 +2274,7 @@ the same namespace as the Prometheus object is in is used.</p>
 <td>
 <code>alerting</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AlertingSpec">
+<a href="#monitoring.rhobs/v1.AlertingSpec">
 AlertingSpec
 </a>
 </em>
@@ -2287,7 +2287,7 @@ AlertingSpec
 <td>
 <code>remoteRead</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RemoteReadSpec">
+<a href="#monitoring.rhobs/v1.RemoteReadSpec">
 []RemoteReadSpec
 </a>
 </em>
@@ -2346,7 +2346,7 @@ Prometheus after the upgrade.</p>
 <td>
 <code>thanos</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ThanosSpec">
+<a href="#monitoring.rhobs/v1.ThanosSpec">
 ThanosSpec
 </a>
 </em>
@@ -2394,7 +2394,7 @@ This is still experimental in Prometheus so it may change in any upcoming releas
 <td>
 <code>exemplars</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Exemplars">
+<a href="#monitoring.rhobs/v1.Exemplars">
 Exemplars
 </a>
 </em>
@@ -2408,7 +2408,7 @@ It requires to enable the exemplar storage feature to be effective.</p>
 <td>
 <code>evaluationInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -2440,7 +2440,7 @@ For more information see <a href="https://prometheus.io/docs/prometheus/latest/q
 <td>
 <code>status</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusStatus">
+<a href="#monitoring.rhobs/v1.PrometheusStatus">
 PrometheusStatus
 </a>
 </em>
@@ -2453,7 +2453,7 @@ More info:
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PrometheusRule">PrometheusRule
+<h3 id="monitoring.rhobs/v1.PrometheusRule">PrometheusRule
 </h3>
 <div>
 <p>PrometheusRule defines recording and alerting rules for a Prometheus instance</p>
@@ -2472,7 +2472,7 @@ More info:
 string</td>
 <td>
 <code>
-monitoring.coreos.com/v1
+monitoring.rhobs/v1
 </code>
 </td>
 </tr>
@@ -2501,7 +2501,7 @@ Refer to the Kubernetes API documentation for the fields of the
 <td>
 <code>spec</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusRuleSpec">
+<a href="#monitoring.rhobs/v1.PrometheusRuleSpec">
 PrometheusRuleSpec
 </a>
 </em>
@@ -2515,7 +2515,7 @@ PrometheusRuleSpec
 <td>
 <code>groups</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RuleGroup">
+<a href="#monitoring.rhobs/v1.RuleGroup">
 []RuleGroup
 </a>
 </em>
@@ -2529,7 +2529,7 @@ PrometheusRuleSpec
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ServiceMonitor">ServiceMonitor
+<h3 id="monitoring.rhobs/v1.ServiceMonitor">ServiceMonitor
 </h3>
 <div>
 <p>ServiceMonitor defines monitoring for a set of services.</p>
@@ -2548,7 +2548,7 @@ PrometheusRuleSpec
 string</td>
 <td>
 <code>
-monitoring.coreos.com/v1
+monitoring.rhobs/v1
 </code>
 </td>
 </tr>
@@ -2577,7 +2577,7 @@ Refer to the Kubernetes API documentation for the fields of the
 <td>
 <code>spec</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ServiceMonitorSpec">
+<a href="#monitoring.rhobs/v1.ServiceMonitorSpec">
 ServiceMonitorSpec
 </a>
 </em>
@@ -2629,7 +2629,7 @@ then the <code>job=&quot;bar&quot;</code> label is added to all metrics.</p>
 <td>
 <code>endpoints</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Endpoint">
+<a href="#monitoring.rhobs/v1.Endpoint">
 []Endpoint
 </a>
 </em>
@@ -2655,7 +2655,7 @@ Kubernetes meta/v1.LabelSelector
 <td>
 <code>namespaceSelector</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.NamespaceSelector">
+<a href="#monitoring.rhobs/v1.NamespaceSelector">
 NamespaceSelector
 </a>
 </em>
@@ -2727,10 +2727,10 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.APIServerConfig">APIServerConfig
+<h3 id="monitoring.rhobs/v1.APIServerConfig">APIServerConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>)
 </p>
 <div>
 <p>APIServerConfig defines a host and auth methods to access apiserver.
@@ -2760,7 +2760,7 @@ A valid string consisting of a hostname or IP followed by an optional port numbe
 <td>
 <code>basicAuth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.BasicAuth">
+<a href="#monitoring.rhobs/v1.BasicAuth">
 BasicAuth
 </a>
 </em>
@@ -2795,7 +2795,7 @@ string
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.TLSConfig">
+<a href="#monitoring.rhobs/v1.TLSConfig">
 TLSConfig
 </a>
 </em>
@@ -2808,7 +2808,7 @@ TLSConfig
 <td>
 <code>authorization</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Authorization">
+<a href="#monitoring.rhobs/v1.Authorization">
 Authorization
 </a>
 </em>
@@ -2819,10 +2819,10 @@ Authorization
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.AlertingSpec">AlertingSpec
+<h3 id="monitoring.rhobs/v1.AlertingSpec">AlertingSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusSpec">PrometheusSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>)
 </p>
 <div>
 <p>AlertingSpec defines parameters for alerting configuration of Prometheus servers.</p>
@@ -2839,7 +2839,7 @@ Authorization
 <td>
 <code>alertmanagers</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AlertmanagerEndpoints">
+<a href="#monitoring.rhobs/v1.AlertmanagerEndpoints">
 []AlertmanagerEndpoints
 </a>
 </em>
@@ -2850,10 +2850,10 @@ Authorization
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.AlertmanagerConfiguration">AlertmanagerConfiguration
+<h3 id="monitoring.rhobs/v1.AlertmanagerConfiguration">AlertmanagerConfiguration
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertmanagerSpec">AlertmanagerSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerSpec">AlertmanagerSpec</a>)
 </p>
 <div>
 <p>AlertmanagerConfiguration defines the Alertmanager configuration.</p>
@@ -2883,7 +2883,7 @@ The operator will not enforce a <code>namespace</code> label for routes and inhi
 <td>
 <code>global</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AlertmanagerGlobalConfig">
+<a href="#monitoring.rhobs/v1.AlertmanagerGlobalConfig">
 AlertmanagerGlobalConfig
 </a>
 </em>
@@ -2895,10 +2895,10 @@ AlertmanagerGlobalConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.AlertmanagerEndpoints">AlertmanagerEndpoints
+<h3 id="monitoring.rhobs/v1.AlertmanagerEndpoints">AlertmanagerEndpoints
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertingSpec">AlertingSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertingSpec">AlertingSpec</a>)
 </p>
 <div>
 <p>AlertmanagerEndpoints defines a selection of a single Endpoints object
@@ -2973,7 +2973,7 @@ string
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.TLSConfig">
+<a href="#monitoring.rhobs/v1.TLSConfig">
 TLSConfig
 </a>
 </em>
@@ -2998,7 +2998,7 @@ Alertmanager.</p>
 <td>
 <code>authorization</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeAuthorization">
+<a href="#monitoring.rhobs/v1.SafeAuthorization">
 SafeAuthorization
 </a>
 </em>
@@ -3023,7 +3023,7 @@ can be &ldquo;v1&rdquo; or &ldquo;v2&rdquo;.</p>
 <td>
 <code>timeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -3034,10 +3034,10 @@ Duration
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.AlertmanagerGlobalConfig">AlertmanagerGlobalConfig
+<h3 id="monitoring.rhobs/v1.AlertmanagerGlobalConfig">AlertmanagerGlobalConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertmanagerConfiguration">AlertmanagerConfiguration</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerConfiguration">AlertmanagerConfiguration</a>)
 </p>
 <div>
 <p>AlertmanagerGlobalConfig configures parameters that are valid in all other configuration contexts.
@@ -3055,7 +3055,7 @@ See <a href="https://prometheus.io/docs/alerting/latest/configuration/#configura
 <td>
 <code>resolveTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -3070,7 +3070,7 @@ This has no impact on alerts from Prometheus, as they always include EndsAt.</p>
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.HTTPConfig">
+<a href="#monitoring.rhobs/v1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -3081,10 +3081,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.AlertmanagerSpec">AlertmanagerSpec
+<h3 id="monitoring.rhobs/v1.AlertmanagerSpec">AlertmanagerSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.Alertmanager">Alertmanager</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.Alertmanager">Alertmanager</a>)
 </p>
 <div>
 <p>AlertmanagerSpec is a specification of the desired behavior of the Alertmanager cluster. More info:
@@ -3102,7 +3102,7 @@ HTTPConfig
 <td>
 <code>podMetadata</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.EmbeddedObjectMetadata">
+<a href="#monitoring.rhobs/v1.EmbeddedObjectMetadata">
 EmbeddedObjectMetadata
 </a>
 </em>
@@ -3276,7 +3276,7 @@ size.</p>
 <td>
 <code>retention</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.GoDuration">
+<a href="#monitoring.rhobs/v1.GoDuration">
 GoDuration
 </a>
 </em>
@@ -3290,7 +3290,7 @@ and must match the regular expression <code>[0-9]+(ms|s|m|h)</code> (millisecond
 <td>
 <code>storage</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.StorageSpec">
+<a href="#monitoring.rhobs/v1.StorageSpec">
 StorageSpec
 </a>
 </em>
@@ -3548,7 +3548,7 @@ Needs to be provided for non RFC1918 <a href="public">1</a> addresses.
 <td>
 <code>clusterGossipInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.GoDuration">
+<a href="#monitoring.rhobs/v1.GoDuration">
 GoDuration
 </a>
 </em>
@@ -3561,7 +3561,7 @@ GoDuration
 <td>
 <code>clusterPushpullInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.GoDuration">
+<a href="#monitoring.rhobs/v1.GoDuration">
 GoDuration
 </a>
 </em>
@@ -3574,7 +3574,7 @@ GoDuration
 <td>
 <code>clusterPeerTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.GoDuration">
+<a href="#monitoring.rhobs/v1.GoDuration">
 GoDuration
 </a>
 </em>
@@ -3653,7 +3653,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <td>
 <code>hostAliases</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.HostAlias">
+<a href="#monitoring.rhobs/v1.HostAlias">
 []HostAlias
 </a>
 </em>
@@ -3666,7 +3666,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <td>
 <code>web</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AlertmanagerWebSpec">
+<a href="#monitoring.rhobs/v1.AlertmanagerWebSpec">
 AlertmanagerWebSpec
 </a>
 </em>
@@ -3679,7 +3679,7 @@ AlertmanagerWebSpec
 <td>
 <code>alertmanagerConfiguration</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AlertmanagerConfiguration">
+<a href="#monitoring.rhobs/v1.AlertmanagerConfiguration">
 AlertmanagerConfiguration
 </a>
 </em>
@@ -3692,10 +3692,10 @@ This field may change in future releases.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.AlertmanagerStatus">AlertmanagerStatus
+<h3 id="monitoring.rhobs/v1.AlertmanagerStatus">AlertmanagerStatus
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.Alertmanager">Alertmanager</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.Alertmanager">Alertmanager</a>)
 </p>
 <div>
 <p>AlertmanagerStatus is the most recent observed status of the Alertmanager cluster. Read-only. Not
@@ -3772,10 +3772,10 @@ int32
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.AlertmanagerWebSpec">AlertmanagerWebSpec
+<h3 id="monitoring.rhobs/v1.AlertmanagerWebSpec">AlertmanagerWebSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertmanagerSpec">AlertmanagerSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerSpec">AlertmanagerSpec</a>)
 </p>
 <div>
 <p>AlertmanagerWebSpec defines the web command line flags when starting Alertmanager.</p>
@@ -3792,7 +3792,7 @@ int32
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.WebTLSConfig">
+<a href="#monitoring.rhobs/v1.WebTLSConfig">
 WebTLSConfig
 </a>
 </em>
@@ -3805,7 +3805,7 @@ WebTLSConfig
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.WebHTTPConfig">
+<a href="#monitoring.rhobs/v1.WebHTTPConfig">
 WebHTTPConfig
 </a>
 </em>
@@ -3816,10 +3816,10 @@ WebHTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ArbitraryFSAccessThroughSMsConfig">ArbitraryFSAccessThroughSMsConfig
+<h3 id="monitoring.rhobs/v1.ArbitraryFSAccessThroughSMsConfig">ArbitraryFSAccessThroughSMsConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>)
 </p>
 <div>
 <p>ArbitraryFSAccessThroughSMsConfig enables users to configure, whether
@@ -3851,10 +3851,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.Argument">Argument
+<h3 id="monitoring.rhobs/v1.Argument">Argument
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.coreos.com/v1.ThanosSpec">ThanosSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.rhobs/v1.ThanosSpec">ThanosSpec</a>)
 </p>
 <div>
 <p>Argument as part of the AdditionalArgs list.</p>
@@ -3891,10 +3891,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.AttachMetadata">AttachMetadata
+<h3 id="monitoring.rhobs/v1.AttachMetadata">AttachMetadata
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PodMonitorSpec">PodMonitorSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PodMonitorSpec">PodMonitorSpec</a>)
 </p>
 <div>
 </div>
@@ -3919,10 +3919,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.Authorization">Authorization
+<h3 id="monitoring.rhobs/v1.Authorization">Authorization
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.APIServerConfig">APIServerConfig</a>, <a href="#monitoring.coreos.com/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.coreos.com/v1.RemoteWriteSpec">RemoteWriteSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.APIServerConfig">APIServerConfig</a>, <a href="#monitoring.rhobs/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec</a>)
 </p>
 <div>
 <p>Authorization contains optional <code>Authorization</code> header configuration.
@@ -3974,7 +3974,7 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.AuthorizationValidationError">AuthorizationValidationError
+<h3 id="monitoring.rhobs/v1.AuthorizationValidationError">AuthorizationValidationError
 </h3>
 <div>
 <p>AuthorizationValidationError is returned by Authorization.Validate()
@@ -4000,10 +4000,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.BasicAuth">BasicAuth
+<h3 id="monitoring.rhobs/v1.BasicAuth">BasicAuth
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.APIServerConfig">APIServerConfig</a>, <a href="#monitoring.coreos.com/v1.Endpoint">Endpoint</a>, <a href="#monitoring.coreos.com/v1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.coreos.com/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.coreos.com/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.coreos.com/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.coreos.com/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.coreos.com/v1beta1.HTTPConfig">HTTPConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.APIServerConfig">APIServerConfig</a>, <a href="#monitoring.rhobs/v1.Endpoint">Endpoint</a>, <a href="#monitoring.rhobs/v1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.rhobs/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.rhobs/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.rhobs/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.rhobs/v1alpha1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.rhobs/v1beta1.HTTPConfig">HTTPConfig</a>)
 </p>
 <div>
 <p>BasicAuth allow an endpoint to authenticate over basic authentication
@@ -4047,19 +4047,19 @@ for authentication.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ByteSize">ByteSize
+<h3 id="monitoring.rhobs/v1.ByteSize">ByteSize
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.coreos.com/v1.PrometheusSpec">PrometheusSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>)
 </p>
 <div>
 <p>ByteSize is a valid memory size type based on powers-of-2, so 1KB is 1024B.
 Supported units: B, KB, KiB, MB, MiB, GB, GiB, TB, TiB, PB, PiB, EB, EiB Ex: <code>512MB</code>.</p>
 </div>
-<h3 id="monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields
+<h3 id="monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusSpec">PrometheusSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>)
 </p>
 <div>
 <p>CommonPrometheusFields are the options available to both the Prometheus server and agent.</p>
@@ -4076,7 +4076,7 @@ Supported units: B, KB, KiB, MB, MiB, GB, GiB, TB, TiB, PB, PiB, EB, EiB Ex: <co
 <td>
 <code>podMetadata</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.EmbeddedObjectMetadata">
+<a href="#monitoring.rhobs/v1.EmbeddedObjectMetadata">
 EmbeddedObjectMetadata
 </a>
 </em>
@@ -4304,7 +4304,7 @@ string
 <td>
 <code>scrapeInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -4317,7 +4317,7 @@ Duration
 <td>
 <code>scrapeTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -4401,7 +4401,7 @@ under a different route prefix. For example for use with <code>kubectl proxy</co
 <td>
 <code>storage</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.StorageSpec">
+<a href="#monitoring.rhobs/v1.StorageSpec">
 StorageSpec
 </a>
 </em>
@@ -4443,7 +4443,7 @@ that are generated as a result of StorageSpec objects.</p>
 <td>
 <code>web</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusWebSpec">
+<a href="#monitoring.rhobs/v1.PrometheusWebSpec">
 PrometheusWebSpec
 </a>
 </em>
@@ -4557,7 +4557,7 @@ Kubernetes core/v1.Affinity
 <td>
 <code>remoteWrite</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RemoteWriteSpec">
+<a href="#monitoring.rhobs/v1.RemoteWriteSpec">
 []RemoteWriteSpec
 </a>
 </em>
@@ -4662,7 +4662,7 @@ Prometheus after the upgrade.</p>
 <td>
 <code>apiserverConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.APIServerConfig">
+<a href="#monitoring.rhobs/v1.APIServerConfig">
 APIServerConfig
 </a>
 </em>
@@ -4701,7 +4701,7 @@ This defaults to web</p>
 <td>
 <code>arbitraryFSAccessThroughSMs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ArbitraryFSAccessThroughSMsConfig">
+<a href="#monitoring.rhobs/v1.ArbitraryFSAccessThroughSMsConfig">
 ArbitraryFSAccessThroughSMsConfig
 </a>
 </em>
@@ -4854,7 +4854,7 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 <td>
 <code>enforcedBodySizeLimit</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ByteSize">
+<a href="#monitoring.rhobs/v1.ByteSize">
 ByteSize
 </a>
 </em>
@@ -4888,7 +4888,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <td>
 <code>hostAliases</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.HostAlias">
+<a href="#monitoring.rhobs/v1.HostAlias">
 []HostAlias
 </a>
 </em>
@@ -4901,7 +4901,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <td>
 <code>additionalArgs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Argument">
+<a href="#monitoring.rhobs/v1.Argument">
 []Argument
 </a>
 </em>
@@ -4933,7 +4933,7 @@ only available in versions of Prometheus &gt;= 2.11.0.</p>
 <td>
 <code>excludedFromEnforcement</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ObjectReference">
+<a href="#monitoring.rhobs/v1.ObjectReference">
 []ObjectReference
 </a>
 </em>
@@ -4946,20 +4946,20 @@ Applies only if enforcedNamespaceLabel set to true.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.Duration">Duration
+<h3 id="monitoring.rhobs/v1.Duration">Duration
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertmanagerEndpoints">AlertmanagerEndpoints</a>, <a href="#monitoring.coreos.com/v1.AlertmanagerGlobalConfig">AlertmanagerGlobalConfig</a>, <a href="#monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.coreos.com/v1.Endpoint">Endpoint</a>, <a href="#monitoring.coreos.com/v1.MetadataConfig">MetadataConfig</a>, <a href="#monitoring.coreos.com/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.coreos.com/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.coreos.com/v1.PrometheusSpec">PrometheusSpec</a>, <a href="#monitoring.coreos.com/v1.QuerySpec">QuerySpec</a>, <a href="#monitoring.coreos.com/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.coreos.com/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.coreos.com/v1.ThanosRulerSpec">ThanosRulerSpec</a>, <a href="#monitoring.coreos.com/v1.ThanosSpec">ThanosSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerEndpoints">AlertmanagerEndpoints</a>, <a href="#monitoring.rhobs/v1.AlertmanagerGlobalConfig">AlertmanagerGlobalConfig</a>, <a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.rhobs/v1.Endpoint">Endpoint</a>, <a href="#monitoring.rhobs/v1.MetadataConfig">MetadataConfig</a>, <a href="#monitoring.rhobs/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.rhobs/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>, <a href="#monitoring.rhobs/v1.QuerySpec">QuerySpec</a>, <a href="#monitoring.rhobs/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.rhobs/v1.ThanosRulerSpec">ThanosRulerSpec</a>, <a href="#monitoring.rhobs/v1.ThanosSpec">ThanosSpec</a>)
 </p>
 <div>
 <p>Duration is a valid time duration that can be parsed by Prometheus model.ParseDuration() function.
 Supported units: y, w, d, h, m, s, ms
 Examples: <code>30s</code>, <code>1m</code>, <code>1h20m15s</code>, <code>15d</code></p>
 </div>
-<h3 id="monitoring.coreos.com/v1.EmbeddedObjectMetadata">EmbeddedObjectMetadata
+<h3 id="monitoring.rhobs/v1.EmbeddedObjectMetadata">EmbeddedObjectMetadata
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertmanagerSpec">AlertmanagerSpec</a>, <a href="#monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.coreos.com/v1.EmbeddedPersistentVolumeClaim">EmbeddedPersistentVolumeClaim</a>, <a href="#monitoring.coreos.com/v1.ThanosRulerSpec">ThanosRulerSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerSpec">AlertmanagerSpec</a>, <a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.rhobs/v1.EmbeddedPersistentVolumeClaim">EmbeddedPersistentVolumeClaim</a>, <a href="#monitoring.rhobs/v1.ThanosRulerSpec">ThanosRulerSpec</a>)
 </p>
 <div>
 <p>EmbeddedObjectMetadata contains a subset of the fields included in k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta
@@ -5022,10 +5022,10 @@ More info: <a href="http://kubernetes.io/docs/user-guide/annotations">http://kub
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.EmbeddedPersistentVolumeClaim">EmbeddedPersistentVolumeClaim
+<h3 id="monitoring.rhobs/v1.EmbeddedPersistentVolumeClaim">EmbeddedPersistentVolumeClaim
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.StorageSpec">StorageSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.StorageSpec">StorageSpec</a>)
 </p>
 <div>
 <p>EmbeddedPersistentVolumeClaim is an embedded version of k8s.io/api/core/v1.PersistentVolumeClaim.
@@ -5043,7 +5043,7 @@ It contains TypeMeta and a reduced ObjectMeta.</p>
 <td>
 <code>metadata</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.EmbeddedObjectMetadata">
+<a href="#monitoring.rhobs/v1.EmbeddedObjectMetadata">
 EmbeddedObjectMetadata
 </a>
 </em>
@@ -5226,10 +5226,10 @@ More info: <a href="https://kubernetes.io/docs/concepts/storage/persistent-volum
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.Endpoint">Endpoint
+<h3 id="monitoring.rhobs/v1.Endpoint">Endpoint
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.ServiceMonitorSpec">ServiceMonitorSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.ServiceMonitorSpec">ServiceMonitorSpec</a>)
 </p>
 <div>
 <p>Endpoint defines a scrapeable endpoint serving Prometheus metrics.</p>
@@ -5304,7 +5304,7 @@ map[string][]string
 <td>
 <code>interval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -5318,7 +5318,7 @@ If not specified Prometheus&rsquo; global scrape interval is used.</p>
 <td>
 <code>scrapeTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -5332,7 +5332,7 @@ If not specified, the Prometheus global scrape timeout is used unless it is less
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.TLSConfig">
+<a href="#monitoring.rhobs/v1.TLSConfig">
 TLSConfig
 </a>
 </em>
@@ -5371,7 +5371,7 @@ the Prometheus Operator.</p>
 <td>
 <code>authorization</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeAuthorization">
+<a href="#monitoring.rhobs/v1.SafeAuthorization">
 SafeAuthorization
 </a>
 </em>
@@ -5406,7 +5406,7 @@ bool
 <td>
 <code>basicAuth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.BasicAuth">
+<a href="#monitoring.rhobs/v1.BasicAuth">
 BasicAuth
 </a>
 </em>
@@ -5420,7 +5420,7 @@ More info: <a href="https://prometheus.io/docs/operating/configuration/#endpoint
 <td>
 <code>oauth2</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.OAuth2">
+<a href="#monitoring.rhobs/v1.OAuth2">
 OAuth2
 </a>
 </em>
@@ -5433,7 +5433,7 @@ OAuth2
 <td>
 <code>metricRelabelings</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RelabelConfig">
+<a href="#monitoring.rhobs/v1.RelabelConfig">
 []RelabelConfig
 </a>
 </em>
@@ -5446,7 +5446,7 @@ OAuth2
 <td>
 <code>relabelings</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RelabelConfig">
+<a href="#monitoring.rhobs/v1.RelabelConfig">
 []RelabelConfig
 </a>
 </em>
@@ -5493,10 +5493,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.Exemplars">Exemplars
+<h3 id="monitoring.rhobs/v1.Exemplars">Exemplars
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusSpec">PrometheusSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>)
 </p>
 <div>
 </div>
@@ -5523,20 +5523,20 @@ A value of zero or less than zero disables the storage.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.GoDuration">GoDuration
+<h3 id="monitoring.rhobs/v1.GoDuration">GoDuration
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertmanagerSpec">AlertmanagerSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerSpec">AlertmanagerSpec</a>)
 </p>
 <div>
 <p>GoDuration is a valid time duration that can be parsed by Go&rsquo;s time.ParseDuration() function.
 Supported units: h, m, s, ms
 Examples: <code>45ms</code>, <code>30s</code>, <code>1m</code>, <code>1h20m15s</code></p>
 </div>
-<h3 id="monitoring.coreos.com/v1.HTTPConfig">HTTPConfig
+<h3 id="monitoring.rhobs/v1.HTTPConfig">HTTPConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertmanagerGlobalConfig">AlertmanagerGlobalConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerGlobalConfig">AlertmanagerGlobalConfig</a>)
 </p>
 <div>
 <p>HTTPConfig defines a client HTTP configuration.
@@ -5554,7 +5554,7 @@ See <a href="https://prometheus.io/docs/alerting/latest/configuration/#http_conf
 <td>
 <code>authorization</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeAuthorization">
+<a href="#monitoring.rhobs/v1.SafeAuthorization">
 SafeAuthorization
 </a>
 </em>
@@ -5569,7 +5569,7 @@ This is mutually exclusive with BasicAuth and is only available starting from Al
 <td>
 <code>basicAuth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.BasicAuth">
+<a href="#monitoring.rhobs/v1.BasicAuth">
 BasicAuth
 </a>
 </em>
@@ -5584,7 +5584,7 @@ This is mutually exclusive with Authorization. If both are defined, BasicAuth ta
 <td>
 <code>oauth2</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.OAuth2">
+<a href="#monitoring.rhobs/v1.OAuth2">
 OAuth2
 </a>
 </em>
@@ -5615,7 +5615,7 @@ object and accessible by the Prometheus Operator.</p>
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeTLSConfig">
+<a href="#monitoring.rhobs/v1.SafeTLSConfig">
 SafeTLSConfig
 </a>
 </em>
@@ -5651,10 +5651,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.HostAlias">HostAlias
+<h3 id="monitoring.rhobs/v1.HostAlias">HostAlias
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertmanagerSpec">AlertmanagerSpec</a>, <a href="#monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.coreos.com/v1.ThanosRulerSpec">ThanosRulerSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerSpec">AlertmanagerSpec</a>, <a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.rhobs/v1.ThanosRulerSpec">ThanosRulerSpec</a>)
 </p>
 <div>
 <p>HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the
@@ -5692,18 +5692,18 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.LabelName">LabelName
+<h3 id="monitoring.rhobs/v1.LabelName">LabelName
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.RelabelConfig">RelabelConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.RelabelConfig">RelabelConfig</a>)
 </p>
 <div>
 <p>LabelName is a valid Prometheus label name which may only contain ASCII letters, numbers, as well as underscores.</p>
 </div>
-<h3 id="monitoring.coreos.com/v1.MetadataConfig">MetadataConfig
+<h3 id="monitoring.rhobs/v1.MetadataConfig">MetadataConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.RemoteWriteSpec">RemoteWriteSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec</a>)
 </p>
 <div>
 <p>MetadataConfig configures the sending of series metadata to the remote storage.</p>
@@ -5731,7 +5731,7 @@ bool
 <td>
 <code>sendInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -5742,10 +5742,10 @@ Duration
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.NamespaceSelector">NamespaceSelector
+<h3 id="monitoring.rhobs/v1.NamespaceSelector">NamespaceSelector
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PodMonitorSpec">PodMonitorSpec</a>, <a href="#monitoring.coreos.com/v1.ProbeTargetIngress">ProbeTargetIngress</a>, <a href="#monitoring.coreos.com/v1.ServiceMonitorSpec">ServiceMonitorSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PodMonitorSpec">PodMonitorSpec</a>, <a href="#monitoring.rhobs/v1.ProbeTargetIngress">ProbeTargetIngress</a>, <a href="#monitoring.rhobs/v1.ServiceMonitorSpec">ServiceMonitorSpec</a>)
 </p>
 <div>
 <p>NamespaceSelector is a selector for selecting either all namespaces or a
@@ -5787,10 +5787,10 @@ list restricting them.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.OAuth2">OAuth2
+<h3 id="monitoring.rhobs/v1.OAuth2">OAuth2
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.Endpoint">Endpoint</a>, <a href="#monitoring.coreos.com/v1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.coreos.com/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.coreos.com/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.coreos.com/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.coreos.com/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.coreos.com/v1beta1.HTTPConfig">HTTPConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.Endpoint">Endpoint</a>, <a href="#monitoring.rhobs/v1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.rhobs/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.rhobs/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.rhobs/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.rhobs/v1alpha1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.rhobs/v1beta1.HTTPConfig">HTTPConfig</a>)
 </p>
 <div>
 <p>OAuth2 allows an endpoint to authenticate with OAuth2.
@@ -5808,7 +5808,7 @@ More info: <a href="https://prometheus.io/docs/prometheus/latest/configuration/c
 <td>
 <code>clientId</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SecretOrConfigMap">
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
 SecretOrConfigMap
 </a>
 </em>
@@ -5865,7 +5865,7 @@ map[string]string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.OAuth2ValidationError">OAuth2ValidationError
+<h3 id="monitoring.rhobs/v1.OAuth2ValidationError">OAuth2ValidationError
 </h3>
 <div>
 </div>
@@ -5889,10 +5889,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ObjectReference">ObjectReference
+<h3 id="monitoring.rhobs/v1.ObjectReference">ObjectReference
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.coreos.com/v1.ThanosRulerSpec">ThanosRulerSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.rhobs/v1.ThanosRulerSpec">ThanosRulerSpec</a>)
 </p>
 <div>
 <p>ObjectReference references a PodMonitor, ServiceMonitor, Probe or PrometheusRule object.</p>
@@ -5914,7 +5914,7 @@ string
 </td>
 <td>
 <em>(Optional)</em>
-<p>Group of the referent. When not specified, it defaults to <code>monitoring.coreos.com</code></p>
+<p>Group of the referent. When not specified, it defaults to <code>monitoring.rhobs</code></p>
 </td>
 </tr>
 <tr>
@@ -5954,10 +5954,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PodMetricsEndpoint">PodMetricsEndpoint
+<h3 id="monitoring.rhobs/v1.PodMetricsEndpoint">PodMetricsEndpoint
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PodMonitorSpec">PodMonitorSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PodMonitorSpec">PodMonitorSpec</a>)
 </p>
 <div>
 <p>PodMetricsEndpoint defines a scrapeable endpoint of a Kubernetes Pod serving Prometheus metrics.</p>
@@ -6032,7 +6032,7 @@ map[string][]string
 <td>
 <code>interval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -6046,7 +6046,7 @@ If not specified Prometheus&rsquo; global scrape interval is used.</p>
 <td>
 <code>scrapeTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -6060,7 +6060,7 @@ If not specified, the Prometheus global scrape interval is used.</p>
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PodMetricsEndpointTLSConfig">
+<a href="#monitoring.rhobs/v1.PodMetricsEndpointTLSConfig">
 PodMetricsEndpointTLSConfig
 </a>
 </em>
@@ -6110,7 +6110,7 @@ bool
 <td>
 <code>basicAuth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.BasicAuth">
+<a href="#monitoring.rhobs/v1.BasicAuth">
 BasicAuth
 </a>
 </em>
@@ -6124,7 +6124,7 @@ More info: <a href="https://prometheus.io/docs/operating/configuration/#endpoint
 <td>
 <code>oauth2</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.OAuth2">
+<a href="#monitoring.rhobs/v1.OAuth2">
 OAuth2
 </a>
 </em>
@@ -6137,7 +6137,7 @@ OAuth2
 <td>
 <code>authorization</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeAuthorization">
+<a href="#monitoring.rhobs/v1.SafeAuthorization">
 SafeAuthorization
 </a>
 </em>
@@ -6150,7 +6150,7 @@ SafeAuthorization
 <td>
 <code>metricRelabelings</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RelabelConfig">
+<a href="#monitoring.rhobs/v1.RelabelConfig">
 []RelabelConfig
 </a>
 </em>
@@ -6163,7 +6163,7 @@ SafeAuthorization
 <td>
 <code>relabelings</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RelabelConfig">
+<a href="#monitoring.rhobs/v1.RelabelConfig">
 []RelabelConfig
 </a>
 </em>
@@ -6210,10 +6210,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PodMetricsEndpointTLSConfig">PodMetricsEndpointTLSConfig
+<h3 id="monitoring.rhobs/v1.PodMetricsEndpointTLSConfig">PodMetricsEndpointTLSConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>)
 </p>
 <div>
 <p>PodMetricsEndpointTLSConfig specifies TLS configuration parameters.</p>
@@ -6230,7 +6230,7 @@ bool
 <td>
 <code>ca</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SecretOrConfigMap">
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
 SecretOrConfigMap
 </a>
 </em>
@@ -6243,7 +6243,7 @@ SecretOrConfigMap
 <td>
 <code>cert</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SecretOrConfigMap">
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
 SecretOrConfigMap
 </a>
 </em>
@@ -6289,10 +6289,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PodMonitorSpec">PodMonitorSpec
+<h3 id="monitoring.rhobs/v1.PodMonitorSpec">PodMonitorSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PodMonitor">PodMonitor</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PodMonitor">PodMonitor</a>)
 </p>
 <div>
 <p>PodMonitorSpec contains specification parameters for a PodMonitor.</p>
@@ -6331,7 +6331,7 @@ string
 <td>
 <code>podMetricsEndpoints</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PodMetricsEndpoint">
+<a href="#monitoring.rhobs/v1.PodMetricsEndpoint">
 []PodMetricsEndpoint
 </a>
 </em>
@@ -6357,7 +6357,7 @@ Kubernetes meta/v1.LabelSelector
 <td>
 <code>namespaceSelector</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.NamespaceSelector">
+<a href="#monitoring.rhobs/v1.NamespaceSelector">
 NamespaceSelector
 </a>
 </em>
@@ -6428,7 +6428,7 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 <td>
 <code>attachMetadata</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AttachMetadata">
+<a href="#monitoring.rhobs/v1.AttachMetadata">
 AttachMetadata
 </a>
 </em>
@@ -6440,10 +6440,10 @@ Only valid in Prometheus versions 2.35.0 and newer.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ProbeSpec">ProbeSpec
+<h3 id="monitoring.rhobs/v1.ProbeSpec">ProbeSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.Probe">Probe</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.Probe">Probe</a>)
 </p>
 <div>
 <p>ProbeSpec contains specification parameters for a Probe.</p>
@@ -6471,7 +6471,7 @@ string
 <td>
 <code>prober</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ProberSpec">
+<a href="#monitoring.rhobs/v1.ProberSpec">
 ProberSpec
 </a>
 </em>
@@ -6498,7 +6498,7 @@ Example module configuring in the blackbox exporter:
 <td>
 <code>targets</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ProbeTargets">
+<a href="#monitoring.rhobs/v1.ProbeTargets">
 ProbeTargets
 </a>
 </em>
@@ -6511,7 +6511,7 @@ ProbeTargets
 <td>
 <code>interval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -6525,7 +6525,7 @@ If not specified Prometheus&rsquo; global scrape interval is used.</p>
 <td>
 <code>scrapeTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -6539,7 +6539,7 @@ If not specified, the Prometheus global scrape interval is used.</p>
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ProbeTLSConfig">
+<a href="#monitoring.rhobs/v1.ProbeTLSConfig">
 ProbeTLSConfig
 </a>
 </em>
@@ -6567,7 +6567,7 @@ the Prometheus Operator.</p>
 <td>
 <code>basicAuth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.BasicAuth">
+<a href="#monitoring.rhobs/v1.BasicAuth">
 BasicAuth
 </a>
 </em>
@@ -6581,7 +6581,7 @@ More info: <a href="https://prometheus.io/docs/operating/configuration/#endpoint
 <td>
 <code>oauth2</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.OAuth2">
+<a href="#monitoring.rhobs/v1.OAuth2">
 OAuth2
 </a>
 </em>
@@ -6594,7 +6594,7 @@ OAuth2
 <td>
 <code>metricRelabelings</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RelabelConfig">
+<a href="#monitoring.rhobs/v1.RelabelConfig">
 []RelabelConfig
 </a>
 </em>
@@ -6607,7 +6607,7 @@ OAuth2
 <td>
 <code>authorization</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeAuthorization">
+<a href="#monitoring.rhobs/v1.SafeAuthorization">
 SafeAuthorization
 </a>
 </em>
@@ -6676,10 +6676,10 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ProbeTLSConfig">ProbeTLSConfig
+<h3 id="monitoring.rhobs/v1.ProbeTLSConfig">ProbeTLSConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.ProbeSpec">ProbeSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.ProbeSpec">ProbeSpec</a>)
 </p>
 <div>
 <p>ProbeTLSConfig specifies TLS configuration parameters.</p>
@@ -6696,7 +6696,7 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 <td>
 <code>ca</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SecretOrConfigMap">
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
 SecretOrConfigMap
 </a>
 </em>
@@ -6709,7 +6709,7 @@ SecretOrConfigMap
 <td>
 <code>cert</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SecretOrConfigMap">
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
 SecretOrConfigMap
 </a>
 </em>
@@ -6755,10 +6755,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ProbeTargetIngress">ProbeTargetIngress
+<h3 id="monitoring.rhobs/v1.ProbeTargetIngress">ProbeTargetIngress
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.ProbeTargets">ProbeTargets</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.ProbeTargets">ProbeTargets</a>)
 </p>
 <div>
 <p>ProbeTargetIngress defines the set of Ingress objects considered for probing.
@@ -6789,7 +6789,7 @@ Kubernetes meta/v1.LabelSelector
 <td>
 <code>namespaceSelector</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.NamespaceSelector">
+<a href="#monitoring.rhobs/v1.NamespaceSelector">
 NamespaceSelector
 </a>
 </em>
@@ -6802,7 +6802,7 @@ NamespaceSelector
 <td>
 <code>relabelingConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RelabelConfig">
+<a href="#monitoring.rhobs/v1.RelabelConfig">
 []RelabelConfig
 </a>
 </em>
@@ -6819,10 +6819,10 @@ More info: <a href="https://prometheus.io/docs/prometheus/latest/configuration/c
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ProbeTargetStaticConfig">ProbeTargetStaticConfig
+<h3 id="monitoring.rhobs/v1.ProbeTargetStaticConfig">ProbeTargetStaticConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.ProbeTargets">ProbeTargets</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.ProbeTargets">ProbeTargets</a>)
 </p>
 <div>
 <p>ProbeTargetStaticConfig defines the set of static targets considered for probing.</p>
@@ -6861,7 +6861,7 @@ map[string]string
 <td>
 <code>relabelingConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RelabelConfig">
+<a href="#monitoring.rhobs/v1.RelabelConfig">
 []RelabelConfig
 </a>
 </em>
@@ -6874,10 +6874,10 @@ More info: <a href="https://prometheus.io/docs/prometheus/latest/configuration/c
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ProbeTargets">ProbeTargets
+<h3 id="monitoring.rhobs/v1.ProbeTargets">ProbeTargets
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.ProbeSpec">ProbeSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.ProbeSpec">ProbeSpec</a>)
 </p>
 <div>
 <p>ProbeTargets defines how to discover the probed targets.
@@ -6896,7 +6896,7 @@ If both are defined, <code>staticConfig</code> takes precedence.</p>
 <td>
 <code>staticConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ProbeTargetStaticConfig">
+<a href="#monitoring.rhobs/v1.ProbeTargetStaticConfig">
 ProbeTargetStaticConfig
 </a>
 </em>
@@ -6912,7 +6912,7 @@ More info: <a href="https://prometheus.io/docs/prometheus/latest/configuration/c
 <td>
 <code>ingress</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ProbeTargetIngress">
+<a href="#monitoring.rhobs/v1.ProbeTargetIngress">
 ProbeTargetIngress
 </a>
 </em>
@@ -6925,7 +6925,7 @@ If <code>staticConfig</code> is also defined, <code>staticConfig</code> takes pr
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ProbeTargetsValidationError">ProbeTargetsValidationError
+<h3 id="monitoring.rhobs/v1.ProbeTargetsValidationError">ProbeTargetsValidationError
 </h3>
 <div>
 <p>ProbeTargetsValidationError is returned by ProbeTargets.Validate()
@@ -6951,10 +6951,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ProberSpec">ProberSpec
+<h3 id="monitoring.rhobs/v1.ProberSpec">ProberSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.ProbeSpec">ProbeSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.ProbeSpec">ProbeSpec</a>)
 </p>
 <div>
 <p>ProberSpec contains specification parameters for the Prober used for probing.</p>
@@ -7015,10 +7015,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PrometheusCondition">PrometheusCondition
+<h3 id="monitoring.rhobs/v1.PrometheusCondition">PrometheusCondition
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusStatus">PrometheusStatus</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusStatus">PrometheusStatus</a>)
 </p>
 <div>
 <p>PrometheusCondition represents the state of the resources associated with the Prometheus resource.</p>
@@ -7035,7 +7035,7 @@ string
 <td>
 <code>type</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusConditionType">
+<a href="#monitoring.rhobs/v1.PrometheusConditionType">
 PrometheusConditionType
 </a>
 </em>
@@ -7048,7 +7048,7 @@ PrometheusConditionType
 <td>
 <code>status</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusConditionStatus">
+<a href="#monitoring.rhobs/v1.PrometheusConditionStatus">
 PrometheusConditionStatus
 </a>
 </em>
@@ -7096,10 +7096,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PrometheusConditionStatus">PrometheusConditionStatus
+<h3 id="monitoring.rhobs/v1.PrometheusConditionStatus">PrometheusConditionStatus
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusCondition">PrometheusCondition</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusCondition">PrometheusCondition</a>)
 </p>
 <div>
 </div>
@@ -7120,10 +7120,10 @@ string
 <td></td>
 </tr></tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PrometheusConditionType">PrometheusConditionType
+<h3 id="monitoring.rhobs/v1.PrometheusConditionType">PrometheusConditionType
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusCondition">PrometheusCondition</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusCondition">PrometheusCondition</a>)
 </p>
 <div>
 </div>
@@ -7142,10 +7142,10 @@ string
 </td>
 </tr></tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PrometheusRuleExcludeConfig">PrometheusRuleExcludeConfig
+<h3 id="monitoring.rhobs/v1.PrometheusRuleExcludeConfig">PrometheusRuleExcludeConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusSpec">PrometheusSpec</a>, <a href="#monitoring.coreos.com/v1.ThanosRulerSpec">ThanosRulerSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>, <a href="#monitoring.rhobs/v1.ThanosRulerSpec">ThanosRulerSpec</a>)
 </p>
 <div>
 <p>PrometheusRuleExcludeConfig enables users to configure excluded PrometheusRule names and their namespaces
@@ -7183,10 +7183,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PrometheusRuleSpec">PrometheusRuleSpec
+<h3 id="monitoring.rhobs/v1.PrometheusRuleSpec">PrometheusRuleSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusRule">PrometheusRule</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusRule">PrometheusRule</a>)
 </p>
 <div>
 <p>PrometheusRuleSpec contains specification parameters for a Rule.</p>
@@ -7203,7 +7203,7 @@ string
 <td>
 <code>groups</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RuleGroup">
+<a href="#monitoring.rhobs/v1.RuleGroup">
 []RuleGroup
 </a>
 </em>
@@ -7214,10 +7214,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PrometheusSpec">PrometheusSpec
+<h3 id="monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.Prometheus">Prometheus</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.Prometheus">Prometheus</a>)
 </p>
 <div>
 <p>PrometheusSpec is a specification of the desired behavior of the Prometheus cluster. More info:
@@ -7235,7 +7235,7 @@ string
 <td>
 <code>podMetadata</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.EmbeddedObjectMetadata">
+<a href="#monitoring.rhobs/v1.EmbeddedObjectMetadata">
 EmbeddedObjectMetadata
 </a>
 </em>
@@ -7463,7 +7463,7 @@ string
 <td>
 <code>scrapeInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -7476,7 +7476,7 @@ Duration
 <td>
 <code>scrapeTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -7560,7 +7560,7 @@ under a different route prefix. For example for use with <code>kubectl proxy</co
 <td>
 <code>storage</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.StorageSpec">
+<a href="#monitoring.rhobs/v1.StorageSpec">
 StorageSpec
 </a>
 </em>
@@ -7602,7 +7602,7 @@ that are generated as a result of StorageSpec objects.</p>
 <td>
 <code>web</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusWebSpec">
+<a href="#monitoring.rhobs/v1.PrometheusWebSpec">
 PrometheusWebSpec
 </a>
 </em>
@@ -7716,7 +7716,7 @@ Kubernetes core/v1.Affinity
 <td>
 <code>remoteWrite</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RemoteWriteSpec">
+<a href="#monitoring.rhobs/v1.RemoteWriteSpec">
 []RemoteWriteSpec
 </a>
 </em>
@@ -7821,7 +7821,7 @@ Prometheus after the upgrade.</p>
 <td>
 <code>apiserverConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.APIServerConfig">
+<a href="#monitoring.rhobs/v1.APIServerConfig">
 APIServerConfig
 </a>
 </em>
@@ -7860,7 +7860,7 @@ This defaults to web</p>
 <td>
 <code>arbitraryFSAccessThroughSMs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ArbitraryFSAccessThroughSMsConfig">
+<a href="#monitoring.rhobs/v1.ArbitraryFSAccessThroughSMsConfig">
 ArbitraryFSAccessThroughSMsConfig
 </a>
 </em>
@@ -8013,7 +8013,7 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 <td>
 <code>enforcedBodySizeLimit</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ByteSize">
+<a href="#monitoring.rhobs/v1.ByteSize">
 ByteSize
 </a>
 </em>
@@ -8047,7 +8047,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <td>
 <code>hostAliases</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.HostAlias">
+<a href="#monitoring.rhobs/v1.HostAlias">
 []HostAlias
 </a>
 </em>
@@ -8060,7 +8060,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <td>
 <code>additionalArgs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Argument">
+<a href="#monitoring.rhobs/v1.Argument">
 []Argument
 </a>
 </em>
@@ -8092,7 +8092,7 @@ only available in versions of Prometheus &gt;= 2.11.0.</p>
 <td>
 <code>excludedFromEnforcement</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ObjectReference">
+<a href="#monitoring.rhobs/v1.ObjectReference">
 []ObjectReference
 </a>
 </em>
@@ -8148,7 +8148,7 @@ as part of the image URL.</p>
 <td>
 <code>retention</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -8163,7 +8163,7 @@ retentionSize is not set, and must match the regular expression <code>[0-9]+(ms|
 <td>
 <code>retentionSize</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ByteSize">
+<a href="#monitoring.rhobs/v1.ByteSize">
 ByteSize
 </a>
 </em>
@@ -8187,7 +8187,7 @@ bool
 <td>
 <code>rules</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Rules">
+<a href="#monitoring.rhobs/v1.Rules">
 Rules
 </a>
 </em>
@@ -8200,7 +8200,7 @@ Rules
 <td>
 <code>prometheusRulesExcludedFromEnforce</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusRuleExcludeConfig">
+<a href="#monitoring.rhobs/v1.PrometheusRuleExcludeConfig">
 []PrometheusRuleExcludeConfig
 </a>
 </em>
@@ -8216,7 +8216,7 @@ Deprecated: use excludedFromEnforcement instead.</p>
 <td>
 <code>query</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.QuerySpec">
+<a href="#monitoring.rhobs/v1.QuerySpec">
 QuerySpec
 </a>
 </em>
@@ -8260,7 +8260,7 @@ the same namespace as the Prometheus object is in is used.</p>
 <td>
 <code>alerting</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.AlertingSpec">
+<a href="#monitoring.rhobs/v1.AlertingSpec">
 AlertingSpec
 </a>
 </em>
@@ -8273,7 +8273,7 @@ AlertingSpec
 <td>
 <code>remoteRead</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RemoteReadSpec">
+<a href="#monitoring.rhobs/v1.RemoteReadSpec">
 []RemoteReadSpec
 </a>
 </em>
@@ -8332,7 +8332,7 @@ Prometheus after the upgrade.</p>
 <td>
 <code>thanos</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ThanosSpec">
+<a href="#monitoring.rhobs/v1.ThanosSpec">
 ThanosSpec
 </a>
 </em>
@@ -8380,7 +8380,7 @@ This is still experimental in Prometheus so it may change in any upcoming releas
 <td>
 <code>exemplars</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Exemplars">
+<a href="#monitoring.rhobs/v1.Exemplars">
 Exemplars
 </a>
 </em>
@@ -8394,7 +8394,7 @@ It requires to enable the exemplar storage feature to be effective.</p>
 <td>
 <code>evaluationInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -8421,10 +8421,10 @@ For more information see <a href="https://prometheus.io/docs/prometheus/latest/q
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PrometheusStatus">PrometheusStatus
+<h3 id="monitoring.rhobs/v1.PrometheusStatus">PrometheusStatus
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.Prometheus">Prometheus</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.Prometheus">Prometheus</a>)
 </p>
 <div>
 <p>PrometheusStatus is the most recent observed status of the Prometheus cluster.
@@ -8502,7 +8502,7 @@ int32
 <td>
 <code>conditions</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusCondition">
+<a href="#monitoring.rhobs/v1.PrometheusCondition">
 []PrometheusCondition
 </a>
 </em>
@@ -8516,7 +8516,7 @@ int32
 <td>
 <code>shardStatuses</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ShardStatus">
+<a href="#monitoring.rhobs/v1.ShardStatus">
 []ShardStatus
 </a>
 </em>
@@ -8528,10 +8528,10 @@ int32
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.PrometheusWebSpec">PrometheusWebSpec
+<h3 id="monitoring.rhobs/v1.PrometheusWebSpec">PrometheusWebSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>)
 </p>
 <div>
 <p>PrometheusWebSpec defines the web command line flags when starting Prometheus.</p>
@@ -8548,7 +8548,7 @@ int32
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.WebTLSConfig">
+<a href="#monitoring.rhobs/v1.WebTLSConfig">
 WebTLSConfig
 </a>
 </em>
@@ -8561,7 +8561,7 @@ WebTLSConfig
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.WebHTTPConfig">
+<a href="#monitoring.rhobs/v1.WebHTTPConfig">
 WebHTTPConfig
 </a>
 </em>
@@ -8583,10 +8583,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.QuerySpec">QuerySpec
+<h3 id="monitoring.rhobs/v1.QuerySpec">QuerySpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusSpec">PrometheusSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>)
 </p>
 <div>
 <p>QuerySpec defines the query command line flags when starting Prometheus.</p>
@@ -8636,7 +8636,7 @@ int32
 <td>
 <code>timeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -8647,10 +8647,10 @@ Duration
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.QueueConfig">QueueConfig
+<h3 id="monitoring.rhobs/v1.QueueConfig">QueueConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.RemoteWriteSpec">RemoteWriteSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec</a>)
 </p>
 <div>
 <p>QueueConfig allows the tuning of remote write&rsquo;s queue_config parameters.
@@ -8766,10 +8766,10 @@ This is experimental feature and might change in the future.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.RelabelConfig">RelabelConfig
+<h3 id="monitoring.rhobs/v1.RelabelConfig">RelabelConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.Endpoint">Endpoint</a>, <a href="#monitoring.coreos.com/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.coreos.com/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.coreos.com/v1.ProbeTargetIngress">ProbeTargetIngress</a>, <a href="#monitoring.coreos.com/v1.ProbeTargetStaticConfig">ProbeTargetStaticConfig</a>, <a href="#monitoring.coreos.com/v1.RemoteWriteSpec">RemoteWriteSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.Endpoint">Endpoint</a>, <a href="#monitoring.rhobs/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.rhobs/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.rhobs/v1.ProbeTargetIngress">ProbeTargetIngress</a>, <a href="#monitoring.rhobs/v1.ProbeTargetStaticConfig">ProbeTargetStaticConfig</a>, <a href="#monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec</a>)
 </p>
 <div>
 <p>RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion.
@@ -8788,7 +8788,7 @@ More info: <a href="https://prometheus.io/docs/prometheus/latest/configuration/c
 <td>
 <code>sourceLabels</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.LabelName">
+<a href="#monitoring.rhobs/v1.LabelName">
 []LabelName
 </a>
 </em>
@@ -8870,10 +8870,10 @@ uppercase and lowercase actions require Prometheus &gt;= 2.36.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.RemoteReadSpec">RemoteReadSpec
+<h3 id="monitoring.rhobs/v1.RemoteReadSpec">RemoteReadSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusSpec">PrometheusSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>)
 </p>
 <div>
 <p>RemoteReadSpec defines the configuration for Prometheus to read back samples
@@ -8927,7 +8927,7 @@ in a selector to query the remote read endpoint.</p>
 <td>
 <code>remoteTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -8965,7 +8965,7 @@ the local storage should have complete data for.</p>
 <td>
 <code>basicAuth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.BasicAuth">
+<a href="#monitoring.rhobs/v1.BasicAuth">
 BasicAuth
 </a>
 </em>
@@ -8978,7 +8978,7 @@ BasicAuth
 <td>
 <code>oauth2</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.OAuth2">
+<a href="#monitoring.rhobs/v1.OAuth2">
 OAuth2
 </a>
 </em>
@@ -9013,7 +9013,7 @@ string
 <td>
 <code>authorization</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Authorization">
+<a href="#monitoring.rhobs/v1.Authorization">
 Authorization
 </a>
 </em>
@@ -9026,7 +9026,7 @@ Authorization
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.TLSConfig">
+<a href="#monitoring.rhobs/v1.TLSConfig">
 TLSConfig
 </a>
 </em>
@@ -9048,10 +9048,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.RemoteWriteSpec">RemoteWriteSpec
+<h3 id="monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>)
 </p>
 <div>
 <p>RemoteWriteSpec defines the configuration to write samples from Prometheus
@@ -9107,7 +9107,7 @@ Prometheus versions 2.27.0 and newer.</p>
 <td>
 <code>remoteTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -9133,7 +9133,7 @@ Only valid in Prometheus versions 2.25.0 and newer.</p>
 <td>
 <code>writeRelabelConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RelabelConfig">
+<a href="#monitoring.rhobs/v1.RelabelConfig">
 []RelabelConfig
 </a>
 </em>
@@ -9146,7 +9146,7 @@ Only valid in Prometheus versions 2.25.0 and newer.</p>
 <td>
 <code>oauth2</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.OAuth2">
+<a href="#monitoring.rhobs/v1.OAuth2">
 OAuth2
 </a>
 </em>
@@ -9159,7 +9159,7 @@ OAuth2
 <td>
 <code>basicAuth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.BasicAuth">
+<a href="#monitoring.rhobs/v1.BasicAuth">
 BasicAuth
 </a>
 </em>
@@ -9194,7 +9194,7 @@ string
 <td>
 <code>authorization</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Authorization">
+<a href="#monitoring.rhobs/v1.Authorization">
 Authorization
 </a>
 </em>
@@ -9207,7 +9207,7 @@ Authorization
 <td>
 <code>sigv4</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Sigv4">
+<a href="#monitoring.rhobs/v1.Sigv4">
 Sigv4
 </a>
 </em>
@@ -9220,7 +9220,7 @@ Sigv4
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.TLSConfig">
+<a href="#monitoring.rhobs/v1.TLSConfig">
 TLSConfig
 </a>
 </em>
@@ -9244,7 +9244,7 @@ string
 <td>
 <code>queueConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.QueueConfig">
+<a href="#monitoring.rhobs/v1.QueueConfig">
 QueueConfig
 </a>
 </em>
@@ -9257,7 +9257,7 @@ QueueConfig
 <td>
 <code>metadataConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.MetadataConfig">
+<a href="#monitoring.rhobs/v1.MetadataConfig">
 MetadataConfig
 </a>
 </em>
@@ -9268,10 +9268,10 @@ MetadataConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.Rule">Rule
+<h3 id="monitoring.rhobs/v1.Rule">Rule
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.RuleGroup">RuleGroup</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.RuleGroup">RuleGroup</a>)
 </p>
 <div>
 <p>Rule describes an alerting or recording rule
@@ -9349,10 +9349,10 @@ map[string]string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.RuleGroup">RuleGroup
+<h3 id="monitoring.rhobs/v1.RuleGroup">RuleGroup
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusRuleSpec">PrometheusRuleSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusRuleSpec">PrometheusRuleSpec</a>)
 </p>
 <div>
 <p>RuleGroup is a list of sequentially evaluated recording and alerting rules.
@@ -9392,7 +9392,7 @@ string
 <td>
 <code>rules</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Rule">
+<a href="#monitoring.rhobs/v1.Rule">
 []Rule
 </a>
 </em>
@@ -9412,10 +9412,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.Rules">Rules
+<h3 id="monitoring.rhobs/v1.Rules">Rules
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusSpec">PrometheusSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>)
 </p>
 <div>
 <p>/&ndash;rules.*/ command-line arguments</p>
@@ -9432,7 +9432,7 @@ string
 <td>
 <code>alert</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.RulesAlert">
+<a href="#monitoring.rhobs/v1.RulesAlert">
 RulesAlert
 </a>
 </em>
@@ -9442,10 +9442,10 @@ RulesAlert
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.RulesAlert">RulesAlert
+<h3 id="monitoring.rhobs/v1.RulesAlert">RulesAlert
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.Rules">Rules</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.Rules">Rules</a>)
 </p>
 <div>
 <p>/&ndash;rules.alert.*/ command-line arguments</p>
@@ -9494,10 +9494,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.SafeAuthorization">SafeAuthorization
+<h3 id="monitoring.rhobs/v1.SafeAuthorization">SafeAuthorization
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertmanagerEndpoints">AlertmanagerEndpoints</a>, <a href="#monitoring.coreos.com/v1.Authorization">Authorization</a>, <a href="#monitoring.coreos.com/v1.Endpoint">Endpoint</a>, <a href="#monitoring.coreos.com/v1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.coreos.com/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.coreos.com/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.coreos.com/v1beta1.HTTPConfig">HTTPConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerEndpoints">AlertmanagerEndpoints</a>, <a href="#monitoring.rhobs/v1.Authorization">Authorization</a>, <a href="#monitoring.rhobs/v1.Endpoint">Endpoint</a>, <a href="#monitoring.rhobs/v1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.rhobs/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.rhobs/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.rhobs/v1alpha1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.rhobs/v1beta1.HTTPConfig">HTTPConfig</a>)
 </p>
 <div>
 <p>SafeAuthorization specifies a subset of the Authorization struct, that is
@@ -9538,10 +9538,10 @@ Kubernetes core/v1.SecretKeySelector
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.SafeTLSConfig">SafeTLSConfig
+<h3 id="monitoring.rhobs/v1.SafeTLSConfig">SafeTLSConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.coreos.com/v1.PodMetricsEndpointTLSConfig">PodMetricsEndpointTLSConfig</a>, <a href="#monitoring.coreos.com/v1.ProbeTLSConfig">ProbeTLSConfig</a>, <a href="#monitoring.coreos.com/v1.TLSConfig">TLSConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.EmailConfig">EmailConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.coreos.com/v1beta1.EmailConfig">EmailConfig</a>, <a href="#monitoring.coreos.com/v1beta1.HTTPConfig">HTTPConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.rhobs/v1.PodMetricsEndpointTLSConfig">PodMetricsEndpointTLSConfig</a>, <a href="#monitoring.rhobs/v1.ProbeTLSConfig">ProbeTLSConfig</a>, <a href="#monitoring.rhobs/v1.TLSConfig">TLSConfig</a>, <a href="#monitoring.rhobs/v1alpha1.EmailConfig">EmailConfig</a>, <a href="#monitoring.rhobs/v1alpha1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.rhobs/v1beta1.EmailConfig">EmailConfig</a>, <a href="#monitoring.rhobs/v1beta1.HTTPConfig">HTTPConfig</a>)
 </p>
 <div>
 <p>SafeTLSConfig specifies safe TLS configuration parameters.</p>
@@ -9558,7 +9558,7 @@ Kubernetes core/v1.SecretKeySelector
 <td>
 <code>ca</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SecretOrConfigMap">
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
 SecretOrConfigMap
 </a>
 </em>
@@ -9571,7 +9571,7 @@ SecretOrConfigMap
 <td>
 <code>cert</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SecretOrConfigMap">
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
 SecretOrConfigMap
 </a>
 </em>
@@ -9617,10 +9617,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.SecretOrConfigMap">SecretOrConfigMap
+<h3 id="monitoring.rhobs/v1.SecretOrConfigMap">SecretOrConfigMap
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.OAuth2">OAuth2</a>, <a href="#monitoring.coreos.com/v1.SafeTLSConfig">SafeTLSConfig</a>, <a href="#monitoring.coreos.com/v1.WebTLSConfig">WebTLSConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.OAuth2">OAuth2</a>, <a href="#monitoring.rhobs/v1.SafeTLSConfig">SafeTLSConfig</a>, <a href="#monitoring.rhobs/v1.WebTLSConfig">WebTLSConfig</a>)
 </p>
 <div>
 <p>SecretOrConfigMap allows to specify data as a Secret or ConfigMap. Fields are mutually exclusive.</p>
@@ -9661,7 +9661,7 @@ Kubernetes core/v1.ConfigMapKeySelector
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.SecretOrConfigMapValidationError">SecretOrConfigMapValidationError
+<h3 id="monitoring.rhobs/v1.SecretOrConfigMapValidationError">SecretOrConfigMapValidationError
 </h3>
 <div>
 <p>SecretOrConfigMapValidationError is returned by SecretOrConfigMap.Validate()
@@ -9687,10 +9687,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ServiceMonitorSpec">ServiceMonitorSpec
+<h3 id="monitoring.rhobs/v1.ServiceMonitorSpec">ServiceMonitorSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.ServiceMonitor">ServiceMonitor</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.ServiceMonitor">ServiceMonitor</a>)
 </p>
 <div>
 <p>ServiceMonitorSpec contains specification parameters for a ServiceMonitor.</p>
@@ -9744,7 +9744,7 @@ then the <code>job=&quot;bar&quot;</code> label is added to all metrics.</p>
 <td>
 <code>endpoints</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Endpoint">
+<a href="#monitoring.rhobs/v1.Endpoint">
 []Endpoint
 </a>
 </em>
@@ -9770,7 +9770,7 @@ Kubernetes meta/v1.LabelSelector
 <td>
 <code>namespaceSelector</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.NamespaceSelector">
+<a href="#monitoring.rhobs/v1.NamespaceSelector">
 NamespaceSelector
 </a>
 </em>
@@ -9839,10 +9839,10 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ShardStatus">ShardStatus
+<h3 id="monitoring.rhobs/v1.ShardStatus">ShardStatus
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusStatus">PrometheusStatus</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusStatus">PrometheusStatus</a>)
 </p>
 <div>
 </div>
@@ -9913,10 +9913,10 @@ int32
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.Sigv4">Sigv4
+<h3 id="monitoring.rhobs/v1.Sigv4">Sigv4
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.coreos.com/v1alpha1.SNSConfig">SNSConfig</a>, <a href="#monitoring.coreos.com/v1beta1.SNSConfig">SNSConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.rhobs/v1alpha1.SNSConfig">SNSConfig</a>, <a href="#monitoring.rhobs/v1beta1.SNSConfig">SNSConfig</a>)
 </p>
 <div>
 <p>Sigv4 optionally configures AWS&rsquo;s Signature Verification 4 signing process to
@@ -9991,10 +9991,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.StorageSpec">StorageSpec
+<h3 id="monitoring.rhobs/v1.StorageSpec">StorageSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertmanagerSpec">AlertmanagerSpec</a>, <a href="#monitoring.coreos.com/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.coreos.com/v1.ThanosRulerSpec">ThanosRulerSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerSpec">AlertmanagerSpec</a>, <a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.rhobs/v1.ThanosRulerSpec">ThanosRulerSpec</a>)
 </p>
 <div>
 <p>StorageSpec defines the configured storage for a group Prometheus servers.
@@ -10054,7 +10054,7 @@ More info: <a href="https://kubernetes.io/docs/concepts/storage/ephemeral-volume
 <td>
 <code>volumeClaimTemplate</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.EmbeddedPersistentVolumeClaim">
+<a href="#monitoring.rhobs/v1.EmbeddedPersistentVolumeClaim">
 EmbeddedPersistentVolumeClaim
 </a>
 </em>
@@ -10065,10 +10065,10 @@ EmbeddedPersistentVolumeClaim
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.TLSConfig">TLSConfig
+<h3 id="monitoring.rhobs/v1.TLSConfig">TLSConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.APIServerConfig">APIServerConfig</a>, <a href="#monitoring.coreos.com/v1.AlertmanagerEndpoints">AlertmanagerEndpoints</a>, <a href="#monitoring.coreos.com/v1.Endpoint">Endpoint</a>, <a href="#monitoring.coreos.com/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.coreos.com/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.coreos.com/v1.ThanosRulerSpec">ThanosRulerSpec</a>, <a href="#monitoring.coreos.com/v1.ThanosSpec">ThanosSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.APIServerConfig">APIServerConfig</a>, <a href="#monitoring.rhobs/v1.AlertmanagerEndpoints">AlertmanagerEndpoints</a>, <a href="#monitoring.rhobs/v1.Endpoint">Endpoint</a>, <a href="#monitoring.rhobs/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.rhobs/v1.ThanosRulerSpec">ThanosRulerSpec</a>, <a href="#monitoring.rhobs/v1.ThanosSpec">ThanosSpec</a>)
 </p>
 <div>
 <p>TLSConfig extends the safe TLS configuration with file parameters.</p>
@@ -10085,7 +10085,7 @@ EmbeddedPersistentVolumeClaim
 <td>
 <code>ca</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SecretOrConfigMap">
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
 SecretOrConfigMap
 </a>
 </em>
@@ -10098,7 +10098,7 @@ SecretOrConfigMap
 <td>
 <code>cert</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SecretOrConfigMap">
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
 SecretOrConfigMap
 </a>
 </em>
@@ -10177,7 +10177,7 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.TLSConfigValidationError">TLSConfigValidationError
+<h3 id="monitoring.rhobs/v1.TLSConfigValidationError">TLSConfigValidationError
 </h3>
 <div>
 <p>TLSConfigValidationError is returned by TLSConfig.Validate() on semantically
@@ -10203,7 +10203,7 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ThanosRuler">ThanosRuler
+<h3 id="monitoring.rhobs/v1.ThanosRuler">ThanosRuler
 </h3>
 <div>
 <p>ThanosRuler defines a ThanosRuler deployment.</p>
@@ -10234,7 +10234,7 @@ Refer to the Kubernetes API documentation for the fields of the
 <td>
 <code>spec</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ThanosRulerSpec">
+<a href="#monitoring.rhobs/v1.ThanosRulerSpec">
 ThanosRulerSpec
 </a>
 </em>
@@ -10249,7 +10249,7 @@ ThanosRulerSpec
 <td>
 <code>podMetadata</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.EmbeddedObjectMetadata">
+<a href="#monitoring.rhobs/v1.EmbeddedObjectMetadata">
 EmbeddedObjectMetadata
 </a>
 </em>
@@ -10412,7 +10412,7 @@ Thanos Ruler Pods.</p>
 <td>
 <code>storage</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.StorageSpec">
+<a href="#monitoring.rhobs/v1.StorageSpec">
 StorageSpec
 </a>
 </em>
@@ -10574,7 +10574,7 @@ being created.</p>
 <td>
 <code>excludedFromEnforcement</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ObjectReference">
+<a href="#monitoring.rhobs/v1.ObjectReference">
 []ObjectReference
 </a>
 </em>
@@ -10589,7 +10589,7 @@ Applies only if enforcedNamespaceLabel set to true.</p>
 <td>
 <code>prometheusRulesExcludedFromEnforce</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusRuleExcludeConfig">
+<a href="#monitoring.rhobs/v1.PrometheusRuleExcludeConfig">
 []PrometheusRuleExcludeConfig
 </a>
 </em>
@@ -10639,7 +10639,7 @@ This defaults to web</p>
 <td>
 <code>evaluationInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -10652,7 +10652,7 @@ Duration
 <td>
 <code>retention</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -10777,7 +10777,7 @@ string
 <td>
 <code>grpcServerTlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.TLSConfig">
+<a href="#monitoring.rhobs/v1.TLSConfig">
 TLSConfig
 </a>
 </em>
@@ -10849,7 +10849,7 @@ When used alongside with AlertRelabelConfigs, alertRelabelConfigFile takes prece
 <td>
 <code>hostAliases</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.HostAlias">
+<a href="#monitoring.rhobs/v1.HostAlias">
 []HostAlias
 </a>
 </em>
@@ -10865,7 +10865,7 @@ When used alongside with AlertRelabelConfigs, alertRelabelConfigFile takes prece
 <td>
 <code>status</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ThanosRulerStatus">
+<a href="#monitoring.rhobs/v1.ThanosRulerStatus">
 ThanosRulerStatus
 </a>
 </em>
@@ -10879,10 +10879,10 @@ Operator API itself. More info:
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ThanosRulerSpec">ThanosRulerSpec
+<h3 id="monitoring.rhobs/v1.ThanosRulerSpec">ThanosRulerSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.ThanosRuler">ThanosRuler</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.ThanosRuler">ThanosRuler</a>)
 </p>
 <div>
 <p>ThanosRulerSpec is a specification of the desired behavior of the ThanosRuler. More info:
@@ -10900,7 +10900,7 @@ Operator API itself. More info:
 <td>
 <code>podMetadata</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.EmbeddedObjectMetadata">
+<a href="#monitoring.rhobs/v1.EmbeddedObjectMetadata">
 EmbeddedObjectMetadata
 </a>
 </em>
@@ -11063,7 +11063,7 @@ Thanos Ruler Pods.</p>
 <td>
 <code>storage</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.StorageSpec">
+<a href="#monitoring.rhobs/v1.StorageSpec">
 StorageSpec
 </a>
 </em>
@@ -11225,7 +11225,7 @@ being created.</p>
 <td>
 <code>excludedFromEnforcement</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.ObjectReference">
+<a href="#monitoring.rhobs/v1.ObjectReference">
 []ObjectReference
 </a>
 </em>
@@ -11240,7 +11240,7 @@ Applies only if enforcedNamespaceLabel set to true.</p>
 <td>
 <code>prometheusRulesExcludedFromEnforce</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.PrometheusRuleExcludeConfig">
+<a href="#monitoring.rhobs/v1.PrometheusRuleExcludeConfig">
 []PrometheusRuleExcludeConfig
 </a>
 </em>
@@ -11290,7 +11290,7 @@ This defaults to web</p>
 <td>
 <code>evaluationInterval</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -11303,7 +11303,7 @@ Duration
 <td>
 <code>retention</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -11428,7 +11428,7 @@ string
 <td>
 <code>grpcServerTlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.TLSConfig">
+<a href="#monitoring.rhobs/v1.TLSConfig">
 TLSConfig
 </a>
 </em>
@@ -11500,7 +11500,7 @@ When used alongside with AlertRelabelConfigs, alertRelabelConfigFile takes prece
 <td>
 <code>hostAliases</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.HostAlias">
+<a href="#monitoring.rhobs/v1.HostAlias">
 []HostAlias
 </a>
 </em>
@@ -11511,10 +11511,10 @@ When used alongside with AlertRelabelConfigs, alertRelabelConfigFile takes prece
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ThanosRulerStatus">ThanosRulerStatus
+<h3 id="monitoring.rhobs/v1.ThanosRulerStatus">ThanosRulerStatus
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.ThanosRuler">ThanosRuler</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.ThanosRuler">ThanosRuler</a>)
 </p>
 <div>
 <p>ThanosRulerStatus is the most recent observed status of the ThanosRuler. Read-only. Not
@@ -11591,10 +11591,10 @@ int32
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.ThanosSpec">ThanosSpec
+<h3 id="monitoring.rhobs/v1.ThanosSpec">ThanosSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.PrometheusSpec">PrometheusSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>)
 </p>
 <div>
 <p>ThanosSpec defines parameters for a Prometheus server within a Thanos deployment.</p>
@@ -11754,7 +11754,7 @@ When used alongside with TracingConfig, TracingConfigFile takes precedence.</p>
 <td>
 <code>grpcServerTlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.TLSConfig">
+<a href="#monitoring.rhobs/v1.TLSConfig">
 TLSConfig
 </a>
 </em>
@@ -11803,7 +11803,7 @@ string
 <td>
 <code>readyTimeout</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Duration">
+<a href="#monitoring.rhobs/v1.Duration">
 Duration
 </a>
 </em>
@@ -11830,7 +11830,7 @@ VolumeMounts specified will be appended to other VolumeMounts in the thanos-side
 <td>
 <code>additionalArgs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Argument">
+<a href="#monitoring.rhobs/v1.Argument">
 []Argument
 </a>
 </em>
@@ -11846,10 +11846,10 @@ fail and an error will be logged.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.WebConfigFileFields">WebConfigFileFields
+<h3 id="monitoring.rhobs/v1.WebConfigFileFields">WebConfigFileFields
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.AlertmanagerWebSpec">AlertmanagerWebSpec</a>, <a href="#monitoring.coreos.com/v1.PrometheusWebSpec">PrometheusWebSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerWebSpec">AlertmanagerWebSpec</a>, <a href="#monitoring.rhobs/v1.PrometheusWebSpec">PrometheusWebSpec</a>)
 </p>
 <div>
 <p>WebConfigFileFields defines the file content for &ndash;web.config.file flag.</p>
@@ -11866,7 +11866,7 @@ fail and an error will be logged.</p>
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.WebTLSConfig">
+<a href="#monitoring.rhobs/v1.WebTLSConfig">
 WebTLSConfig
 </a>
 </em>
@@ -11879,7 +11879,7 @@ WebTLSConfig
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.WebHTTPConfig">
+<a href="#monitoring.rhobs/v1.WebHTTPConfig">
 WebHTTPConfig
 </a>
 </em>
@@ -11890,10 +11890,10 @@ WebHTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.WebHTTPConfig">WebHTTPConfig
+<h3 id="monitoring.rhobs/v1.WebHTTPConfig">WebHTTPConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.WebConfigFileFields">WebConfigFileFields</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.WebConfigFileFields">WebConfigFileFields</a>)
 </p>
 <div>
 <p>WebHTTPConfig defines HTTP parameters for web server.</p>
@@ -11923,7 +11923,7 @@ Whenever the value of the field changes, a rolling update will be triggered.</p>
 <td>
 <code>headers</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.WebHTTPHeaders">
+<a href="#monitoring.rhobs/v1.WebHTTPHeaders">
 WebHTTPHeaders
 </a>
 </em>
@@ -11934,10 +11934,10 @@ WebHTTPHeaders
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.WebHTTPHeaders">WebHTTPHeaders
+<h3 id="monitoring.rhobs/v1.WebHTTPHeaders">WebHTTPHeaders
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.WebHTTPConfig">WebHTTPConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.WebHTTPConfig">WebHTTPConfig</a>)
 </p>
 <div>
 <p>WebHTTPHeaders defines the list of headers that can be added to HTTP responses.</p>
@@ -12019,10 +12019,10 @@ domain and subdomains over HTTPS.
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.WebTLSConfig">WebTLSConfig
+<h3 id="monitoring.rhobs/v1.WebTLSConfig">WebTLSConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1.WebConfigFileFields">WebConfigFileFields</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.WebConfigFileFields">WebConfigFileFields</a>)
 </p>
 <div>
 <p>WebTLSConfig defines the TLS parameters for HTTPS.</p>
@@ -12052,7 +12052,7 @@ Kubernetes core/v1.SecretKeySelector
 <td>
 <code>cert</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SecretOrConfigMap">
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
 SecretOrConfigMap
 </a>
 </em>
@@ -12078,7 +12078,7 @@ For more detail on clientAuth options:
 <td>
 <code>client_ca</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SecretOrConfigMap">
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
 SecretOrConfigMap
 </a>
 </em>
@@ -12151,7 +12151,7 @@ order. Available curves are documented in the go documentation:
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1.WebTLSConfigError">WebTLSConfigError
+<h3 id="monitoring.rhobs/v1.WebTLSConfigError">WebTLSConfigError
 </h3>
 <div>
 <p>WebTLSConfigError is returned by WebTLSConfig.Validate() on
@@ -12178,12 +12178,12 @@ string
 </tbody>
 </table>
 <hr/>
-<h2 id="monitoring.coreos.com/v1alpha1">monitoring.coreos.com/v1alpha1</h2>
+<h2 id="monitoring.rhobs/v1alpha1">monitoring.rhobs/v1alpha1</h2>
 Resource Types:
 <ul><li>
-<a href="#monitoring.coreos.com/v1alpha1.AlertmanagerConfig">AlertmanagerConfig</a>
+<a href="#monitoring.rhobs/v1alpha1.AlertmanagerConfig">AlertmanagerConfig</a>
 </li></ul>
-<h3 id="monitoring.coreos.com/v1alpha1.AlertmanagerConfig">AlertmanagerConfig
+<h3 id="monitoring.rhobs/v1alpha1.AlertmanagerConfig">AlertmanagerConfig
 </h3>
 <div>
 <p>AlertmanagerConfig defines a namespaced AlertmanagerConfig to be aggregated
@@ -12203,7 +12203,7 @@ across multiple namespaces configuring one Alertmanager cluster.</p>
 string</td>
 <td>
 <code>
-monitoring.coreos.com/v1alpha1
+monitoring.rhobs/v1alpha1
 </code>
 </td>
 </tr>
@@ -12232,7 +12232,7 @@ Refer to the Kubernetes API documentation for the fields of the
 <td>
 <code>spec</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.AlertmanagerConfigSpec">
+<a href="#monitoring.rhobs/v1alpha1.AlertmanagerConfigSpec">
 AlertmanagerConfigSpec
 </a>
 </em>
@@ -12245,7 +12245,7 @@ AlertmanagerConfigSpec
 <td>
 <code>route</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.Route">
+<a href="#monitoring.rhobs/v1alpha1.Route">
 Route
 </a>
 </em>
@@ -12261,7 +12261,7 @@ configuration as a first-level route.</p>
 <td>
 <code>receivers</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.Receiver">
+<a href="#monitoring.rhobs/v1alpha1.Receiver">
 []Receiver
 </a>
 </em>
@@ -12275,7 +12275,7 @@ configuration as a first-level route.</p>
 <td>
 <code>inhibitRules</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.InhibitRule">
+<a href="#monitoring.rhobs/v1alpha1.InhibitRule">
 []InhibitRule
 </a>
 </em>
@@ -12290,7 +12290,7 @@ the resource’s namespace.</p>
 <td>
 <code>muteTimeIntervals</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.MuteTimeInterval">
+<a href="#monitoring.rhobs/v1alpha1.MuteTimeInterval">
 []MuteTimeInterval
 </a>
 </em>
@@ -12305,10 +12305,10 @@ the resource’s namespace.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.AlertmanagerConfigSpec">AlertmanagerConfigSpec
+<h3 id="monitoring.rhobs/v1alpha1.AlertmanagerConfigSpec">AlertmanagerConfigSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.AlertmanagerConfig">AlertmanagerConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.AlertmanagerConfig">AlertmanagerConfig</a>)
 </p>
 <div>
 <p>AlertmanagerConfigSpec is a specification of the desired behavior of the Alertmanager configuration.
@@ -12327,7 +12327,7 @@ the <code>namespace</code> label is equal to the namespace of the AlertmanagerCo
 <td>
 <code>route</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.Route">
+<a href="#monitoring.rhobs/v1alpha1.Route">
 Route
 </a>
 </em>
@@ -12343,7 +12343,7 @@ configuration as a first-level route.</p>
 <td>
 <code>receivers</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.Receiver">
+<a href="#monitoring.rhobs/v1alpha1.Receiver">
 []Receiver
 </a>
 </em>
@@ -12357,7 +12357,7 @@ configuration as a first-level route.</p>
 <td>
 <code>inhibitRules</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.InhibitRule">
+<a href="#monitoring.rhobs/v1alpha1.InhibitRule">
 []InhibitRule
 </a>
 </em>
@@ -12372,7 +12372,7 @@ the resource’s namespace.</p>
 <td>
 <code>muteTimeIntervals</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.MuteTimeInterval">
+<a href="#monitoring.rhobs/v1alpha1.MuteTimeInterval">
 []MuteTimeInterval
 </a>
 </em>
@@ -12384,10 +12384,10 @@ the resource’s namespace.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.DayOfMonthRange">DayOfMonthRange
+<h3 id="monitoring.rhobs/v1alpha1.DayOfMonthRange">DayOfMonthRange
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.TimeInterval">TimeInterval</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.TimeInterval">TimeInterval</a>)
 </p>
 <div>
 <p>DayOfMonthRange is an inclusive range of days of the month beginning at 1</p>
@@ -12424,10 +12424,10 @@ int
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.EmailConfig">EmailConfig
+<h3 id="monitoring.rhobs/v1alpha1.EmailConfig">EmailConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>EmailConfig configures notifications via Email.</p>
@@ -12558,7 +12558,7 @@ string
 <td>
 <code>headers</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.KeyValue">
+<a href="#monitoring.rhobs/v1alpha1.KeyValue">
 []KeyValue
 </a>
 </em>
@@ -12609,7 +12609,7 @@ Note that Go does not support unencrypted connections to remote SMTP endpoints.<
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeTLSConfig">
+<a href="#monitoring.rhobs/v1.SafeTLSConfig">
 SafeTLSConfig
 </a>
 </em>
@@ -12621,10 +12621,10 @@ SafeTLSConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.HTTPConfig">HTTPConfig
+<h3 id="monitoring.rhobs/v1alpha1.HTTPConfig">HTTPConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.OpsGenieConfig">OpsGenieConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.PagerDutyConfig">PagerDutyConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.PushoverConfig">PushoverConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.SNSConfig">SNSConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.SlackConfig">SlackConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.TelegramConfig">TelegramConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.VictorOpsConfig">VictorOpsConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.WeChatConfig">WeChatConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.WebhookConfig">WebhookConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.OpsGenieConfig">OpsGenieConfig</a>, <a href="#monitoring.rhobs/v1alpha1.PagerDutyConfig">PagerDutyConfig</a>, <a href="#monitoring.rhobs/v1alpha1.PushoverConfig">PushoverConfig</a>, <a href="#monitoring.rhobs/v1alpha1.SNSConfig">SNSConfig</a>, <a href="#monitoring.rhobs/v1alpha1.SlackConfig">SlackConfig</a>, <a href="#monitoring.rhobs/v1alpha1.TelegramConfig">TelegramConfig</a>, <a href="#monitoring.rhobs/v1alpha1.VictorOpsConfig">VictorOpsConfig</a>, <a href="#monitoring.rhobs/v1alpha1.WeChatConfig">WeChatConfig</a>, <a href="#monitoring.rhobs/v1alpha1.WebhookConfig">WebhookConfig</a>)
 </p>
 <div>
 <p>HTTPConfig defines a client HTTP configuration.
@@ -12642,7 +12642,7 @@ See <a href="https://prometheus.io/docs/alerting/latest/configuration/#http_conf
 <td>
 <code>authorization</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeAuthorization">
+<a href="#monitoring.rhobs/v1.SafeAuthorization">
 SafeAuthorization
 </a>
 </em>
@@ -12657,7 +12657,7 @@ This is mutually exclusive with BasicAuth and is only available starting from Al
 <td>
 <code>basicAuth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.BasicAuth">
+<a href="#monitoring.rhobs/v1.BasicAuth">
 BasicAuth
 </a>
 </em>
@@ -12672,7 +12672,7 @@ This is mutually exclusive with Authorization. If both are defined, BasicAuth ta
 <td>
 <code>oauth2</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.OAuth2">
+<a href="#monitoring.rhobs/v1.OAuth2">
 OAuth2
 </a>
 </em>
@@ -12703,7 +12703,7 @@ object and accessible by the Prometheus Operator.</p>
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeTLSConfig">
+<a href="#monitoring.rhobs/v1.SafeTLSConfig">
 SafeTLSConfig
 </a>
 </em>
@@ -12739,10 +12739,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.InhibitRule">InhibitRule
+<h3 id="monitoring.rhobs/v1alpha1.InhibitRule">InhibitRule
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
 </p>
 <div>
 <p>InhibitRule defines an inhibition rule that allows to mute alerts when other
@@ -12761,7 +12761,7 @@ See <a href="https://prometheus.io/docs/alerting/latest/configuration/#inhibit_r
 <td>
 <code>targetMatch</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.Matcher">
+<a href="#monitoring.rhobs/v1alpha1.Matcher">
 []Matcher
 </a>
 </em>
@@ -12775,7 +12775,7 @@ operator enforces that the alert matches the resource’s namespace.</p>
 <td>
 <code>sourceMatch</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.Matcher">
+<a href="#monitoring.rhobs/v1alpha1.Matcher">
 []Matcher
 </a>
 </em>
@@ -12800,10 +12800,10 @@ the inhibition to take effect.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.KeyValue">KeyValue
+<h3 id="monitoring.rhobs/v1alpha1.KeyValue">KeyValue
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.EmailConfig">EmailConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.OpsGenieConfig">OpsGenieConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.PagerDutyConfig">PagerDutyConfig</a>, <a href="#monitoring.coreos.com/v1alpha1.VictorOpsConfig">VictorOpsConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.EmailConfig">EmailConfig</a>, <a href="#monitoring.rhobs/v1alpha1.OpsGenieConfig">OpsGenieConfig</a>, <a href="#monitoring.rhobs/v1alpha1.PagerDutyConfig">PagerDutyConfig</a>, <a href="#monitoring.rhobs/v1alpha1.VictorOpsConfig">VictorOpsConfig</a>)
 </p>
 <div>
 <p>KeyValue defines a (key, value) tuple.</p>
@@ -12840,10 +12840,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.MatchType">MatchType
+<h3 id="monitoring.rhobs/v1alpha1.MatchType">MatchType
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.Matcher">Matcher</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.Matcher">Matcher</a>)
 </p>
 <div>
 <p>MatchType is a comparison operator on a Matcher</p>
@@ -12865,10 +12865,10 @@ string
 <td></td>
 </tr></tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.Matcher">Matcher
+<h3 id="monitoring.rhobs/v1alpha1.Matcher">Matcher
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.InhibitRule">InhibitRule</a>, <a href="#monitoring.coreos.com/v1alpha1.Route">Route</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.InhibitRule">InhibitRule</a>, <a href="#monitoring.rhobs/v1alpha1.Route">Route</a>)
 </p>
 <div>
 <p>Matcher defines how to match on alert&rsquo;s labels.</p>
@@ -12908,7 +12908,7 @@ string
 <td>
 <code>matchType</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.MatchType">
+<a href="#monitoring.rhobs/v1alpha1.MatchType">
 MatchType
 </a>
 </em>
@@ -12934,7 +12934,7 @@ Deprecated as of AlertManager &gt;= v0.22.0 where a user should use MatchType in
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.Month">Month
+<h3 id="monitoring.rhobs/v1alpha1.Month">Month
 (<code>string</code> alias)</h3>
 <div>
 <p>Month of the year</p>
@@ -12972,19 +12972,19 @@ Deprecated as of AlertManager &gt;= v0.22.0 where a user should use MatchType in
 <td></td>
 </tr></tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.MonthRange">MonthRange
+<h3 id="monitoring.rhobs/v1alpha1.MonthRange">MonthRange
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.TimeInterval">TimeInterval</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.TimeInterval">TimeInterval</a>)
 </p>
 <div>
 <p>MonthRange is an inclusive range of months of the year beginning in January
 Months can be specified by name (e.g &lsquo;January&rsquo;) by numerical month (e.g &lsquo;1&rsquo;) or as an inclusive range (e.g &lsquo;January:March&rsquo;, &lsquo;1:3&rsquo;, &lsquo;1:March&rsquo;)</p>
 </div>
-<h3 id="monitoring.coreos.com/v1alpha1.MuteTimeInterval">MuteTimeInterval
+<h3 id="monitoring.rhobs/v1alpha1.MuteTimeInterval">MuteTimeInterval
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
 </p>
 <div>
 <p>MuteTimeInterval specifies the periods in time when notifications will be muted</p>
@@ -13012,7 +13012,7 @@ string
 <td>
 <code>timeIntervals</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.TimeInterval">
+<a href="#monitoring.rhobs/v1alpha1.TimeInterval">
 []TimeInterval
 </a>
 </em>
@@ -13023,10 +13023,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.OpsGenieConfig">OpsGenieConfig
+<h3 id="monitoring.rhobs/v1alpha1.OpsGenieConfig">OpsGenieConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>OpsGenieConfig configures notifications via OpsGenie.
@@ -13169,7 +13169,7 @@ By default, the alert is never updated in OpsGenie, the new message only appears
 <td>
 <code>details</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.KeyValue">
+<a href="#monitoring.rhobs/v1alpha1.KeyValue">
 []KeyValue
 </a>
 </em>
@@ -13183,7 +13183,7 @@ By default, the alert is never updated in OpsGenie, the new message only appears
 <td>
 <code>responders</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.OpsGenieConfigResponder">
+<a href="#monitoring.rhobs/v1alpha1.OpsGenieConfigResponder">
 []OpsGenieConfigResponder
 </a>
 </em>
@@ -13197,7 +13197,7 @@ By default, the alert is never updated in OpsGenie, the new message only appears
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">
+<a href="#monitoring.rhobs/v1alpha1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -13233,10 +13233,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.OpsGenieConfigResponder">OpsGenieConfigResponder
+<h3 id="monitoring.rhobs/v1alpha1.OpsGenieConfigResponder">OpsGenieConfigResponder
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.OpsGenieConfig">OpsGenieConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.OpsGenieConfig">OpsGenieConfig</a>)
 </p>
 <div>
 <p>OpsGenieConfigResponder defines a responder to an incident.
@@ -13299,10 +13299,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.PagerDutyConfig">PagerDutyConfig
+<h3 id="monitoring.rhobs/v1alpha1.PagerDutyConfig">PagerDutyConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>PagerDutyConfig configures notifications via PagerDuty.
@@ -13463,7 +13463,7 @@ string
 <td>
 <code>details</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.KeyValue">
+<a href="#monitoring.rhobs/v1alpha1.KeyValue">
 []KeyValue
 </a>
 </em>
@@ -13477,7 +13477,7 @@ string
 <td>
 <code>pagerDutyImageConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.PagerDutyImageConfig">
+<a href="#monitoring.rhobs/v1alpha1.PagerDutyImageConfig">
 []PagerDutyImageConfig
 </a>
 </em>
@@ -13491,7 +13491,7 @@ string
 <td>
 <code>pagerDutyLinkConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.PagerDutyLinkConfig">
+<a href="#monitoring.rhobs/v1alpha1.PagerDutyLinkConfig">
 []PagerDutyLinkConfig
 </a>
 </em>
@@ -13505,7 +13505,7 @@ string
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">
+<a href="#monitoring.rhobs/v1alpha1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -13517,10 +13517,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.PagerDutyImageConfig">PagerDutyImageConfig
+<h3 id="monitoring.rhobs/v1alpha1.PagerDutyImageConfig">PagerDutyImageConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.PagerDutyConfig">PagerDutyConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.PagerDutyConfig">PagerDutyConfig</a>)
 </p>
 <div>
 <p>PagerDutyImageConfig attaches images to an incident</p>
@@ -13571,10 +13571,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.PagerDutyLinkConfig">PagerDutyLinkConfig
+<h3 id="monitoring.rhobs/v1alpha1.PagerDutyLinkConfig">PagerDutyLinkConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.PagerDutyConfig">PagerDutyConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.PagerDutyConfig">PagerDutyConfig</a>)
 </p>
 <div>
 <p>PagerDutyLinkConfig attaches text links to an incident</p>
@@ -13613,7 +13613,7 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.ParsedRange">ParsedRange
+<h3 id="monitoring.rhobs/v1alpha1.ParsedRange">ParsedRange
 </h3>
 <div>
 <p>ParsedRange is an integer representation of a range</p>
@@ -13650,10 +13650,10 @@ int
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.PushoverConfig">PushoverConfig
+<h3 id="monitoring.rhobs/v1alpha1.PushoverConfig">PushoverConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>PushoverConfig configures notifications via Pushover.
@@ -13823,7 +13823,7 @@ bool
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">
+<a href="#monitoring.rhobs/v1alpha1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -13835,10 +13835,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.Receiver">Receiver
+<h3 id="monitoring.rhobs/v1alpha1.Receiver">Receiver
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
 </p>
 <div>
 <p>Receiver defines one or more notification integrations.</p>
@@ -13866,7 +13866,7 @@ string
 <td>
 <code>opsgenieConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.OpsGenieConfig">
+<a href="#monitoring.rhobs/v1alpha1.OpsGenieConfig">
 []OpsGenieConfig
 </a>
 </em>
@@ -13879,7 +13879,7 @@ string
 <td>
 <code>pagerdutyConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.PagerDutyConfig">
+<a href="#monitoring.rhobs/v1alpha1.PagerDutyConfig">
 []PagerDutyConfig
 </a>
 </em>
@@ -13892,7 +13892,7 @@ string
 <td>
 <code>slackConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.SlackConfig">
+<a href="#monitoring.rhobs/v1alpha1.SlackConfig">
 []SlackConfig
 </a>
 </em>
@@ -13905,7 +13905,7 @@ string
 <td>
 <code>webhookConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.WebhookConfig">
+<a href="#monitoring.rhobs/v1alpha1.WebhookConfig">
 []WebhookConfig
 </a>
 </em>
@@ -13918,7 +13918,7 @@ string
 <td>
 <code>wechatConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.WeChatConfig">
+<a href="#monitoring.rhobs/v1alpha1.WeChatConfig">
 []WeChatConfig
 </a>
 </em>
@@ -13931,7 +13931,7 @@ string
 <td>
 <code>emailConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.EmailConfig">
+<a href="#monitoring.rhobs/v1alpha1.EmailConfig">
 []EmailConfig
 </a>
 </em>
@@ -13944,7 +13944,7 @@ string
 <td>
 <code>victoropsConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.VictorOpsConfig">
+<a href="#monitoring.rhobs/v1alpha1.VictorOpsConfig">
 []VictorOpsConfig
 </a>
 </em>
@@ -13957,7 +13957,7 @@ string
 <td>
 <code>pushoverConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.PushoverConfig">
+<a href="#monitoring.rhobs/v1alpha1.PushoverConfig">
 []PushoverConfig
 </a>
 </em>
@@ -13970,7 +13970,7 @@ string
 <td>
 <code>snsConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.SNSConfig">
+<a href="#monitoring.rhobs/v1alpha1.SNSConfig">
 []SNSConfig
 </a>
 </em>
@@ -13983,7 +13983,7 @@ string
 <td>
 <code>telegramConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.TelegramConfig">
+<a href="#monitoring.rhobs/v1alpha1.TelegramConfig">
 []TelegramConfig
 </a>
 </em>
@@ -13994,10 +13994,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.Route">Route
+<h3 id="monitoring.rhobs/v1alpha1.Route">Route
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
 </p>
 <div>
 <p>Route defines a node in the routing tree.</p>
@@ -14083,7 +14083,7 @@ Example: &ldquo;4h&rdquo;</p>
 <td>
 <code>matchers</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.Matcher">
+<a href="#monitoring.rhobs/v1alpha1.Matcher">
 []Matcher
 </a>
 </em>
@@ -14144,10 +14144,10 @@ MuteTimeIntervals is a list of MuteTimeInterval names that will mute this route 
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.SNSConfig">SNSConfig
+<h3 id="monitoring.rhobs/v1alpha1.SNSConfig">SNSConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>SNSConfig configures notifications via AWS SNS.
@@ -14190,7 +14190,7 @@ If not specified, the SNS API URL from the SNS SDK will be used.</p>
 <td>
 <code>sigv4</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Sigv4">
+<a href="#monitoring.rhobs/v1.Sigv4">
 Sigv4
 </a>
 </em>
@@ -14279,7 +14279,7 @@ map[string]string
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">
+<a href="#monitoring.rhobs/v1alpha1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -14291,10 +14291,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.SlackAction">SlackAction
+<h3 id="monitoring.rhobs/v1alpha1.SlackAction">SlackAction
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.SlackConfig">SlackConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.SlackConfig">SlackConfig</a>)
 </p>
 <div>
 <p>SlackAction configures a single Slack action that is sent with each
@@ -14378,7 +14378,7 @@ string
 <td>
 <code>confirm</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.SlackConfirmationField">
+<a href="#monitoring.rhobs/v1alpha1.SlackConfirmationField">
 SlackConfirmationField
 </a>
 </em>
@@ -14389,10 +14389,10 @@ SlackConfirmationField
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.SlackConfig">SlackConfig
+<h3 id="monitoring.rhobs/v1alpha1.SlackConfig">SlackConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>SlackConfig configures notifications via Slack.
@@ -14516,7 +14516,7 @@ string
 <td>
 <code>fields</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.SlackField">
+<a href="#monitoring.rhobs/v1alpha1.SlackField">
 []SlackField
 </a>
 </em>
@@ -14640,7 +14640,7 @@ bool
 <td>
 <code>actions</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.SlackAction">
+<a href="#monitoring.rhobs/v1alpha1.SlackAction">
 []SlackAction
 </a>
 </em>
@@ -14654,7 +14654,7 @@ bool
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">
+<a href="#monitoring.rhobs/v1alpha1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -14666,10 +14666,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.SlackConfirmationField">SlackConfirmationField
+<h3 id="monitoring.rhobs/v1alpha1.SlackConfirmationField">SlackConfirmationField
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.SlackAction">SlackAction</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.SlackAction">SlackAction</a>)
 </p>
 <div>
 <p>SlackConfirmationField protect users from destructive actions or
@@ -14731,10 +14731,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.SlackField">SlackField
+<h3 id="monitoring.rhobs/v1alpha1.SlackField">SlackField
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.SlackConfig">SlackConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.SlackConfig">SlackConfig</a>)
 </p>
 <div>
 <p>SlackField configures a single Slack field that is sent with each notification.
@@ -14783,10 +14783,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.TelegramConfig">TelegramConfig
+<h3 id="monitoring.rhobs/v1alpha1.TelegramConfig">TelegramConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>TelegramConfig configures notifications via Telegram.
@@ -14891,7 +14891,7 @@ string
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">
+<a href="#monitoring.rhobs/v1alpha1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -14903,18 +14903,18 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.Time">Time
+<h3 id="monitoring.rhobs/v1alpha1.Time">Time
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.TimeRange">TimeRange</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.TimeRange">TimeRange</a>)
 </p>
 <div>
 <p>Time defines a time in 24hr format</p>
 </div>
-<h3 id="monitoring.coreos.com/v1alpha1.TimeInterval">TimeInterval
+<h3 id="monitoring.rhobs/v1alpha1.TimeInterval">TimeInterval
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.MuteTimeInterval">MuteTimeInterval</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.MuteTimeInterval">MuteTimeInterval</a>)
 </p>
 <div>
 <p>TimeInterval describes intervals of time</p>
@@ -14931,7 +14931,7 @@ HTTPConfig
 <td>
 <code>times</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.TimeRange">
+<a href="#monitoring.rhobs/v1alpha1.TimeRange">
 []TimeRange
 </a>
 </em>
@@ -14945,7 +14945,7 @@ HTTPConfig
 <td>
 <code>weekdays</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.WeekdayRange">
+<a href="#monitoring.rhobs/v1alpha1.WeekdayRange">
 []WeekdayRange
 </a>
 </em>
@@ -14959,7 +14959,7 @@ HTTPConfig
 <td>
 <code>daysOfMonth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.DayOfMonthRange">
+<a href="#monitoring.rhobs/v1alpha1.DayOfMonthRange">
 []DayOfMonthRange
 </a>
 </em>
@@ -14973,7 +14973,7 @@ HTTPConfig
 <td>
 <code>months</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.MonthRange">
+<a href="#monitoring.rhobs/v1alpha1.MonthRange">
 []MonthRange
 </a>
 </em>
@@ -14987,7 +14987,7 @@ HTTPConfig
 <td>
 <code>years</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.YearRange">
+<a href="#monitoring.rhobs/v1alpha1.YearRange">
 []YearRange
 </a>
 </em>
@@ -14999,10 +14999,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.TimeRange">TimeRange
+<h3 id="monitoring.rhobs/v1alpha1.TimeRange">TimeRange
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.TimeInterval">TimeInterval</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.TimeInterval">TimeInterval</a>)
 </p>
 <div>
 <p>TimeRange defines a start and end time in 24hr format</p>
@@ -15019,7 +15019,7 @@ HTTPConfig
 <td>
 <code>startTime</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.Time">
+<a href="#monitoring.rhobs/v1alpha1.Time">
 Time
 </a>
 </em>
@@ -15032,7 +15032,7 @@ Time
 <td>
 <code>endTime</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.Time">
+<a href="#monitoring.rhobs/v1alpha1.Time">
 Time
 </a>
 </em>
@@ -15043,10 +15043,10 @@ Time
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.VictorOpsConfig">VictorOpsConfig
+<h3 id="monitoring.rhobs/v1alpha1.VictorOpsConfig">VictorOpsConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>VictorOpsConfig configures notifications via VictorOps.
@@ -15164,7 +15164,7 @@ string
 <td>
 <code>customFields</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.KeyValue">
+<a href="#monitoring.rhobs/v1alpha1.KeyValue">
 []KeyValue
 </a>
 </em>
@@ -15178,7 +15178,7 @@ string
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">
+<a href="#monitoring.rhobs/v1alpha1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -15190,10 +15190,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.WeChatConfig">WeChatConfig
+<h3 id="monitoring.rhobs/v1alpha1.WeChatConfig">WeChatConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>WeChatConfig configures notifications via WeChat.
@@ -15329,7 +15329,7 @@ string
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">
+<a href="#monitoring.rhobs/v1alpha1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -15341,10 +15341,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.WebhookConfig">WebhookConfig
+<h3 id="monitoring.rhobs/v1alpha1.WebhookConfig">WebhookConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>WebhookConfig configures notifications via a generic receiver supporting the webhook payload.
@@ -15405,7 +15405,7 @@ object and accessible by the Prometheus Operator.</p>
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1alpha1.HTTPConfig">
+<a href="#monitoring.rhobs/v1alpha1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -15429,7 +15429,7 @@ int32
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.Weekday">Weekday
+<h3 id="monitoring.rhobs/v1alpha1.Weekday">Weekday
 (<code>string</code> alias)</h3>
 <div>
 <p>Weekday is day of the week</p>
@@ -15457,30 +15457,30 @@ int32
 <td></td>
 </tr></tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1alpha1.WeekdayRange">WeekdayRange
+<h3 id="monitoring.rhobs/v1alpha1.WeekdayRange">WeekdayRange
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.TimeInterval">TimeInterval</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.TimeInterval">TimeInterval</a>)
 </p>
 <div>
 <p>WeekdayRange is an inclusive range of days of the week beginning on Sunday
 Days can be specified by name (e.g &lsquo;Sunday&rsquo;) or as an inclusive range (e.g &lsquo;Monday:Friday&rsquo;)</p>
 </div>
-<h3 id="monitoring.coreos.com/v1alpha1.YearRange">YearRange
+<h3 id="monitoring.rhobs/v1alpha1.YearRange">YearRange
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1alpha1.TimeInterval">TimeInterval</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1alpha1.TimeInterval">TimeInterval</a>)
 </p>
 <div>
 <p>YearRange is an inclusive range of years</p>
 </div>
 <hr/>
-<h2 id="monitoring.coreos.com/v1beta1">monitoring.coreos.com/v1beta1</h2>
+<h2 id="monitoring.rhobs/v1beta1">monitoring.rhobs/v1beta1</h2>
 Resource Types:
 <ul><li>
-<a href="#monitoring.coreos.com/v1beta1.AlertmanagerConfig">AlertmanagerConfig</a>
+<a href="#monitoring.rhobs/v1beta1.AlertmanagerConfig">AlertmanagerConfig</a>
 </li></ul>
-<h3 id="monitoring.coreos.com/v1beta1.AlertmanagerConfig">AlertmanagerConfig
+<h3 id="monitoring.rhobs/v1beta1.AlertmanagerConfig">AlertmanagerConfig
 </h3>
 <div>
 <p>AlertmanagerConfig defines a namespaced AlertmanagerConfig to be aggregated
@@ -15500,7 +15500,7 @@ across multiple namespaces configuring one Alertmanager cluster.</p>
 string</td>
 <td>
 <code>
-monitoring.coreos.com/v1beta1
+monitoring.rhobs/v1beta1
 </code>
 </td>
 </tr>
@@ -15529,7 +15529,7 @@ Refer to the Kubernetes API documentation for the fields of the
 <td>
 <code>spec</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.AlertmanagerConfigSpec">
+<a href="#monitoring.rhobs/v1beta1.AlertmanagerConfigSpec">
 AlertmanagerConfigSpec
 </a>
 </em>
@@ -15542,7 +15542,7 @@ AlertmanagerConfigSpec
 <td>
 <code>route</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.Route">
+<a href="#monitoring.rhobs/v1beta1.Route">
 Route
 </a>
 </em>
@@ -15558,7 +15558,7 @@ configuration as a first-level route.</p>
 <td>
 <code>receivers</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.Receiver">
+<a href="#monitoring.rhobs/v1beta1.Receiver">
 []Receiver
 </a>
 </em>
@@ -15572,7 +15572,7 @@ configuration as a first-level route.</p>
 <td>
 <code>inhibitRules</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.InhibitRule">
+<a href="#monitoring.rhobs/v1beta1.InhibitRule">
 []InhibitRule
 </a>
 </em>
@@ -15587,7 +15587,7 @@ the resource’s namespace.</p>
 <td>
 <code>timeIntervals</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.TimeInterval">
+<a href="#monitoring.rhobs/v1beta1.TimeInterval">
 []TimeInterval
 </a>
 </em>
@@ -15602,10 +15602,10 @@ the resource’s namespace.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.AlertmanagerConfigSpec">AlertmanagerConfigSpec
+<h3 id="monitoring.rhobs/v1beta1.AlertmanagerConfigSpec">AlertmanagerConfigSpec
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.AlertmanagerConfig">AlertmanagerConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.AlertmanagerConfig">AlertmanagerConfig</a>)
 </p>
 <div>
 <p>AlertmanagerConfigSpec is a specification of the desired behavior of the Alertmanager configuration.
@@ -15624,7 +15624,7 @@ the <code>namespace</code> label is equal to the namespace of the AlertmanagerCo
 <td>
 <code>route</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.Route">
+<a href="#monitoring.rhobs/v1beta1.Route">
 Route
 </a>
 </em>
@@ -15640,7 +15640,7 @@ configuration as a first-level route.</p>
 <td>
 <code>receivers</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.Receiver">
+<a href="#monitoring.rhobs/v1beta1.Receiver">
 []Receiver
 </a>
 </em>
@@ -15654,7 +15654,7 @@ configuration as a first-level route.</p>
 <td>
 <code>inhibitRules</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.InhibitRule">
+<a href="#monitoring.rhobs/v1beta1.InhibitRule">
 []InhibitRule
 </a>
 </em>
@@ -15669,7 +15669,7 @@ the resource’s namespace.</p>
 <td>
 <code>timeIntervals</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.TimeInterval">
+<a href="#monitoring.rhobs/v1beta1.TimeInterval">
 []TimeInterval
 </a>
 </em>
@@ -15681,10 +15681,10 @@ the resource’s namespace.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.DayOfMonthRange">DayOfMonthRange
+<h3 id="monitoring.rhobs/v1beta1.DayOfMonthRange">DayOfMonthRange
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.TimePeriod">TimePeriod</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.TimePeriod">TimePeriod</a>)
 </p>
 <div>
 <p>DayOfMonthRange is an inclusive range of days of the month beginning at 1</p>
@@ -15721,10 +15721,10 @@ int
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.EmailConfig">EmailConfig
+<h3 id="monitoring.rhobs/v1beta1.EmailConfig">EmailConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>EmailConfig configures notifications via Email.</p>
@@ -15813,7 +15813,7 @@ string
 <td>
 <code>authPassword</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -15828,7 +15828,7 @@ object and accessible by the Prometheus Operator.</p>
 <td>
 <code>authSecret</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -15855,7 +15855,7 @@ string
 <td>
 <code>headers</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.KeyValue">
+<a href="#monitoring.rhobs/v1beta1.KeyValue">
 []KeyValue
 </a>
 </em>
@@ -15906,7 +15906,7 @@ Note that Go does not support unencrypted connections to remote SMTP endpoints.<
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeTLSConfig">
+<a href="#monitoring.rhobs/v1.SafeTLSConfig">
 SafeTLSConfig
 </a>
 </em>
@@ -15918,10 +15918,10 @@ SafeTLSConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.HTTPConfig">HTTPConfig
+<h3 id="monitoring.rhobs/v1beta1.HTTPConfig">HTTPConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.OpsGenieConfig">OpsGenieConfig</a>, <a href="#monitoring.coreos.com/v1beta1.PagerDutyConfig">PagerDutyConfig</a>, <a href="#monitoring.coreos.com/v1beta1.PushoverConfig">PushoverConfig</a>, <a href="#monitoring.coreos.com/v1beta1.SNSConfig">SNSConfig</a>, <a href="#monitoring.coreos.com/v1beta1.SlackConfig">SlackConfig</a>, <a href="#monitoring.coreos.com/v1beta1.TelegramConfig">TelegramConfig</a>, <a href="#monitoring.coreos.com/v1beta1.VictorOpsConfig">VictorOpsConfig</a>, <a href="#monitoring.coreos.com/v1beta1.WeChatConfig">WeChatConfig</a>, <a href="#monitoring.coreos.com/v1beta1.WebhookConfig">WebhookConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.OpsGenieConfig">OpsGenieConfig</a>, <a href="#monitoring.rhobs/v1beta1.PagerDutyConfig">PagerDutyConfig</a>, <a href="#monitoring.rhobs/v1beta1.PushoverConfig">PushoverConfig</a>, <a href="#monitoring.rhobs/v1beta1.SNSConfig">SNSConfig</a>, <a href="#monitoring.rhobs/v1beta1.SlackConfig">SlackConfig</a>, <a href="#monitoring.rhobs/v1beta1.TelegramConfig">TelegramConfig</a>, <a href="#monitoring.rhobs/v1beta1.VictorOpsConfig">VictorOpsConfig</a>, <a href="#monitoring.rhobs/v1beta1.WeChatConfig">WeChatConfig</a>, <a href="#monitoring.rhobs/v1beta1.WebhookConfig">WebhookConfig</a>)
 </p>
 <div>
 <p>HTTPConfig defines a client HTTP configuration.
@@ -15939,7 +15939,7 @@ See <a href="https://prometheus.io/docs/alerting/latest/configuration/#http_conf
 <td>
 <code>authorization</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeAuthorization">
+<a href="#monitoring.rhobs/v1.SafeAuthorization">
 SafeAuthorization
 </a>
 </em>
@@ -15954,7 +15954,7 @@ This is mutually exclusive with BasicAuth and is only available starting from Al
 <td>
 <code>basicAuth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.BasicAuth">
+<a href="#monitoring.rhobs/v1.BasicAuth">
 BasicAuth
 </a>
 </em>
@@ -15969,7 +15969,7 @@ This is mutually exclusive with Authorization. If both are defined, BasicAuth ta
 <td>
 <code>oauth2</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.OAuth2">
+<a href="#monitoring.rhobs/v1.OAuth2">
 OAuth2
 </a>
 </em>
@@ -15983,7 +15983,7 @@ OAuth2
 <td>
 <code>bearerTokenSecret</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -16000,7 +16000,7 @@ object and accessible by the Prometheus Operator.</p>
 <td>
 <code>tlsConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.SafeTLSConfig">
+<a href="#monitoring.rhobs/v1.SafeTLSConfig">
 SafeTLSConfig
 </a>
 </em>
@@ -16036,10 +16036,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.InhibitRule">InhibitRule
+<h3 id="monitoring.rhobs/v1beta1.InhibitRule">InhibitRule
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
 </p>
 <div>
 <p>InhibitRule defines an inhibition rule that allows to mute alerts when other
@@ -16058,7 +16058,7 @@ See <a href="https://prometheus.io/docs/alerting/latest/configuration/#inhibit_r
 <td>
 <code>targetMatch</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.Matcher">
+<a href="#monitoring.rhobs/v1beta1.Matcher">
 []Matcher
 </a>
 </em>
@@ -16072,7 +16072,7 @@ operator enforces that the alert matches the resource’s namespace.</p>
 <td>
 <code>sourceMatch</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.Matcher">
+<a href="#monitoring.rhobs/v1beta1.Matcher">
 []Matcher
 </a>
 </em>
@@ -16097,10 +16097,10 @@ the inhibition to take effect.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.KeyValue">KeyValue
+<h3 id="monitoring.rhobs/v1beta1.KeyValue">KeyValue
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.EmailConfig">EmailConfig</a>, <a href="#monitoring.coreos.com/v1beta1.OpsGenieConfig">OpsGenieConfig</a>, <a href="#monitoring.coreos.com/v1beta1.PagerDutyConfig">PagerDutyConfig</a>, <a href="#monitoring.coreos.com/v1beta1.VictorOpsConfig">VictorOpsConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.EmailConfig">EmailConfig</a>, <a href="#monitoring.rhobs/v1beta1.OpsGenieConfig">OpsGenieConfig</a>, <a href="#monitoring.rhobs/v1beta1.PagerDutyConfig">PagerDutyConfig</a>, <a href="#monitoring.rhobs/v1beta1.VictorOpsConfig">VictorOpsConfig</a>)
 </p>
 <div>
 <p>KeyValue defines a (key, value) tuple.</p>
@@ -16137,10 +16137,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.MatchType">MatchType
+<h3 id="monitoring.rhobs/v1beta1.MatchType">MatchType
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.Matcher">Matcher</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.Matcher">Matcher</a>)
 </p>
 <div>
 <p>MatchType is a comparison operator on a Matcher</p>
@@ -16162,10 +16162,10 @@ string
 <td></td>
 </tr></tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.Matcher">Matcher
+<h3 id="monitoring.rhobs/v1beta1.Matcher">Matcher
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.InhibitRule">InhibitRule</a>, <a href="#monitoring.coreos.com/v1beta1.Route">Route</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.InhibitRule">InhibitRule</a>, <a href="#monitoring.rhobs/v1beta1.Route">Route</a>)
 </p>
 <div>
 <p>Matcher defines how to match on alert&rsquo;s labels.</p>
@@ -16205,7 +16205,7 @@ string
 <td>
 <code>matchType</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.MatchType">
+<a href="#monitoring.rhobs/v1beta1.MatchType">
 MatchType
 </a>
 </em>
@@ -16218,7 +16218,7 @@ Negative operators (<code>!=</code> and <code>!~</code>) require Alertmanager &g
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.Month">Month
+<h3 id="monitoring.rhobs/v1beta1.Month">Month
 (<code>string</code> alias)</h3>
 <div>
 <p>Month of the year</p>
@@ -16256,19 +16256,19 @@ Negative operators (<code>!=</code> and <code>!~</code>) require Alertmanager &g
 <td></td>
 </tr></tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.MonthRange">MonthRange
+<h3 id="monitoring.rhobs/v1beta1.MonthRange">MonthRange
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.TimePeriod">TimePeriod</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.TimePeriod">TimePeriod</a>)
 </p>
 <div>
 <p>MonthRange is an inclusive range of months of the year beginning in January
 Months can be specified by name (e.g &lsquo;January&rsquo;) by numerical month (e.g &lsquo;1&rsquo;) or as an inclusive range (e.g &lsquo;January:March&rsquo;, &lsquo;1:3&rsquo;, &lsquo;1:March&rsquo;)</p>
 </div>
-<h3 id="monitoring.coreos.com/v1beta1.OpsGenieConfig">OpsGenieConfig
+<h3 id="monitoring.rhobs/v1beta1.OpsGenieConfig">OpsGenieConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>OpsGenieConfig configures notifications via OpsGenie.
@@ -16298,7 +16298,7 @@ bool
 <td>
 <code>apiKey</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -16398,7 +16398,7 @@ string
 <td>
 <code>details</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.KeyValue">
+<a href="#monitoring.rhobs/v1beta1.KeyValue">
 []KeyValue
 </a>
 </em>
@@ -16412,7 +16412,7 @@ string
 <td>
 <code>responders</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.OpsGenieConfigResponder">
+<a href="#monitoring.rhobs/v1beta1.OpsGenieConfigResponder">
 []OpsGenieConfigResponder
 </a>
 </em>
@@ -16426,7 +16426,7 @@ string
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.HTTPConfig">
+<a href="#monitoring.rhobs/v1beta1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -16462,10 +16462,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.OpsGenieConfigResponder">OpsGenieConfigResponder
+<h3 id="monitoring.rhobs/v1beta1.OpsGenieConfigResponder">OpsGenieConfigResponder
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.OpsGenieConfig">OpsGenieConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.OpsGenieConfig">OpsGenieConfig</a>)
 </p>
 <div>
 <p>OpsGenieConfigResponder defines a responder to an incident.
@@ -16528,10 +16528,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.PagerDutyConfig">PagerDutyConfig
+<h3 id="monitoring.rhobs/v1beta1.PagerDutyConfig">PagerDutyConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>PagerDutyConfig configures notifications via PagerDuty.
@@ -16561,7 +16561,7 @@ bool
 <td>
 <code>routingKey</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -16578,7 +16578,7 @@ object and accessible by the Prometheus Operator.</p>
 <td>
 <code>serviceKey</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -16692,7 +16692,7 @@ string
 <td>
 <code>details</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.KeyValue">
+<a href="#monitoring.rhobs/v1beta1.KeyValue">
 []KeyValue
 </a>
 </em>
@@ -16706,7 +16706,7 @@ string
 <td>
 <code>pagerDutyImageConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.PagerDutyImageConfig">
+<a href="#monitoring.rhobs/v1beta1.PagerDutyImageConfig">
 []PagerDutyImageConfig
 </a>
 </em>
@@ -16720,7 +16720,7 @@ string
 <td>
 <code>pagerDutyLinkConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.PagerDutyLinkConfig">
+<a href="#monitoring.rhobs/v1beta1.PagerDutyLinkConfig">
 []PagerDutyLinkConfig
 </a>
 </em>
@@ -16734,7 +16734,7 @@ string
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.HTTPConfig">
+<a href="#monitoring.rhobs/v1beta1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -16746,10 +16746,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.PagerDutyImageConfig">PagerDutyImageConfig
+<h3 id="monitoring.rhobs/v1beta1.PagerDutyImageConfig">PagerDutyImageConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.PagerDutyConfig">PagerDutyConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.PagerDutyConfig">PagerDutyConfig</a>)
 </p>
 <div>
 <p>PagerDutyImageConfig attaches images to an incident</p>
@@ -16800,10 +16800,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.PagerDutyLinkConfig">PagerDutyLinkConfig
+<h3 id="monitoring.rhobs/v1beta1.PagerDutyLinkConfig">PagerDutyLinkConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.PagerDutyConfig">PagerDutyConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.PagerDutyConfig">PagerDutyConfig</a>)
 </p>
 <div>
 <p>PagerDutyLinkConfig attaches text links to an incident</p>
@@ -16842,7 +16842,7 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.ParsedRange">ParsedRange
+<h3 id="monitoring.rhobs/v1beta1.ParsedRange">ParsedRange
 </h3>
 <div>
 <p>ParsedRange is an integer representation of a range</p>
@@ -16879,10 +16879,10 @@ int
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.PushoverConfig">PushoverConfig
+<h3 id="monitoring.rhobs/v1beta1.PushoverConfig">PushoverConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>PushoverConfig configures notifications via Pushover.
@@ -16912,7 +16912,7 @@ bool
 <td>
 <code>userKey</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -16927,7 +16927,7 @@ object and accessible by the Prometheus Operator.</p>
 <td>
 <code>token</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -17052,7 +17052,7 @@ bool
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.HTTPConfig">
+<a href="#monitoring.rhobs/v1beta1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -17064,10 +17064,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.Receiver">Receiver
+<h3 id="monitoring.rhobs/v1beta1.Receiver">Receiver
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
 </p>
 <div>
 <p>Receiver defines one or more notification integrations.</p>
@@ -17095,7 +17095,7 @@ string
 <td>
 <code>opsgenieConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.OpsGenieConfig">
+<a href="#monitoring.rhobs/v1beta1.OpsGenieConfig">
 []OpsGenieConfig
 </a>
 </em>
@@ -17108,7 +17108,7 @@ string
 <td>
 <code>pagerdutyConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.PagerDutyConfig">
+<a href="#monitoring.rhobs/v1beta1.PagerDutyConfig">
 []PagerDutyConfig
 </a>
 </em>
@@ -17121,7 +17121,7 @@ string
 <td>
 <code>slackConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SlackConfig">
+<a href="#monitoring.rhobs/v1beta1.SlackConfig">
 []SlackConfig
 </a>
 </em>
@@ -17134,7 +17134,7 @@ string
 <td>
 <code>webhookConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.WebhookConfig">
+<a href="#monitoring.rhobs/v1beta1.WebhookConfig">
 []WebhookConfig
 </a>
 </em>
@@ -17147,7 +17147,7 @@ string
 <td>
 <code>wechatConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.WeChatConfig">
+<a href="#monitoring.rhobs/v1beta1.WeChatConfig">
 []WeChatConfig
 </a>
 </em>
@@ -17160,7 +17160,7 @@ string
 <td>
 <code>emailConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.EmailConfig">
+<a href="#monitoring.rhobs/v1beta1.EmailConfig">
 []EmailConfig
 </a>
 </em>
@@ -17173,7 +17173,7 @@ string
 <td>
 <code>victoropsConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.VictorOpsConfig">
+<a href="#monitoring.rhobs/v1beta1.VictorOpsConfig">
 []VictorOpsConfig
 </a>
 </em>
@@ -17186,7 +17186,7 @@ string
 <td>
 <code>pushoverConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.PushoverConfig">
+<a href="#monitoring.rhobs/v1beta1.PushoverConfig">
 []PushoverConfig
 </a>
 </em>
@@ -17199,7 +17199,7 @@ string
 <td>
 <code>snsConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SNSConfig">
+<a href="#monitoring.rhobs/v1beta1.SNSConfig">
 []SNSConfig
 </a>
 </em>
@@ -17212,7 +17212,7 @@ string
 <td>
 <code>telegramConfigs</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.TelegramConfig">
+<a href="#monitoring.rhobs/v1beta1.TelegramConfig">
 []TelegramConfig
 </a>
 </em>
@@ -17223,10 +17223,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.Route">Route
+<h3 id="monitoring.rhobs/v1beta1.Route">Route
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
 </p>
 <div>
 <p>Route defines a node in the routing tree.</p>
@@ -17312,7 +17312,7 @@ Example: &ldquo;4h&rdquo;</p>
 <td>
 <code>matchers</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.Matcher">
+<a href="#monitoring.rhobs/v1beta1.Matcher">
 []Matcher
 </a>
 </em>
@@ -17373,10 +17373,10 @@ MuteTimeIntervals is a list of MuteTimeInterval names that will mute this route 
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.SNSConfig">SNSConfig
+<h3 id="monitoring.rhobs/v1beta1.SNSConfig">SNSConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>SNSConfig configures notifications via AWS SNS.
@@ -17419,7 +17419,7 @@ If not specified, the SNS API URL from the SNS SDK will be used.</p>
 <td>
 <code>sigv4</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1.Sigv4">
+<a href="#monitoring.rhobs/v1.Sigv4">
 Sigv4
 </a>
 </em>
@@ -17508,7 +17508,7 @@ map[string]string
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.HTTPConfig">
+<a href="#monitoring.rhobs/v1beta1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -17520,10 +17520,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.SecretKeySelector">SecretKeySelector
+<h3 id="monitoring.rhobs/v1beta1.SecretKeySelector">SecretKeySelector
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.EmailConfig">EmailConfig</a>, <a href="#monitoring.coreos.com/v1beta1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.coreos.com/v1beta1.OpsGenieConfig">OpsGenieConfig</a>, <a href="#monitoring.coreos.com/v1beta1.PagerDutyConfig">PagerDutyConfig</a>, <a href="#monitoring.coreos.com/v1beta1.PushoverConfig">PushoverConfig</a>, <a href="#monitoring.coreos.com/v1beta1.SlackConfig">SlackConfig</a>, <a href="#monitoring.coreos.com/v1beta1.TelegramConfig">TelegramConfig</a>, <a href="#monitoring.coreos.com/v1beta1.VictorOpsConfig">VictorOpsConfig</a>, <a href="#monitoring.coreos.com/v1beta1.WeChatConfig">WeChatConfig</a>, <a href="#monitoring.coreos.com/v1beta1.WebhookConfig">WebhookConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.EmailConfig">EmailConfig</a>, <a href="#monitoring.rhobs/v1beta1.HTTPConfig">HTTPConfig</a>, <a href="#monitoring.rhobs/v1beta1.OpsGenieConfig">OpsGenieConfig</a>, <a href="#monitoring.rhobs/v1beta1.PagerDutyConfig">PagerDutyConfig</a>, <a href="#monitoring.rhobs/v1beta1.PushoverConfig">PushoverConfig</a>, <a href="#monitoring.rhobs/v1beta1.SlackConfig">SlackConfig</a>, <a href="#monitoring.rhobs/v1beta1.TelegramConfig">TelegramConfig</a>, <a href="#monitoring.rhobs/v1beta1.VictorOpsConfig">VictorOpsConfig</a>, <a href="#monitoring.rhobs/v1beta1.WeChatConfig">WeChatConfig</a>, <a href="#monitoring.rhobs/v1beta1.WebhookConfig">WebhookConfig</a>)
 </p>
 <div>
 <p>SecretKeySelector selects a key of a Secret.</p>
@@ -17560,10 +17560,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.SlackAction">SlackAction
+<h3 id="monitoring.rhobs/v1beta1.SlackAction">SlackAction
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.SlackConfig">SlackConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.SlackConfig">SlackConfig</a>)
 </p>
 <div>
 <p>SlackAction configures a single Slack action that is sent with each
@@ -17647,7 +17647,7 @@ string
 <td>
 <code>confirm</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SlackConfirmationField">
+<a href="#monitoring.rhobs/v1beta1.SlackConfirmationField">
 SlackConfirmationField
 </a>
 </em>
@@ -17658,10 +17658,10 @@ SlackConfirmationField
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.SlackConfig">SlackConfig
+<h3 id="monitoring.rhobs/v1beta1.SlackConfig">SlackConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>SlackConfig configures notifications via Slack.
@@ -17691,7 +17691,7 @@ bool
 <td>
 <code>apiURL</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -17785,7 +17785,7 @@ string
 <td>
 <code>fields</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SlackField">
+<a href="#monitoring.rhobs/v1beta1.SlackField">
 []SlackField
 </a>
 </em>
@@ -17909,7 +17909,7 @@ bool
 <td>
 <code>actions</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SlackAction">
+<a href="#monitoring.rhobs/v1beta1.SlackAction">
 []SlackAction
 </a>
 </em>
@@ -17923,7 +17923,7 @@ bool
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.HTTPConfig">
+<a href="#monitoring.rhobs/v1beta1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -17935,10 +17935,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.SlackConfirmationField">SlackConfirmationField
+<h3 id="monitoring.rhobs/v1beta1.SlackConfirmationField">SlackConfirmationField
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.SlackAction">SlackAction</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.SlackAction">SlackAction</a>)
 </p>
 <div>
 <p>SlackConfirmationField protect users from destructive actions or
@@ -18000,10 +18000,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.SlackField">SlackField
+<h3 id="monitoring.rhobs/v1beta1.SlackField">SlackField
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.SlackConfig">SlackConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.SlackConfig">SlackConfig</a>)
 </p>
 <div>
 <p>SlackField configures a single Slack field that is sent with each notification.
@@ -18052,10 +18052,10 @@ bool
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.TelegramConfig">TelegramConfig
+<h3 id="monitoring.rhobs/v1beta1.TelegramConfig">TelegramConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>TelegramConfig configures notifications via Telegram.
@@ -18098,7 +18098,7 @@ If not specified, default API URL will be used.</p>
 <td>
 <code>botToken</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -18160,7 +18160,7 @@ string
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.HTTPConfig">
+<a href="#monitoring.rhobs/v1beta1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -18172,18 +18172,18 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.Time">Time
+<h3 id="monitoring.rhobs/v1beta1.Time">Time
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.TimeRange">TimeRange</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.TimeRange">TimeRange</a>)
 </p>
 <div>
 <p>Time defines a time in 24hr format</p>
 </div>
-<h3 id="monitoring.coreos.com/v1beta1.TimeInterval">TimeInterval
+<h3 id="monitoring.rhobs/v1beta1.TimeInterval">TimeInterval
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.AlertmanagerConfigSpec">AlertmanagerConfigSpec</a>)
 </p>
 <div>
 <p>TimeInterval specifies the periods in time when notifications will be muted or active.</p>
@@ -18211,7 +18211,7 @@ string
 <td>
 <code>timeIntervals</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.TimePeriod">
+<a href="#monitoring.rhobs/v1beta1.TimePeriod">
 []TimePeriod
 </a>
 </em>
@@ -18222,10 +18222,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.TimePeriod">TimePeriod
+<h3 id="monitoring.rhobs/v1beta1.TimePeriod">TimePeriod
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.TimeInterval">TimeInterval</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.TimeInterval">TimeInterval</a>)
 </p>
 <div>
 <p>TimePeriod describes periods of time.</p>
@@ -18242,7 +18242,7 @@ string
 <td>
 <code>times</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.TimeRange">
+<a href="#monitoring.rhobs/v1beta1.TimeRange">
 []TimeRange
 </a>
 </em>
@@ -18256,7 +18256,7 @@ string
 <td>
 <code>weekdays</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.WeekdayRange">
+<a href="#monitoring.rhobs/v1beta1.WeekdayRange">
 []WeekdayRange
 </a>
 </em>
@@ -18270,7 +18270,7 @@ string
 <td>
 <code>daysOfMonth</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.DayOfMonthRange">
+<a href="#monitoring.rhobs/v1beta1.DayOfMonthRange">
 []DayOfMonthRange
 </a>
 </em>
@@ -18284,7 +18284,7 @@ string
 <td>
 <code>months</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.MonthRange">
+<a href="#monitoring.rhobs/v1beta1.MonthRange">
 []MonthRange
 </a>
 </em>
@@ -18298,7 +18298,7 @@ string
 <td>
 <code>years</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.YearRange">
+<a href="#monitoring.rhobs/v1beta1.YearRange">
 []YearRange
 </a>
 </em>
@@ -18310,10 +18310,10 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.TimeRange">TimeRange
+<h3 id="monitoring.rhobs/v1beta1.TimeRange">TimeRange
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.TimePeriod">TimePeriod</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.TimePeriod">TimePeriod</a>)
 </p>
 <div>
 <p>TimeRange defines a start and end time in 24hr format</p>
@@ -18330,7 +18330,7 @@ string
 <td>
 <code>startTime</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.Time">
+<a href="#monitoring.rhobs/v1beta1.Time">
 Time
 </a>
 </em>
@@ -18343,7 +18343,7 @@ Time
 <td>
 <code>endTime</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.Time">
+<a href="#monitoring.rhobs/v1beta1.Time">
 Time
 </a>
 </em>
@@ -18354,10 +18354,10 @@ Time
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.VictorOpsConfig">VictorOpsConfig
+<h3 id="monitoring.rhobs/v1beta1.VictorOpsConfig">VictorOpsConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>VictorOpsConfig configures notifications via VictorOps.
@@ -18387,7 +18387,7 @@ bool
 <td>
 <code>apiKey</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -18475,7 +18475,7 @@ string
 <td>
 <code>customFields</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.KeyValue">
+<a href="#monitoring.rhobs/v1beta1.KeyValue">
 []KeyValue
 </a>
 </em>
@@ -18489,7 +18489,7 @@ string
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.HTTPConfig">
+<a href="#monitoring.rhobs/v1beta1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -18501,10 +18501,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.WeChatConfig">WeChatConfig
+<h3 id="monitoring.rhobs/v1beta1.WeChatConfig">WeChatConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>WeChatConfig configures notifications via WeChat.
@@ -18534,7 +18534,7 @@ bool
 <td>
 <code>apiSecret</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -18640,7 +18640,7 @@ string
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.HTTPConfig">
+<a href="#monitoring.rhobs/v1beta1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -18652,10 +18652,10 @@ HTTPConfig
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.WebhookConfig">WebhookConfig
+<h3 id="monitoring.rhobs/v1beta1.WebhookConfig">WebhookConfig
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.Receiver">Receiver</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.Receiver">Receiver</a>)
 </p>
 <div>
 <p>WebhookConfig configures notifications via a generic receiver supporting the webhook payload.
@@ -18698,7 +18698,7 @@ string
 <td>
 <code>urlSecret</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.SecretKeySelector">
+<a href="#monitoring.rhobs/v1beta1.SecretKeySelector">
 SecretKeySelector
 </a>
 </em>
@@ -18716,7 +18716,7 @@ object and accessible by the Prometheus Operator.</p>
 <td>
 <code>httpConfig</code><br/>
 <em>
-<a href="#monitoring.coreos.com/v1beta1.HTTPConfig">
+<a href="#monitoring.rhobs/v1beta1.HTTPConfig">
 HTTPConfig
 </a>
 </em>
@@ -18740,7 +18740,7 @@ int32
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.Weekday">Weekday
+<h3 id="monitoring.rhobs/v1beta1.Weekday">Weekday
 (<code>string</code> alias)</h3>
 <div>
 <p>Weekday is day of the week</p>
@@ -18768,19 +18768,19 @@ int32
 <td></td>
 </tr></tbody>
 </table>
-<h3 id="monitoring.coreos.com/v1beta1.WeekdayRange">WeekdayRange
+<h3 id="monitoring.rhobs/v1beta1.WeekdayRange">WeekdayRange
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.TimePeriod">TimePeriod</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.TimePeriod">TimePeriod</a>)
 </p>
 <div>
 <p>WeekdayRange is an inclusive range of days of the week beginning on Sunday
 Days can be specified by name (e.g &lsquo;Sunday&rsquo;) or as an inclusive range (e.g &lsquo;Monday:Friday&rsquo;)</p>
 </div>
-<h3 id="monitoring.coreos.com/v1beta1.YearRange">YearRange
+<h3 id="monitoring.rhobs/v1beta1.YearRange">YearRange
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.coreos.com/v1beta1.TimePeriod">TimePeriod</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1beta1.TimePeriod">TimePeriod</a>)
 </p>
 <div>
 <p>YearRange is an inclusive range of years</p>

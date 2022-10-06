@@ -22,11 +22,11 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
-	namespacelabeler "github.com/prometheus-operator/prometheus-operator/pkg/namespace-labeler"
-	"github.com/prometheus-operator/prometheus-operator/pkg/prometheus"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
+	namespacelabeler "github.com/rhobs/obo-prometheus-operator/pkg/namespace-labeler"
+	"github.com/rhobs/obo-prometheus-operator/pkg/prometheus"
 
 	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

@@ -22,7 +22,7 @@ The Prometheus Operator also introduces an AlertmanagerConfig resource, which al
 First, create an example Alertmanager cluster, with three instances.
 
 ```yaml mdox-exec="cat example/user-guides/alerting/alertmanager-example.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   name: example
@@ -39,7 +39,7 @@ For more information on configuring Alertmanager, see the Prometheus [Alerting C
 The following example configuration creates an AlertmanagerConfig resource that sends notifications to a non-existent `wechat` receiver:
 
 ```yaml mdox-exec="cat example/user-guides/alerting/alertmanager-config-example.yaml"
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: AlertmanagerConfig
 metadata:
   name: config-example
@@ -80,7 +80,7 @@ $ kubectl create -f alertmanager-config.yaml
 The `alertmanagerConfigSelector` field in the Alertmanager resource Spec needs to be specified so that the operator can select such AlertmanagerConfig resources. In the previous example, the label `alertmanagerConfig: example` is added, so the Alertmanager instance should be updated, adding the `alertmanagerConfigSelector`:
 
 ```yaml mdox-exec="cat example/user-guides/alerting/alertmanager-selector-example.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   name: example
@@ -96,7 +96,7 @@ spec:
 The following example configuration creates an Alertmanager resource that specify an AlertmanagerConfig resource to be global(won't force add a `namespace` label in routes and inhibitRules):
 
 ```yaml mdox-exec="cat example/user-guides/alerting/alertmanager-example-alertmanager-configuration.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   name: example
@@ -188,7 +188,7 @@ Once created it allows the web UI to be accessible via a Node's IP and the port 
 This Alertmanager cluster is now fully functional and highly available, but no alerts are fired against it. Create Prometheus instances to fire alerts to the Alertmanagers.
 
 ```yaml mdox-exec="cat example/user-guides/alerting/prometheus-example.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: example
@@ -223,7 +223,7 @@ To discover from all namespaces, pass an empty dict (`ruleNamespaceSelector: {}`
 To discover from all namespaces with a certain label, use the `matchLabels` field:
 
 ```yaml mdox-exec="cat example/user-guides/alerting/prometheus-example-rule-namespace-selector.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: example
@@ -255,7 +255,7 @@ In case you want to select individual namespace by their name, you can use the `
 The best practice is to label the `PrometheusRule`s containing rule files with `role: alert-rules` as well as the name of the Prometheus object, `prometheus: example` in this case.
 
 ```yaml mdox-exec="cat example/user-guides/alerting/prometheus-example-rules.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: PrometheusRule
 metadata:
   creationTimestamp: null

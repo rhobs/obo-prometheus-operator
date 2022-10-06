@@ -19,7 +19,7 @@ package fake
 import (
 	"context"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -34,9 +34,9 @@ type FakePrometheusRules struct {
 	ns   string
 }
 
-var prometheusrulesResource = schema.GroupVersionResource{Group: "monitoring.coreos.com", Version: "v1", Resource: "prometheusrules"}
+var prometheusrulesResource = schema.GroupVersionResource{Group: "monitoring.rhobs", Version: "v1", Resource: "prometheusrules"}
 
-var prometheusrulesKind = schema.GroupVersionKind{Group: "monitoring.coreos.com", Version: "v1", Kind: "PrometheusRule"}
+var prometheusrulesKind = schema.GroupVersionKind{Group: "monitoring.rhobs", Version: "v1", Kind: "PrometheusRule"}
 
 // Get takes name of the prometheusRule, and returns the corresponding prometheusRule object, and an error if there is any.
 func (c *FakePrometheusRules) Get(ctx context.Context, name string, options v1.GetOptions) (result *monitoringv1.PrometheusRule, err error) {

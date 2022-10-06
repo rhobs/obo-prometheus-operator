@@ -26,14 +26,14 @@ import (
 	"github.com/go-kit/log"
 	"github.com/go-kit/log/level"
 	"github.com/pkg/errors"
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
 	"github.com/prometheus/prometheus/model/rulefmt"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
 	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	namespacelabeler "github.com/prometheus-operator/prometheus-operator/pkg/namespace-labeler"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	namespacelabeler "github.com/rhobs/obo-prometheus-operator/pkg/namespace-labeler"
 	thanostypes "github.com/thanos-io/thanos/pkg/store/storepb"
 )
 

@@ -16,10 +16,10 @@ package namespacelabeler
 import (
 	"testing"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 
 	"github.com/google/go-cmp/cmp"
 	"k8s.io/apimachinery/pkg/util/intstr"
@@ -149,7 +149,7 @@ func TestEnforceNamespaceLabelOnPrometheusRules(t *testing.T) {
 			ExcludedFromEnforcement: []monitoringv1.ObjectReference{
 				{
 					Namespace: "foo",
-					Group:     "monitoring.coreos.com",
+					Group:     "monitoring.rhobs",
 					Resource:  monitoringv1.PrometheusRuleName,
 				},
 			},

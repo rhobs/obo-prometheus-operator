@@ -75,7 +75,7 @@ spec:
 This Service object is discovered by a ServiceMonitor, which selects in the same way. The `app` label must have the value `example-app`.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/example-app-service-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-app
@@ -151,7 +151,7 @@ For more information, see the [Prometheus Operator RBAC guide](../rbac.md).
 A Prometheus object defines the `serviceMonitorSelector` to specify which ServiceMonitors should be included. Above the label `team: frontend` was specified, so that's what the Prometheus object selects by.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/prometheus-service-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -175,7 +175,7 @@ This enables the frontend team to create new ServiceMonitors and Services which 
 Finally, a Prometheus object defines the `podMonitorSelector` to specify which PodMonitors should be included. Above the label `team: frontend` was specified, so that's what the Prometheus object selects by.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/prometheus-pod-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -230,7 +230,7 @@ This API access is disabled by default and can be toggled using this boolean fla
 > ensure only clients authorized to perform these actions can do so.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/prometheus-admin-api.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus

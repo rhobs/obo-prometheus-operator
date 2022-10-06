@@ -66,7 +66,7 @@ Both `ServiceMonitors` as well as discovered targets may come from any namespace
 One can discover targets in all namespaces like this:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-app
@@ -98,7 +98,7 @@ Using the `namespaceSelector` of the `PodMonitorSpec`, one can restrict the name
 Once can discover targets in all namespaces like this:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: PodMonitor
 metadata:
   name: example-app
@@ -127,7 +127,7 @@ Alerts and recording rules are reconciled by the Operator and dynamically loaded
 The `AlertmanagerConfig` custom resource definition (CRD) declaratively specifies subsections of the Alertmanager configuration, allowing routing of alerts to custom receivers, and setting inhibition rules. The `AlertmanagerConfig` can be defined on a namespace level providing an aggregated configuration to Alertmanager. An example on how to use it is provided below. Please be aware that this CRD is not stable yet.
 
 ```yaml mdox-exec="cat example/user-guides/alerting/alertmanager-config-example.yaml"
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: AlertmanagerConfig
 metadata:
   name: config-example

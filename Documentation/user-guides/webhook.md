@@ -100,11 +100,11 @@ webhooks:
         namespace: default
         path: /admission-prometheusrules/validate
     failurePolicy: Fail
-    name: prometheusrulemutate.monitoring.coreos.com
+    name: prometheusrulemutate.monitoring.rhobs
     namespaceSelector: {}
     rules:
       - apiGroups:
-          - monitoring.coreos.com
+          - monitoring.rhobs
         apiVersions:
           - '*'
         operations:
@@ -137,11 +137,11 @@ webhooks:
         namespace: default
         path: /admission-prometheusrules/mutate
     failurePolicy: Fail
-    name: prometheusrulemutate.monitoring.coreos.com
+    name: prometheusrulemutate.monitoring.rhobs
     namespaceSelector: {}
     rules:
       - apiGroups:
-          - monitoring.coreos.com
+          - monitoring.rhobs
         apiVersions:
           - '*'
         operations:
@@ -173,11 +173,11 @@ webhooks:
         namespace: default
         path: /admission-alertmanagerconfigs/validate
     failurePolicy: Fail
-    name: alertmanagerconfigsvalidate.monitoring.coreos.com
+    name: alertmanagerconfigsvalidate.monitoring.rhobs
     namespaceSelector: {}
     rules:
       - apiGroups:
-          - monitoring.coreos.com
+          - monitoring.rhobs
         apiVersions:
           - v1alpha1
         operations:
@@ -195,7 +195,7 @@ The endpoint `/convert` convert `Alertmanagerconfig` objects between `v1alpha1`
 and `v1beta1` versions.
 
 The following example is a patch for the
-`alertmanagerconfigs.monitoring.coreos.com` CRD to configure the conversion
+`alertmanagerconfigs.monitoring.rhobs` CRD to configure the conversion
 webhook.
 
 ```json
@@ -203,7 +203,7 @@ webhook.
    "apiVersion": "apiextensions.k8s.io/v1",
    "kind": "CustomResourceDefinition",
    "metadata": {
-      "name": "alertmanagerconfigs.monitoring.coreos.com"
+      "name": "alertmanagerconfigs.monitoring.rhobs"
    },
    "spec": {
       "conversion": {
