@@ -62,14 +62,6 @@ bumpup_version(){
   ok "version set to $version"
 }
 
-git_cherrypick_commits() {
-  # NOTE: v0.59.1 does not contain this commit required to strip down the CRDs
-  # so that operator-sdk can properly apply them
-  # TODO: add refs here
-  git cherry-pick -x eb8bd4d29e02fd969f97527b4aeadbf8524f02b9
-
-}
-
 generate_stripped_down_crds(){
   header "Generating stripped-down CRDs"
 
@@ -232,8 +224,6 @@ main() {
 
   bumpup_version
 
-
-  git_cherrypick_commits
   change_api_group
   change_container_image_repo 'quay.io/rhobs/obo-'
   make_required_targets
