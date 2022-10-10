@@ -212,6 +212,22 @@ assert_repo_url() {
   return 0
 }
 
+change_po_gh_urls() {
+
+  local rhobs_prev_stable_release_branch='https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.59.2-rhobs1'
+
+  local prev_stable_version="${rhobs_prev_stable_release_branch}/VERSION"
+  local prev_example_dir="${rhobs_prev_stable_release_branch}/example"
+  local prev_resource_dir="${rhobs_prev_stable_release_branch}/test/framework/resources"
+
+  sed  \
+    -e "s|\(prometheusOperatorGithubBranchURL := .*$\)|// \1|g"  \
+    -e "s|prevStableVersionURL := .*|prevStableVersionURL := \"${prev_stable_version}\"|g"  \
+    -e "s|prevExampleDir := .*|prevExampleDir := \"${prev_example_dir}\"|g"  \
+    -e "s|prevResourcesDir := .*|prevResourcesDir := \"${prev_resource_dir}\"|g"  \
+    -i test/e2e/main_test.go
+}
+
 main() {
   # all files references must be relative to the root of the project
   cd "$PROJECT_ROOT"
@@ -224,6 +240,7 @@ main() {
 
   bumpup_version
 
+  change_po_gh_urls
   change_api_group
   change_container_image_repo 'quay.io/rhobs/obo-'
   make_required_targets
