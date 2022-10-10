@@ -114,6 +114,17 @@ change_container_image_repo(){
       -e "s|quay.io/prometheus-operator/|${to_repo}|g" \
   {} \;
 
+
+  # reset reference to alert manager webhook test images used in tests
+  # back to use prometheus-images itself
+
+  info "reset images used for testing"
+
+  find ./test -type f -exec sed -i  \
+      -e "s|quay.io/rhobs/obo-prometheus-alertmanager-test-webhook|quay.io/prometheus-operator/prometheus-alertmanager-test-webhook|g" \
+      -e "s|quay.io/rhobs/obo-instrumented-sample-app|quay.io/prometheus-operator/instrumented-sample-app|g" \
+  {} \;
+
   ok "Changed container repo to $to_repo"
 
 }
