@@ -4,7 +4,11 @@ set -e -u -o pipefail
 declare PROJECT_ROOT
 PROJECT_ROOT="$(git rev-parse --show-toplevel)"
 
+# config vars
+declare SHOW_USAGE=false
+declare IGNORE_REPO_STATE=false
 declare RUN_MAKE_CHECKS=true
+declare PREVIOUS_VERSION=""
 
 header(){
   echo -e "\n 🔆 $*"
@@ -143,21 +147,94 @@ validate_git_repos() {
   local num_remotes
   num_remotes=$(git remote | wc -l)
 
-  local fails=0
+  local failed=false
 
   [[ "$num_remotes" -ge 3 ]] || {
     warn "expected to find more than 3 remotes but found only $num_remotes"
-    (( fails++  ))
+    failed=true
   }
 
   assert_repo_url upstream "prometheus-operator/prometheus-operator"  || (( fails++ ))
   assert_repo_url downstream "rhobs/obo-prometheus-operator"  || (( fails++ ))
 
-  if [[ $fails -ne 0 ]]; then
+
+
+  local rhobs_rel_branch="rhobs-rel-${PREVIOUS_VERSION}"
+
+  git ls-remote --exit-code --heads downstream "$rhobs_rel_branch" || {
+    warn "invalid previous release version - $PREVIOUS_VERSION "
+    failed=true
+  }
+
+  if $failed; then
     return 1
   fi
 
   ok "git remotes looks fine"
+  ok "$PREVIOUS_VERSION exists"
+
+  return 0
+}
+
+
+validate_args(){
+  header "Validating args ..."
+
+  [[ "$PREVIOUS_VERSION" == ""  ]] && {
+    warn "wrong usage: must pass --previous-version <version>"
+    return 1
+  }
+  return 0
+}
+
+validate_repo_state() {
+  $IGNORE_REPO_STATE && {
+    info "skipping validation of repo state"
+    return 0
+  }
+
+  [[ -z "$(git status --porcelain)" ]] || {
+    warn "git: repo has local changes; ensure git status is clean"
+    return 1
+  }
+  return 0
+}
+
+print_usage() {
+  local app
+  app="$(basename "$0")"
+
+  read -r -d '' help <<-EOF_HELP || true
+Usage:
+  $app  --previous-version VERSION
+  $app  -h|--help
+
+Example:
+  # To upgrade from 0.59.2-rhobs1 version to 0.60.0, run
+  ❯ $app  --previous-version 0.59.2-rhobs1
+
+Options:
+  -h|--help               show this help
+  --no-check              skip make checks
+  --ignore-repo-state     run script even if the local repo's state isn't clean
+
+EOF_HELP
+
+  echo -e "$help"
+  return 0
+}
+
+
+validate() {
+  local failed=false
+
+  validate_args || failed=true
+  validate_git_repos || failed=true
+  validate_repo_state || failed=true
+
+  if $failed; then
+    return 1
+  fi
   return 0
 }
 
@@ -196,12 +273,25 @@ run_checks(){
   make test-unit
 }
 
+
 parse_args() {
   ### while there are args parse them
   while [[ -n "${1+xxx}" ]]; do
     case $1 in
-    --no-checks)      RUN_MAKE_CHECKS=false; shift ;;
-    *)              shift 1 ;; # skip rest
+    -h|--help)      SHOW_USAGE=true; break ;; # exit the loop
+    --no-checks)         RUN_MAKE_CHECKS=false; shift ;;
+    --ignore-repo-state)     IGNORE_REPO_STATE=true; shift ;;
+    --previous-version)
+        shift
+        # only accept the args match VERSION format
+        if [[ -n "${1+xxx}" ]] && [[ "$1"  =~ [0-9]+.*-rhobs[0-9].* ]]; then
+          PREVIOUS_VERSION="$1"
+          shift
+        fi
+      ;;
+    *)
+      warn "unknown arg $1"
+      return 1 ;;
     esac
   done
 
@@ -224,12 +314,11 @@ assert_repo_url() {
 }
 
 change_po_gh_urls() {
-
-  local rhobs_prev_stable_release_branch='https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.59.2-rhobs1'
-
-  local prev_stable_version="${rhobs_prev_stable_release_branch}/VERSION"
-  local prev_example_dir="${rhobs_prev_stable_release_branch}/example"
-  local prev_resource_dir="${rhobs_prev_stable_release_branch}/test/framework/resources"
+  local rhobs_rel_branch="rhobs-rel-${PREVIOUS_VERSION}"
+  local prev_release_git_branch="https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/${rhobs_rel_branch}"
+  local prev_stable_version="${prev_release_git_branch}/VERSION"
+  local prev_example_dir="${prev_release_git_branch}/example"
+  local prev_resource_dir="${prev_release_git_branch}/test/framework/resources"
 
   sed  \
     -e "s|\(prometheusOperatorGithubBranchURL := .*$\)|// \1|g"  \
@@ -243,10 +332,18 @@ main() {
   # all files references must be relative to the root of the project
   cd "$PROJECT_ROOT"
 
-  parse_args "$@"
+  parse_args "$@" || {
+    print_usage
+    exit 1
+  }
 
-  validate_git_repos || {
-    die "Please fix failures ☝️  and run the script again "
+  if $SHOW_USAGE; then
+    print_usage
+    return 0
+  fi
+
+  validate || {
+    die "Please fix failures ☝️ (indicated by ⚠️ ) and run the script again "
   }
 
   bumpup_version
