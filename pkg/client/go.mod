@@ -3,7 +3,7 @@ module github.com/rhobs/obo-prometheus-operator/pkg/client
 go 1.17
 
 require (
-	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.59.2
+	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.60.0
 	k8s.io/apimachinery v0.25.0
 	k8s.io/client-go v0.25.0
 )

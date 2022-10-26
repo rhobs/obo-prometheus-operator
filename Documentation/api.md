@@ -3,10 +3,8 @@ title: "API reference"
 description: "Prometheus operator generated API reference docs"
 draft: false
 images: []
-menu:
-docs:
-parent: "operator"
-weight: 208
+menu: "operator"
+weight: 210
 toc: true
 ---
 > This page is automatically generated with `gen-crd-api-reference-docs`.
@@ -36,6 +34,8 @@ Resource Types:
 <a href="#monitoring.rhobs/v1.PrometheusRule">PrometheusRule</a>
 </li><li>
 <a href="#monitoring.rhobs/v1.ServiceMonitor">ServiceMonitor</a>
+</li><li>
+<a href="#monitoring.rhobs/v1.ThanosRuler">ThanosRuler</a>
 </li></ul>
 <h3 id="monitoring.rhobs/v1.Alertmanager">Alertmanager
 </h3>
@@ -200,7 +200,8 @@ see <a href="http://kubernetes.io/docs/user-guide/images#specifying-imagepullsec
 <td>
 <p>Secrets is a list of Secrets in the same namespace as the Alertmanager
 object, which shall be mounted into the Alertmanager Pods.
-The Secrets are mounted into /etc/alertmanager/secrets/<secret-name>.</p>
+Each Secret is added to the StatefulSet definition as a volume named <code>secret-&lt;secret-name&gt;</code>.
+The Secrets are mounted into <code>/etc/alertmanager/secrets/&lt;secret-name&gt;</code> in the &lsquo;alertmanager&rsquo; container.</p>
 </td>
 </tr>
 <tr>
@@ -213,7 +214,8 @@ The Secrets are mounted into /etc/alertmanager/secrets/<secret-name>.</p>
 <td>
 <p>ConfigMaps is a list of ConfigMaps in the same namespace as the Alertmanager
 object, which shall be mounted into the Alertmanager Pods.
-The ConfigMaps are mounted into /etc/alertmanager/configmaps/<configmap-name>.</p>
+Each ConfigMap is added to the StatefulSet definition as a volume named <code>configmap-&lt;configmap-name&gt;</code>.
+The ConfigMaps are mounted into <code>/etc/alertmanager/configmaps/&lt;configmap-name&gt;</code> in the &lsquo;alertmanager&rsquo; container.</p>
 </td>
 </tr>
 <tr>
@@ -226,7 +228,7 @@ string
 <td>
 <p>ConfigSecret is the name of a Kubernetes Secret in the same namespace as the
 Alertmanager object, which contains the configuration for this Alertmanager
-instance. If empty, it defaults to &lsquo;alertmanager-<alertmanager-name>&rsquo;.</p>
+instance. If empty, it defaults to <code>alertmanager-&lt;alertmanager-name&gt;</code>.</p>
 <p>The Alertmanager configuration should be available under the
 <code>alertmanager.yaml</code> key. Additional keys from the original secret are
 copied to the generated secret.</p>
@@ -1671,7 +1673,8 @@ Prometheus Pods.</p>
 <td>
 <p>Secrets is a list of Secrets in the same namespace as the Prometheus
 object, which shall be mounted into the Prometheus Pods.
-The Secrets are mounted into /etc/prometheus/secrets/<secret-name>.</p>
+Each Secret is added to the StatefulSet definition as a volume named <code>secret-&lt;secret-name&gt;</code>.
+The Secrets are mounted into /etc/prometheus/secrets/<secret-name> in the &lsquo;prometheus&rsquo; container.</p>
 </td>
 </tr>
 <tr>
@@ -1684,7 +1687,8 @@ The Secrets are mounted into /etc/prometheus/secrets/<secret-name>.</p>
 <td>
 <p>ConfigMaps is a list of ConfigMaps in the same namespace as the Prometheus
 object, which shall be mounted into the Prometheus Pods.
-The ConfigMaps are mounted into /etc/prometheus/configmaps/<configmap-name>.</p>
+Each ConfigMap is added to the StatefulSet definition as a volume named <code>configmap-&lt;configmap-name&gt;</code>.
+The ConfigMaps are mounted into /etc/prometheus/configmaps/<configmap-name> in the &lsquo;prometheus&rsquo; container.</p>
 </td>
 </tr>
 <tr>
@@ -2083,7 +2087,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <p>AdditionalArgs allows setting additional arguments for the Prometheus container.
 It is intended for e.g. activating hidden flags which are not supported by
 the dedicated configuration options yet. The arguments are passed as-is to the
-Prometheus container which may cause issues if they are invalid or not supporeted
+Prometheus container which may cause issues if they are invalid or not supported
 by the given Prometheus version.
 In case of an argument conflict (e.g. an argument which is already set by the
 operator itself) or when providing an invalid argument the reconciliation will
@@ -2115,6 +2119,19 @@ only available in versions of Prometheus &gt;= 2.11.0.</p>
 <p>List of references to PodMonitor, ServiceMonitor, Probe and PrometheusRule objects
 to be excluded from enforcing a namespace label of origin.
 Applies only if enforcedNamespaceLabel set to true.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>hostNetwork</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<p>Use the host&rsquo;s network namespace if true.
+Make sure to understand the security implications if you want to enable it.
+When hostNetwork is enabled, this will set dnsPolicy to ClusterFirstWithHostNet automatically.</p>
 </td>
 </tr>
 <tr>
@@ -2433,6 +2450,20 @@ ensure only clients authorized to perform these actions can do so.
 For more information see <a href="https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis">https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis</a></p>
 </td>
 </tr>
+<tr>
+<td>
+<code>tsdb</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.TSDBSpec">
+TSDBSpec
+</a>
+</em>
+</td>
+<td>
+<p>Defines the runtime reloadable configuration of the timeseries database
+(TSDB).</p>
+</td>
+</tr>
 </table>
 </td>
 </tr>
@@ -2727,6 +2758,699 @@ Only valid in Prometheus versions 2.27.0 and newer.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="monitoring.rhobs/v1.ThanosRuler">ThanosRuler
+</h3>
+<div>
+<p>ThanosRuler defines a ThanosRuler deployment.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>apiVersion</code><br/>
+string</td>
+<td>
+<code>
+monitoring.rhobs/v1
+</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>kind</code><br/>
+string
+</td>
+<td><code>ThanosRuler</code></td>
+</tr>
+<tr>
+<td>
+<code>metadata</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#objectmeta-v1-meta">
+Kubernetes meta/v1.ObjectMeta
+</a>
+</em>
+</td>
+<td>
+Refer to the Kubernetes API documentation for the fields of the
+<code>metadata</code> field.
+</td>
+</tr>
+<tr>
+<td>
+<code>spec</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.ThanosRulerSpec">
+ThanosRulerSpec
+</a>
+</em>
+</td>
+<td>
+<p>Specification of the desired behavior of the ThanosRuler cluster. More info:
+<a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status">https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+<br/>
+<br/>
+<table>
+<tr>
+<td>
+<code>podMetadata</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.EmbeddedObjectMetadata">
+EmbeddedObjectMetadata
+</a>
+</em>
+</td>
+<td>
+<p>PodMetadata contains Labels and Annotations gets propagated to the thanos ruler pods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>image</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>Thanos container image URL.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>imagePullSecrets</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#localobjectreference-v1-core">
+[]Kubernetes core/v1.LocalObjectReference
+</a>
+</em>
+</td>
+<td>
+<p>An optional list of references to secrets in the same namespace
+to use for pulling thanos images from registries
+see <a href="http://kubernetes.io/docs/user-guide/images#specifying-imagepullsecrets-on-a-pod">http://kubernetes.io/docs/user-guide/images#specifying-imagepullsecrets-on-a-pod</a></p>
+</td>
+</tr>
+<tr>
+<td>
+<code>paused</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<p>When a ThanosRuler deployment is paused, no actions except for deletion
+will be performed on the underlying objects.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>replicas</code><br/>
+<em>
+int32
+</em>
+</td>
+<td>
+<p>Number of thanos ruler instances to deploy.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>nodeSelector</code><br/>
+<em>
+map[string]string
+</em>
+</td>
+<td>
+<p>Define which Nodes the Pods are scheduled on.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>resources</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#resourcerequirements-v1-core">
+Kubernetes core/v1.ResourceRequirements
+</a>
+</em>
+</td>
+<td>
+<p>Resources defines the resource requirements for single Pods.
+If not provided, no requests/limits will be set</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>affinity</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#affinity-v1-core">
+Kubernetes core/v1.Affinity
+</a>
+</em>
+</td>
+<td>
+<p>If specified, the pod&rsquo;s scheduling constraints.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>tolerations</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#toleration-v1-core">
+[]Kubernetes core/v1.Toleration
+</a>
+</em>
+</td>
+<td>
+<p>If specified, the pod&rsquo;s tolerations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>topologySpreadConstraints</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#topologyspreadconstraint-v1-core">
+[]Kubernetes core/v1.TopologySpreadConstraint
+</a>
+</em>
+</td>
+<td>
+<p>If specified, the pod&rsquo;s topology spread constraints.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>securityContext</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#podsecuritycontext-v1-core">
+Kubernetes core/v1.PodSecurityContext
+</a>
+</em>
+</td>
+<td>
+<p>SecurityContext holds pod-level security attributes and common container settings.
+This defaults to the default PodSecurityContext.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>priorityClassName</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>Priority class assigned to the Pods</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>serviceAccountName</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>ServiceAccountName is the name of the ServiceAccount to use to run the
+Thanos Ruler Pods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>storage</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.StorageSpec">
+StorageSpec
+</a>
+</em>
+</td>
+<td>
+<p>Storage spec to specify how storage shall be used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>volumes</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#volume-v1-core">
+[]Kubernetes core/v1.Volume
+</a>
+</em>
+</td>
+<td>
+<p>Volumes allows configuration of additional volumes on the output StatefulSet definition. Volumes specified will
+be appended to other volumes that are generated as a result of StorageSpec objects.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>objectStorageConfig</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#secretkeyselector-v1-core">
+Kubernetes core/v1.SecretKeySelector
+</a>
+</em>
+</td>
+<td>
+<p>ObjectStorageConfig configures object storage in Thanos.
+Alternative to ObjectStorageConfigFile, and lower order priority.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>objectStorageConfigFile</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>ObjectStorageConfigFile specifies the path of the object storage configuration file.
+When used alongside with ObjectStorageConfig, ObjectStorageConfigFile takes precedence.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>listenLocal</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<p>ListenLocal makes the Thanos ruler listen on loopback, so that it
+does not bind against the Pod IP.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>queryEndpoints</code><br/>
+<em>
+[]string
+</em>
+</td>
+<td>
+<p>QueryEndpoints defines Thanos querier endpoints from which to query metrics.
+Maps to the &ndash;query flag of thanos ruler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>queryConfig</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#secretkeyselector-v1-core">
+Kubernetes core/v1.SecretKeySelector
+</a>
+</em>
+</td>
+<td>
+<p>Define configuration for connecting to thanos query instances.
+If this is defined, the QueryEndpoints field will be ignored.
+Maps to the <code>query.config</code> CLI argument.
+Only available with thanos v0.11.0 and higher.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>alertmanagersUrl</code><br/>
+<em>
+[]string
+</em>
+</td>
+<td>
+<p>Define URLs to send alerts to Alertmanager.  For Thanos v0.10.0 and higher,
+AlertManagersConfig should be used instead.  Note: this field will be ignored
+if AlertManagersConfig is specified.
+Maps to the <code>alertmanagers.url</code> arg.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>alertmanagersConfig</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#secretkeyselector-v1-core">
+Kubernetes core/v1.SecretKeySelector
+</a>
+</em>
+</td>
+<td>
+<p>Define configuration for connecting to alertmanager.  Only available with thanos v0.10.0
+and higher.  Maps to the <code>alertmanagers.config</code> arg.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>ruleSelector</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#labelselector-v1-meta">
+Kubernetes meta/v1.LabelSelector
+</a>
+</em>
+</td>
+<td>
+<p>A label selector to select which PrometheusRules to mount for alerting and
+recording.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>ruleNamespaceSelector</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#labelselector-v1-meta">
+Kubernetes meta/v1.LabelSelector
+</a>
+</em>
+</td>
+<td>
+<p>Namespaces to be selected for Rules discovery. If unspecified, only
+the same namespace as the ThanosRuler object is in is used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>enforcedNamespaceLabel</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>EnforcedNamespaceLabel enforces adding a namespace label of origin for each alert
+and metric that is user created. The label value will always be the namespace of the object that is
+being created.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>excludedFromEnforcement</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.ObjectReference">
+[]ObjectReference
+</a>
+</em>
+</td>
+<td>
+<p>List of references to PrometheusRule objects
+to be excluded from enforcing a namespace label of origin.
+Applies only if enforcedNamespaceLabel set to true.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>prometheusRulesExcludedFromEnforce</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.PrometheusRuleExcludeConfig">
+[]PrometheusRuleExcludeConfig
+</a>
+</em>
+</td>
+<td>
+<p>PrometheusRulesExcludedFromEnforce - list of Prometheus rules to be excluded from enforcing
+of adding namespace labels. Works only if enforcedNamespaceLabel set to true.
+Make sure both ruleNamespace and ruleName are set for each pair
+Deprecated: use excludedFromEnforcement instead.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>logLevel</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>Log level for ThanosRuler to be configured with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>logFormat</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>Log format for ThanosRuler to be configured with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>portName</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>Port name used for the pods and governing service.
+This defaults to web</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>evaluationInterval</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.Duration">
+Duration
+</a>
+</em>
+</td>
+<td>
+<p>Interval between consecutive evaluations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>retention</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.Duration">
+Duration
+</a>
+</em>
+</td>
+<td>
+<p>Time duration ThanosRuler shall retain data for. Default is &lsquo;24h&rsquo;,
+and must match the regular expression <code>[0-9]+(ms|s|m|h|d|w|y)</code> (milliseconds seconds minutes hours days weeks years).</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>containers</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#container-v1-core">
+[]Kubernetes core/v1.Container
+</a>
+</em>
+</td>
+<td>
+<p>Containers allows injecting additional containers or modifying operator generated
+containers. This can be used to allow adding an authentication proxy to a ThanosRuler pod or
+to change the behavior of an operator generated container. Containers described here modify
+an operator generated container if they share the same name and modifications are done via a
+strategic merge patch. The current container names are: <code>thanos-ruler</code> and <code>config-reloader</code>.
+Overriding containers is entirely outside the scope of what the maintainers will support and by doing
+so, you accept that this behaviour may break at any time without notice.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>initContainers</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#container-v1-core">
+[]Kubernetes core/v1.Container
+</a>
+</em>
+</td>
+<td>
+<p>InitContainers allows adding initContainers to the pod definition. Those can be used to e.g.
+fetch secrets for injection into the ThanosRuler configuration from external sources. Any
+errors during the execution of an initContainer will lead to a restart of the Pod.
+More info: <a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers/">https://kubernetes.io/docs/concepts/workloads/pods/init-containers/</a>
+Using initContainers for any use case other then secret fetching is entirely outside the scope
+of what the maintainers will support and by doing so, you accept that this behaviour may break
+at any time without notice.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>tracingConfig</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#secretkeyselector-v1-core">
+Kubernetes core/v1.SecretKeySelector
+</a>
+</em>
+</td>
+<td>
+<p>TracingConfig configures tracing in Thanos. This is an experimental feature, it may change in any upcoming release in a breaking way.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>tracingConfigFile</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>TracingConfig specifies the path of the tracing configuration file.
+When used alongside with TracingConfig, TracingConfigFile takes precedence.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>labels</code><br/>
+<em>
+map[string]string
+</em>
+</td>
+<td>
+<p>Labels configure the external label pairs to ThanosRuler. A default replica label
+<code>thanos_ruler_replica</code> will be always added  as a label with the value of the pod&rsquo;s name and it will be dropped in the alerts.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>alertDropLabels</code><br/>
+<em>
+[]string
+</em>
+</td>
+<td>
+<p>AlertDropLabels configure the label names which should be dropped in ThanosRuler alerts.
+The replica label <code>thanos_ruler_replica</code> will always be dropped in alerts.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>externalPrefix</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>The external URL the Thanos Ruler instances will be available under. This is
+necessary to generate correct URLs. This is necessary if Thanos Ruler is not
+served from root of a DNS name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>routePrefix</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>The route prefix ThanosRuler registers HTTP handlers for. This allows thanos UI to be served on a sub-path.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>grpcServerTlsConfig</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.TLSConfig">
+TLSConfig
+</a>
+</em>
+</td>
+<td>
+<p>GRPCServerTLSConfig configures the gRPC server from which Thanos Querier reads
+recorded rule data.
+Note: Currently only the CAFile, CertFile, and KeyFile fields are supported.
+Maps to the &lsquo;&ndash;grpc-server-tls-*&rsquo; CLI args.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>alertQueryUrl</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>The external Query URL the Thanos Ruler will set in the &lsquo;Source&rsquo; field
+of all alerts.
+Maps to the &lsquo;&ndash;alert.query-url&rsquo; CLI arg.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>minReadySeconds</code><br/>
+<em>
+uint32
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Minimum number of seconds for which a newly created pod should be ready
+without any of its container crashing for it to be considered available.
+Defaults to 0 (pod will be considered available as soon as it is ready)
+This is an alpha field and requires enabling StatefulSetMinReadySeconds feature gate.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>alertRelabelConfigs</code><br/>
+<em>
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#secretkeyselector-v1-core">
+Kubernetes core/v1.SecretKeySelector
+</a>
+</em>
+</td>
+<td>
+<p>AlertRelabelConfigs configures alert relabeling in ThanosRuler.
+Alert relabel configurations must have the form as specified in the official Prometheus documentation:
+<a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs">https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs</a>
+Alternative to AlertRelabelConfigFile, and lower order priority.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>alertRelabelConfigFile</code><br/>
+<em>
+string
+</em>
+</td>
+<td>
+<p>AlertRelabelConfigFile specifies the path of the alert relabeling configuration file.
+When used alongside with AlertRelabelConfigs, alertRelabelConfigFile takes precedence.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>hostAliases</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.HostAlias">
+[]HostAlias
+</a>
+</em>
+</td>
+<td>
+<p>Pods&rsquo; hostAliases configuration</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<code>status</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.ThanosRulerStatus">
+ThanosRulerStatus
+</a>
+</em>
+</td>
+<td>
+<p>Most recent observed status of the ThanosRuler cluster. Read-only. Not
+included when requesting from the apiserver, only from the ThanosRuler
+Operator API itself. More info:
+<a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status">https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+</td>
+</tr>
+</tbody>
+</table>
 <h3 id="monitoring.rhobs/v1.APIServerConfig">APIServerConfig
 </h3>
 <p>
@@ -2891,6 +3615,20 @@ AlertmanagerGlobalConfig
 <td>
 <em>(Optional)</em>
 <p>Defines the global parameters of the Alertmanager configuration.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>templates</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.SecretOrConfigMap">
+[]SecretOrConfigMap
+</a>
+</em>
+</td>
+<td>
+<em>(Optional)</em>
+<p>Custom notification templates.</p>
 </td>
 </tr>
 </tbody>
@@ -3202,7 +3940,8 @@ see <a href="http://kubernetes.io/docs/user-guide/images#specifying-imagepullsec
 <td>
 <p>Secrets is a list of Secrets in the same namespace as the Alertmanager
 object, which shall be mounted into the Alertmanager Pods.
-The Secrets are mounted into /etc/alertmanager/secrets/<secret-name>.</p>
+Each Secret is added to the StatefulSet definition as a volume named <code>secret-&lt;secret-name&gt;</code>.
+The Secrets are mounted into <code>/etc/alertmanager/secrets/&lt;secret-name&gt;</code> in the &lsquo;alertmanager&rsquo; container.</p>
 </td>
 </tr>
 <tr>
@@ -3215,7 +3954,8 @@ The Secrets are mounted into /etc/alertmanager/secrets/<secret-name>.</p>
 <td>
 <p>ConfigMaps is a list of ConfigMaps in the same namespace as the Alertmanager
 object, which shall be mounted into the Alertmanager Pods.
-The ConfigMaps are mounted into /etc/alertmanager/configmaps/<configmap-name>.</p>
+Each ConfigMap is added to the StatefulSet definition as a volume named <code>configmap-&lt;configmap-name&gt;</code>.
+The ConfigMaps are mounted into <code>/etc/alertmanager/configmaps/&lt;configmap-name&gt;</code> in the &lsquo;alertmanager&rsquo; container.</p>
 </td>
 </tr>
 <tr>
@@ -3228,7 +3968,7 @@ string
 <td>
 <p>ConfigSecret is the name of a Kubernetes Secret in the same namespace as the
 Alertmanager object, which contains the configuration for this Alertmanager
-instance. If empty, it defaults to &lsquo;alertmanager-<alertmanager-name>&rsquo;.</p>
+instance. If empty, it defaults to <code>alertmanager-&lt;alertmanager-name&gt;</code>.</p>
 <p>The Alertmanager configuration should be available under the
 <code>alertmanager.yaml</code> key. Additional keys from the original secret are
 copied to the generated secret.</p>
@@ -4498,7 +5238,8 @@ Prometheus Pods.</p>
 <td>
 <p>Secrets is a list of Secrets in the same namespace as the Prometheus
 object, which shall be mounted into the Prometheus Pods.
-The Secrets are mounted into /etc/prometheus/secrets/<secret-name>.</p>
+Each Secret is added to the StatefulSet definition as a volume named <code>secret-&lt;secret-name&gt;</code>.
+The Secrets are mounted into /etc/prometheus/secrets/<secret-name> in the &lsquo;prometheus&rsquo; container.</p>
 </td>
 </tr>
 <tr>
@@ -4511,7 +5252,8 @@ The Secrets are mounted into /etc/prometheus/secrets/<secret-name>.</p>
 <td>
 <p>ConfigMaps is a list of ConfigMaps in the same namespace as the Prometheus
 object, which shall be mounted into the Prometheus Pods.
-The ConfigMaps are mounted into /etc/prometheus/configmaps/<configmap-name>.</p>
+Each ConfigMap is added to the StatefulSet definition as a volume named <code>configmap-&lt;configmap-name&gt;</code>.
+The ConfigMaps are mounted into /etc/prometheus/configmaps/<configmap-name> in the &lsquo;prometheus&rsquo; container.</p>
 </td>
 </tr>
 <tr>
@@ -4910,7 +5652,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <p>AdditionalArgs allows setting additional arguments for the Prometheus container.
 It is intended for e.g. activating hidden flags which are not supported by
 the dedicated configuration options yet. The arguments are passed as-is to the
-Prometheus container which may cause issues if they are invalid or not supporeted
+Prometheus container which may cause issues if they are invalid or not supported
 by the given Prometheus version.
 In case of an argument conflict (e.g. an argument which is already set by the
 operator itself) or when providing an invalid argument the reconciliation will
@@ -4944,12 +5686,25 @@ to be excluded from enforcing a namespace label of origin.
 Applies only if enforcedNamespaceLabel set to true.</p>
 </td>
 </tr>
+<tr>
+<td>
+<code>hostNetwork</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<p>Use the host&rsquo;s network namespace if true.
+Make sure to understand the security implications if you want to enable it.
+When hostNetwork is enabled, this will set dnsPolicy to ClusterFirstWithHostNet automatically.</p>
+</td>
+</tr>
 </tbody>
 </table>
 <h3 id="monitoring.rhobs/v1.Duration">Duration
 (<code>string</code> alias)</h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerEndpoints">AlertmanagerEndpoints</a>, <a href="#monitoring.rhobs/v1.AlertmanagerGlobalConfig">AlertmanagerGlobalConfig</a>, <a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.rhobs/v1.Endpoint">Endpoint</a>, <a href="#monitoring.rhobs/v1.MetadataConfig">MetadataConfig</a>, <a href="#monitoring.rhobs/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.rhobs/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>, <a href="#monitoring.rhobs/v1.QuerySpec">QuerySpec</a>, <a href="#monitoring.rhobs/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.rhobs/v1.ThanosRulerSpec">ThanosRulerSpec</a>, <a href="#monitoring.rhobs/v1.ThanosSpec">ThanosSpec</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerEndpoints">AlertmanagerEndpoints</a>, <a href="#monitoring.rhobs/v1.AlertmanagerGlobalConfig">AlertmanagerGlobalConfig</a>, <a href="#monitoring.rhobs/v1.CommonPrometheusFields">CommonPrometheusFields</a>, <a href="#monitoring.rhobs/v1.Endpoint">Endpoint</a>, <a href="#monitoring.rhobs/v1.MetadataConfig">MetadataConfig</a>, <a href="#monitoring.rhobs/v1.PodMetricsEndpoint">PodMetricsEndpoint</a>, <a href="#monitoring.rhobs/v1.ProbeSpec">ProbeSpec</a>, <a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>, <a href="#monitoring.rhobs/v1.QuerySpec">QuerySpec</a>, <a href="#monitoring.rhobs/v1.RemoteReadSpec">RemoteReadSpec</a>, <a href="#monitoring.rhobs/v1.RemoteWriteSpec">RemoteWriteSpec</a>, <a href="#monitoring.rhobs/v1.TSDBSpec">TSDBSpec</a>, <a href="#monitoring.rhobs/v1.ThanosRulerSpec">ThanosRulerSpec</a>, <a href="#monitoring.rhobs/v1.ThanosSpec">ThanosSpec</a>)
 </p>
 <div>
 <p>Duration is a valid time duration that can be parsed by Prometheus model.ParseDuration() function.
@@ -6208,6 +6963,18 @@ bool
 <p>Whether to enable HTTP2.</p>
 </td>
 </tr>
+<tr>
+<td>
+<code>filterRunning</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<p>Drop pods that are not running. (Failed, Succeeded). Enabled by default.
+More info: <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase">https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase</a></p>
+</td>
+</tr>
 </tbody>
 </table>
 <h3 id="monitoring.rhobs/v1.PodMetricsEndpointTLSConfig">PodMetricsEndpointTLSConfig
@@ -7094,6 +7861,19 @@ string
 <p>Human-readable message indicating details for the condition&rsquo;s last transition.</p>
 </td>
 </tr>
+<tr>
+<td>
+<code>observedGeneration</code><br/>
+<em>
+int64
+</em>
+</td>
+<td>
+<p>ObservedGeneration represents the .metadata.generation that the condition was set based upon.
+For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date
+with respect to the current state of the instance.</p>
+</td>
+</tr>
 </tbody>
 </table>
 <h3 id="monitoring.rhobs/v1.PrometheusConditionStatus">PrometheusConditionStatus
@@ -7135,10 +7915,21 @@ string
 </tr>
 </thead>
 <tbody><tr><td><p>&#34;Available&#34;</p></td>
-<td><p>Available indicates whether enough Prometheus pods are ready to provide the service.</p>
+<td><p>Available indicates whether enough Prometheus pods are ready to provide
+the service.
+The possible status values for this condition type are:
+- True: all pods are running and ready, the service is fully available.
+- Degraded: some pods aren&rsquo;t ready, the service is partially available.
+- False: no pods are running, the service is totally unavailable.
+- Unknown: the operator couldn&rsquo;t determine the condition status.</p>
 </td>
 </tr><tr><td><p>&#34;Reconciled&#34;</p></td>
-<td><p>Reconciled indicates that the operator has reconciled the state of the underlying resources with the Prometheus object spec.</p>
+<td><p>Reconciled indicates whether the operator has reconciled the state of
+the underlying resources with the Prometheus object spec.
+The possible status values for this condition type are:
+- True: the reconciliation was successful.
+- False: the reconciliation failed.
+- Unknown: the operator couldn&rsquo;t determine the condition status.</p>
 </td>
 </tr></tbody>
 </table>
@@ -7657,7 +8448,8 @@ Prometheus Pods.</p>
 <td>
 <p>Secrets is a list of Secrets in the same namespace as the Prometheus
 object, which shall be mounted into the Prometheus Pods.
-The Secrets are mounted into /etc/prometheus/secrets/<secret-name>.</p>
+Each Secret is added to the StatefulSet definition as a volume named <code>secret-&lt;secret-name&gt;</code>.
+The Secrets are mounted into /etc/prometheus/secrets/<secret-name> in the &lsquo;prometheus&rsquo; container.</p>
 </td>
 </tr>
 <tr>
@@ -7670,7 +8462,8 @@ The Secrets are mounted into /etc/prometheus/secrets/<secret-name>.</p>
 <td>
 <p>ConfigMaps is a list of ConfigMaps in the same namespace as the Prometheus
 object, which shall be mounted into the Prometheus Pods.
-The ConfigMaps are mounted into /etc/prometheus/configmaps/<configmap-name>.</p>
+Each ConfigMap is added to the StatefulSet definition as a volume named <code>configmap-&lt;configmap-name&gt;</code>.
+The ConfigMaps are mounted into /etc/prometheus/configmaps/<configmap-name> in the &lsquo;prometheus&rsquo; container.</p>
 </td>
 </tr>
 <tr>
@@ -8069,7 +8862,7 @@ This is an alpha field and requires enabling StatefulSetMinReadySeconds feature 
 <p>AdditionalArgs allows setting additional arguments for the Prometheus container.
 It is intended for e.g. activating hidden flags which are not supported by
 the dedicated configuration options yet. The arguments are passed as-is to the
-Prometheus container which may cause issues if they are invalid or not supporeted
+Prometheus container which may cause issues if they are invalid or not supported
 by the given Prometheus version.
 In case of an argument conflict (e.g. an argument which is already set by the
 operator itself) or when providing an invalid argument the reconciliation will
@@ -8101,6 +8894,19 @@ only available in versions of Prometheus &gt;= 2.11.0.</p>
 <p>List of references to PodMonitor, ServiceMonitor, Probe and PrometheusRule objects
 to be excluded from enforcing a namespace label of origin.
 Applies only if enforcedNamespaceLabel set to true.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>hostNetwork</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<p>Use the host&rsquo;s network namespace if true.
+Make sure to understand the security implications if you want to enable it.
+When hostNetwork is enabled, this will set dnsPolicy to ClusterFirstWithHostNet automatically.</p>
 </td>
 </tr>
 <tr>
@@ -8417,6 +9223,20 @@ shutdown Prometheus, and more. Enabling this should be done with care and the
 user is advised to add additional authentication authorization via a proxy to
 ensure only clients authorized to perform these actions can do so.
 For more information see <a href="https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis">https://prometheus.io/docs/prometheus/latest/querying/api/#tsdb-admin-apis</a></p>
+</td>
+</tr>
+<tr>
+<td>
+<code>tsdb</code><br/>
+<em>
+<a href="#monitoring.rhobs/v1.TSDBSpec">
+TSDBSpec
+</a>
+</em>
+</td>
+<td>
+<p>Defines the runtime reloadable configuration of the timeseries database
+(TSDB).</p>
 </td>
 </tr>
 </tbody>
@@ -9620,7 +10440,7 @@ bool
 <h3 id="monitoring.rhobs/v1.SecretOrConfigMap">SecretOrConfigMap
 </h3>
 <p>
-(<em>Appears on:</em><a href="#monitoring.rhobs/v1.OAuth2">OAuth2</a>, <a href="#monitoring.rhobs/v1.SafeTLSConfig">SafeTLSConfig</a>, <a href="#monitoring.rhobs/v1.WebTLSConfig">WebTLSConfig</a>)
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.AlertmanagerConfiguration">AlertmanagerConfiguration</a>, <a href="#monitoring.rhobs/v1.OAuth2">OAuth2</a>, <a href="#monitoring.rhobs/v1.SafeTLSConfig">SafeTLSConfig</a>, <a href="#monitoring.rhobs/v1.WebTLSConfig">WebTLSConfig</a>)
 </p>
 <div>
 <p>SecretOrConfigMap allows to specify data as a Secret or ConfigMap. Fields are mutually exclusive.</p>
@@ -10203,10 +11023,12 @@ string
 </tr>
 </tbody>
 </table>
-<h3 id="monitoring.rhobs/v1.ThanosRuler">ThanosRuler
+<h3 id="monitoring.rhobs/v1.TSDBSpec">TSDBSpec
 </h3>
+<p>
+(<em>Appears on:</em><a href="#monitoring.rhobs/v1.PrometheusSpec">PrometheusSpec</a>)
+</p>
 <div>
-<p>ThanosRuler defines a ThanosRuler deployment.</p>
 </div>
 <table>
 <thead>
@@ -10218,426 +11040,7 @@ string
 <tbody>
 <tr>
 <td>
-<code>metadata</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#objectmeta-v1-meta">
-Kubernetes meta/v1.ObjectMeta
-</a>
-</em>
-</td>
-<td>
-Refer to the Kubernetes API documentation for the fields of the
-<code>metadata</code> field.
-</td>
-</tr>
-<tr>
-<td>
-<code>spec</code><br/>
-<em>
-<a href="#monitoring.rhobs/v1.ThanosRulerSpec">
-ThanosRulerSpec
-</a>
-</em>
-</td>
-<td>
-<p>Specification of the desired behavior of the ThanosRuler cluster. More info:
-<a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status">https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
-<br/>
-<br/>
-<table>
-<tr>
-<td>
-<code>podMetadata</code><br/>
-<em>
-<a href="#monitoring.rhobs/v1.EmbeddedObjectMetadata">
-EmbeddedObjectMetadata
-</a>
-</em>
-</td>
-<td>
-<p>PodMetadata contains Labels and Annotations gets propagated to the thanos ruler pods.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>image</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>Thanos container image URL.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>imagePullSecrets</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#localobjectreference-v1-core">
-[]Kubernetes core/v1.LocalObjectReference
-</a>
-</em>
-</td>
-<td>
-<p>An optional list of references to secrets in the same namespace
-to use for pulling thanos images from registries
-see <a href="http://kubernetes.io/docs/user-guide/images#specifying-imagepullsecrets-on-a-pod">http://kubernetes.io/docs/user-guide/images#specifying-imagepullsecrets-on-a-pod</a></p>
-</td>
-</tr>
-<tr>
-<td>
-<code>paused</code><br/>
-<em>
-bool
-</em>
-</td>
-<td>
-<p>When a ThanosRuler deployment is paused, no actions except for deletion
-will be performed on the underlying objects.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>replicas</code><br/>
-<em>
-int32
-</em>
-</td>
-<td>
-<p>Number of thanos ruler instances to deploy.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>nodeSelector</code><br/>
-<em>
-map[string]string
-</em>
-</td>
-<td>
-<p>Define which Nodes the Pods are scheduled on.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>resources</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#resourcerequirements-v1-core">
-Kubernetes core/v1.ResourceRequirements
-</a>
-</em>
-</td>
-<td>
-<p>Resources defines the resource requirements for single Pods.
-If not provided, no requests/limits will be set</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>affinity</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#affinity-v1-core">
-Kubernetes core/v1.Affinity
-</a>
-</em>
-</td>
-<td>
-<p>If specified, the pod&rsquo;s scheduling constraints.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>tolerations</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#toleration-v1-core">
-[]Kubernetes core/v1.Toleration
-</a>
-</em>
-</td>
-<td>
-<p>If specified, the pod&rsquo;s tolerations.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>topologySpreadConstraints</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#topologyspreadconstraint-v1-core">
-[]Kubernetes core/v1.TopologySpreadConstraint
-</a>
-</em>
-</td>
-<td>
-<p>If specified, the pod&rsquo;s topology spread constraints.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>securityContext</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#podsecuritycontext-v1-core">
-Kubernetes core/v1.PodSecurityContext
-</a>
-</em>
-</td>
-<td>
-<p>SecurityContext holds pod-level security attributes and common container settings.
-This defaults to the default PodSecurityContext.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>priorityClassName</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>Priority class assigned to the Pods</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>serviceAccountName</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>ServiceAccountName is the name of the ServiceAccount to use to run the
-Thanos Ruler Pods.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>storage</code><br/>
-<em>
-<a href="#monitoring.rhobs/v1.StorageSpec">
-StorageSpec
-</a>
-</em>
-</td>
-<td>
-<p>Storage spec to specify how storage shall be used.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>volumes</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#volume-v1-core">
-[]Kubernetes core/v1.Volume
-</a>
-</em>
-</td>
-<td>
-<p>Volumes allows configuration of additional volumes on the output StatefulSet definition. Volumes specified will
-be appended to other volumes that are generated as a result of StorageSpec objects.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>objectStorageConfig</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#secretkeyselector-v1-core">
-Kubernetes core/v1.SecretKeySelector
-</a>
-</em>
-</td>
-<td>
-<p>ObjectStorageConfig configures object storage in Thanos.
-Alternative to ObjectStorageConfigFile, and lower order priority.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>objectStorageConfigFile</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>ObjectStorageConfigFile specifies the path of the object storage configuration file.
-When used alongside with ObjectStorageConfig, ObjectStorageConfigFile takes precedence.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>listenLocal</code><br/>
-<em>
-bool
-</em>
-</td>
-<td>
-<p>ListenLocal makes the Thanos ruler listen on loopback, so that it
-does not bind against the Pod IP.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>queryEndpoints</code><br/>
-<em>
-[]string
-</em>
-</td>
-<td>
-<p>QueryEndpoints defines Thanos querier endpoints from which to query metrics.
-Maps to the &ndash;query flag of thanos ruler.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>queryConfig</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#secretkeyselector-v1-core">
-Kubernetes core/v1.SecretKeySelector
-</a>
-</em>
-</td>
-<td>
-<p>Define configuration for connecting to thanos query instances.
-If this is defined, the QueryEndpoints field will be ignored.
-Maps to the <code>query.config</code> CLI argument.
-Only available with thanos v0.11.0 and higher.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>alertmanagersUrl</code><br/>
-<em>
-[]string
-</em>
-</td>
-<td>
-<p>Define URLs to send alerts to Alertmanager.  For Thanos v0.10.0 and higher,
-AlertManagersConfig should be used instead.  Note: this field will be ignored
-if AlertManagersConfig is specified.
-Maps to the <code>alertmanagers.url</code> arg.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>alertmanagersConfig</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#secretkeyselector-v1-core">
-Kubernetes core/v1.SecretKeySelector
-</a>
-</em>
-</td>
-<td>
-<p>Define configuration for connecting to alertmanager.  Only available with thanos v0.10.0
-and higher.  Maps to the <code>alertmanagers.config</code> arg.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>ruleSelector</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#labelselector-v1-meta">
-Kubernetes meta/v1.LabelSelector
-</a>
-</em>
-</td>
-<td>
-<p>A label selector to select which PrometheusRules to mount for alerting and
-recording.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>ruleNamespaceSelector</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#labelselector-v1-meta">
-Kubernetes meta/v1.LabelSelector
-</a>
-</em>
-</td>
-<td>
-<p>Namespaces to be selected for Rules discovery. If unspecified, only
-the same namespace as the ThanosRuler object is in is used.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>enforcedNamespaceLabel</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>EnforcedNamespaceLabel enforces adding a namespace label of origin for each alert
-and metric that is user created. The label value will always be the namespace of the object that is
-being created.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>excludedFromEnforcement</code><br/>
-<em>
-<a href="#monitoring.rhobs/v1.ObjectReference">
-[]ObjectReference
-</a>
-</em>
-</td>
-<td>
-<p>List of references to PrometheusRule objects
-to be excluded from enforcing a namespace label of origin.
-Applies only if enforcedNamespaceLabel set to true.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>prometheusRulesExcludedFromEnforce</code><br/>
-<em>
-<a href="#monitoring.rhobs/v1.PrometheusRuleExcludeConfig">
-[]PrometheusRuleExcludeConfig
-</a>
-</em>
-</td>
-<td>
-<p>PrometheusRulesExcludedFromEnforce - list of Prometheus rules to be excluded from enforcing
-of adding namespace labels. Works only if enforcedNamespaceLabel set to true.
-Make sure both ruleNamespace and ruleName are set for each pair
-Deprecated: use excludedFromEnforcement instead.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>logLevel</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>Log level for ThanosRuler to be configured with.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>logFormat</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>Log format for ThanosRuler to be configured with.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>portName</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>Port name used for the pods and governing service.
-This defaults to web</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>evaluationInterval</code><br/>
+<code>outOfOrderTimeWindow</code><br/>
 <em>
 <a href="#monitoring.rhobs/v1.Duration">
 Duration
@@ -10645,236 +11048,12 @@ Duration
 </em>
 </td>
 <td>
-<p>Interval between consecutive evaluations.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>retention</code><br/>
-<em>
-<a href="#monitoring.rhobs/v1.Duration">
-Duration
-</a>
-</em>
-</td>
-<td>
-<p>Time duration ThanosRuler shall retain data for. Default is &lsquo;24h&rsquo;,
-and must match the regular expression <code>[0-9]+(ms|s|m|h|d|w|y)</code> (milliseconds seconds minutes hours days weeks years).</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>containers</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#container-v1-core">
-[]Kubernetes core/v1.Container
-</a>
-</em>
-</td>
-<td>
-<p>Containers allows injecting additional containers or modifying operator generated
-containers. This can be used to allow adding an authentication proxy to a ThanosRuler pod or
-to change the behavior of an operator generated container. Containers described here modify
-an operator generated container if they share the same name and modifications are done via a
-strategic merge patch. The current container names are: <code>thanos-ruler</code> and <code>config-reloader</code>.
-Overriding containers is entirely outside the scope of what the maintainers will support and by doing
-so, you accept that this behaviour may break at any time without notice.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>initContainers</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#container-v1-core">
-[]Kubernetes core/v1.Container
-</a>
-</em>
-</td>
-<td>
-<p>InitContainers allows adding initContainers to the pod definition. Those can be used to e.g.
-fetch secrets for injection into the ThanosRuler configuration from external sources. Any
-errors during the execution of an initContainer will lead to a restart of the Pod.
-More info: <a href="https://kubernetes.io/docs/concepts/workloads/pods/init-containers/">https://kubernetes.io/docs/concepts/workloads/pods/init-containers/</a>
-Using initContainers for any use case other then secret fetching is entirely outside the scope
-of what the maintainers will support and by doing so, you accept that this behaviour may break
-at any time without notice.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>tracingConfig</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#secretkeyselector-v1-core">
-Kubernetes core/v1.SecretKeySelector
-</a>
-</em>
-</td>
-<td>
-<p>TracingConfig configures tracing in Thanos. This is an experimental feature, it may change in any upcoming release in a breaking way.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>tracingConfigFile</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>TracingConfig specifies the path of the tracing configuration file.
-When used alongside with TracingConfig, TracingConfigFile takes precedence.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>labels</code><br/>
-<em>
-map[string]string
-</em>
-</td>
-<td>
-<p>Labels configure the external label pairs to ThanosRuler. A default replica label
-<code>thanos_ruler_replica</code> will be always added  as a label with the value of the pod&rsquo;s name and it will be dropped in the alerts.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>alertDropLabels</code><br/>
-<em>
-[]string
-</em>
-</td>
-<td>
-<p>AlertDropLabels configure the label names which should be dropped in ThanosRuler alerts.
-The replica label <code>thanos_ruler_replica</code> will always be dropped in alerts.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>externalPrefix</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>The external URL the Thanos Ruler instances will be available under. This is
-necessary to generate correct URLs. This is necessary if Thanos Ruler is not
-served from root of a DNS name.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>routePrefix</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>The route prefix ThanosRuler registers HTTP handlers for. This allows thanos UI to be served on a sub-path.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>grpcServerTlsConfig</code><br/>
-<em>
-<a href="#monitoring.rhobs/v1.TLSConfig">
-TLSConfig
-</a>
-</em>
-</td>
-<td>
-<p>GRPCServerTLSConfig configures the gRPC server from which Thanos Querier reads
-recorded rule data.
-Note: Currently only the CAFile, CertFile, and KeyFile fields are supported.
-Maps to the &lsquo;&ndash;grpc-server-tls-*&rsquo; CLI args.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>alertQueryUrl</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>The external Query URL the Thanos Ruler will set in the &lsquo;Source&rsquo; field
-of all alerts.
-Maps to the &lsquo;&ndash;alert.query-url&rsquo; CLI arg.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>minReadySeconds</code><br/>
-<em>
-uint32
-</em>
-</td>
-<td>
-<em>(Optional)</em>
-<p>Minimum number of seconds for which a newly created pod should be ready
-without any of its container crashing for it to be considered available.
-Defaults to 0 (pod will be considered available as soon as it is ready)
-This is an alpha field and requires enabling StatefulSetMinReadySeconds feature gate.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>alertRelabelConfigs</code><br/>
-<em>
-<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/#secretkeyselector-v1-core">
-Kubernetes core/v1.SecretKeySelector
-</a>
-</em>
-</td>
-<td>
-<p>AlertRelabelConfigs configures alert relabeling in ThanosRuler.
-Alert relabel configurations must have the form as specified in the official Prometheus documentation:
-<a href="https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs">https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs</a>
-Alternative to AlertRelabelConfigFile, and lower order priority.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>alertRelabelConfigFile</code><br/>
-<em>
-string
-</em>
-</td>
-<td>
-<p>AlertRelabelConfigFile specifies the path of the alert relabeling configuration file.
-When used alongside with AlertRelabelConfigs, alertRelabelConfigFile takes precedence.</p>
-</td>
-</tr>
-<tr>
-<td>
-<code>hostAliases</code><br/>
-<em>
-<a href="#monitoring.rhobs/v1.HostAlias">
-[]HostAlias
-</a>
-</em>
-</td>
-<td>
-<p>Pods&rsquo; hostAliases configuration</p>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td>
-<code>status</code><br/>
-<em>
-<a href="#monitoring.rhobs/v1.ThanosRulerStatus">
-ThanosRulerStatus
-</a>
-</em>
-</td>
-<td>
-<p>Most recent observed status of the ThanosRuler cluster. Read-only. Not
-included when requesting from the apiserver, only from the ThanosRuler
-Operator API itself. More info:
-<a href="https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status">https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status</a></p>
+<p>Configures how old an out-of-order/out-of-bounds sample can be w.r.t.
+the TSDB max time.
+An out-of-order/out-of-bounds sample is ingested into the TSDB as long as
+the timestamp of the sample is &gt;= (TSDB.MaxTime - outOfOrderTimeWindow).
+Out of order ingestion is an experimental feature and requires
+Prometheus &gt;= v2.39.0.</p>
 </td>
 </tr>
 </tbody>
@@ -11721,8 +11900,36 @@ bool
 </em>
 </td>
 <td>
-<p>ListenLocal makes the Thanos sidecar listen on loopback, so that it
-does not bind against the Pod IP.</p>
+<p>If true, the Thanos sidecar listens on the loopback interface
+for the HTTP and gRPC endpoints.
+It takes precedence over <code>grpcListenLocal</code> and <code>httpListenLocal</code>.
+Deprecated: use <code>grpcListenLocal</code> and <code>httpListenLocal</code> instead.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>grpcListenLocal</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<p>If true, the Thanos sidecar listens on the loopback interface
+for the gRPC endpoints.
+It has no effect if <code>listenLocal</code> is true.</p>
+</td>
+</tr>
+<tr>
+<td>
+<code>httpListenLocal</code><br/>
+<em>
+bool
+</em>
+</td>
+<td>
+<p>If true, the Thanos sidecar listens on the loopback interface
+for the HTTP endpoints.
+It has no effect if <code>listenLocal</code> is true.</p>
 </td>
 </tr>
 <tr>
@@ -11760,8 +11967,8 @@ TLSConfig
 </em>
 </td>
 <td>
-<p>GRPCServerTLSConfig configures the gRPC server from which Thanos Querier reads
-recorded rule data.
+<p>GRPCServerTLSConfig configures the TLS parameters for the gRPC server
+providing the StoreAPI.
 Note: Currently only the CAFile, CertFile, and KeyFile fields are supported.
 Maps to the &lsquo;&ndash;grpc-server-tls-*&rsquo; CLI args.</p>
 </td>
@@ -11838,7 +12045,7 @@ VolumeMounts specified will be appended to other VolumeMounts in the thanos-side
 <td>
 <p>AdditionalArgs allows setting additional arguments for the Thanos container.
 The arguments are passed as-is to the Thanos container which may cause issues
-if they are invalid or not supporeted the given Thanos version.
+if they are invalid or not supported the given Thanos version.
 In case of an argument conflict (e.g. an argument which is already set by the
 operator itself) or when providing an invalid argument the reconciliation will
 fail and an error will be logged.</p>
@@ -12252,7 +12459,7 @@ Route
 </td>
 <td>
 <em>(Optional)</em>
-<p>The Alertmanager route definition for alerts matching the resource’s
+<p>The Alertmanager route definition for alerts matching the resource&rsquo;s
 namespace. If present, it will be added to the generated Alertmanager
 configuration as a first-level route.</p>
 </td>
@@ -12283,7 +12490,7 @@ configuration as a first-level route.</p>
 <td>
 <em>(Optional)</em>
 <p>List of inhibition rules. The rules will only apply to alerts matching
-the resource’s namespace.</p>
+the resource&rsquo;s namespace.</p>
 </td>
 </tr>
 <tr>
@@ -12334,7 +12541,7 @@ Route
 </td>
 <td>
 <em>(Optional)</em>
-<p>The Alertmanager route definition for alerts matching the resource’s
+<p>The Alertmanager route definition for alerts matching the resource&rsquo;s
 namespace. If present, it will be added to the generated Alertmanager
 configuration as a first-level route.</p>
 </td>
@@ -12365,7 +12572,7 @@ configuration as a first-level route.</p>
 <td>
 <em>(Optional)</em>
 <p>List of inhibition rules. The rules will only apply to alerts matching
-the resource’s namespace.</p>
+the resource&rsquo;s namespace.</p>
 </td>
 </tr>
 <tr>
@@ -12768,7 +12975,7 @@ See <a href="https://prometheus.io/docs/alerting/latest/configuration/#inhibit_r
 </td>
 <td>
 <p>Matchers that have to be fulfilled in the alerts to be muted. The
-operator enforces that the alert matches the resource’s namespace.</p>
+operator enforces that the alert matches the resource&rsquo;s namespace.</p>
 </td>
 </tr>
 <tr>
@@ -12783,7 +12990,7 @@ operator enforces that the alert matches the resource’s namespace.</p>
 <td>
 <p>Matchers for which one or more alerts have to exist for the inhibition
 to take effect. The operator enforces that the alert matches the
-resource’s namespace.</p>
+resource&rsquo;s namespace.</p>
 </td>
 </tr>
 <tr>
@@ -13689,7 +13896,7 @@ Kubernetes core/v1.SecretKeySelector
 </em>
 </td>
 <td>
-<p>The secret&rsquo;s key that contains the recipient user’s user key.
+<p>The secret&rsquo;s key that contains the recipient user&rsquo;s user key.
 The secret needs to be in the same namespace as the AlertmanagerConfig
 object and accessible by the Prometheus Operator.</p>
 </td>
@@ -13704,7 +13911,7 @@ Kubernetes core/v1.SecretKeySelector
 </em>
 </td>
 <td>
-<p>The secret&rsquo;s key that contains the registered application’s API token, see <a href="https://pushover.net/apps">https://pushover.net/apps</a>.
+<p>The secret&rsquo;s key that contains the registered application&rsquo;s API token, see <a href="https://pushover.net/apps">https://pushover.net/apps</a>.
 The secret needs to be in the same namespace as the AlertmanagerConfig
 object and accessible by the Prometheus Operator.</p>
 </td>
@@ -14090,7 +14297,7 @@ Example: &ldquo;4h&rdquo;</p>
 </td>
 <td>
 <em>(Optional)</em>
-<p>List of matchers that the alert’s labels should match. For the first
+<p>List of matchers that the alert&rsquo;s labels should match. For the first
 level route, the operator removes any existing equality and regexp
 matcher on the <code>namespace</code> label and adds a <code>namespace: &lt;object
 namespace&gt;</code> matcher.</p>
@@ -15549,7 +15756,7 @@ Route
 </td>
 <td>
 <em>(Optional)</em>
-<p>The Alertmanager route definition for alerts matching the resource’s
+<p>The Alertmanager route definition for alerts matching the resource&rsquo;s
 namespace. If present, it will be added to the generated Alertmanager
 configuration as a first-level route.</p>
 </td>
@@ -15580,7 +15787,7 @@ configuration as a first-level route.</p>
 <td>
 <em>(Optional)</em>
 <p>List of inhibition rules. The rules will only apply to alerts matching
-the resource’s namespace.</p>
+the resource&rsquo;s namespace.</p>
 </td>
 </tr>
 <tr>
@@ -15631,7 +15838,7 @@ Route
 </td>
 <td>
 <em>(Optional)</em>
-<p>The Alertmanager route definition for alerts matching the resource’s
+<p>The Alertmanager route definition for alerts matching the resource&rsquo;s
 namespace. If present, it will be added to the generated Alertmanager
 configuration as a first-level route.</p>
 </td>
@@ -15662,7 +15869,7 @@ configuration as a first-level route.</p>
 <td>
 <em>(Optional)</em>
 <p>List of inhibition rules. The rules will only apply to alerts matching
-the resource’s namespace.</p>
+the resource&rsquo;s namespace.</p>
 </td>
 </tr>
 <tr>
@@ -16065,7 +16272,7 @@ See <a href="https://prometheus.io/docs/alerting/latest/configuration/#inhibit_r
 </td>
 <td>
 <p>Matchers that have to be fulfilled in the alerts to be muted. The
-operator enforces that the alert matches the resource’s namespace.</p>
+operator enforces that the alert matches the resource&rsquo;s namespace.</p>
 </td>
 </tr>
 <tr>
@@ -16080,7 +16287,7 @@ operator enforces that the alert matches the resource’s namespace.</p>
 <td>
 <p>Matchers for which one or more alerts have to exist for the inhibition
 to take effect. The operator enforces that the alert matches the
-resource’s namespace.</p>
+resource&rsquo;s namespace.</p>
 </td>
 </tr>
 <tr>
@@ -16918,7 +17125,7 @@ SecretKeySelector
 </em>
 </td>
 <td>
-<p>The secret&rsquo;s key that contains the recipient user’s user key.
+<p>The secret&rsquo;s key that contains the recipient user&rsquo;s user key.
 The secret needs to be in the same namespace as the AlertmanagerConfig
 object and accessible by the Prometheus Operator.</p>
 </td>
@@ -16933,7 +17140,7 @@ SecretKeySelector
 </em>
 </td>
 <td>
-<p>The secret&rsquo;s key that contains the registered application’s API token, see <a href="https://pushover.net/apps">https://pushover.net/apps</a>.
+<p>The secret&rsquo;s key that contains the registered application&rsquo;s API token, see <a href="https://pushover.net/apps">https://pushover.net/apps</a>.
 The secret needs to be in the same namespace as the AlertmanagerConfig
 object and accessible by the Prometheus Operator.</p>
 </td>
@@ -17319,7 +17526,7 @@ Example: &ldquo;4h&rdquo;</p>
 </td>
 <td>
 <em>(Optional)</em>
-<p>List of matchers that the alert’s labels should match. For the first
+<p>List of matchers that the alert&rsquo;s labels should match. For the first
 level route, the operator removes any existing equality and regexp
 matcher on the <code>namespace</code> label and adds a <code>namespace: &lt;object
 namespace&gt;</code> matcher.</p>

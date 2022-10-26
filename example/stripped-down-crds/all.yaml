@@ -2575,6 +2575,10 @@ spec:
     - jsonPath: .metadata.creationTimestamp
       name: Age
       type: date
+    - jsonPath: .status.paused
+      name: Paused
+      priority: 1
+      type: boolean
     name: v1
     schema:
       openAPIV3Schema:
@@ -3208,6 +3212,35 @@ spec:
                   name:
                     minLength: 1
                     type: string
+                  templates:
+                    items:
+                      properties:
+                        configMap:
+                          properties:
+                            key:
+                              type: string
+                            name:
+                              type: string
+                            optional:
+                              type: boolean
+                          required:
+                          - key
+                          type: object
+                          x-kubernetes-map-type: atomic
+                        secret:
+                          properties:
+                            key:
+                              type: string
+                            name:
+                              type: string
+                            optional:
+                              type: boolean
+                          required:
+                          - key
+                          type: object
+                          x-kubernetes-map-type: atomic
+                      type: object
+                    type: array
                 type: object
               baseImage:
                 type: string
@@ -5899,6 +5932,8 @@ spec:
                       x-kubernetes-map-type: atomic
                     enableHttp2:
                       type: boolean
+                    filterRunning:
+                      type: boolean
                     followRedirects:
                       type: boolean
                     honorLabels:
@@ -6656,11 +6691,24 @@ spec:
       name: Version
       type: string
     - jsonPath: .spec.replicas
-      name: Replicas
+      name: Desired
       type: integer
+    - jsonPath: .status.availableReplicas
+      name: Ready
+      type: integer
+    - jsonPath: .status.conditions[?(@.type == 'Reconciled')].status
+      name: Reconciled
+      type: string
+    - jsonPath: .status.conditions[?(@.type == 'Available')].status
+      name: Available
+      type: string
     - jsonPath: .metadata.creationTimestamp
       name: Age
       type: date
+    - jsonPath: .status.paused
+      name: Paused
+      priority: 1
+      type: boolean
     name: v1
     schema:
       openAPIV3Schema:
@@ -8046,6 +8094,8 @@ spec:
                 x-kubernetes-list-map-keys:
                 - ip
                 x-kubernetes-list-type: map
+              hostNetwork:
+                type: boolean
               ignoreNamespaceSelectors:
                 type: boolean
               image:
@@ -9847,6 +9897,8 @@ spec:
                     type: array
                   baseImage:
                     type: string
+                  grpcListenLocal:
+                    type: boolean
                   grpcServerTlsConfig:
                     properties:
                       ca:
@@ -9926,6 +9978,8 @@ spec:
                       serverName:
                         type: string
                     type: object
+                  httpListenLocal:
+                    type: boolean
                   image:
                     type: string
                   listenLocal:
@@ -10091,6 +10145,12 @@ spec:
                   - whenUnsatisfiable
                   type: object
                 type: array
+              tsdb:
+                properties:
+                  outOfOrderTimeWindow:
+                    pattern: ^(0|(([0-9]+)y)?(([0-9]+)w)?(([0-9]+)d)?(([0-9]+)h)?(([0-9]+)m)?(([0-9]+)s)?(([0-9]+)ms)?)$
+                    type: string
+                type: object
               version:
                 type: string
               volumeMounts:
@@ -10945,6 +11005,9 @@ spec:
                       type: string
                     message:
                       type: string
+                    observedGeneration:
+                      format: int64
+                      type: integer
                     reason:
                       type: string
                     status:
@@ -11532,6 +11595,10 @@ spec:
     - jsonPath: .metadata.creationTimestamp
       name: Age
       type: date
+    - jsonPath: .status.paused
+      name: Paused
+      priority: 1
+      type: boolean
     name: v1
     schema:
       openAPIV3Schema:

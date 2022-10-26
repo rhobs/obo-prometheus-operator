@@ -227,7 +227,7 @@ func (cg *ConfigGenerator) EndpointSliceSupported() bool {
 
 func stringMapToMapSlice(m map[string]string) yaml.MapSlice {
 	res := yaml.MapSlice{}
-	ks := make([]string, 0)
+	ks := make([]string, 0, len(m))
 
 	for k := range m {
 		ks = append(ks, k)
@@ -626,7 +626,22 @@ func (cg *ConfigGenerator) Generate(
 		cfg = append(cfg, cg.generateRemoteReadConfig(p, store))
 	}
 
+	cfg = cg.appendTSDBConfig(cfg, p.Spec.TSDB)
+
 	return yaml.Marshal(cfg)
+}
+
+func (cg *ConfigGenerator) appendTSDBConfig(cfg yaml.MapSlice, tsdb v1.TSDBSpec) yaml.MapSlice {
+	if tsdb.OutOfOrderTimeWindow == "" {
+		return cfg
+	}
+
+	return cg.WithMinimumVersion("2.39.0").AppendMapItem(cfg, "tsdb", yaml.MapSlice{
+		{
+			Key:   "out_of_order_time_window",
+			Value: tsdb.OutOfOrderTimeWindow,
+		},
+	})
 }
 
 func (cg *ConfigGenerator) appendStorageSettingsConfig(cfg yaml.MapSlice, p *v1.Prometheus) (yaml.MapSlice, error) {
@@ -783,6 +798,14 @@ func (cg *ConfigGenerator) generatePodMonitorConfig(
 	cfg = cg.addSafeAuthorizationToYaml(cfg, fmt.Sprintf("podMonitor/auth/%s/%s/%d", m.Namespace, m.Name, i), store, ep.Authorization)
 
 	relabelings := initRelabelings()
+
+	if ep.FilterRunning == nil || *ep.FilterRunning {
+		relabelings = append(relabelings, yaml.MapSlice{
+			{Key: "action", Value: "drop"},
+			{Key: "source_labels", Value: []string{"__meta_kubernetes_pod_phase"}},
+			{Key: "regex", Value: "(Failed|Succeeded)"},
+		})
+	}
 
 	var labelKeys []string
 	// Filter targets by pods selected by the monitor.

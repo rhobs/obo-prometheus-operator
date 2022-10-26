@@ -17,10 +17,14 @@ package e2e
 import (
 	"context"
 	"flag"
+	"fmt"
+	"io"
 	"log"
 	"os"
+	"strings"
 	"testing"
 
+	"github.com/blang/semver/v4"
 	operatorFramework "github.com/rhobs/obo-prometheus-operator/test/framework"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -28,8 +32,9 @@ import (
 )
 
 var (
-	framework *operatorFramework.Framework
-	opImage   *string
+	previousVersionFramework *operatorFramework.Framework
+	framework                *operatorFramework.Framework
+	opImage                  *string
 )
 
 func skipPrometheusAllNSTests(t *testing.T) {
@@ -53,6 +58,12 @@ func skipAlertmanagerTests(t *testing.T) {
 func skipThanosRulerTests(t *testing.T) {
 	if os.Getenv("EXCLUDE_THANOSRULER_TESTS") != "" {
 		t.Skip("Skipping ThanosRuler tests")
+	}
+}
+
+func skipOperatorUpgradeTests(t *testing.T) {
+	if os.Getenv("EXCLUDE_OPERATOR_UPGRADE_TESTS") != "" {
+		t.Skip("Skipping Operator upgrade tests")
 	}
 }
 
@@ -81,8 +92,60 @@ func TestMain(m *testing.M) {
 		exitCode int
 	)
 
-	if framework, err = operatorFramework.New(*kubeconfig, *opImage); err != nil {
-		log.Printf("failed to setup framework: %v\n", err)
+	logger := log.New(os.Stdout, "", log.Lshortfile)
+
+	currentVersion, err := os.ReadFile("../../VERSION")
+	if err != nil {
+		logger.Printf("failed to read version file: %v\n", err)
+		os.Exit(1)
+	}
+	currentSemVer, err := semver.ParseTolerant(string(currentVersion))
+	if err != nil {
+		logger.Printf("failed to parse current version: %v\n", err)
+		os.Exit(1)
+	}
+
+	prevStableVersionURL := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.59.2-rhobs1/VERSION"
+	reader, err := operatorFramework.URLToIOReader(prevStableVersionURL)
+	if err != nil {
+		logger.Printf("failed to get previous version file content: %v\n", err)
+		os.Exit(1)
+	}
+
+	prevStableVersion, err := io.ReadAll(reader)
+	if err != nil {
+		logger.Printf("failed to read previous stable version: %v\n", err)
+		os.Exit(1)
+	}
+
+	// prometheusOperatorGithubBranchURL := "https://raw.githubusercontent.com/prometheus-operator/prometheus-operator"
+
+	prevSemVer, err := semver.ParseTolerant(string(prevStableVersion))
+	if err != nil {
+		logger.Printf("failed to parse previous stable version: %v\n", err)
+		os.Exit(1)
+	}
+	prevStableOpImage := fmt.Sprintf("%s:v%s", "quay.io/rhobs/obo-prometheus-operator", strings.TrimSpace(string(prevStableVersion)))
+	prevExampleDir := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.59.2-rhobs1/example"
+	prevResourcesDir := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.59.2-rhobs1/test/framework/resources"
+
+	if previousVersionFramework, err = operatorFramework.New(*kubeconfig, prevStableOpImage, prevExampleDir, prevResourcesDir, prevSemVer); err != nil {
+		logger.Printf("failed to setup previous version framework: %v\n", err)
+		os.Exit(1)
+	}
+
+	exampleDir := "../../example"
+	resourcesDir := "../framework/resources"
+
+	nextSemVer, err := semver.ParseTolerant(fmt.Sprintf("0.%d.0", currentSemVer.Minor))
+	if err != nil {
+		logger.Printf("failed to parse next version: %v\n", err)
+		os.Exit(1)
+	}
+
+	// init with next minor version since we are developing toward it.
+	if framework, err = operatorFramework.New(*kubeconfig, *opImage, exampleDir, resourcesDir, nextSemVer); err != nil {
+		logger.Printf("failed to setup framework: %v\n", err)
 		os.Exit(1)
 	}
 
@@ -99,7 +162,7 @@ func TestAllNS(t *testing.T) {
 
 	ns := framework.CreateNamespace(context.Background(), t, testCtx)
 
-	finalizers, err := framework.CreatePrometheusOperator(context.Background(), ns, *opImage, nil, nil, nil, nil, true, true)
+	finalizers, err := framework.CreateOrUpdatePrometheusOperator(context.Background(), ns, nil, nil, nil, nil, true, true)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -223,6 +286,7 @@ func testAllNSPrometheus(t *testing.T) {
 		"PromQueryLogFile":                       testPromQueryLogFile,
 		"PromDegradedCondition":                  testPromDegradedConditionStatus,
 		"PromStrategicMergePatch":                testPromStrategicMergePatch,
+		"RelabelConfigCRDValidation":             testRelabelConfigCRDValidation,
 	}
 
 	for name, f := range testFuncs {
@@ -292,6 +356,18 @@ func TestAlertmanagerInstanceNs(t *testing.T) {
 		"AllNs":     testAlertmanagerInstanceNamespacesAllNs,
 		"AllowList": testAlertmanagerInstanceNamespacesAllowList,
 		"DenyNs":    testAlertmanagerInstanceNamespacesDenyNs,
+	}
+
+	for name, f := range testFuncs {
+		t.Run(name, f)
+	}
+}
+
+// TestOperatorUpgrade tests the prometheus upgrade from previous stable minor version to current version
+func TestOperatorUpgrade(t *testing.T) {
+	skipOperatorUpgradeTests(t)
+	testFuncs := map[string]func(t *testing.T){
+		"OperatorUpgrade": testOperatorUpgrade,
 	}
 
 	for name, f := range testFuncs {

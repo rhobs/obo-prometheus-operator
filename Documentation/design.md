@@ -45,7 +45,7 @@ The `ThanosRuler` custom resource definition (CRD) declaratively defines a desir
 
 A `ThanosRuler` instance requires at least one query endpoint which points to the location of Thanos Queriers or Prometheus instances.
 
-Further information can also be found in the [Thanos section](thanos.md).
+Further information can also be found in the [Thanos section]({{< ref "thanos.md" >}}).
 
 ## ServiceMonitor
 
@@ -139,22 +139,9 @@ spec:
     groupWait: 30s
     groupInterval: 5m
     repeatInterval: 12h
-    receiver: 'wechat-example'
+    receiver: 'webhook'
   receivers:
-  - name: 'wechat-example'
-    wechatConfigs:
-    - apiURL: 'http://wechatserver:8080/'
-      corpID: 'wechat-corpid'
-      apiSecret:
-        name: 'wechat-config'
-        key: 'apiSecret'
-
----
-apiVersion: v1
-kind: Secret
-type: Opaque
-metadata:
-  name: wechat-config
-data:
-  apiSecret: d2VjaGF0LXNlY3JldAo=
+  - name: 'webhook'
+    webhookConfigs:
+    - api: 'http://example.com/'
 ```

@@ -18,6 +18,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"path"
 	"reflect"
 	"regexp"
 	"strings"
@@ -978,6 +979,16 @@ func (c *Operator) provisionAlertmanagerConfiguration(ctx context.Context, am *m
 		if err != nil {
 			return errors.Wrap(err, "failed to initialize from global AlertmangerConfig")
 		}
+
+		// set templates
+		for _, v := range am.Spec.AlertmanagerConfiguration.Templates {
+			if v.ConfigMap != nil {
+				cfgBuilder.cfg.Templates = append(cfgBuilder.cfg.Templates, path.Join(alertmanagerNotificationTemplatesDir, v.ConfigMap.Key))
+			}
+			if v.Secret != nil {
+				cfgBuilder.cfg.Templates = append(cfgBuilder.cfg.Templates, path.Join(alertmanagerNotificationTemplatesDir, v.Secret.Key))
+			}
+		}
 	} else {
 		// Load the base configuration from the referenced secret.
 		var (
@@ -1707,7 +1718,7 @@ func (c *Operator) createOrUpdateWebConfigSecret(ctx context.Context, a *monitor
 	return nil
 }
 
-//checkAlertmanagerSpecDeprecation checks for deprecated fields in the prometheus spec and logs a warning if applicable
+// checkAlertmanagerSpecDeprecation checks for deprecated fields in the prometheus spec and logs a warning if applicable
 func checkAlertmanagerSpecDeprecation(key string, a *monitoringv1.Alertmanager, logger log.Logger) {
 	deprecationWarningf := "alertmanager key=%v, field %v is deprecated, '%v' field should be used instead"
 	if a.Spec.BaseImage != "" {
