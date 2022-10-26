@@ -105,7 +105,7 @@ func TestMain(m *testing.M) {
 		os.Exit(1)
 	}
 
-	prevStableVersionURL := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.59.2-rhobs1/VERSION"
+	prevStableVersionURL := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.60.0-rhobs1/VERSION"
 	reader, err := operatorFramework.URLToIOReader(prevStableVersionURL)
 	if err != nil {
 		logger.Printf("failed to get previous version file content: %v\n", err)
@@ -126,8 +126,8 @@ func TestMain(m *testing.M) {
 		os.Exit(1)
 	}
 	prevStableOpImage := fmt.Sprintf("%s:v%s", "quay.io/rhobs/obo-prometheus-operator", strings.TrimSpace(string(prevStableVersion)))
-	prevExampleDir := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.59.2-rhobs1/example"
-	prevResourcesDir := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.59.2-rhobs1/test/framework/resources"
+	prevExampleDir := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.60.0-rhobs1/example"
+	prevResourcesDir := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.60.0-rhobs1/test/framework/resources"
 
 	if previousVersionFramework, err = operatorFramework.New(*kubeconfig, prevStableOpImage, prevExampleDir, prevResourcesDir, prevSemVer); err != nil {
 		logger.Printf("failed to setup previous version framework: %v\n", err)
