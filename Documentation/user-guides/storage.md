@@ -53,7 +53,7 @@ instead of making the following change to your `Prometheus` resource, see the
 example).
 
 ```yaml mdox-exec="cat example/storage/persisted-prometheus.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: persisted
@@ -89,7 +89,7 @@ For example, using an NFS volume might be accomplished with the following
 manifests:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: my-example-prometheus-name
@@ -169,7 +169,7 @@ First, update the storage request in the `spec.storage` field of the custom
 resource (assuming a Prometheus resource named `example`):
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: example

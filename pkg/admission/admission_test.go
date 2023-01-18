@@ -32,8 +32,8 @@ import (
 	v1 "k8s.io/api/admission/v1"
 	apiextensionsv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1beta1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1beta1"
 )
 
 func TestMutateRule(t *testing.T) {
@@ -786,12 +786,12 @@ var goodRulesWithAnnotations = []byte(`
   "request": {
     "uid": "87c5df7f-5090-11e9-b9b4-02425473f309",
     "kind": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "kind": "PrometheusRule"
     },
     "resource": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "resource": "prometheusrules"
     },
@@ -805,11 +805,11 @@ var goodRulesWithAnnotations = []byte(`
       ]
     },
     "object": {
-      "apiVersion": "monitoring.coreos.com/v1",
+      "apiVersion": "monitoring.rhobs/v1",
       "kind": "PrometheusRule",
       "metadata": {
         "annotations": {
-          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"monitoring.coreos.com/v1\",\"kind\":\"PrometheusRule\",\"metadata\":{\"annotations\":{},\"name\":\"test\",\"namespace\":\"monitoring\"},\"spec\":{\"groups\":[{\"name\":\"test.rules\",\"rules\":[{\"alert\":\"Test\",\"annotations\":{\"message\":\"Test rule\"},\"expr\":\"vector(1))\",\"for\":\"5m\",\"labels\":{\"severity\":\"critical\"}}]}]}}\n"
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"monitoring.rhobs/v1\",\"kind\":\"PrometheusRule\",\"metadata\":{\"annotations\":{},\"name\":\"test\",\"namespace\":\"monitoring\"},\"spec\":{\"groups\":[{\"name\":\"test.rules\",\"rules\":[{\"alert\":\"Test\",\"annotations\":{\"message\":\"Test rule\"},\"expr\":\"vector(1))\",\"for\":\"5m\",\"labels\":{\"severity\":\"critical\"}}]}]}}\n"
         },
         "creationTimestamp": "2019-03-27T13:02:09Z",
         "generation": 1,
@@ -853,12 +853,12 @@ var goodRulesWithExternalLabelsInAnnotations = []byte(`
   "request": {
     "uid": "87c5df7f-5090-11e9-b9b4-02425473f309",
     "kind": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "kind": "PrometheusRule"
     },
     "resource": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "resource": "prometheusrules"
     },
@@ -872,11 +872,11 @@ var goodRulesWithExternalLabelsInAnnotations = []byte(`
       ]
     },
     "object": {
-      "apiVersion": "monitoring.coreos.com/v1",
+      "apiVersion": "monitoring.rhobs/v1",
       "kind": "PrometheusRule",
       "metadata": {
         "annotations": {
-          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"monitoring.coreos.com/v1\",\"kind\":\"PrometheusRule\",\"metadata\":{\"annotations\":{},\"name\":\"test\",\"namespace\":\"monitoring\"},\"spec\":{\"groups\":[{\"name\":\"test.rules\",\"rules\":[{\"alert\":\"Test\",\"annotations\":{\"message\":\"Test rule\"},\"expr\":\"vector(1))\",\"for\":\"5m\",\"labels\":{\"severity\":\"critical\"}}]}]}}\n"
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"monitoring.rhobs/v1\",\"kind\":\"PrometheusRule\",\"metadata\":{\"annotations\":{},\"name\":\"test\",\"namespace\":\"monitoring\"},\"spec\":{\"groups\":[{\"name\":\"test.rules\",\"rules\":[{\"alert\":\"Test\",\"annotations\":{\"message\":\"Test rule\"},\"expr\":\"vector(1))\",\"for\":\"5m\",\"labels\":{\"severity\":\"critical\"}}]}]}}\n"
         },
         "creationTimestamp": "2019-03-27T13:02:09Z",
         "generation": 1,
@@ -918,12 +918,12 @@ var badRulesNoAnnotations = []byte(`
   "request": {
     "uid": "87c5df7f-5090-11e9-b9b4-02425473f309",
     "kind": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "kind": "PrometheusRule"
     },
     "resource": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "resource": "prometheusrules"
     },
@@ -937,7 +937,7 @@ var badRulesNoAnnotations = []byte(`
       ]
     },
     "object": {
-      "apiVersion": "monitoring.coreos.com/v1",
+      "apiVersion": "monitoring.rhobs/v1",
       "kind": "PrometheusRule",
       "metadata": {
         "creationTimestamp": "2019-03-27T13:02:09Z",
@@ -981,12 +981,12 @@ var badRulesWithBooleanInAnnotations = []byte(`
   "request": {
     "uid": "87c5df7f-5090-11e9-b9b4-02425473f309",
     "kind": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "kind": "PrometheusRule"
     },
     "resource": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "resource": "prometheusrules"
     },
@@ -1000,11 +1000,11 @@ var badRulesWithBooleanInAnnotations = []byte(`
       ]
     },
     "object": {
-      "apiVersion": "monitoring.coreos.com/v1",
+      "apiVersion": "monitoring.rhobs/v1",
       "kind": "PrometheusRule",
       "metadata": {
         "annotations": {
-          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"monitoring.coreos.com/v1\",\"kind\":\"PrometheusRule\",\"metadata\":{\"annotations\":{},\"name\":\"test\",\"namespace\":\"monitoring\"},\"spec\":{\"groups\":[{\"name\":\"test.rules\",\"rules\":[{\"alert\":\"Test\",\"annotations\":{\"message\":\"Test rule\"},\"expr\":\"vector(1))\",\"for\":\"5m\",\"labels\":{\"severity\":\"critical\"}}]}]}}\n"
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"monitoring.rhobs/v1\",\"kind\":\"PrometheusRule\",\"metadata\":{\"annotations\":{},\"name\":\"test\",\"namespace\":\"monitoring\"},\"spec\":{\"groups\":[{\"name\":\"test.rules\",\"rules\":[{\"alert\":\"Test\",\"annotations\":{\"message\":\"Test rule\"},\"expr\":\"vector(1))\",\"for\":\"5m\",\"labels\":{\"severity\":\"critical\"}}]}]}}\n"
         },
         "creationTimestamp": "2019-03-27T13:02:09Z",
         "generation": 1,
@@ -1048,12 +1048,12 @@ var nonStringsInLabelsAnnotations = []byte(`
   "request": {
     "uid": "87c5df7f-5090-11e9-b9b4-02425473f309",
     "kind": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "kind": "PrometheusRule"
     },
     "resource": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "resource": "prometheusrules"
     },
@@ -1067,11 +1067,11 @@ var nonStringsInLabelsAnnotations = []byte(`
       ]
     },
     "object": {
-      "apiVersion": "monitoring.coreos.com/v1",
+      "apiVersion": "monitoring.rhobs/v1",
       "kind": "PrometheusRule",
       "metadata": {
         "annotations": {
-          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"monitoring.coreos.com/v1\",\"kind\":\"PrometheusRule\",\"metadata\":{\"annotations\":{},\"name\":\"test\",\"namespace\":\"monitoring\"},\"spec\":{\"groups\":[{\"name\":\"test.rules\",\"rules\":[{\"alert\":\"Test\",\"annotations\":{\"message\":\"Test rule\"},\"expr\":\"vector(1))\",\"for\":\"5m\",\"labels\":{\"severity\":\"critical\"}}]}]}}\n"
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"monitoring.rhobs/v1\",\"kind\":\"PrometheusRule\",\"metadata\":{\"annotations\":{},\"name\":\"test\",\"namespace\":\"monitoring\"},\"spec\":{\"groups\":[{\"name\":\"test.rules\",\"rules\":[{\"alert\":\"Test\",\"annotations\":{\"message\":\"Test rule\"},\"expr\":\"vector(1))\",\"for\":\"5m\",\"labels\":{\"severity\":\"critical\"}}]}]}}\n"
         },
         "creationTimestamp": "2019-03-27T13:02:09Z",
         "generation": 1,
@@ -1128,7 +1128,7 @@ func buildAdmissionReviewFromAlertmanagerConfigSpec(t *testing.T, version, spec 
       "kind": "%s"
     },
     "resource": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "%s",
       "resource": "%s"
     },
@@ -1142,7 +1142,7 @@ func buildAdmissionReviewFromAlertmanagerConfigSpec(t *testing.T, version, spec 
       ]
     },
     "object": {
-      "apiVersion": "monitoring.coreos.com/%s",
+      "apiVersion": "monitoring.rhobs/%s",
       "kind": "%s",
       "metadata": {
         "creationTimestamp": "2019-03-27T13:02:09Z",
@@ -1177,9 +1177,9 @@ func buildConversionReviewFromAlertmanagerConfigSpec(t *testing.T, from, to, spe
   "apiVersion": "apiextensions.k8s.io/v1",
   "request": {
     "uid": "87c5df7f-5090-11e9-b9b4-02425473f309",
-    "desiredAPIVersion": "monitoring.coreos.com/%s",
+    "desiredAPIVersion": "monitoring.rhobs/%s",
     "objects": [{
-      "apiVersion": "monitoring.coreos.com/%s",
+      "apiVersion": "monitoring.rhobs/%s",
       "kind": "%s",
       "metadata": {
         "creationTimestamp": "2019-03-27T13:02:09Z",

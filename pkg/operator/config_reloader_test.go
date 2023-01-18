@@ -28,7 +28,7 @@ var reloaderConfig = ReloaderConfig{
 	CPULimit:      "100m",
 	MemoryRequest: "50Mi",
 	MemoryLimit:   "50Mi",
-	Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+	Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 }
 
 func TestCreateInitConfigReloader(t *testing.T) {

@@ -25,8 +25,8 @@ import (
 	v1 "k8s.io/api/core/v1"
 
 	"github.com/kylelemons/godebug/pretty"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
 	"github.com/stretchr/testify/require"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -39,7 +39,7 @@ const (
 var (
 	defaultTestConfig = Config{
 		ReloaderConfig: operator.ReloaderConfig{
-			Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+			Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 			CPURequest:    "100m",
 			CPULimit:      "100m",
 			MemoryRequest: "50Mi",
@@ -116,7 +116,7 @@ func TestPodLabelsAnnotations(t *testing.T) {
 func TestThanosDefaultBaseImageFlag(t *testing.T) {
 	thanosBaseImageConfig := Config{
 		ReloaderConfig: operator.ReloaderConfig{
-			Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+			Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 			CPURequest:    "100m",
 			CPULimit:      "100m",
 			MemoryRequest: "50Mi",
@@ -841,7 +841,7 @@ func TestSidecarsNoResources(t *testing.T) {
 			CPULimit:      "0",
 			MemoryRequest: "0",
 			MemoryLimit:   "0",
-			Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+			Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 		},
 		ThanosDefaultBaseImage: "quay.io/thanos/thanos:v0.7.0",
 	}
@@ -870,7 +870,7 @@ func TestSidecarsNoRequests(t *testing.T) {
 			CPULimit:      "100m",
 			MemoryRequest: "0",
 			MemoryLimit:   "50Mi",
-			Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+			Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 		},
 		ThanosDefaultBaseImage: "quay.io/thanos/thanos:v0.7.0",
 	}
@@ -902,7 +902,7 @@ func TestSidecarsNoLimits(t *testing.T) {
 			CPULimit:      "0",
 			MemoryRequest: "50Mi",
 			MemoryLimit:   "0",
-			Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+			Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 		},
 		ThanosDefaultBaseImage: "quay.io/thanos/thanos:v0.7.0",
 	}
@@ -934,7 +934,7 @@ func TestSidecarsNoCPUResources(t *testing.T) {
 			CPULimit:      "0",
 			MemoryRequest: "50Mi",
 			MemoryLimit:   "50Mi",
-			Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+			Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 		},
 		ThanosDefaultBaseImage: "quay.io/thanos/thanos:v0.7.0",
 	}
@@ -967,7 +967,7 @@ func TestSidecarsNoCPURequests(t *testing.T) {
 			CPULimit:      "100m",
 			MemoryRequest: "50Mi",
 			MemoryLimit:   "50Mi",
-			Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+			Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 		},
 		ThanosDefaultBaseImage: "quay.io/thanos/thanos:v0.7.0",
 	}
@@ -1001,7 +1001,7 @@ func TestSidecarsNoCPULimits(t *testing.T) {
 			CPULimit:      "0",
 			MemoryRequest: "50Mi",
 			MemoryLimit:   "50Mi",
-			Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+			Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 		},
 		ThanosDefaultBaseImage: "quay.io/thanos/thanos:v0.7.0",
 	}
@@ -1031,7 +1031,7 @@ func TestSidecarsNoCPULimits(t *testing.T) {
 func TestSidecarsNoMemoryResources(t *testing.T) {
 	testConfig := Config{
 		ReloaderConfig: operator.ReloaderConfig{
-			Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+			Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 			CPURequest:    "100m",
 			CPULimit:      "100m",
 			MemoryRequest: "0",
@@ -1064,7 +1064,7 @@ func TestSidecarsNoMemoryResources(t *testing.T) {
 func TestSidecarsNoMemoryRequests(t *testing.T) {
 	testConfig := Config{
 		ReloaderConfig: operator.ReloaderConfig{
-			Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+			Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 			CPURequest:    "100m",
 			CPULimit:      "100m",
 			MemoryRequest: "0",
@@ -1102,7 +1102,7 @@ func TestSidecarsNoMemoryLimits(t *testing.T) {
 			CPULimit:      "100m",
 			MemoryRequest: "50Mi",
 			MemoryLimit:   "0",
-			Image:         "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+			Image:         "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 		},
 		ThanosDefaultBaseImage: "quay.io/thanos/thanos:v0.7.0",
 	}

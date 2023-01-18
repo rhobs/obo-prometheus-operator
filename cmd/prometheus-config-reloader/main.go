@@ -26,8 +26,8 @@ import (
 	"strings"
 	"time"
 
-	logging "github.com/prometheus-operator/prometheus-operator/internal/log"
-	"github.com/prometheus-operator/prometheus-operator/pkg/versionutil"
+	logging "github.com/rhobs/obo-prometheus-operator/internal/log"
+	"github.com/rhobs/obo-prometheus-operator/pkg/versionutil"
 
 	"github.com/go-kit/log/level"
 	"github.com/oklog/run"
