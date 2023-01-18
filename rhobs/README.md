@@ -5,7 +5,9 @@ Operator with only the api-group changed to `monitoring.rhobs`
 
 ## Making a Release
 
-In this example we have the local git repo setup with 3 remotes
+In this example we have the local git repo setup with 3 remotes. Note that the 
+`make-release-commit.sh` script assumes the following remote names to be 
+present.
 
   1. `upstream` -> github.com/prometheus-operator/prometheus-operator
   2. `downstream` -> github.com/rhobs/obo-prometheus-operator
@@ -26,7 +28,9 @@ creating a release branch as follows
 
 ```
 git fetch upstream --tags
-git push downstream v0.60.0:refs/heads/rhobs-rel-0.60.0-rhobs1
+git checkout v0.60.0
+git checkout -b rhobs-rel-0.60.0-rhobs1
+git push downstream rhobs-rel-0.60.0-rhobs1
 ```
 
 ### Make Release Commit
@@ -55,9 +59,6 @@ validates if the newer version is upgradable from the `previous-version`
 
 ```
 ./rhobs/make-release-commit.sh --previous-version 0.59.2-rhobs1
-
-```
-./rhobs/rhobs/make-release-commit.sh
 git push -u origin HEAD
 
 ```
