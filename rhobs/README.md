@@ -28,9 +28,7 @@ creating a release branch as follows
 
 ```
 git fetch upstream --tags
-git checkout v0.60.0
-git checkout -b rhobs-rel-0.60.0-rhobs1
-git push downstream rhobs-rel-0.60.0-rhobs1
+git push downstream +v0.60.0^{commit}:refs/heads/rhobs-rel-0.60.0-rhobs1
 ```
 
 ### Make Release Commit
@@ -39,14 +37,14 @@ Start by creating a branch for release (`pr-for-release`) and reseting it to
 the upstream release version/tag.
 
 ```
-git co -b pr-for-release
+git checkout -b pr-for-release
 git reset --hard v0.60.0
 ```
 
 Merge the `rhobs-scripts` branch, squashing all its commits into one.
 
 ```
-git merge --squash --allow-unrelated-histories rhobs-scripts
+git merge --squash --allow-unrelated-histories downstream/rhobs-scripts
 git commit -m "git: merge rhobs-scripts"
 ```
 
@@ -60,8 +58,8 @@ validates if the newer version is upgradable from the `previous-version`
 ```
 ./rhobs/make-release-commit.sh --previous-version 0.59.2-rhobs1
 git push -u origin HEAD
-
 ```
+
 ### Create Pull Request
 Create pull request and ensure that the title says
 `chore(release): v0.60.0-rhobs`. This is important since the rhobs-release
