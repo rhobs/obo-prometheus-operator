@@ -17,12 +17,12 @@
 package applyconfiguration
 
 import (
-	v1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	v1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	v1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1beta1"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1alpha1"
-	monitoringv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1beta1"
+	v1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	v1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	v1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1beta1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1alpha1"
+	monitoringv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1beta1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 )
 
@@ -30,7 +30,7 @@ import (
 // apply configuration type exists for the given GroupVersionKind.
 func ForKind(kind schema.GroupVersionKind) interface{} {
 	switch kind {
-	// Group=monitoring.coreos.com, Version=v1
+	// Group=monitoring.rhobs, Version=v1
 	case v1.SchemeGroupVersion.WithKind("AlertingSpec"):
 		return &monitoringv1.AlertingSpecApplyConfiguration{}
 	case v1.SchemeGroupVersion.WithKind("Alertmanager"):
@@ -176,7 +176,7 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 	case v1.SchemeGroupVersion.WithKind("WebTLSConfig"):
 		return &monitoringv1.WebTLSConfigApplyConfiguration{}
 
-		// Group=monitoring.coreos.com, Version=v1alpha1
+		// Group=monitoring.rhobs, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithKind("AlertmanagerConfig"):
 		return &monitoringv1alpha1.AlertmanagerConfigApplyConfiguration{}
 	case v1alpha1.SchemeGroupVersion.WithKind("AlertmanagerConfigSpec"):
@@ -234,7 +234,7 @@ func ForKind(kind schema.GroupVersionKind) interface{} {
 	case v1alpha1.SchemeGroupVersion.WithKind("WeChatConfig"):
 		return &monitoringv1alpha1.WeChatConfigApplyConfiguration{}
 
-		// Group=monitoring.coreos.com, Version=v1beta1
+		// Group=monitoring.rhobs, Version=v1beta1
 	case v1beta1.SchemeGroupVersion.WithKind("AlertmanagerConfig"):
 		return &monitoringv1beta1.AlertmanagerConfigApplyConfiguration{}
 	case v1beta1.SchemeGroupVersion.WithKind("AlertmanagerConfigSpec"):

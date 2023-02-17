@@ -24,11 +24,11 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringclient "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	"github.com/prometheus-operator/prometheus-operator/pkg/prometheus"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringclient "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	"github.com/rhobs/obo-prometheus-operator/pkg/prometheus"
 )
 
 type API struct {
@@ -61,7 +61,7 @@ func New(conf operator.Config, l log.Logger) (*API, error) {
 }
 
 var (
-	prometheusRoute = regexp.MustCompile("/apis/monitoring.coreos.com/" + v1.Version + "/namespaces/(.*)/prometheuses/(.*)/status")
+	prometheusRoute = regexp.MustCompile("/apis/monitoring.rhobs/" + v1.Version + "/namespaces/(.*)/prometheuses/(.*)/status")
 )
 
 func (api *API) Register(mux *http.ServeMux) {

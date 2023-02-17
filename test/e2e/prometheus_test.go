@@ -46,11 +46,11 @@ import (
 	certutil "k8s.io/client-go/util/cert"
 	"k8s.io/utils/pointer"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/alertmanager"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	"github.com/prometheus-operator/prometheus-operator/pkg/prometheus"
-	testFramework "github.com/prometheus-operator/prometheus-operator/test/framework"
+	"github.com/rhobs/obo-prometheus-operator/pkg/alertmanager"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	"github.com/rhobs/obo-prometheus-operator/pkg/prometheus"
+	testFramework "github.com/rhobs/obo-prometheus-operator/test/framework"
 )
 
 var (
@@ -676,7 +676,7 @@ func testPromRemoteWriteWithTLS(t *testing.T) {
 			InsecureSkipVerify: false,
 			ShouldSuccess:      false,
 		},
-		// Had to change the success flag to True, because prometheus receiver is running in VerifyClientCertIfGiven mode. Details here - https://github.com/prometheus-operator/prometheus-operator/pull/4337#discussion_r735064646
+		// Had to change the success flag to True, because prometheus receiver is running in VerifyClientCertIfGiven mode. Details here - https://github.com/rhobs/obo-prometheus-operator/pull/4337#discussion_r735064646
 		{
 			Name: "variant-20",
 			ClientKey: testFramework.Key{
@@ -1450,7 +1450,7 @@ func testPromMultiplePrometheusRulesDifferentNS(t *testing.T) {
 
 	// Remove the selecting label from the namespaces holding PrometheusRules
 	// and wait until the rules are removed from Prometheus.
-	// See https://github.com/prometheus-operator/prometheus-operator/issues/3847
+	// See https://github.com/rhobs/obo-prometheus-operator/issues/3847
 	for _, file := range ruleFiles {
 		if err := framework.RemoveLabelsFromNamespace(context.Background(), file.ns, "monitored"); err != nil {
 			t.Fatal(err)
@@ -1628,7 +1628,7 @@ func testPromOnlyUpdatedOnRelevantChanges(t *testing.T) {
 
 	// Adding an annotation to Prometheus lead to high CPU usage in the past
 	// updating the Prometheus StatefulSet in a loop (See
-	// https://github.com/prometheus-operator/prometheus-operator/issues/1659). Added here to
+	// https://github.com/rhobs/obo-prometheus-operator/issues/1659). Added here to
 	// prevent a regression.
 	prometheus.Annotations["test-annotation"] = "test-value"
 
@@ -2861,7 +2861,7 @@ func testOperatorNSScope(t *testing.T) {
 }
 
 // testPromArbitraryFSAcc tests the
-// github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1.PrometheusSpec.ArbitraryFSAccessThroughSMs
+// github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1.PrometheusSpec.ArbitraryFSAccessThroughSMs
 // configuration with the service monitor bearer token and tls assets option.
 func testPromArbitraryFSAcc(t *testing.T) {
 	t.Parallel()
@@ -4090,7 +4090,7 @@ func testPromNamespaceEnforcementExclusion(t *testing.T) {
 			p.Spec.ExcludedFromEnforcement = []monitoringv1.ObjectReference{
 				{
 					Namespace: ns,
-					Group:     "monitoring.coreos.com",
+					Group:     "monitoring.rhobs",
 					Resource:  monitoringv1.ServiceMonitorName,
 				},
 			}
@@ -4662,7 +4662,7 @@ func testPromDegradedConditionStatus(t *testing.T) {
 			CommonPrometheusFields: monitoringv1.CommonPrometheusFields{
 				Containers: []v1.Container{{
 					Name:  "bad-image",
-					Image: "quay.io/prometheus-operator/invalid-image",
+					Image: "quay.io/rhobs/obo-invalid-image",
 				}},
 			},
 		},

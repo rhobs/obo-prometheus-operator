@@ -23,7 +23,7 @@ import (
 	api_errors "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
 )
 
 func testAlertmanagerInstanceNamespacesAllNs(t *testing.T) {
@@ -220,7 +220,7 @@ func testAlertmanagerInstanceNamespacesAllowList(t *testing.T) {
 	//
 	// Remove the selecting label on the "allowed" namespace and check that
 	// the alertmanager configuration is updated.
-	// See https://github.com/prometheus-operator/prometheus-operator/issues/3847
+	// See https://github.com/rhobs/obo-prometheus-operator/issues/3847
 	//if err := framework.RemoveLabelsFromNamespace(allowedNs, "monitored"); err != nil {
 	//	t.Fatal(err)
 	//}
