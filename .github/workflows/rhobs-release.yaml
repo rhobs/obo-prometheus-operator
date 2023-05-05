@@ -47,7 +47,7 @@ jobs:
 
           git tag -a "v${version}" -m "v${version}"
           git tag -a "pkg/apis/monitoring/v${version}" -m "v${version}"
-          git tag -a "pkg/client/monitoring/v${version}" -m "v${version}"
+          git tag -a "pkg/client/v${version}" -m "v${version}"
 
 
       - name: Build RHOBS images and push
@@ -65,3 +65,12 @@ jobs:
       - name: push git tags
         run: |
           git push --tags
+
+      - name: setup rhobs module import test
+        run: |
+          cd rhobs/test/import
+          go mod edit -dropreplace github.com/rhobs/obo-prometheus-operator
+          go mod edit -dropreplace github.com/rhobs/obo-prometheus-operator/pkg/client
+          go mod edit -dropreplace github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring
+          go mod tidy
+          go test ./...
