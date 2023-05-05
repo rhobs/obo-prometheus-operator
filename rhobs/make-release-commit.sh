@@ -104,7 +104,74 @@ change_api_group(){
   sed -e 's|monitoring\\.coreos\\.com|monitoring\\.rhobs|g' -i .mdox.validate.yaml
 
   ok "Changed api group to monitoring.rhobs"
+
+  change_go_mod || {
+	return 1
+  }
 }
+
+# fix version of downstream imports in go.mod files
+# e.g. replace
+#  require (
+#      github.com/rhobs/obo-prometheus-operator v0.64.0
+#      github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.64.0
+#      github.com/rhobs/obo-prometheus-operator/pkg/client v0.64.0
+#  )
+# with
+#  require (
+#      github.com/rhobs/obo-prometheus-operator v0.64.0-rhobs1
+#      github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.64.0-rhobs1
+#      github.com/rhobs/obo-prometheus-operator/pkg/client v0.64.0-rhobs1
+#  )
+change_go_mod(){
+
+  # NOTE: VERSION file is being read after bumpup_version, so this contains updated version
+  local rhobs_version
+  rhobs_version="v$(head -n1 VERSION)"
+
+  header "Updating go.mod files to require obo-prometheus-operator version $rhobs_version"
+
+  # remove trailing rhobs
+  local upstream_version="${rhobs_version//-rhobs*}"
+
+  # NOTE: this step is run after running change_api_group()
+  # fix import paths
+  find \( -path "./.git" \
+          -o -path "./Documentation" \
+          -o -path "./rhobs" \) -prune -o \
+    -type f -name go.mod -exec \
+    sed -i  \
+      -e "s|github.com/rhobs/obo-prometheus-operator ${upstream_version}$|github.com/rhobs/obo-prometheus-operator ${rhobs_version}|g" \
+      -e "s|github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring ${upstream_version}$|github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring ${rhobs_version}|g" \
+      -e "s|github.com/rhobs/obo-prometheus-operator/pkg/client ${upstream_version}$|github.com/rhobs/obo-prometheus-operator/pkg/client ${rhobs_version}|g" \
+  {} \;
+
+  # tidy up
+  local failed=false
+  find \( -path "./.git" \
+          -o -path "./Documentation" \
+          -o -path "./rhobs" \) -prune -o \
+    -type f -name go.mod -execdir go mod tidy \; || {
+	warn "go mod tidy failed"
+    failed=true
+  }
+
+  if $failed; then
+    return 1
+  fi
+
+  # update import test case go.mod
+  (
+    cd rhobs/test/import
+    go mod edit -require github.com/rhobs/obo-prometheus-operator@"${rhobs_version}"
+    go mod edit -require github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring@"${rhobs_version}"
+  )
+
+  ok "go.mod files updated"
+
+  return 0
+}
+
 
 change_container_image_repo(){
   local to_repo="$1"; shift
@@ -349,7 +416,9 @@ main() {
   bumpup_version
 
   change_po_gh_urls
-  change_api_group
+  change_api_group || {
+    die "Please fix failures ☝️ (indicated by ⚠️ ) and run the script again "
+  }
   change_container_image_repo 'quay.io/rhobs/obo-'
   make_required_targets
   generate_stripped_down_crds
