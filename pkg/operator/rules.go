@@ -25,10 +25,10 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	"sigs.k8s.io/yaml"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/informers"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
-	namespacelabeler "github.com/prometheus-operator/prometheus-operator/pkg/namespacelabeler"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/informers"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
+	namespacelabeler "github.com/rhobs/obo-prometheus-operator/pkg/namespacelabeler"
 	thanostypes "github.com/thanos-io/thanos/pkg/store/storepb"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )

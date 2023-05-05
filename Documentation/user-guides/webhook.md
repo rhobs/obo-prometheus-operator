@@ -86,7 +86,7 @@ kind: ServiceAccount
 metadata:
   labels:
     app.kubernetes.io/name: prometheus-operator-admission-webhook
-    app.kubernetes.io/version: 0.64.1
+    app.kubernetes.io/version: 0.64.1-rhobs2
   name: prometheus-operator-admission-webhook
   namespace: default
 ```
@@ -97,7 +97,7 @@ kind: Deployment
 metadata:
   labels:
     app.kubernetes.io/name: prometheus-operator-admission-webhook
-    app.kubernetes.io/version: 0.64.1
+    app.kubernetes.io/version: 0.64.1-rhobs2
   name: prometheus-operator-admission-webhook
   namespace: default
 spec:
@@ -114,7 +114,7 @@ spec:
         kubectl.kubernetes.io/default-container: prometheus-operator-admission-webhook
       labels:
         app.kubernetes.io/name: prometheus-operator-admission-webhook
-        app.kubernetes.io/version: 0.64.1
+        app.kubernetes.io/version: 0.64.1-rhobs2
     spec:
       affinity:
         podAntiAffinity:
@@ -131,7 +131,7 @@ spec:
         - --web.enable-tls=true
         - --web.cert-file=/etc/tls/private/tls.crt
         - --web.key-file=/etc/tls/private/tls.key
-        image: quay.io/prometheus-operator/admission-webhook:v0.64.1
+        image: quay.io/rhobs/obo-admission-webhook:v0.64.1-rhobs2
         name: prometheus-operator-admission-webhook
         ports:
         - containerPort: 8443
@@ -177,7 +177,7 @@ kind: Service
 metadata:
   labels:
     app.kubernetes.io/name: prometheus-operator-admission-webhook
-    app.kubernetes.io/version: 0.64.1
+    app.kubernetes.io/version: 0.64.1-rhobs2
   name: prometheus-operator-admission-webhook
   namespace: default
 spec:
@@ -224,11 +224,11 @@ webhooks:
         namespace: default
         path: /admission-prometheusrules/validate
     failurePolicy: Fail
-    name: prometheusrulevalidate.monitoring.coreos.com
+    name: prometheusrulevalidate.monitoring.rhobs
     namespaceSelector: {}
     rules:
       - apiGroups:
-          - monitoring.coreos.com
+          - monitoring.rhobs
         apiVersions:
           - '*'
         operations:
@@ -264,11 +264,11 @@ webhooks:
         namespace: default
         path: /admission-prometheusrules/mutate
     failurePolicy: Fail
-    name: prometheusrulemutate.monitoring.coreos.com
+    name: prometheusrulemutate.monitoring.rhobs
     namespaceSelector: {}
     rules:
       - apiGroups:
-          - monitoring.coreos.com
+          - monitoring.rhobs
         apiVersions:
           - '*'
         operations:
@@ -304,11 +304,11 @@ webhooks:
         namespace: default
         path: /admission-alertmanagerconfigs/validate
     failurePolicy: Fail
-    name: alertmanagerconfigsvalidate.monitoring.coreos.com
+    name: alertmanagerconfigsvalidate.monitoring.rhobs
     namespaceSelector: {}
     rules:
       - apiGroups:
-          - monitoring.coreos.com
+          - monitoring.rhobs
         apiVersions:
           - v1alpha1
         operations:
@@ -329,10 +329,10 @@ For more details, refer to the [Kubernetes
 documentation](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/#webhook-conversion).
 
 The following command patches the
-`alertmanagerconfigs.monitoring.coreos.com` CRD to enable the conversion.
+`alertmanagerconfigs.monitoring.rhobs` CRD to enable the conversion.
 
 ```bash
-cat <<EOF | kubectl patch crds/alertmanagerconfigs.monitoring.coreos.com --patch-file /dev/stdin
+cat <<EOF | kubectl patch crds/alertmanagerconfigs.monitoring.rhobs --patch-file /dev/stdin
 {
    "spec": {
       "conversion": {
@@ -360,7 +360,7 @@ EOF
 Annotate the AlertmanagerConfig CRD to let cert-manager inject the service CA bundle.
 
 ```bash
-kubectl annotate crds alertmanagerconfigs.monitoring.coreos.com cert-manager.io/inject-ca-from=default/prometheus-operator-admission-webhook
+kubectl annotate crds alertmanagerconfigs.monitoring.rhobs cert-manager.io/inject-ca-from=default/prometheus-operator-admission-webhook
 ```
 
 > Note: If you're not using cert-manager, check the [CA Bundle]({{< ref "#ca-bundle" >}}) section.

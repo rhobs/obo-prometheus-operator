@@ -10,7 +10,7 @@ recommend using it in production but we're eager to hear all possible feedback.
 
 To try it, follow the following steps:
 1. Install the new CRD in the cluster (see
-   `example/prometheus-operator-crd/monitoring.coreos.com_prometheusagents.yaml`).
+   `example/prometheus-operator-crd/monitoring.rhobs_prometheusagents.yaml`).
 2. Update the Prometheus operator's RBAC permissions to manage PrometheusAgents resources
    (see `example/rbac/prometheus-operator/prometheus-operator-cluster-role.yaml`).
 
@@ -428,7 +428,7 @@ and will be removed in v0.49.0. They are replaced respectively by the
 This release introduces a new `AlertmanagerConfig` CRD that allows to split the
 Alertmanager configuration in different objects. For now the CRD only supports
 the PagerDuty, OpsGenie and webhook receivers, [other
-integrations](https://github.com/prometheus-operator/prometheus-operator/issues?q=is%3Aissue+is%3Aopen+%22receiver+type%22)
+integrations](https://github.com/rhobs/obo-prometheus-operator/issues?q=is%3Aissue+is%3Aopen+%22receiver+type%22)
 will follow in future releases of the operator. The current version of the CRD
 is `v1alpha1` meaning that testing/feedback is encouraged and welcome but the
 feature is not yet considered stable and the API is subject to change in the

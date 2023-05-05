@@ -27,8 +27,8 @@ import (
 	"k8s.io/apimachinery/pkg/util/wait"
 
 	"github.com/pkg/errors"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/thanos"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/thanos"
 )
 
 func (f *Framework) MakeBasicThanosRuler(name string, replicas int32, queryEndpoint string) *monitoringv1.ThanosRuler {

@@ -21,8 +21,8 @@ import (
 	json "encoding/json"
 	"fmt"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	applyconfigurationmonitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	applyconfigurationmonitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -37,9 +37,9 @@ type FakeThanosRulers struct {
 	ns   string
 }
 
-var thanosrulersResource = schema.GroupVersionResource{Group: "monitoring.coreos.com", Version: "v1", Resource: "thanosrulers"}
+var thanosrulersResource = schema.GroupVersionResource{Group: "monitoring.rhobs", Version: "v1", Resource: "thanosrulers"}
 
-var thanosrulersKind = schema.GroupVersionKind{Group: "monitoring.coreos.com", Version: "v1", Kind: "ThanosRuler"}
+var thanosrulersKind = schema.GroupVersionKind{Group: "monitoring.rhobs", Version: "v1", Kind: "ThanosRuler"}
 
 // Get takes name of the thanosRuler, and returns the corresponding thanosRuler object, and an error if there is any.
 func (c *FakeThanosRulers) Get(ctx context.Context, name string, options v1.GetOptions) (result *monitoringv1.ThanosRuler, err error) {
