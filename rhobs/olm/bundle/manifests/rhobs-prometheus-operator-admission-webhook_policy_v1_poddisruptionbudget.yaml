@@ -1,0 +1,14 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  labels:
+    app.kubernetes.io/name: prometheus-operator-admission-webhook
+    app.kubernetes.io/part-of: rhobs-prometheus-operator
+    app.kubernetes.io/version: 0.64.1-rhobs3
+  name: rhobs-prometheus-operator-admission-webhook
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: prometheus-operator-admission-webhook
+      app.kubernetes.io/part-of: rhobs-prometheus-operator

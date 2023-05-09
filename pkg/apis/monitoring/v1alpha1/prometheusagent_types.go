@@ -15,7 +15,7 @@
 package v1alpha1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 )
@@ -40,7 +40,7 @@ func (l *PrometheusAgent) GetTypeMeta() metav1.TypeMeta {
 
 // +genclient
 // +k8s:openapi-gen=true
-// +kubebuilder:resource:categories="prometheus-operator",shortName="promagent"
+// +kubebuilder:resource:categories="rhobs-prometheus-operator"
 // +kubebuilder:printcolumn:name="Version",type="string",JSONPath=".spec.version",description="The version of Prometheus agent"
 // +kubebuilder:printcolumn:name="Desired",type="integer",JSONPath=".spec.replicas",description="The number of desired replicas"
 // +kubebuilder:printcolumn:name="Ready",type="integer",JSONPath=".status.availableReplicas",description="The number of ready replicas"

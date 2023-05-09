@@ -28,9 +28,9 @@ patches:
           spec:
             containers:
               - name: prometheus-operator
-                image: <IMG_PROMETHEUS_OPERATOR>
+                image: quay.io/rhobs/obo-prometheus-operator:v0.64.1-rhobs3
                 args:
-                  - --prometheus-config-reloader=<IMG_PROMETHEUS_CONFIG_RELOADER>
+                  - --prometheus-config-reloader=quay.io/rhobs/obo-prometheus-config-reloader:v0.64.1-rhobs3
                 resources:
                   requests:
                     cpu: 5m

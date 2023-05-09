@@ -32,11 +32,11 @@ import (
 	"k8s.io/client-go/kubernetes/fake"
 	"k8s.io/utils/pointer"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/assets"
-	monitoringfake "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/fake"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/assets"
+	monitoringfake "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/fake"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
 )
 
 func TestCreateStatefulSetInputHash(t *testing.T) {

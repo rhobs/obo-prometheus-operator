@@ -6,20 +6,17 @@
       "controller-gen.kubebuilder.io/version": "v0.11.1"
     },
     "creationTimestamp": null,
-    "name": "prometheuses.monitoring.coreos.com"
+    "name": "prometheuses.monitoring.rhobs"
   },
   "spec": {
-    "group": "monitoring.coreos.com",
+    "group": "monitoring.rhobs",
     "names": {
       "categories": [
-        "prometheus-operator"
+        "rhobs-prometheus-operator"
       ],
       "kind": "Prometheus",
       "listKind": "PrometheusList",
       "plural": "prometheuses",
-      "shortNames": [
-        "prom"
-      ],
       "singular": "prometheus"
     },
     "scope": "Namespaced",
@@ -2625,10 +2622,10 @@
                       "description": "ObjectReference references a PodMonitor, ServiceMonitor, Probe or PrometheusRule object.",
                       "properties": {
                         "group": {
-                          "default": "monitoring.coreos.com",
-                          "description": "Group of the referent. When not specified, it defaults to `monitoring.coreos.com`",
+                          "default": "monitoring.rhobs",
+                          "description": "Group of the referent. When not specified, it defaults to `monitoring.rhobs`",
                           "enum": [
-                            "monitoring.coreos.com"
+                            "monitoring.rhobs"
                           ],
                           "type": "string"
                         },
