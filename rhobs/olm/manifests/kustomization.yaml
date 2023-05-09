@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# bases:
+# - bases
+
+resources:
+- csv/rhobs-prometheus-operator.clusterserviceversion.yaml
+- crds
+- operator
+- admission-webhook
+- scorecard
+
+# TODO: add samples to the bundle
+# - ./samples
+
+namespace: operators
+
+images:
+- name: rhobs-prometheus-operator
+  newName: rhobs-prometheus-operator
+  newTag: 0.64.0
+labels:
+- includeSelectors: true
+  pairs:
+    app.kubernetes.io/part-of: rhobs-prometheus-operator
