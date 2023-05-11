@@ -3,9 +3,9 @@ module rhobs
 go 1.20
 
 require (
-	github.com/rhobs/obo-prometheus-operator v0.64.0-rhobs2
-	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.64.0-rhobs2
-	github.com/rhobs/obo-prometheus-operator/pkg/client v0.64.0-rhobs2
+	github.com/rhobs/obo-prometheus-operator v0.64.1-rhobs3
+	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.64.1-rhobs3
+	github.com/rhobs/obo-prometheus-operator/pkg/client v0.64.1-rhobs3
 )
 
 require (
@@ -108,8 +108,9 @@ require (
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
-replace (
-	github.com/rhobs/obo-prometheus-operator => ../../..
-	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring => ../../../pkg/apis/monitoring/
-	github.com/rhobs/obo-prometheus-operator/pkg/client => ../../../pkg/client
-)
+// NOTE: to test local changes, uncomment below
+// replace (
+// 	github.com/rhobs/obo-prometheus-operator => ../../..
+// 	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring => ../../../pkg/apis/monitoring/
+// 	github.com/rhobs/obo-prometheus-operator/pkg/client => ../../../pkg/client
+// )
