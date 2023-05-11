@@ -410,6 +410,13 @@ make_olm_bundle() {
 	)
 }
 
+hack_reset_changelog() {
+	# HACK: Change logs refer to upstream repo links which aren't copied to the
+	# downstream repo and mdox validation can often fail hence,
+	# reset CHANGELOG.md so that mdox is happy
+	git checkout -- CHANGELOG.md
+}
+
 main() {
 	# all files references must be relative to the root of the project
 	cd "$PROJECT_ROOT"
@@ -436,6 +443,7 @@ main() {
 		die "Please fix failures ☝️ (indicated by ⚠️ ) and run the script again "
 	}
 	change_container_image_repo "$IMG_REPO/$IMG_PREFIX"
+	hack_reset_changelog
 	make_required_targets
 	generate_stripped_down_crds
 	remove_upstream_release_workflows
