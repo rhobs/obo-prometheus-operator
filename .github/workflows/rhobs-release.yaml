@@ -68,11 +68,13 @@ jobs:
         run: |
           git push --tags
 
-      - name: setup rhobs module import test
+      - name: test if rhobs fork can be imported
         run: |
+          [[ "$IMAGE_ORG" != "rhobs" ]] && {
+              echo "Skipping import tests on forked repos"
+              exit 0
+          }
+
           cd rhobs/test/import
-          go mod edit -dropreplace github.com/rhobs/obo-prometheus-operator
-          go mod edit -dropreplace github.com/rhobs/obo-prometheus-operator/pkg/client
-          go mod edit -dropreplace github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring
           go mod tidy
           go test ./...
