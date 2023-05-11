@@ -60,7 +60,9 @@ jobs:
           TAG="v$(head -1 VERSION)" \
           ./rhobs/push-container-images.sh
 
-          echo ::set-output name=tag_name::$(git describe HEAD --abbrev=0)
+          cd rhobs/olm
+          make tools
+          make bundle-image bundle-push IMAGE_REPO=quay.io/$IMAGE_ORG
 
       - name: push git tags
         run: |
