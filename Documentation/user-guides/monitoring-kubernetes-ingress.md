@@ -132,7 +132,7 @@ spec:
   selector:
     prometheus: prometheus
 ---
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -163,7 +163,7 @@ Finally, we need tell Prometheus where to scrape metrics from. The Prometheus Op
 
 ```yaml
 ---
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: ambassador-monitor

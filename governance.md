@@ -7,7 +7,7 @@ It is meant to be followed by all the developers of the Prometheus Operator proj
 * **Maintainers Team**: A core Prometheus Operator team that have owner access to https://github.com/prometheus-operator organization and all projects within it. Current list is available [here](MAINTAINERS.md).
 
 * **Triage Team**: Contributors who does not belong to Maintainer's team, but has `Triage` GitHub role on [Prometheus Operator](https://github.com/prometheus-operator) repository allowing to change GitHub issues and PRs statuses and labels.
-  They are listed [here](https://github.com/prometheus-operator/prometheus-operator/blob/main/MAINTAINERS.md#triage).
+  They are listed [here](https://github.com/rhobs/obo-prometheus-operator/blob/main/MAINTAINERS.md#triage).
 
 * **The Prometheus Operator project**: The sum of all activities performed under the [prometheus-operator organization on GitHub](https://github.com/prometheus-operator), concerning one or more repositories or the community.
 
@@ -57,7 +57,7 @@ This email will also be CC'd to [prometheus-operator-team@googlegroups.com](http
 
 If they choose to accept, the following steps are taken:
 
-* Triage member is added to the [Prometheus Operator project](http://github.com/prometheus-operator/prometheus-operator) with `Triage` access.
+* Triage member is added to the [Prometheus Operator project](http://github.com/rhobs/obo-prometheus-operator) with `Triage` access.
 * Triage member is added to the [prometheus-operator-team](https://groups.google.com/forum/#!forum/prometheus-operator-team).
 * Triage member is added to the list of Triage members [here](MAINTAINERS.md).
 * New team Triage member are announced on the [Prometheus Operator Twitter](https://twitter.com/PromOperator) by an existing team member.
@@ -71,13 +71,13 @@ Upon death of a member, their Triage team membership ends automatically.
 ### Technical decisions
 
 Smaller technical decisions are made informally and [lazy consensus](#consensus) is assumed. Technical decisions that span multiple parts of the Prometheus Operator project
-should be discussed and made on the [GitHub issues](https://github.com/prometheus-operator/prometheus-operator/issues) and in most cases followed by proposal as described [here](https://github.com/prometheus-operator/prometheus-operator/blob/main/CONTRIBUTING.md).
+should be discussed and made on the [GitHub issues](https://github.com/rhobs/obo-prometheus-operator/issues) and in most cases followed by proposal as described [here](https://github.com/rhobs/obo-prometheus-operator/blob/main/CONTRIBUTING.md).
 
 Decisions are usually made by [lazy consensus](#consensus). If no consensus can be reached, the matter may be resolved by [majority vote](#majority-vote).
 
 ### Governance changes
 
-Material changes to this document are discussed publicly on the [Prometheus Operator GitHub](http://github.com/prometheus-operator/prometheus-operator).
+Material changes to this document are discussed publicly on the [Prometheus Operator GitHub](http://github.com/rhobs/obo-prometheus-operator).
 Any change requires a [supermajority](#supermajority-vote) in favor. Editorial changes may be made by [lazy consensus](#consensus) unless challenged.
 
 ### Other matters
@@ -162,7 +162,7 @@ It's about number of up votes to agree on the decision.
 
 ### How do I propose a decision?
 
-See [Contributor doc](https://github.com/prometheus-operator/prometheus-operator/blob/main/CONTRIBUTING.md)
+See [Contributor doc](https://github.com/rhobs/obo-prometheus-operator/blob/main/CONTRIBUTING.md)
 
 ### How do I become a team member?
 
@@ -174,7 +174,7 @@ Should the decision be in favor, your new membership will also be announced on t
 
 ### How do I add a project?
 
-As a team member, propose the new project on the [Prometheus Operator GitHub Issue](https://github.com/prometheus-operator/prometheus-operator/issues). However, currently to maintain project in our organization you have to become Prometheus Operator Maintainers.
+As a team member, propose the new project on the [Prometheus Operator GitHub Issue](https://github.com/rhobs/obo-prometheus-operator/issues). However, currently to maintain project in our organization you have to become Prometheus Operator Maintainers.
 
 ### How do I remove a Maintainer or Triage member?
 

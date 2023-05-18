@@ -28,7 +28,7 @@ const (
 
 // +genclient
 // +k8s:openapi-gen=true
-// +kubebuilder:resource:categories="prometheus-operator",shortName="promrule"
+// +kubebuilder:resource:categories="rhobs-prometheus-operator"
 
 // PrometheusRule defines recording and alerting rules for a Prometheus instance
 type PrometheusRule struct {

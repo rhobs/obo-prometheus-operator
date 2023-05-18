@@ -5,17 +5,15 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.1
   creationTimestamp: null
-  name: prometheusrules.monitoring.coreos.com
+  name: prometheusrules.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: PrometheusRule
     listKind: PrometheusRuleList
     plural: prometheusrules
-    shortNames:
-    - promrule
     singular: prometheusrule
   scope: Namespaced
   versions:
