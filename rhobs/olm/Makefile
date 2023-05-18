@@ -15,7 +15,7 @@ RELEASE_SHA ?= $(shell git rev-parse downstream/main)
 OPERATOR_IMG = $(IMAGE_BASE)-prometheus-operator:v$(VERSION)
 CONFIG_RELOADER_IMG = $(IMAGE_BASE)-prometheus-config-reloader:v$(VERSION)
 ADMISSION_WEBHOOK_IMG = $(IMAGE_BASE)-admission-webhook:v$(VERSION)
-OPERATOR_NAME = obo-prometheus-operator
+OPERATOR_NAME = rhobs-prometheus-operator
 
 # tools
 TOOLS_DIR = $(PRJ_DIR)/tmp/bin
