@@ -28,9 +28,9 @@ import (
 	"syscall"
 	"time"
 
-	logging "github.com/prometheus-operator/prometheus-operator/internal/log"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	"github.com/prometheus-operator/prometheus-operator/pkg/versionutil"
+	logging "github.com/rhobs/obo-prometheus-operator/internal/log"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	"github.com/rhobs/obo-prometheus-operator/pkg/versionutil"
 
 	"github.com/alecthomas/kingpin/v2"
 	"github.com/go-kit/log/level"

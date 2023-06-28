@@ -20,7 +20,7 @@ import (
 
 	"k8s.io/client-go/rest"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/server"
+	"github.com/rhobs/obo-prometheus-operator/pkg/server"
 )
 
 // Config defines configuration parameters for the Operator.

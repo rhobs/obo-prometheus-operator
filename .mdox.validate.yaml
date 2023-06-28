@@ -20,11 +20,11 @@ validators:
   - regex: 'https:\/\/github\.com\/prometheus-operator\/prometheus-operator\/releases'
     type: "ignore"
   # Ignore GitHub container packages link as it returns 404 in curl, but works in browser
-  - regex: 'https://github.com/prometheus-operator/prometheus-operator/pkgs/container/prometheus-operator'
+  - regex: 'https://github.com/rhobs/obo-prometheus-operator/pkgs/container/prometheus-operator'
     type: "ignore"
   # Ignore links to /img/ because the generated content will resolve them correctly.
   - regex: '/img/.+'
     type: ignore
   # Ignore anchor links pointing to the API documentation which are HTML <a> tags and not supported by mdox.
-  - regex: 'api\.md#monitoring\.coreos\.com/v1\.(BasicAuth|PrometheusSpec|StorageSpec)$'
+  - regex: 'api\.md#monitoring\.rhobs/v1\.(BasicAuth|PrometheusSpec|StorageSpec)$'
     type: ignore
