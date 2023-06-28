@@ -8,6 +8,4 @@ Prometheus Operator as well. Since the targeted platform - OpenShift already
 has a Prometheus Operator, installing updated CRDs from newer version can
 potentially break the platform. Hence this fork was created as workaround for
 shipping newer version of Prometheus Operator without impacting on installed on
-platfrom.
-
-
+platform.
