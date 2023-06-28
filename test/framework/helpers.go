@@ -30,9 +30,9 @@ import (
 	"k8s.io/client-go/rest"
 
 	"github.com/pkg/errors"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
 	"github.com/prometheus/prometheus/model/labels"
 	"github.com/prometheus/prometheus/model/textparse"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
 )
 
 func SourceToIOReader(source string) (io.Reader, error) {

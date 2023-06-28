@@ -18,8 +18,8 @@ import (
 	"fmt"
 	"path"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
 	corev1 "k8s.io/api/core/v1"
 )
 
@@ -128,8 +128,8 @@ func (a tlsCredentials) mountParamsForSecret(
 	//
 	// References:
 	// * https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod
-	// * https://github.com/prometheus-operator/prometheus-operator/issues/5527
-	// * https://github.com/prometheus-operator/prometheus-operator/pull/5535#discussion_r1194940482
+	// * https://github.com/rhobs/obo-prometheus-operator/issues/5527
+	// * https://github.com/rhobs/obo-prometheus-operator/pull/5535#discussion_r1194940482
 	mounts = append(mounts, corev1.VolumeMount{
 		Name:      volumeName,
 		ReadOnly:  true,
@@ -169,8 +169,8 @@ func (a tlsCredentials) mountParamsForConfigmap(
 	//
 	// References:
 	// * https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod
-	// * https://github.com/prometheus-operator/prometheus-operator/issues/5527
-	// * https://github.com/prometheus-operator/prometheus-operator/pull/5535#discussion_r1194940482
+	// * https://github.com/rhobs/obo-prometheus-operator/issues/5527
+	// * https://github.com/rhobs/obo-prometheus-operator/pull/5535#discussion_r1194940482
 	mounts = append(mounts, corev1.VolumeMount{
 		Name:      volumeName,
 		ReadOnly:  true,

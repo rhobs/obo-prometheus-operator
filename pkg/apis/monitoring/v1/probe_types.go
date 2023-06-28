@@ -28,7 +28,7 @@ const (
 
 // +genclient
 // +k8s:openapi-gen=true
-// +kubebuilder:resource:categories="prometheus-operator",shortName="prb"
+// +kubebuilder:resource:categories="rhobs-prometheus-operator"
 
 // Probe defines monitoring for a set of static targets or ingresses.
 type Probe struct {

@@ -22,7 +22,7 @@ import (
 
 	"github.com/go-kit/log"
 	"github.com/go-kit/log/level"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 
 	"github.com/prometheus/client_golang/prometheus"
 	appsv1 "k8s.io/api/apps/v1"
@@ -404,7 +404,7 @@ func SanitizeSTS(sts *appsv1.StatefulSet) {
 // Under normal circumstances, the cache sync should be fast. If it takes more
 // than 1 minute, it means that something is stuck and the message will
 // indicate to the admin which informer is the culprit.
-// See https://github.com/prometheus-operator/prometheus-operator/issues/3347.
+// See https://github.com/rhobs/obo-prometheus-operator/issues/3347.
 func WaitForNamedCacheSync(ctx context.Context, controllerName string, logger log.Logger, inf cache.SharedIndexInformer) bool {
 	ctx, cancel := context.WithTimeout(ctx, 10*time.Minute)
 	defer cancel()

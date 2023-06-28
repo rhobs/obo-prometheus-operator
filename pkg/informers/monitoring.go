@@ -17,8 +17,8 @@ package informers
 import (
 	"time"
 
-	informers "github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions"
-	monitoring "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned"
+	informers "github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions"
+	monitoring "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/util/sets"
