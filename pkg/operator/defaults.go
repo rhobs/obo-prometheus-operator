@@ -43,7 +43,7 @@ var (
 
 	// DefaultPrometheusConfigReloaderImage is an image that will be used as a sidecar to provide dynamic prometheus
 	// configuration reloading
-	DefaultPrometheusConfigReloaderImage = "quay.io/prometheus-operator/prometheus-config-reloader:v" + version.Version
+	DefaultPrometheusConfigReloaderImage = "quay.io/rhobs/obo-prometheus-config-reloader:v" + version.Version
 
 	// PrometheusCompatibilityMatrix is a list of supported prometheus versions.
 	// prometheus-operator end-to-end tests verify that the operator can deploy from LTS n-1 to the latest stable.

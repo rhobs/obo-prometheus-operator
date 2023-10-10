@@ -21,8 +21,8 @@ import (
 	json "encoding/json"
 	"fmt"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	applyconfigurationmonitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	applyconfigurationmonitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -37,9 +37,9 @@ type FakeProbes struct {
 	ns   string
 }
 
-var probesResource = schema.GroupVersionResource{Group: "monitoring.coreos.com", Version: "v1", Resource: "probes"}
+var probesResource = schema.GroupVersionResource{Group: "monitoring.rhobs", Version: "v1", Resource: "probes"}
 
-var probesKind = schema.GroupVersionKind{Group: "monitoring.coreos.com", Version: "v1", Kind: "Probe"}
+var probesKind = schema.GroupVersionKind{Group: "monitoring.rhobs", Version: "v1", Kind: "Probe"}
 
 // Get takes name of the probe, and returns the corresponding probe object, and an error if there is any.
 func (c *FakeProbes) Get(ctx context.Context, name string, options v1.GetOptions) (result *monitoringv1.Probe, err error) {
