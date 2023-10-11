@@ -41,17 +41,17 @@ import (
 	v1 "k8s.io/api/core/v1"
 	klog "k8s.io/klog/v2"
 
-	logging "github.com/prometheus-operator/prometheus-operator/internal/log"
-	"github.com/prometheus-operator/prometheus-operator/pkg/admission"
-	alertmanagercontroller "github.com/prometheus-operator/prometheus-operator/pkg/alertmanager"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	prometheusagentcontroller "github.com/prometheus-operator/prometheus-operator/pkg/prometheus/agent"
-	prometheuscontroller "github.com/prometheus-operator/prometheus-operator/pkg/prometheus/server"
-	"github.com/prometheus-operator/prometheus-operator/pkg/server"
-	thanoscontroller "github.com/prometheus-operator/prometheus-operator/pkg/thanos"
-	"github.com/prometheus-operator/prometheus-operator/pkg/versionutil"
+	logging "github.com/rhobs/obo-prometheus-operator/internal/log"
+	"github.com/rhobs/obo-prometheus-operator/pkg/admission"
+	alertmanagercontroller "github.com/rhobs/obo-prometheus-operator/pkg/alertmanager"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	prometheusagentcontroller "github.com/rhobs/obo-prometheus-operator/pkg/prometheus/agent"
+	prometheuscontroller "github.com/rhobs/obo-prometheus-operator/pkg/prometheus/server"
+	"github.com/rhobs/obo-prometheus-operator/pkg/server"
+	thanoscontroller "github.com/rhobs/obo-prometheus-operator/pkg/thanos"
+	"github.com/rhobs/obo-prometheus-operator/pkg/versionutil"
 )
 
 const (

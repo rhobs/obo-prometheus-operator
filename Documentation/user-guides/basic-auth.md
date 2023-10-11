@@ -5,10 +5,10 @@
 
 ## Basic auth for targets
 
-To authenticate a `ServiceMonitor`s over a metrics endpoint use [`basicAuth`](../api.md#monitoring.coreos.com/v1.BasicAuth)
+To authenticate a `ServiceMonitor`s over a metrics endpoint use [`basicAuth`](../api.md#monitoring.rhobs/v1.BasicAuth)
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   labels:

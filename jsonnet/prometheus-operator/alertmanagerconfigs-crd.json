@@ -6,20 +6,17 @@
       "controller-gen.kubebuilder.io/version": "v0.11.1"
     },
     "creationTimestamp": null,
-    "name": "alertmanagerconfigs.monitoring.coreos.com"
+    "name": "alertmanagerconfigs.monitoring.rhobs"
   },
   "spec": {
-    "group": "monitoring.coreos.com",
+    "group": "monitoring.rhobs",
     "names": {
       "categories": [
-        "prometheus-operator"
+        "rhobs-prometheus-operator"
       ],
       "kind": "AlertmanagerConfig",
       "listKind": "AlertmanagerConfigList",
       "plural": "alertmanagerconfigs",
-      "shortNames": [
-        "amcfg"
-      ],
       "singular": "alertmanagerconfig"
     },
     "scope": "Namespaced",
