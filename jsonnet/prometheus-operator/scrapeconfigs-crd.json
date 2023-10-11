@@ -6,20 +6,17 @@
       "controller-gen.kubebuilder.io/version": "v0.11.1"
     },
     "creationTimestamp": null,
-    "name": "scrapeconfigs.monitoring.coreos.com"
+    "name": "scrapeconfigs.monitoring.rhobs"
   },
   "spec": {
-    "group": "monitoring.coreos.com",
+    "group": "monitoring.rhobs",
     "names": {
       "categories": [
-        "prometheus-operator"
+        "rhobs-prometheus-operator"
       ],
       "kind": "ScrapeConfig",
       "listKind": "ScrapeConfigList",
       "plural": "scrapeconfigs",
-      "shortNames": [
-        "scfg"
-      ],
       "singular": "scrapeconfig"
     },
     "scope": "Namespaced",
