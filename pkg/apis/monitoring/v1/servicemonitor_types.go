@@ -27,7 +27,7 @@ const (
 
 // +genclient
 // +k8s:openapi-gen=true
-// +kubebuilder:resource:categories="prometheus-operator",shortName="smon"
+// +kubebuilder:resource:categories="rhobs-prometheus-operator"
 
 // ServiceMonitor defines monitoring for a set of services.
 type ServiceMonitor struct {

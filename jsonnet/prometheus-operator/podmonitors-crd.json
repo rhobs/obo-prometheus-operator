@@ -6,20 +6,17 @@
       "controller-gen.kubebuilder.io/version": "v0.11.1"
     },
     "creationTimestamp": null,
-    "name": "podmonitors.monitoring.coreos.com"
+    "name": "podmonitors.monitoring.rhobs"
   },
   "spec": {
-    "group": "monitoring.coreos.com",
+    "group": "monitoring.rhobs",
     "names": {
       "categories": [
-        "prometheus-operator"
+        "rhobs-prometheus-operator"
       ],
       "kind": "PodMonitor",
       "listKind": "PodMonitorList",
       "plural": "podmonitors",
-      "shortNames": [
-        "pmon"
-      ],
       "singular": "podmonitor"
     },
     "scope": "Namespaced",

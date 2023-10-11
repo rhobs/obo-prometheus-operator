@@ -17,7 +17,7 @@ When applying updated CRDs on a cluster, you may face the following error messag
 
 ```bash
 $ kubectl apply -f $MANIFESTS
-The CustomResourceDefinition "prometheuses.monitoring.coreos.com" is invalid: metadata.annotations: Too long: must have at most 262144 bytes
+The CustomResourceDefinition "prometheuses.monitoring.rhobs" is invalid: metadata.annotations: Too long: must have at most 262144 bytes
 ```
 
 The reason is that apply runs in the client by default and saves information into the object annotations but there's a hard limit on the size of annotations.
@@ -146,7 +146,7 @@ We would then define the service monitor using `metrics` as the port not `"8080"
 **CORRECT**
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/example-app-service-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-app
@@ -163,7 +163,7 @@ spec:
 **INCORRECT**
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-app

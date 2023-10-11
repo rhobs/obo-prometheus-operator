@@ -3,9 +3,9 @@ module rhobs
 go 1.20
 
 require (
-	github.com/rhobs/obo-prometheus-operator v0.64.1-rhobs3
-	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.64.1-rhobs3
-	github.com/rhobs/obo-prometheus-operator/pkg/client v0.64.1-rhobs3
+	github.com/rhobs/obo-prometheus-operator v0.68.0-rhobs1
+	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.68.0-rhobs1
+	github.com/rhobs/obo-prometheus-operator/pkg/client v0.68.0-rhobs1
 )
 
 require (
