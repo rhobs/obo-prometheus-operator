@@ -52,7 +52,7 @@ If you have an interest in another service discovery mechanism or you see someth
 For example, to scrape the target located at `http://prometheus.demo.do.prometheus.io:9090`, use the following:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: ScrapeConfig
 metadata:
   name: static-config
@@ -94,7 +94,7 @@ data:
 This `ConfigMap` will then need to be mounted in the `Prometheus` spec:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: your-prometheus
@@ -111,7 +111,7 @@ spec:
 You can then use ScrapeConfig to reference that file and scrape the associated targets:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: ScrapeConfig
 metadata:
   name: file-sd
@@ -130,7 +130,7 @@ spec:
 `http_sd` works the same way as the `file_sd` but requires an endpoint providing that data rather than a file. For instance:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: ScrapeConfig
 metadata:
   name: http-sd
