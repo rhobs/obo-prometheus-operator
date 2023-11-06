@@ -17,7 +17,7 @@
 package v1
 
 import (
-	v1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	v1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // ProbeTargetStaticConfigApplyConfiguration represents an declarative configuration of the ProbeTargetStaticConfig type for use
