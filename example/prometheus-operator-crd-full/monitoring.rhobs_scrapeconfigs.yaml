@@ -4,19 +4,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.1
-    operator.prometheus.io/version: 0.69.1
   creationTimestamp: null
-  name: scrapeconfigs.monitoring.coreos.com
+  name: scrapeconfigs.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: ScrapeConfig
     listKind: ScrapeConfigList
     plural: scrapeconfigs
-    shortNames:
-    - scfg
     singular: scrapeconfig
   scope: Namespaced
   versions:
@@ -336,6 +333,7 @@ spec:
                         required:
                         - key
                         type: object
+                        x-kubernetes-map-type: atomic
                       description: Specifies headers to send to proxies during CONNECT
                         requests.
                       type: object
@@ -522,6 +520,7 @@ spec:
                       required:
                       - key
                       type: object
+                      x-kubernetes-map-type: atomic
                   required:
                   - server
                   type: object
@@ -592,6 +591,7 @@ spec:
                       required:
                       - key
                       type: object
+                      x-kubernetes-map-type: atomic
                     filters:
                       description: 'Filters can be used optionally to filter the instance
                         list by other criteria. Available filter criteria can be found
@@ -646,6 +646,7 @@ spec:
                       required:
                       - key
                       type: object
+                      x-kubernetes-map-type: atomic
                   type: object
                 type: array
               fileSDConfigs:

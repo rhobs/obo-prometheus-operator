@@ -36,13 +36,13 @@ import (
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/cache"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1ac "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
-	monitoringclient "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned"
-	"github.com/prometheus-operator/prometheus-operator/pkg/informers"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
-	"github.com/prometheus-operator/prometheus-operator/pkg/listwatch"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1ac "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
+	monitoringclient "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned"
+	"github.com/rhobs/obo-prometheus-operator/pkg/informers"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
+	"github.com/rhobs/obo-prometheus-operator/pkg/listwatch"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
 )
 
 const (
@@ -703,7 +703,7 @@ func createSSetInputHash(tr monitoringv1.ThanosRuler, c Config, ruleConfigMapNam
 
 	// The controller should ignore any changes to RevisionHistoryLimit field because
 	// it may be modified by external actors.
-	// See https://github.com/prometheus-operator/prometheus-operator/issues/5712
+	// See https://github.com/rhobs/obo-prometheus-operator/issues/5712
 	ss.RevisionHistoryLimit = nil
 
 	hash, err := hashstructure.Hash(struct {

@@ -21,8 +21,8 @@ import (
 	json "encoding/json"
 	"fmt"
 
-	v1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1alpha1"
+	v1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -37,9 +37,9 @@ type FakePrometheusAgents struct {
 	ns   string
 }
 
-var prometheusagentsResource = schema.GroupVersionResource{Group: "monitoring.coreos.com", Version: "v1alpha1", Resource: "prometheusagents"}
+var prometheusagentsResource = schema.GroupVersionResource{Group: "monitoring.rhobs", Version: "v1alpha1", Resource: "prometheusagents"}
 
-var prometheusagentsKind = schema.GroupVersionKind{Group: "monitoring.coreos.com", Version: "v1alpha1", Kind: "PrometheusAgent"}
+var prometheusagentsKind = schema.GroupVersionKind{Group: "monitoring.rhobs", Version: "v1alpha1", Kind: "PrometheusAgent"}
 
 // Get takes name of the prometheusAgent, and returns the corresponding prometheusAgent object, and an error if there is any.
 func (c *FakePrometheusAgents) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.PrometheusAgent, err error) {
