@@ -1,9 +1,9 @@
-module github.com/prometheus-operator/prometheus-operator/pkg/client
+module github.com/rhobs/obo-prometheus-operator/pkg/client
 
 go 1.19
 
 require (
-	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.69.1
+	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.69.1-rhobs1
 	k8s.io/api v0.28.3
 	k8s.io/apiextensions-apiserver v0.28.3
 	k8s.io/apimachinery v0.28.3
@@ -51,4 +51,4 @@ require (
 	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
-replace github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring => ../apis/monitoring
+replace github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring => ../apis/monitoring
