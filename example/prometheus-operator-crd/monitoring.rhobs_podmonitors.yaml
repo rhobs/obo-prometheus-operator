@@ -4,18 +4,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.13.0
-    operator.prometheus.io/version: 0.71.0
-  name: podmonitors.monitoring.coreos.com
+    operator.prometheus.io/version: 0.71.0-rhobs1
+  name: podmonitors.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: PodMonitor
     listKind: PodMonitorList
     plural: podmonitors
-    shortNames:
-    - pmon
     singular: podmonitor
   scope: Namespaced
   versions:

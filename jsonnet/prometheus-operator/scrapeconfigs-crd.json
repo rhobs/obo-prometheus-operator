@@ -4,22 +4,19 @@
   "metadata": {
     "annotations": {
       "controller-gen.kubebuilder.io/version": "v0.13.0",
-      "operator.prometheus.io/version": "0.71.0"
+      "operator.prometheus.io/version": "0.71.0-rhobs1"
     },
-    "name": "scrapeconfigs.monitoring.coreos.com"
+    "name": "scrapeconfigs.monitoring.rhobs"
   },
   "spec": {
-    "group": "monitoring.coreos.com",
+    "group": "monitoring.rhobs",
     "names": {
       "categories": [
-        "prometheus-operator"
+        "rhobs-prometheus-operator"
       ],
       "kind": "ScrapeConfig",
       "listKind": "ScrapeConfigList",
       "plural": "scrapeconfigs",
-      "shortNames": [
-        "scfg"
-      ],
       "singular": "scrapeconfig"
     },
     "scope": "Namespaced",

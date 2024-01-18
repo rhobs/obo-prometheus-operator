@@ -29,7 +29,7 @@ const (
 
 // +genclient
 // +k8s:openapi-gen=true
-// +kubebuilder:resource:categories="prometheus-operator",shortName="pmon"
+// +kubebuilder:resource:categories="rhobs-prometheus-operator"
 
 // PodMonitor defines monitoring for a set of pods.
 type PodMonitor struct {
