@@ -4,22 +4,19 @@
   "metadata": {
     "annotations": {
       "controller-gen.kubebuilder.io/version": "v0.13.0",
-      "operator.prometheus.io/version": "0.71.0"
+      "operator.prometheus.io/version": "0.71.0-rhobs1"
     },
-    "name": "alertmanagers.monitoring.coreos.com"
+    "name": "alertmanagers.monitoring.rhobs"
   },
   "spec": {
-    "group": "monitoring.coreos.com",
+    "group": "monitoring.rhobs",
     "names": {
       "categories": [
-        "prometheus-operator"
+        "rhobs-prometheus-operator"
       ],
       "kind": "Alertmanager",
       "listKind": "AlertmanagerList",
       "plural": "alertmanagers",
-      "shortNames": [
-        "am"
-      ],
       "singular": "alertmanager"
     },
     "scope": "Namespaced",

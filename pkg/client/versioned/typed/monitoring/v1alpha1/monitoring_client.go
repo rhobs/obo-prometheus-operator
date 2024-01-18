@@ -19,8 +19,8 @@ package v1alpha1
 import (
 	"net/http"
 
-	v1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/scheme"
+	v1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 )
 
@@ -31,7 +31,7 @@ type MonitoringV1alpha1Interface interface {
 	ScrapeConfigsGetter
 }
 
-// MonitoringV1alpha1Client is used to interact with features provided by the monitoring.coreos.com group.
+// MonitoringV1alpha1Client is used to interact with features provided by the monitoring.rhobs group.
 type MonitoringV1alpha1Client struct {
 	restClient rest.Interface
 }

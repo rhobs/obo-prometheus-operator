@@ -29,7 +29,7 @@ metadata:
     app: kube-state-metrics
     k8s-app: kube-state-metrics
   annotations:
-    alpha.monitoring.coreos.com/non-namespaced: "true"
+    alpha.monitoring.rhobs/non-namespaced: "true"
   name: kube-state-metrics
 spec:
   ports:
@@ -48,7 +48,7 @@ This Service targets all Pods with the label `k8s-app: kube-state-metrics`.
 This ServiceMonitor targets **all** Services with the label `k8s-app` (`spec.selector`) any value, in the namespaces `kube-system` and `monitoring` (`spec.namespaceSelector`).
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: k8s-apps-http
@@ -145,7 +145,7 @@ The following snippet will configure Prometheus to scrape metrics from the targe
 The following `ServiceMonitor` configures Prometheus to only select targets that have the `team` label set to `prometheus` and exclude the ones that have `datacenter` set to `west_europe`. The same configuration may be used with a `PodMonitor`.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-app
@@ -203,7 +203,7 @@ metricRelabelings:
 The following `PodMonitor` configures Prometheus to drop metrics where the `id` label matches the regex `/system.slice/var-lib-docker-containers.*-shm.mount`. The same configuration could also be used with a `ServiceMonitor`
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: PodMonitor
 metadata:
   name: example-app

@@ -38,16 +38,16 @@ import (
 	"k8s.io/client-go/tools/record"
 	"k8s.io/utils/ptr"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/assets"
-	monitoringclient "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned"
-	"github.com/prometheus-operator/prometheus-operator/pkg/informers"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
-	"github.com/prometheus-operator/prometheus-operator/pkg/listwatch"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	prompkg "github.com/prometheus-operator/prometheus-operator/pkg/prometheus"
-	"github.com/prometheus-operator/prometheus-operator/pkg/webconfig"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/assets"
+	monitoringclient "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned"
+	"github.com/rhobs/obo-prometheus-operator/pkg/informers"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
+	"github.com/rhobs/obo-prometheus-operator/pkg/listwatch"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	prompkg "github.com/rhobs/obo-prometheus-operator/pkg/prometheus"
+	"github.com/rhobs/obo-prometheus-operator/pkg/webconfig"
 )
 
 const (
@@ -332,7 +332,7 @@ func New(ctx context.Context, restConfig *rest.Config, c operator.Config, logger
 	}
 	level.Info(o.logger).Log("msg", "Kubernetes API capabilities", "endpointslices", endpointSliceSupported)
 	// The operator doesn't yet support the endpointslices API.
-	// See https://github.com/prometheus-operator/prometheus-operator/issues/3862
+	// See https://github.com/rhobs/obo-prometheus-operator/issues/3862
 	// for details.
 	o.endpointSliceSupported = false
 
@@ -1241,7 +1241,7 @@ func createSSetInputHash(p monitoringv1.Prometheus, c prompkg.Config, ruleConfig
 
 	// The controller should ignore any changes to RevisionHistoryLimit field because
 	// it may be modified by external actors.
-	// See https://github.com/prometheus-operator/prometheus-operator/issues/5712
+	// See https://github.com/rhobs/obo-prometheus-operator/issues/5712
 	ssSpec.RevisionHistoryLimit = nil
 
 	hash, err := hashstructure.Hash(struct {

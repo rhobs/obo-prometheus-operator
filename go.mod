@@ -1,4 +1,4 @@
-module github.com/prometheus-operator/prometheus-operator
+module github.com/rhobs/obo-prometheus-operator
 
 go 1.21
 
@@ -17,13 +17,13 @@ require (
 	github.com/mitchellh/hashstructure v1.1.0
 	github.com/oklog/run v1.1.0
 	github.com/prometheus-community/prom-label-proxy v0.8.0
-	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.71.0
-	github.com/prometheus-operator/prometheus-operator/pkg/client v0.71.0
 	github.com/prometheus/alertmanager v0.26.0
 	github.com/prometheus/client_golang v1.18.0
 	github.com/prometheus/common v0.45.0
 	github.com/prometheus/exporter-toolkit v0.11.0
 	github.com/prometheus/prometheus v0.48.1
+	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.71.0-rhobs1
+	github.com/rhobs/obo-prometheus-operator/pkg/client v0.71.0-rhobs1
 	github.com/stretchr/testify v1.8.4
 	github.com/thanos-io/thanos v0.32.5-0.20231124114724-023faa2d67a3
 	golang.org/x/exp v0.0.0-20231127185646-65229373498e
@@ -139,7 +139,7 @@ require (
 )
 
 replace (
-	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring => ./pkg/apis/monitoring
-	github.com/prometheus-operator/prometheus-operator/pkg/client => ./pkg/client
+	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring => ./pkg/apis/monitoring
+	github.com/rhobs/obo-prometheus-operator/pkg/client => ./pkg/client
 	k8s.io/klog/v2 => github.com/simonpasquier/klog-gokit/v3 v3.4.0
 )
