@@ -37,7 +37,7 @@ func AlertmanagerConfig(name, namespace string) *AlertmanagerConfigApplyConfigur
 	b.WithName(name)
 	b.WithNamespace(namespace)
 	b.WithKind("AlertmanagerConfig")
-	b.WithAPIVersion("monitoring.coreos.com/v1alpha1")
+	b.WithAPIVersion("monitoring.rhobs/v1alpha1")
 	return b
 }
 

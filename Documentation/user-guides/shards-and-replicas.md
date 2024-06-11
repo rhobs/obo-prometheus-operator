@@ -17,7 +17,7 @@ View the complete [Shards manifests](../../example/shards).
 The following manifest creates a Prometheus server with two replicas:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   labels:
@@ -86,7 +86,7 @@ spec:
 ```
 
 ```yaml mdox-exec="cat example/shards/example-app-service-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-app
@@ -113,7 +113,7 @@ We find the prometheus server scrapes three targets.
 Expand prometheus to two shards as shown below:
 
 ```yaml mdox-exec="cat example/shards/prometheus.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   labels:

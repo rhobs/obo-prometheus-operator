@@ -17,7 +17,7 @@ package assets
 import (
 	v1 "k8s.io/api/core/v1"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // StoreGetter can get data from ConfigMap/Secret objects via key selectors.

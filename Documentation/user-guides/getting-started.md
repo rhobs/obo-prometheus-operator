@@ -118,7 +118,7 @@ label (in this case `team: frontend`) to identify which team is responsible for
 monitoring the application/service.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/example-app-service-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-app
@@ -204,7 +204,7 @@ to create new ServiceMonitors and Services without having to reconfigure the
 Prometheus object.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/prometheus-service-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -236,7 +236,7 @@ creation of a Kubernetes Service. In practice, the `spec.selector` label tells
 Prometheus which Pods should be scraped.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/example-app-pod-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: PodMonitor
 metadata:
   name: example-app
@@ -254,7 +254,7 @@ Similarly the Prometheus object defines which PodMonitors get selected with the
 `spec.podMonitorSelector` field.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/prometheus-pod-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -313,7 +313,7 @@ flag. The following example exposes the admin API:
 > ensure only clients authorized to perform these actions can do so.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/prometheus-admin-api.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus

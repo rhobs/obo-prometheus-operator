@@ -39,9 +39,9 @@ import (
 	"github.com/thanos-io/thanos/pkg/reloader"
 	"go.uber.org/automaxprocs/maxprocs"
 
-	logging "github.com/prometheus-operator/prometheus-operator/internal/log"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	"github.com/prometheus-operator/prometheus-operator/pkg/versionutil"
+	logging "github.com/rhobs/obo-prometheus-operator/internal/log"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	"github.com/rhobs/obo-prometheus-operator/pkg/versionutil"
 )
 
 const (
