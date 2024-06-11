@@ -95,7 +95,7 @@ Create a PR for the changes to be reviewed.
 
 You can use the GitHub UI to see the difference between the release branch and the latest stable release.
 
-For example: https://github.com/prometheus-operator/prometheus-operator/compare/v0.72.0...release-0.73
+For example: prometheus-operator/compare/v0.72.0...release-0.73
 
 Unless exception, the latest tag shouldn't contain commits that don't exist in the release branch.
 
@@ -126,7 +126,7 @@ git push origin "${tag}" "pkg/apis/monitoring/${tag}" "pkg/client/${tag}"
 
 Signed tag with a GPG key is appreciated, but in case you can't add a GPG key to your Github account using the following [procedure](https://docs.github.com/articles/generating-a-gpg-key), you can replace the `-s` flag by `-a` flag of the `git tag` command to only annotate the tag without signing.
 
-Once a tag is created, the `publish` Github action will push the container images to [quay.io](https://quay.io/organization/prometheus-operator) and [ghcr.io](https://github.com/prometheus-operator/prometheus-operator/pkgs/container/prometheus-operator). Wait until the [publish](https://github.com/prometheus-operator/prometheus-operator/actions/workflows/publish.yaml) workflow is complete before going to the next step.
+Once a tag is created, the `publish` Github action will push the container images to [quay.io](https://quay.io/organization/prometheus-operator) and [ghcr.io](https://github.com/prometheus-operator/prometheus-operator/pkgs/container/prometheus-operator). Wait until the pulbish workflow is complete before going to the next step.
 
 We have observed in the past that if we create a draft release and publish it later assets are not attached correctly hence its advised to wait till all workflow jobs (at least the publish job) are completed to create the release.
 
