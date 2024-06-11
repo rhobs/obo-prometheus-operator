@@ -4,18 +4,15 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.14.0
-    operator.prometheus.io/version: 0.74.0
-  name: probes.monitoring.coreos.com
+  name: probes.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: Probe
     listKind: ProbeList
     plural: probes
-    shortNames:
-    - prb
     singular: probe
   scope: Namespaced
   versions:

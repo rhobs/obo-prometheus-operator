@@ -31,10 +31,10 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"golang.org/x/sync/errgroup"
 
-	logging "github.com/prometheus-operator/prometheus-operator/internal/log"
-	"github.com/prometheus-operator/prometheus-operator/pkg/admission"
-	"github.com/prometheus-operator/prometheus-operator/pkg/server"
-	"github.com/prometheus-operator/prometheus-operator/pkg/versionutil"
+	logging "github.com/rhobs/obo-prometheus-operator/internal/log"
+	"github.com/rhobs/obo-prometheus-operator/pkg/admission"
+	"github.com/rhobs/obo-prometheus-operator/pkg/server"
+	"github.com/rhobs/obo-prometheus-operator/pkg/versionutil"
 )
 
 func main() {
