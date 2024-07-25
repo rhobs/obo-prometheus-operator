@@ -299,9 +299,8 @@ validate() {
 }
 
 make_required_targets() {
-	header "Running format and generate"
-	make --always-make format generate
-	make --always-make docs
+	header "Running required make targets"
+	make --always-make go-fmt jsonnet-fmt check-license shellcheck k8s-gen generate-crds bundle.yaml example/mixin/alerts.yaml example/thanos/thanos.yaml example/admission-webhook example/alertmanager-crd-conversion
 }
 
 git_release_commit() {
@@ -329,8 +328,9 @@ run_checks() {
 		return 0
 	fi
 
-	make check-docs check-golang check-license check-metrics
+	make check-golang check-license check-metrics
 	make test-unit
+
 }
 
 parse_args() {
