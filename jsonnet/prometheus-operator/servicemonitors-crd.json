@@ -4,22 +4,19 @@
   "metadata": {
     "annotations": {
       "controller-gen.kubebuilder.io/version": "v0.15.0",
-      "operator.prometheus.io/version": "0.75.2"
+      "operator.prometheus.io/version": "0.75.2-rhobs1"
     },
-    "name": "servicemonitors.monitoring.coreos.com"
+    "name": "servicemonitors.monitoring.rhobs"
   },
   "spec": {
-    "group": "monitoring.coreos.com",
+    "group": "monitoring.rhobs",
     "names": {
       "categories": [
-        "prometheus-operator"
+        "rhobs-prometheus-operator"
       ],
       "kind": "ServiceMonitor",
       "listKind": "ServiceMonitorList",
       "plural": "servicemonitors",
-      "shortNames": [
-        "smon"
-      ],
       "singular": "servicemonitor"
     },
     "scope": "Namespaced",

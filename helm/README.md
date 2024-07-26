@@ -9,4 +9,4 @@ It is still possible to run multiple prometheus instances on a single cluster - 
 
 Issues and pull requests should be tracked using the [prometheus-community/helm-charts](https://github.com/prometheus-community/helm-charts) repository.
 
-You can check out the tickets for this change [here](https://github.com/prometheus-operator/prometheus-operator/issues/592) and [here](https://github.com/helm/charts/pull/6765)
+You can check out the tickets for this change [here](https://github.com/rhobs/obo-prometheus-operator/issues/592) and [here](https://github.com/helm/charts/pull/6765)
