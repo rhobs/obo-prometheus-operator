@@ -1,11 +1,11 @@
-module github.com/prometheus-operator/prometheus-operator/pkg/client
+module github.com/rhobs/obo-prometheus-operator/pkg/client
 
 go 1.22.0
 
 toolchain go1.22.2
 
 require (
-	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.75.2
+	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.75.2-rhobs1
 	k8s.io/api v0.30.2
 	k8s.io/apiextensions-apiserver v0.30.2
 	k8s.io/apimachinery v0.30.2
@@ -52,4 +52,4 @@ require (
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
 
-replace github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring => ../apis/monitoring
+replace github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring => ../apis/monitoring
