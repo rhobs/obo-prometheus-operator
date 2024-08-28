@@ -49,7 +49,7 @@ You have a running Prometheus operator.
 First, let's create a Alertmanager cluster with three replicas:
 
 ```yaml mdox-exec="cat example/user-guides/alerting/alertmanager-example.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   name: example
@@ -140,7 +140,7 @@ The following example configuration creates an AlertmanagerConfig resource that
 sends notifications to a fictitious webhook service.
 
 ```yaml mdox-exec="cat example/user-guides/alerting/alertmanager-config-example.yaml"
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: AlertmanagerConfig
 metadata:
   name: config-example
@@ -171,7 +171,7 @@ the previous example, the label `alertmanagerConfig: example` is added, so the
 Alertmanager object should be updated like this:
 
 ```yaml mdox-exec="cat example/user-guides/alerting/alertmanager-selector-example.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   name: example
@@ -189,7 +189,7 @@ an AlertmanagerConfig resource to be used for the Alertmanager configuration
 instead of the `alertmanager-example` secret.
 
 ```yaml mdox-exec="cat example/user-guides/alerting/alertmanager-example-alertmanager-configuration.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   name: example
@@ -242,7 +242,7 @@ alerts are fired against it.
 First, create a Prometheus instance that will send alerts to the Alertmanger cluster:
 
 ```yaml mdox-exec="cat example/user-guides/alerting/prometheus-example.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: example
@@ -288,7 +288,7 @@ Discover `PrometheusRule` resources with `role=alert-rules` and
 `prometheus=example` labels from all namespaces with `team=frontend` label:
 
 ```yaml mdox-exec="cat example/user-guides/alerting/prometheus-example-rule-namespace-selector.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: example
@@ -322,7 +322,7 @@ Create a PrometheusRule object from the following manifest. Note that the
 object's labels match with the `spec.ruleSelector` of the Prometheus object.
 
 ```yaml mdox-exec="cat example/user-guides/alerting/prometheus-example-rules.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: PrometheusRule
 metadata:
   creationTimestamp: null

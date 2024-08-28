@@ -27,7 +27,7 @@ const (
 
 // +genclient
 // +k8s:openapi-gen=true
-// +kubebuilder:resource:categories="prometheus-operator",shortName="smon"
+// +kubebuilder:resource:categories="rhobs-prometheus-operator"
 
 // The `ServiceMonitor` custom resource definition (CRD) defines how `Prometheus` and `PrometheusAgent` can scrape metrics from a group of services.
 // Among other things, it allows to specify:

@@ -17,13 +17,13 @@
 package fake
 
 import (
-	clientset "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1"
-	fakemonitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1/fake"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1"
-	fakemonitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1/fake"
-	monitoringv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1"
-	fakemonitoringv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1/fake"
+	clientset "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1"
+	fakemonitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1/fake"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1"
+	fakemonitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1/fake"
+	monitoringv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1"
+	fakemonitoringv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"

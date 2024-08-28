@@ -40,7 +40,7 @@ kubectl apply -f additional-scrape-configs.yaml -n monitoring
 Finally, reference this additional configuration in your `prometheus.yaml` CRD.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -61,5 +61,5 @@ NOTE: Use only one secret for ALL additional scrape configurations.
 
 ## Additional References
 
-* [Prometheus Spec](api.md#monitoring.coreos.com/v1.PrometheusSpec)
+* [Prometheus Spec](api.md#monitoring.rhobs/v1.PrometheusSpec)
 * [Additional Scrape Configs](../example/additional-scrape-configs)
