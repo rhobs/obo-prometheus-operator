@@ -31,6 +31,8 @@ patches:
                 image: <IMG_PROMETHEUS_OPERATOR>
                 args:
                   - --prometheus-config-reloader=<IMG_PROMETHEUS_CONFIG_RELOADER>
+                  # Refer https://github.com/prometheus-operator/prometheus-operator/pull/6955
+                  - --deprecate-custom-configuration=false
                 resources:
                   requests:
                     cpu: 5m
