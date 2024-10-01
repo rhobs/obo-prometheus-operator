@@ -33,8 +33,8 @@ import (
 	v1 "k8s.io/api/admission/v1"
 	apiextensionsv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1beta1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1beta1"
 )
 
 func TestMutateRule(t *testing.T) {
@@ -370,7 +370,7 @@ func buildAdmissionReviewFromAlertmanagerConfigSpec(t *testing.T, version, spec 
       "kind": "%s"
     },
     "resource": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "%s",
       "resource": "%s"
     },
@@ -384,7 +384,7 @@ func buildAdmissionReviewFromAlertmanagerConfigSpec(t *testing.T, version, spec 
       ]
     },
     "object": {
-      "apiVersion": "monitoring.coreos.com/%s",
+      "apiVersion": "monitoring.rhobs/%s",
       "kind": "%s",
       "metadata": {
         "creationTimestamp": "2019-03-27T13:02:09Z",
@@ -419,9 +419,9 @@ func buildConversionReviewFromAlertmanagerConfigSpec(t *testing.T, from, to, spe
   "apiVersion": "apiextensions.k8s.io/v1",
   "request": {
     "uid": "87c5df7f-5090-11e9-b9b4-02425473f309",
-    "desiredAPIVersion": "monitoring.coreos.com/%s",
+    "desiredAPIVersion": "monitoring.rhobs/%s",
     "objects": [{
-      "apiVersion": "monitoring.coreos.com/%s",
+      "apiVersion": "monitoring.rhobs/%s",
       "kind": "%s",
       "metadata": {
         "creationTimestamp": "2019-03-27T13:02:09Z",

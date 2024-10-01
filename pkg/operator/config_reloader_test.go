@@ -30,7 +30,7 @@ var reloaderConfig = ContainerConfig{
 	CPULimits:      Quantity{q: resource.MustParse("100m")},
 	MemoryRequests: Quantity{q: resource.MustParse("50Mi")},
 	MemoryLimits:   Quantity{q: resource.MustParse("50Mi")},
-	Image:          "quay.io/prometheus-operator/prometheus-config-reloader:latest",
+	Image:          "quay.io/rhobs/obo-prometheus-config-reloader:latest",
 }
 
 func TestCreateConfigReloaderEnableProbes(t *testing.T) {

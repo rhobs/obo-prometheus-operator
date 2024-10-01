@@ -30,7 +30,7 @@ import (
 	"k8s.io/apiserver/pkg/server/dynamiccertificates"
 	kflag "k8s.io/component-base/cli/flag"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
 )
 
 const (

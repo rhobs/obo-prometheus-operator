@@ -35,7 +35,7 @@ The release cycle for cutting releases is every 6 weeks
 | v0.66   | 2023-06-14                       | Arthur Sens (Github: @ArthurSens)         |
 | v0.65   | 2023-05-03                       | Philip Gough (GitHub: @PhilipGough)       |
 
-If any of the maintainers is interested in volunteering please create a pull request against the [prometheus-operator/prometheus-operator](https://github.com/prometheus-operator/prometheus-operator) repository and propose yourself for the release series of your choice.
+If any of the maintainers is interested in volunteering please create a pull request against the [prometheus-operator/prometheus-operator](https://github.com/rhobs/obo-prometheus-operator) repository and propose yourself for the release series of your choice.
 
 ## Release shepherd responsibilities
 
@@ -74,7 +74,7 @@ make tidy
 
 ## Update operand versions
 
-A couple of days before the release, update the [default versions](https://github.com/prometheus-operator/prometheus-operator/blob/f6ce472ecd6064fb6769e306b55b149dfb6af903/pkg/operator/defaults.go#L20-L31) of Prometheus, Alertmanager and Thanos if newer versions are available.
+A couple of days before the release, update the [default versions](https://github.com/rhobs/obo-prometheus-operator/blob/f6ce472ecd6064fb6769e306b55b149dfb6af903/pkg/operator/defaults.go#L20-L31) of Prometheus, Alertmanager and Thanos if newer versions are available.
 
 ## Prepare your release
 
@@ -91,9 +91,9 @@ make clean generate
 Bump the version of the `pkg/apis/monitoring` and `pkg/client` packages in `go.mod`:
 
 ```bash
-go mod edit -require "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring@v$(< VERSION)" pkg/client/go.mod
-go mod edit -require "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring@v$(< VERSION)"
-go mod edit -require "github.com/prometheus-operator/prometheus-operator/pkg/client@v$(< VERSION)"
+go mod edit -require "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring@v$(< VERSION)" pkg/client/go.mod
+go mod edit -require "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring@v$(< VERSION)"
+go mod edit -require "github.com/rhobs/obo-prometheus-operator/pkg/client@v$(< VERSION)"
 ```
 
 Now that all version information has been updated, an entry for the new version can be added to the `CHANGELOG.md` file.
@@ -111,7 +111,7 @@ Create a PR for the changes to be reviewed.
 
 You can use the GitHub UI to see the difference between the release branch and the latest stable release.
 
-For example: https://github.com/prometheus-operator/prometheus-operator/compare/v0.72.0...release-0.73
+For example: https://github.com/rhobs/obo-prometheus-operator/compare/v0.72.0...release-0.73
 
 Unless exception, the latest tag shouldn't contain commits that don't exist in the release branch.
 
@@ -120,7 +120,7 @@ Unless exception, the latest tag shouldn't contain commits that don't exist in t
 For new minor and major releases, create the `release-<major>.<minor>` branch starting at the PR merge commit.
 Push the branch to the remote repository with
 
-**Note:** The remote name `origin` is assumed to be pointed to `github.com/prometheus-operator/prometheus-operator`. If you have a different remote name, use that instead of `origin`. Verify this using `git remote -v`.
+**Note:** The remote name `origin` is assumed to be pointed to `github.com/rhobs/obo-prometheus-operator`. If you have a different remote name, use that instead of `origin`. Verify this using `git remote -v`.
 
 ```bash
 git push origin release-<major>.<minor>
@@ -130,7 +130,7 @@ You could also create the release branch directly from Github UI as well if the 
 
 From now on, all work happens on the `release-<major>.<minor>` branch.
 
-Tag the new release with a tag named `v<major>.<minor>.<patch>`, e.g. `v2.1.3`. Note the `v` prefix. Tag also the `github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring` module with `pkg/apis/monitoring/v<major>.<minor>.<patch>` and the `github.com/prometheus-operator/prometheus-operator/pkg/client` module with `pkg/client/v<major>.<minor>.<patch>`. You can do the tagging on the commandline:
+Tag the new release with a tag named `v<major>.<minor>.<patch>`, e.g. `v2.1.3`. Note the `v` prefix. Tag also the `github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring` module with `pkg/apis/monitoring/v<major>.<minor>.<patch>` and the `github.com/rhobs/obo-prometheus-operator/pkg/client` module with `pkg/client/v<major>.<minor>.<patch>`. You can do the tagging on the commandline:
 
 ```bash
 tag="v$(< VERSION)"
@@ -142,13 +142,13 @@ git push origin "${tag}" "pkg/apis/monitoring/${tag}" "pkg/client/${tag}"
 
 Signed tag with a GPG key is appreciated, but in case you can't add a GPG key to your Github account using the following [procedure](https://docs.github.com/articles/generating-a-gpg-key), you can replace the `-s` flag by `-a` flag of the `git tag` command to only annotate the tag without signing.
 
-Once a tag is created, the `publish` Github action will push the container images to [quay.io](https://quay.io/organization/prometheus-operator) and [ghcr.io](https://github.com/prometheus-operator/prometheus-operator/pkgs/container/prometheus-operator). Wait until the [publish](https://github.com/prometheus-operator/prometheus-operator/actions/workflows/publish.yaml) workflow is complete before going to the next step.
+Once a tag is created, the `publish` Github action will push the container images to [quay.io](https://quay.io/organization/prometheus-operator) and [ghcr.io](https://github.com/rhobs/obo-prometheus-operator/pkgs/container/prometheus-operator). Wait until the [publish](https://github.com/rhobs/obo-prometheus-operator/actions/workflows/publish.yaml) workflow is complete before going to the next step.
 
 We have observed in the past that if we create a draft release and publish it later assets are not attached correctly hence its advised to wait till all workflow jobs (at least the publish job) are completed to create the release.
 
-Go to https://github.com/prometheus-operator/prometheus-operator/releases/new, associate the new release with the before pushed tag, paste in changes made to `CHANGELOG.md` and click "Publish release".
+Go to https://github.com/rhobs/obo-prometheus-operator/releases/new, associate the new release with the before pushed tag, paste in changes made to `CHANGELOG.md` and click "Publish release".
 
-Once release is published, [release job](https://github.com/prometheus-operator/prometheus-operator/actions/workflows/release.yaml) will be triggered to upload assets to the newly created release.
+Once release is published, [release job](https://github.com/rhobs/obo-prometheus-operator/actions/workflows/release.yaml) will be triggered to upload assets to the newly created release.
 
 For patch releases, submit a pull request to merge back the release branch into the `main` branch.
 

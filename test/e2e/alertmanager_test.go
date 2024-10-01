@@ -41,12 +41,12 @@ import (
 	certutil "k8s.io/client-go/util/cert"
 	"k8s.io/utils/ptr"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/alertmanager"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	monitoringv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1beta1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	testFramework "github.com/prometheus-operator/prometheus-operator/test/framework"
+	"github.com/rhobs/obo-prometheus-operator/pkg/alertmanager"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	monitoringv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1beta1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	testFramework "github.com/rhobs/obo-prometheus-operator/test/framework"
 )
 
 func testAMCreateDeleteCluster(t *testing.T) {
@@ -1111,7 +1111,7 @@ func testAlertmanagerConfigCRD(t *testing.T) {
 						{Key: "Comment", Value: "comment"},
 					},
 					// HTML field with an empty string must appear as-is in the generated configuration.
-					// See https://github.com/prometheus-operator/prometheus-operator/issues/5421
+					// See https://github.com/rhobs/obo-prometheus-operator/issues/5421
 					HTML: ptr.To(""),
 				}},
 				VictorOpsConfigs: []monitoringv1alpha1.VictorOpsConfig{{
@@ -1570,7 +1570,7 @@ templates: []
 	// Remove the selecting label from the namespace holding the
 	// AlertmanagerConfig resources and wait until the Alertmanager
 	// configuration gets regenerated.
-	// See https://github.com/prometheus-operator/prometheus-operator/issues/3847
+	// See https://github.com/rhobs/obo-prometheus-operator/issues/3847
 	err = framework.RemoveLabelsFromNamespace(context.Background(), configNs, "monitored")
 	require.NoError(t, err)
 
