@@ -7,7 +7,7 @@ COPY operator /bin/operator
 # On busybox 'nobody' has uid `65534'
 USER 65534
 
-LABEL org.opencontainers.image.source="https://github.com/prometheus-operator/prometheus-operator" \
+LABEL org.opencontainers.image.source="https://github.com/rhobs/obo-prometheus-operator" \
     org.opencontainers.image.url="https://prometheus-operator.dev/" \
     org.opencontainers.image.documentation="https://prometheus-operator.dev/" \
     org.opencontainers.image.licenses="Apache-2.0"

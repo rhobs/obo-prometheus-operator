@@ -38,7 +38,7 @@ func Prometheus(name, namespace string) *PrometheusApplyConfiguration {
 	b.WithName(name)
 	b.WithNamespace(namespace)
 	b.WithKind("Prometheus")
-	b.WithAPIVersion("monitoring.coreos.com/v1")
+	b.WithAPIVersion("monitoring.rhobs/v1")
 	return b
 }
 

@@ -172,7 +172,7 @@ const (
 Example of a Prometheus resource's status for which all pods are up and running:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -218,7 +218,7 @@ status:
 Example of a Prometheus resource's status for which some pods are missing due to scheduling issues:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: monitoring

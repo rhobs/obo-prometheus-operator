@@ -35,7 +35,7 @@ The following manifest overwrites the `failureThreshold` value of startup
 probe of the Prometheus container:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: overwrite-failureThreshold
@@ -52,7 +52,7 @@ The following manifest overwrites the `failureThreshold` values of the
 readiness and liveness probes for the Alertmanager container.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   name: overwrite-probes
@@ -70,7 +70,7 @@ spec:
 The following manifest injects the environment variable `GOMEMLIMIT` to the Prometheus container:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: inject-env-var
@@ -87,7 +87,7 @@ spec:
 The following manifest injects an additional container to the generated StatefulSet:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: inject-sidecar
@@ -109,7 +109,7 @@ Using `.spec.containers[*].args` directly would instead overwrite the container'
 `args` list completely, including the default arguments.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: additional-arguments

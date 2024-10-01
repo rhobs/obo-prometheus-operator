@@ -1,4 +1,4 @@
-module github.com/prometheus-operator/prometheus-operator
+module github.com/rhobs/obo-prometheus-operator
 
 go 1.23
 
@@ -21,13 +21,13 @@ require (
 	github.com/mitchellh/hashstructure v1.1.0
 	github.com/oklog/run v1.1.0
 	github.com/prometheus-community/prom-label-proxy v0.11.0
-	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.77.1
-	github.com/prometheus-operator/prometheus-operator/pkg/client v0.77.1
 	github.com/prometheus/alertmanager v0.27.0
 	github.com/prometheus/client_golang v1.20.4
 	github.com/prometheus/common v0.59.1
 	github.com/prometheus/exporter-toolkit v0.13.0
 	github.com/prometheus/prometheus v0.54.1
+	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.77.1-rhobs1
+	github.com/rhobs/obo-prometheus-operator/pkg/client v0.77.1-rhobs1
 	github.com/stretchr/testify v1.9.0
 	github.com/thanos-io/thanos v0.0.0-20240702084127-fcc88c028acc
 	go.uber.org/automaxprocs v1.5.3
@@ -144,6 +144,6 @@ require (
 )
 
 replace (
-	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring => ./pkg/apis/monitoring
-	github.com/prometheus-operator/prometheus-operator/pkg/client => ./pkg/client
+	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring => ./pkg/apis/monitoring
+	github.com/rhobs/obo-prometheus-operator/pkg/client => ./pkg/client
 )

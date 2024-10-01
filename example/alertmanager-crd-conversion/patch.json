@@ -4,9 +4,9 @@
    "metadata": {
       "annotations": {
          "controller-gen.kubebuilder.io/version": "v0.16.1",
-         "operator.prometheus.io/version": "0.77.1"
+         "operator.prometheus.io/version": "0.77.1-rhobs1"
       },
-      "name": "alertmanagerconfigs.monitoring.coreos.com"
+      "name": "alertmanagerconfigs.monitoring.rhobs"
    },
    "spec": {
       "conversion": {

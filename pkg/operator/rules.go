@@ -28,10 +28,10 @@ import (
 	"k8s.io/client-go/tools/record"
 	"sigs.k8s.io/yaml"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/informers"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
-	namespacelabeler "github.com/prometheus-operator/prometheus-operator/pkg/namespacelabeler"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/informers"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
+	namespacelabeler "github.com/rhobs/obo-prometheus-operator/pkg/namespacelabeler"
 )
 
 type RuleConfigurationFormat int

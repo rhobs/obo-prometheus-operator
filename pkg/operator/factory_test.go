@@ -55,7 +55,7 @@ func TestUpdateObject(t *testing.T) {
 					&fakeOwner{
 						metav1.TypeMeta{
 							Kind:       "Prometheus",
-							APIVersion: "monitoring.coreos.com/v1",
+							APIVersion: "monitoring.rhobs/v1",
 						},
 						metav1.ObjectMeta{
 							Name: "bar",
@@ -98,7 +98,7 @@ func TestUpdateObject(t *testing.T) {
 							UID:        "123",
 						},
 						{
-							APIVersion:         "monitoring.coreos.com/v1",
+							APIVersion:         "monitoring.rhobs/v1",
 							Kind:               "Prometheus",
 							Name:               "bar",
 							UID:                "456",

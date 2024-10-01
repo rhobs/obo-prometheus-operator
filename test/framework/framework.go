@@ -44,12 +44,12 @@ import (
 	certutil "k8s.io/client-go/util/cert"
 	"k8s.io/utils/ptr"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	v1monitoringclient "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1"
-	v1alpha1monitoringclient "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1"
-	v1beta1monitoringclient "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	v1monitoringclient "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1"
+	v1alpha1monitoringclient "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1"
+	v1beta1monitoringclient "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1"
 )
 
 const (
@@ -429,11 +429,11 @@ func (f *Framework) CreateOrUpdatePrometheusOperatorWithOpts(
 		for i, arg := range deploy.Spec.Template.Spec.Containers[0].Args {
 			if strings.Contains(arg, "--prometheus-config-reloader=") {
 				deploy.Spec.Template.Spec.Containers[0].Args[i] = "--prometheus-config-reloader=" +
-					"quay.io/prometheus-operator/prometheus-config-reloader:" +
+					"quay.io/rhobs/obo-prometheus-config-reloader:" +
 					repoAndTag[1]
 			}
 		}
-		webhookServerImage = "quay.io/prometheus-operator/admission-webhook:" + repoAndTag[1]
+		webhookServerImage = "quay.io/rhobs/obo-admission-webhook:" + repoAndTag[1]
 	}
 
 	deploy.Name = prometheusOperatorServiceDeploymentName

@@ -33,7 +33,7 @@ import (
 	clientdiscoveryv1 "k8s.io/client-go/kubernetes/typed/discovery/v1"
 	ktesting "k8s.io/client-go/testing"
 
-	logging "github.com/prometheus-operator/prometheus-operator/internal/log"
+	logging "github.com/rhobs/obo-prometheus-operator/internal/log"
 )
 
 func TestGetNodeAddresses(t *testing.T) {
