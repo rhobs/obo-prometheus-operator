@@ -22,7 +22,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/cluster-observabilit-tenant/cluster-observability-operator-1-0/obo-prometheus-operator-admission-webhook:{{revision}}
+    value: quay.io/redhat-user-workloads/cluster-observabilit-tenant/obo-prometheus-operator-admission-webhook:{{revision}}
   - name: dockerfile
     value: cmd/admission-webhook/Dockerfile
   - name: path-context
