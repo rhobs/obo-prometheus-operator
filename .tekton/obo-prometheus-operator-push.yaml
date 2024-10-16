@@ -22,7 +22,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/cluster-observabilit-tenant/cluster-observability-operator-1-0/obo-prometheus-operator:{{revision}}
+    value: quay.io/redhat-user-workloads/cluster-observabilit-tenant/obo-prometheus-operator:{{revision}}
   - name: dockerfile
     value: Dockerfile
   - name: path-context
