@@ -1,4 +1,4 @@
-FROM golang:1.14 as builder
+FROM golang:1.23 as builder
 
 ENV JSONNET_VERSION v0.15.0
 # This corresponds to v2.16.0, but needs to be written as commit hash due to golang 1.13 issues
@@ -24,7 +24,7 @@ RUN go get github.com/campoy/embedmd
 RUN GO111MODULE=on go get github.com/go-bindata/go-bindata/v3/go-bindata@${GO_BINDATA_VERSION}
 
 
-FROM golang:1.14
+FROM golang:1.23
 RUN apt-get update -y && apt-get install -y make git jq gawk python-yaml && \
     rm -rf /var/lib/apt/lists/*
 COPY --from=builder /usr/local/bin/jsonnetfmt /usr/local/bin/jsonnetfmt
