@@ -62,7 +62,7 @@ jobs:
 
           cd rhobs/olm
           make tools
-          make bundle-image bundle-push IMAGE_REPO=quay.io/$IMAGE_ORG
+          make bundle-image bundle-push IMAGE_REPO=quay.io/"$IMAGE_ORG"
 
       - name: push git tags
         run: |
