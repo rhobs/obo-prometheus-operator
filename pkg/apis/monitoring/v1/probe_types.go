@@ -28,7 +28,7 @@ const (
 
 // +genclient
 // +k8s:openapi-gen=true
-// +kubebuilder:resource:categories="prometheus-operator",shortName="prb"
+// +kubebuilder:resource:categories="rhobs-prometheus-operator"
 
 // The `Probe` custom resource definition (CRD) defines how to scrape metrics from prober exporters such as the [blackbox exporter](https://github.com/prometheus/blackbox_exporter).
 //

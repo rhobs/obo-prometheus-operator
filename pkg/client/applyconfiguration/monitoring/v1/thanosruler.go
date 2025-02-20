@@ -38,7 +38,7 @@ func ThanosRuler(name, namespace string) *ThanosRulerApplyConfiguration {
 	b.WithName(name)
 	b.WithNamespace(namespace)
 	b.WithKind("ThanosRuler")
-	b.WithAPIVersion("monitoring.coreos.com/v1")
+	b.WithAPIVersion("monitoring.rhobs/v1")
 	return b
 }
 

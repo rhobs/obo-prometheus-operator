@@ -80,7 +80,7 @@ prometheusConfig
 Using a pseudo custom resource definition, we should have the following:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: ScrapeConfig
 metadata:
   name: my-scrape-config

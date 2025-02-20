@@ -91,7 +91,7 @@ If the operator deletes Prometheus pods in excess during a scale-down operation,
 We propose that Prometheus-Operator introduces a new `shardRetentionPolicy` field to the Prometheus CRD:
 
 ```yaml
-apiVersion: monitoring.coreos.com
+apiVersion: monitoring.rhobs
 kind: Prometheus
 metadata:
   name: example
