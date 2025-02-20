@@ -26,8 +26,8 @@ import (
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/utils/ptr"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
 )
 
 // testScrapeConfigCreation tests multiple ScrapeConfig definitions.
@@ -410,7 +410,7 @@ func testPromOperatorStartsWithoutScrapeConfigCRD(t *testing.T) {
 	ns := framework.CreateNamespace(context.Background(), t, testCtx)
 	framework.SetupPrometheusRBAC(context.Background(), t, testCtx, ns)
 
-	err := framework.DeleteCRD(context.Background(), "scrapeconfigs.monitoring.coreos.com")
+	err := framework.DeleteCRD(context.Background(), "scrapeconfigs.monitoring.rhobs")
 	require.NoError(t, err)
 
 	_, err = framework.CreateOrUpdatePrometheusOperator(context.Background(), ns, []string{ns}, nil, []string{ns}, nil, false, true, false)
