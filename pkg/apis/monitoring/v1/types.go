@@ -26,7 +26,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/util/intstr"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring"
 )
 
 const (
@@ -152,10 +152,10 @@ func (pc *ProxyConfig) Validate() error {
 
 // ObjectReference references a PodMonitor, ServiceMonitor, Probe or PrometheusRule object.
 type ObjectReference struct {
-	// Group of the referent. When not specified, it defaults to `monitoring.coreos.com`
+	// Group of the referent. When not specified, it defaults to `monitoring.rhobs`
 	// +optional
-	// +kubebuilder:default:="monitoring.coreos.com"
-	// +kubebuilder:validation:Enum=monitoring.coreos.com
+	// +kubebuilder:default:="monitoring.rhobs"
+	// +kubebuilder:validation:Enum=monitoring.rhobs
 	Group string `json:"group"`
 	// Resource of the referent.
 	// +kubebuilder:validation:Required

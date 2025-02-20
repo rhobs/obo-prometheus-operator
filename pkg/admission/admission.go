@@ -29,12 +29,12 @@ import (
 	kscheme "k8s.io/client-go/kubernetes/scheme"
 	"sigs.k8s.io/controller-runtime/pkg/webhook/conversion"
 
-	validationv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/alertmanager/validation/v1alpha1"
-	validationv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/alertmanager/validation/v1beta1"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	monitoringv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1beta1"
-	promoperator "github.com/prometheus-operator/prometheus-operator/pkg/operator"
+	validationv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/alertmanager/validation/v1alpha1"
+	validationv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/alertmanager/validation/v1beta1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	monitoringv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1beta1"
+	promoperator "github.com/rhobs/obo-prometheus-operator/pkg/operator"
 )
 
 const (
@@ -44,7 +44,7 @@ const (
 	errUnmarshalRules            = "Cannot unmarshal rules from spec"
 	errUnmarshalConfig           = "Cannot unmarhsal config from spec"
 
-	group                  = "monitoring.coreos.com"
+	group                  = "monitoring.rhobs"
 	prometheusRuleResource = monitoringv1.PrometheusRuleName
 	prometheusRuleVersion  = monitoringv1.Version
 

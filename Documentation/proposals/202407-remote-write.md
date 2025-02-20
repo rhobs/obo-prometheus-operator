@@ -32,7 +32,7 @@ Prometheus has two APIs for integrating with remote storage: 'remote write' and 
 The RemoteWrite CRD represents one of the Prometheus remote_write configuration scoped to the resource’s namespace.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: RemoteWrite
 metadata:
   name: example
@@ -72,7 +72,7 @@ type RemoteWrite struct {
 The Prometheus CRD is extended with 2 new fields (remoteWriteSelector and remoteWriteNamespaceSelector) that define which RemoteWrite resources are associated with this Prometheus instance.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: example
@@ -118,7 +118,7 @@ The operator will respect the --namespaces and --deny-namespaces flags when look
 Similar to what exists for scrape resources (e.g. `enforcedSampleLimit` for `ServiceMonitor`), we will allow the Prometheus resource's owners to setup upper-bound limits on the remote write options. For example, it will be possible to disable metadata sending or limit the queue capacity:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: example
