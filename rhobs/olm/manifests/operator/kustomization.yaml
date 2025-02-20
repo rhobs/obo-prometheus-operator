@@ -1,0 +1,70 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- example/rbac/prometheus-operator/prometheus-operator-deployment.yaml
+- example/rbac/prometheus-operator/prometheus-operator-cluster-role-binding.yaml
+- example/rbac/prometheus-operator/prometheus-operator-cluster-role.yaml
+- example/rbac/prometheus-operator/prometheus-operator-service-account.yaml
+
+namePrefix: rhobs-
+
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: prometheus-operator
+      spec:
+        selector:
+          matchLabels:
+            app.kubernetes.io/part-of: rhobs-prometheus-operator
+        template:
+          metadata:
+            annotations:
+              target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+            labels:
+              app.kubernetes.io/part-of: rhobs-prometheus-operator
+          spec:
+            containers:
+              - name: prometheus-operator
+                image: <IMG_PROMETHEUS_OPERATOR>
+                args:
+                  - --prometheus-config-reloader=<IMG_PROMETHEUS_CONFIG_RELOADER>
+                resources:
+                  requests:
+                    cpu: 5m
+                    memory: 250Mi
+                  limits:
+                    cpu: 100m
+                    memory: 500Mi
+                terminationMessagePolicy: FallbackToLogsOnError
+            securityContext:
+              runAsNonRoot: true
+  - patch: |-
+      - op: remove
+        path: /spec/template/spec/nodeSelector
+    target:
+      group: apps
+      version: v1
+      kind: Deployment
+      name: prometheus-operator
+
+  - patch: |-
+      - op: add
+        path: /rules/-
+        value:
+          apiGroups:
+            - security.openshift.io
+          resourceNames:
+            - nonroot-v2
+            - nonroot
+          resources:
+            - securitycontextconstraints
+          verbs:
+            - use
+    target:
+      group: rbac.authorization.k8s.io
+      version: v1
+      kind: ClusterRole
+      name: prometheus-operator
