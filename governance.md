@@ -56,7 +56,7 @@ This email will also be CC'd to the [prometheus-operator mailing list](https://g
 
 If they choose to accept, the following steps are taken:
 
-* The new triage team member is added to the [Prometheus Operator project](http://github.com/prometheus-operator/prometheus-operator) with `Member` role and `Triage` permission.
+* The new triage team member is added to the [Prometheus Operator project](http://github.com/rhobs/obo-prometheus-operator) with `Member` role and `Triage` permission.
 * The new triage team member is added to the [prometheus-operator mailing list](https://groups.google.com/forum/#!forum/prometheus-operator-team).
 * The new triage team member is added to the [MAINTAINERS.md](MAINTAINERS.md) file under the Triage section.
 * The new triage team member is announced on the [Prometheus Operator Twitter](https://twitter.com/PromOperator) by an existing team member.
@@ -70,13 +70,13 @@ Upon death of a member, their Triage team membership ends automatically.
 ### Technical decisions
 
 Smaller technical decisions are made informally and [lazy consensus](#consensus) is assumed. Technical decisions that span multiple parts of the Prometheus Operator project
-should be discussed and made on the [GitHub issues](https://github.com/prometheus-operator/prometheus-operator/issues) and in most cases followed by proposal as described [here](https://github.com/prometheus-operator/prometheus-operator/blob/main/CONTRIBUTING.md).
+should be discussed and made on the [GitHub issues](https://github.com/rhobs/obo-prometheus-operator/issues) and in most cases followed by proposal as described [here](https://github.com/rhobs/obo-prometheus-operator/blob/main/CONTRIBUTING.md).
 
 Decisions are usually made by [lazy consensus](#consensus). If no consensus can be reached, the matter may be resolved by [majority vote](#majority-vote).
 
 ### Governance changes
 
-Material changes to this document are discussed publicly on the [Prometheus Operator GitHub](http://github.com/prometheus-operator/prometheus-operator).
+Material changes to this document are discussed publicly on the [Prometheus Operator GitHub](http://github.com/rhobs/obo-prometheus-operator).
 Any change requires a [supermajority](#supermajority-vote) in favor. Editorial changes may be made by [lazy consensus](#consensus) unless challenged.
 
 ### Other matters
@@ -161,7 +161,7 @@ It's about number of up votes to agree on the decision.
 
 ### How do I propose a decision?
 
-See the [Contributing guide](https://github.com/prometheus-operator/prometheus-operator/blob/main/CONTRIBUTING.md).
+See the [Contributing guide](https://github.com/rhobs/obo-prometheus-operator/blob/main/CONTRIBUTING.md).
 
 ### How do I become a team member?
 
@@ -173,7 +173,7 @@ Should the decision be in favor, your new membership will also be announced on t
 
 ### How do I add a project?
 
-As a team member, propose the new project on the [Prometheus Operator GitHub Issue](https://github.com/prometheus-operator/prometheus-operator/issues). However, currently to maintain a project in our organization, you have to become a [Maintainers Team](#maintainers-team) member.
+As a team member, propose the new project on the [Prometheus Operator GitHub Issue](https://github.com/rhobs/obo-prometheus-operator/issues). However, currently to maintain a project in our organization, you have to become a [Maintainers Team](#maintainers-team) member.
 
 ### How do I remove a Maintainer or Triage member?
 
