@@ -21,7 +21,7 @@ import (
 	v1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/util/intstr"
 
-	logging "github.com/prometheus-operator/prometheus-operator/internal/log"
+	logging "github.com/rhobs/obo-prometheus-operator/internal/log"
 )
 
 func makeExpectedProbeHandler(probePath string) v1.ProbeHandler {

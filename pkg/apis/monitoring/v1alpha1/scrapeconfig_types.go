@@ -15,7 +15,7 @@
 package v1alpha1
 
 import (
-	v1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	v1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -109,7 +109,7 @@ type K8SSelectorConfig struct {
 
 // +genclient
 // +k8s:openapi-gen=true
-// +kubebuilder:resource:categories="prometheus-operator",shortName="scfg"
+// +kubebuilder:resource:categories="rhobs-prometheus-operator"
 // +kubebuilder:storageversion
 
 // ScrapeConfig defines a namespaced Prometheus scrape_config to be aggregated across
