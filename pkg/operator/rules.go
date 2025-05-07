@@ -30,17 +30,17 @@ import (
 	"k8s.io/utils/ptr"
 	"sigs.k8s.io/yaml"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/informers"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
-	namespacelabeler "github.com/prometheus-operator/prometheus-operator/pkg/namespacelabeler"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/informers"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
+	namespacelabeler "github.com/rhobs/obo-prometheus-operator/pkg/namespacelabeler"
 )
 
 func init() {
 	// For now, the operator only supports legacy label names.
 	// Eventually the operator should support UTF-8 label names too and the
 	// issue is tracked by
-	// https://github.com/prometheus-operator/prometheus-operator/issues/7362
+	// https://github.com/rhobs/obo-prometheus-operator/issues/7362
 	model.NameValidationScheme = model.LegacyValidation
 }
 
