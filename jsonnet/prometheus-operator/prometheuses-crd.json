@@ -4,22 +4,19 @@
   "metadata": {
     "annotations": {
       "controller-gen.kubebuilder.io/version": "v0.18.0",
-      "operator.prometheus.io/version": "0.83.0"
+      "operator.prometheus.io/version": "0.83.0-rhobs1"
     },
-    "name": "prometheuses.monitoring.coreos.com"
+    "name": "prometheuses.monitoring.rhobs"
   },
   "spec": {
-    "group": "monitoring.coreos.com",
+    "group": "monitoring.rhobs",
     "names": {
       "categories": [
-        "prometheus-operator"
+        "rhobs-prometheus-operator"
       ],
       "kind": "Prometheus",
       "listKind": "PrometheusList",
       "plural": "prometheuses",
-      "shortNames": [
-        "prom"
-      ],
       "singular": "prometheus"
     },
     "scope": "Namespaced",
@@ -3241,10 +3238,10 @@
                       "description": "ObjectReference references a PodMonitor, ServiceMonitor, Probe or PrometheusRule object.",
                       "properties": {
                         "group": {
-                          "default": "monitoring.coreos.com",
-                          "description": "Group of the referent. When not specified, it defaults to `monitoring.coreos.com`",
+                          "default": "monitoring.rhobs",
+                          "description": "Group of the referent. When not specified, it defaults to `monitoring.rhobs`",
                           "enum": [
-                            "monitoring.coreos.com"
+                            "monitoring.rhobs"
                           ],
                           "type": "string"
                         },
@@ -7726,7 +7723,7 @@
                     "type": "string"
                   },
                   "shardRetentionPolicy": {
-                    "description": "ShardRetentionPolicy defines the retention policy for the Prometheus shards.\n(Alpha) Using this field requires the 'PrometheusShardRetentionPolicy' feature gate to be enabled.\n\nThe final goals for this feature can be seen at https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/proposals/202310-shard-autoscaling.md#graceful-scale-down-of-prometheus-servers,\nhowever, the feature is not yet fully implemented in this PR. The limitation being:\n* Retention duration is not settable, for now, shards are retained forever.",
+                    "description": "ShardRetentionPolicy defines the retention policy for the Prometheus shards.\n(Alpha) Using this field requires the 'PrometheusShardRetentionPolicy' feature gate to be enabled.\n\nThe final goals for this feature can be seen at https://github.com/rhobs/obo-prometheus-operator/blob/main/Documentation/proposals/202310-shard-autoscaling.md#graceful-scale-down-of-prometheus-servers,\nhowever, the feature is not yet fully implemented in this PR. The limitation being:\n* Retention duration is not settable, for now, shards are retained forever.",
                     "properties": {
                       "retain": {
                         "description": "Defines the config for retention when the retention policy is set to `Retain`.\nThis field is ineffective as of now.",
