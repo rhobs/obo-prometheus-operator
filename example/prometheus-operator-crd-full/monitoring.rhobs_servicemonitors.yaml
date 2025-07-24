@@ -4,18 +4,15 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.84.0
-  name: servicemonitors.monitoring.coreos.com
+  name: servicemonitors.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: ServiceMonitor
     listKind: ServiceMonitorList
     plural: servicemonitors
-    shortNames:
-    - smon
     singular: servicemonitor
   scope: Namespaced
   versions:
@@ -1342,7 +1339,7 @@ spec:
                     group:
                       description: The group of the referenced resource.
                       enum:
-                      - monitoring.coreos.com
+                      - monitoring.rhobs
                       type: string
                     name:
                       description: The name of the referenced object.
