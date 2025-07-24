@@ -20,8 +20,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	testFramework "github.com/prometheus-operator/prometheus-operator/test/framework"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	testFramework "github.com/rhobs/obo-prometheus-operator/test/framework"
 )
 
 // testFinalizerWhenStatusForConfigResourcesEnabled tests the adding/removing of status-cleanup finalizer for Prometheus when StatusForConfigurationResourcesFeature is enabled.
