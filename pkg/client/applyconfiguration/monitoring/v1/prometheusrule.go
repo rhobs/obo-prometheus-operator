@@ -37,7 +37,7 @@ func PrometheusRule(name, namespace string) *PrometheusRuleApplyConfiguration {
 	b.WithName(name)
 	b.WithNamespace(namespace)
 	b.WithKind("PrometheusRule")
-	b.WithAPIVersion("monitoring.coreos.com/v1")
+	b.WithAPIVersion("monitoring.rhobs/v1")
 	return b
 }
 
