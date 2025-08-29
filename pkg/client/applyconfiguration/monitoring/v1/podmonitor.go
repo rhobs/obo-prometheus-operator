@@ -37,7 +37,7 @@ func PodMonitor(name, namespace string) *PodMonitorApplyConfiguration {
 	b.WithName(name)
 	b.WithNamespace(namespace)
 	b.WithKind("PodMonitor")
-	b.WithAPIVersion("monitoring.coreos.com/v1")
+	b.WithAPIVersion("monitoring.rhobs/v1")
 	return b
 }
 

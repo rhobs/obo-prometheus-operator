@@ -4,18 +4,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.85.0
-  name: alertmanagerconfigs.monitoring.coreos.com
+    operator.prometheus.io/version: 0.85.0-rhobs1
+  name: alertmanagerconfigs.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: AlertmanagerConfig
     listKind: AlertmanagerConfigList
     plural: alertmanagerconfigs
-    shortNames:
-    - amcfg
     singular: alertmanagerconfig
   scope: Namespaced
   versions:
@@ -11661,18 +11659,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.85.0
-  name: alertmanagers.monitoring.coreos.com
+    operator.prometheus.io/version: 0.85.0-rhobs1
+  name: alertmanagers.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: Alertmanager
     listKind: AlertmanagerList
     plural: alertmanagers
-    shortNames:
-    - am
     singular: alertmanager
   scope: Namespaced
   versions:
@@ -21191,18 +21187,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.85.0
-  name: podmonitors.monitoring.coreos.com
+    operator.prometheus.io/version: 0.85.0-rhobs1
+  name: podmonitors.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: PodMonitor
     listKind: PodMonitorList
     plural: podmonitors
-    shortNames:
-    - pmon
     singular: podmonitor
   scope: Namespaced
   versions:
@@ -22453,18 +22447,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.85.0
-  name: probes.monitoring.coreos.com
+    operator.prometheus.io/version: 0.85.0-rhobs1
+  name: probes.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: Probe
     listKind: ProbeList
     plural: probes
-    shortNames:
-    - prb
     singular: probe
   scope: Namespaced
   versions:
@@ -23712,18 +23704,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.85.0
-  name: prometheusagents.monitoring.coreos.com
+    operator.prometheus.io/version: 0.85.0-rhobs1
+  name: prometheusagents.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: PrometheusAgent
     listKind: PrometheusAgentList
     plural: prometheusagents
-    shortNames:
-    - promagent
     singular: prometheusagent
   scope: Namespaced
   versions:
@@ -26847,11 +26837,11 @@ spec:
                     Probe or PrometheusRule object.
                   properties:
                     group:
-                      default: monitoring.coreos.com
+                      default: monitoring.rhobs
                       description: Group of the referent. When not specified, it defaults
-                        to `monitoring.coreos.com`
+                        to `monitoring.rhobs`
                       enum:
-                      - monitoring.coreos.com
+                      - monitoring.rhobs
                       type: string
                     name:
                       description: Name of the referent. When not set, all resources
@@ -34705,18 +34695,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.85.0
-  name: prometheuses.monitoring.coreos.com
+    operator.prometheus.io/version: 0.85.0-rhobs1
+  name: prometheuses.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: Prometheus
     listKind: PrometheusList
     plural: prometheuses
-    shortNames:
-    - prom
     singular: prometheus
   scope: Namespaced
   versions:
@@ -38603,11 +38591,11 @@ spec:
                     Probe or PrometheusRule object.
                   properties:
                     group:
-                      default: monitoring.coreos.com
+                      default: monitoring.rhobs
                       description: Group of the referent. When not specified, it defaults
-                        to `monitoring.coreos.com`
+                        to `monitoring.rhobs`
                       enum:
-                      - monitoring.coreos.com
+                      - monitoring.rhobs
                       type: string
                     name:
                       description: Name of the referent. When not set, all resources
@@ -43869,7 +43857,7 @@ spec:
                   ShardRetentionPolicy defines the retention policy for the Prometheus shards.
                   (Alpha) Using this field requires the 'PrometheusShardRetentionPolicy' feature gate to be enabled.
 
-                  The final goals for this feature can be seen at https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/proposals/202310-shard-autoscaling.md#graceful-scale-down-of-prometheus-servers,
+                  The final goals for this feature can be seen at https://github.com/rhobs/obo-prometheus-operator/blob/main/Documentation/proposals/202310-shard-autoscaling.md#graceful-scale-down-of-prometheus-servers,
                   however, the feature is not yet fully implemented in this PR. The limitation being:
                   * Retention duration is not settable, for now, shards are retained forever.
                 properties:
@@ -47949,18 +47937,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.85.0
-  name: prometheusrules.monitoring.coreos.com
+    operator.prometheus.io/version: 0.85.0-rhobs1
+  name: prometheusrules.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: PrometheusRule
     listKind: PrometheusRuleList
     plural: prometheusrules
-    shortNames:
-    - promrule
     singular: prometheusrule
   scope: Namespaced
   versions:
@@ -48109,18 +48095,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.85.0
-  name: scrapeconfigs.monitoring.coreos.com
+    operator.prometheus.io/version: 0.85.0-rhobs1
+  name: scrapeconfigs.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: ScrapeConfig
     listKind: ScrapeConfigList
     plural: scrapeconfigs
-    shortNames:
-    - scfg
     singular: scrapeconfig
   scope: Namespaced
   versions:
@@ -60661,18 +60645,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.85.0
-  name: servicemonitors.monitoring.coreos.com
+    operator.prometheus.io/version: 0.85.0-rhobs1
+  name: servicemonitors.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: ServiceMonitor
     listKind: ServiceMonitorList
     plural: servicemonitors
-    shortNames:
-    - smon
     singular: servicemonitor
   scope: Namespaced
   versions:
@@ -62001,7 +61983,7 @@ spec:
                     group:
                       description: The group of the referenced resource.
                       enum:
-                      - monitoring.coreos.com
+                      - monitoring.rhobs
                       type: string
                     name:
                       description: The name of the referenced object.
@@ -62040,18 +62022,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.18.0
-    operator.prometheus.io/version: 0.85.0
-  name: thanosrulers.monitoring.coreos.com
+    operator.prometheus.io/version: 0.85.0-rhobs1
+  name: thanosrulers.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: ThanosRuler
     listKind: ThanosRulerList
     plural: thanosrulers
-    shortNames:
-    - ruler
     singular: thanosruler
   scope: Namespaced
   versions:
@@ -64683,11 +64663,11 @@ spec:
                     Probe or PrometheusRule object.
                   properties:
                     group:
-                      default: monitoring.coreos.com
+                      default: monitoring.rhobs
                       description: Group of the referent. When not specified, it defaults
-                        to `monitoring.coreos.com`
+                        to `monitoring.rhobs`
                       enum:
-                      - monitoring.coreos.com
+                      - monitoring.rhobs
                       type: string
                     name:
                       description: Name of the referent. When not set, all resources
@@ -71366,7 +71346,7 @@ metadata:
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/name: prometheus-operator
-    app.kubernetes.io/version: 0.85.0
+    app.kubernetes.io/version: 0.85.0-rhobs1
   name: prometheus-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -71383,11 +71363,11 @@ metadata:
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/name: prometheus-operator
-    app.kubernetes.io/version: 0.85.0
+    app.kubernetes.io/version: 0.85.0-rhobs1
   name: prometheus-operator
 rules:
 - apiGroups:
-  - monitoring.coreos.com
+  - monitoring.rhobs
   resources:
   - alertmanagers
   - alertmanagers/finalizers
@@ -71492,7 +71472,7 @@ metadata:
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/name: prometheus-operator
-    app.kubernetes.io/version: 0.85.0
+    app.kubernetes.io/version: 0.85.0-rhobs1
   name: prometheus-operator
   namespace: default
 spec:
@@ -71508,19 +71488,19 @@ spec:
       labels:
         app.kubernetes.io/component: controller
         app.kubernetes.io/name: prometheus-operator
-        app.kubernetes.io/version: 0.85.0
+        app.kubernetes.io/version: 0.85.0-rhobs1
     spec:
       automountServiceAccountToken: true
       containers:
       - args:
         - --kubelet-service=kube-system/kubelet
-        - --prometheus-config-reloader=quay.io/prometheus-operator/prometheus-config-reloader:v0.85.0
+        - --prometheus-config-reloader=quay.io/rhobs/obo-prometheus-config-reloader:v0.85.0-rhobs1
         - --kubelet-endpoints=true
         - --kubelet-endpointslice=false
         env:
         - name: GOGC
           value: "30"
-        image: quay.io/prometheus-operator/prometheus-operator:v0.85.0
+        image: quay.io/rhobs/obo-prometheus-operator:v0.85.0-rhobs1
         name: prometheus-operator
         ports:
         - containerPort: 8080
@@ -71554,7 +71534,7 @@ metadata:
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/name: prometheus-operator
-    app.kubernetes.io/version: 0.85.0
+    app.kubernetes.io/version: 0.85.0-rhobs1
   name: prometheus-operator
   namespace: default
 ---
@@ -71564,7 +71544,7 @@ metadata:
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/name: prometheus-operator
-    app.kubernetes.io/version: 0.85.0
+    app.kubernetes.io/version: 0.85.0-rhobs1
   name: prometheus-operator
   namespace: default
 spec:

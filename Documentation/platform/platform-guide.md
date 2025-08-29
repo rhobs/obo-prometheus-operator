@@ -80,7 +80,7 @@ subjects:
 Apply all these manifests to create the necessary RBAC resources. Now you are all set to deploy a Prometheus instance. Here is an example of a basic Prometheus instance manifest.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/prometheus.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -101,7 +101,7 @@ For more information, see the [Prometheus Operator RBAC guide]({{< ref "rbac" >}
 Let us take a simple example that creates 3 replicas of Alertmanager.
 
 ```yaml mdox-exec="cat example/user-guides/alerting/alertmanager-example.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Alertmanager
 metadata:
   name: example
@@ -160,7 +160,7 @@ alerts are fired against it.
 First, create a Prometheus instance that will send alerts to the Alertmanger cluster:
 
 ```
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: example
