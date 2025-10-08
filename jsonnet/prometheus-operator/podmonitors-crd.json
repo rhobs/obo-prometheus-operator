@@ -4,22 +4,19 @@
   "metadata": {
     "annotations": {
       "controller-gen.kubebuilder.io/version": "v0.19.0",
-      "operator.prometheus.io/version": "0.86.0"
+      "operator.prometheus.io/version": "0.86.0-rhobs1"
     },
-    "name": "podmonitors.monitoring.coreos.com"
+    "name": "podmonitors.monitoring.rhobs"
   },
   "spec": {
-    "group": "monitoring.coreos.com",
+    "group": "monitoring.rhobs",
     "names": {
       "categories": [
-        "prometheus-operator"
+        "rhobs-prometheus-operator"
       ],
       "kind": "PodMonitor",
       "listKind": "PodMonitorList",
       "plural": "podmonitors",
-      "shortNames": [
-        "pmon"
-      ],
       "singular": "podmonitor"
     },
     "scope": "Namespaced",
@@ -1143,7 +1140,7 @@
                         "group": {
                           "description": "group defines the group of the referenced resource.",
                           "enum": [
-                            "monitoring.coreos.com"
+                            "monitoring.rhobs"
                           ],
                           "type": "string"
                         },

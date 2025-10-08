@@ -29,7 +29,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/fields"
 
-	operatorFramework "github.com/prometheus-operator/prometheus-operator/test/framework"
+	operatorFramework "github.com/rhobs/obo-prometheus-operator/test/framework"
 )
 
 var (
@@ -94,7 +94,7 @@ func TestMain(m *testing.M) {
 	opImage = flag.String(
 		"operator-image",
 		"",
-		"operator image, e.g. quay.io/prometheus-operator/prometheus-operator",
+		"operator image, e.g. quay.io/rhobs/obo-prometheus-operator",
 	)
 	flag.Parse()
 
@@ -116,7 +116,7 @@ func TestMain(m *testing.M) {
 		os.Exit(1)
 	}
 
-	prevStableVersionURL := fmt.Sprintf(gitHubContentReleaseBaseURL, currentSemVer.Major, currentSemVer.Minor-1) + "/VERSION"
+	prevStableVersionURL := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.85.0-rhobs1/VERSION"
 	reader, err := operatorFramework.URLToIOReader(prevStableVersionURL)
 	if err != nil {
 		logger.Printf("failed to get previous version file content: %v\n", err)
@@ -134,9 +134,9 @@ func TestMain(m *testing.M) {
 		logger.Printf("failed to parse previous stable version: %v\n", err)
 		os.Exit(1)
 	}
-	prevStableOpImage := fmt.Sprintf("quay.io/prometheus-operator/prometheus-operator:v%s", strings.TrimSpace(string(prevStableVersion)))
-	prevExampleDir := fmt.Sprintf(gitHubContentReleaseBaseURL, prevSemVer.Major, prevSemVer.Minor) + "/example"
-	prevResourcesDir := fmt.Sprintf(gitHubContentReleaseBaseURL, prevSemVer.Major, prevSemVer.Minor) + "/test/framework/resources"
+	prevStableOpImage := fmt.Sprintf("quay.io/rhobs/obo-prometheus-operator:v%s", strings.TrimSpace(string(prevStableVersion)))
+	prevExampleDir := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.85.0-rhobs1/example"
+	prevResourcesDir := "https://raw.githubusercontent.com/rhobs/obo-prometheus-operator/rhobs-rel-0.85.0-rhobs1/test/framework/resources"
 
 	if previousVersionFramework, err = operatorFramework.New(*kubeconfig, prevStableOpImage, prevExampleDir, prevResourcesDir, prevSemVer); err != nil {
 		logger.Printf("failed to setup previous version framework: %v\n", err)
