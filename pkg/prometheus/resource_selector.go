@@ -34,11 +34,11 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/utils/ptr"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/assets"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/assets"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
 )
 
 const (
@@ -767,7 +767,7 @@ func (rs *ResourceSelector) checkScrapeConfig(ctx context.Context, sc *monitorin
 	}
 
 	// The Kubernetes API can't do the validation (for now) because kubebuilder validation markers don't work on map keys with custom type.
-	// https://github.com/prometheus-operator/prometheus-operator/issues/6889
+	// https://github.com/rhobs/obo-prometheus-operator/issues/6889
 	if err := rs.validateStaticConfig(sc); err != nil {
 		return fmt.Errorf("staticConfigs: %w", err)
 	}

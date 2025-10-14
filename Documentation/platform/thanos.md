@@ -89,7 +89,7 @@ The [Thanos Ruler](https://thanos.io/tip/components/rule.md/) component evaluate
 
 ```yaml
 ...
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ThanosRuler
 metadata:
   name: thanos-ruler-demo
