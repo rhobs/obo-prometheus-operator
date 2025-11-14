@@ -15,10 +15,10 @@
 package prometheus
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	monitoringv1ac "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
-	monitoringv1alpha1ac "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1alpha1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	monitoringv1ac "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
+	monitoringv1alpha1ac "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1alpha1"
 )
 
 func ApplyConfigurationFromPrometheusAgent(p *monitoringv1alpha1.PrometheusAgent, updateScaleSubresource bool) *monitoringv1alpha1ac.PrometheusAgentApplyConfiguration {

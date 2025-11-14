@@ -28,7 +28,7 @@ Imagine you're working on a PR that adds a new field to the ScrapeConfig CRD and
 
 Here is an example test that checks if the string generated from ScrapeConfigs are equal to an expected file.
 
-https://github.com/prometheus-operator/prometheus-operator/blob/cb534214415beb3c39353988ae85f2bb07f245e7/pkg/prometheus/promcfg_test.go#L4945-L4956
+https://github.com/rhobs/obo-prometheus-operator/blob/cb534214415beb3c39353988ae85f2bb07f245e7/pkg/prometheus/promcfg_test.go#L4945-L4956
 
 Unit tests can be run with:
 
@@ -54,7 +54,7 @@ Golden files are plain-text documents designed to facilitate the validation of l
 
 In the example below, we're generating the Prometheus configuration (which can easily have 100+ lines for each individual test) and comparing it against a golden file:
 
-https://github.com/prometheus-operator/prometheus-operator/blob/aeceb0b4fadc8307a44dc55afdceca0bea50bbb0/pkg/prometheus/promcfg_test.go#L102-L277
+https://github.com/rhobs/obo-prometheus-operator/blob/aeceb0b4fadc8307a44dc55afdceca0bea50bbb0/pkg/prometheus/promcfg_test.go#L102-L277
 
 If not for golden files, the test above, instead of ~150 lines, would easily require around ~1000 lines. The usage of golden files help us maintain test suites with several multi line strings comparison without sacrificing test readability.
 
@@ -116,9 +116,9 @@ When working on a contribution though, it's rare that you'll need to make a chan
 
 ### Skipping test suites
 
-https://github.com/prometheus-operator/prometheus-operator/blob/272df8a2411bcf877107b3251e79ae8aa8c24761/test/e2e/main_test.go#L46-L50
+https://github.com/rhobs/obo-prometheus-operator/blob/272df8a2411bcf877107b3251e79ae8aa8c24761/test/e2e/main_test.go#L46-L50
 
-As shown above, particular test suites can be skipped with Environment Variables. You can also look at our [CI pipeline as example](https://github.com/prometheus-operator/prometheus-operator/blob/272df8a2411bcf877107b3251e79ae8aa8c24761/.github/workflows/e2e.yaml#L85-L94). Although we always run all tests in CI, skipping irrelevant tests are great during development as they shorten the feedback loop.
+As shown above, particular test suites can be skipped with Environment Variables. You can also look at our [CI pipeline as example](https://github.com/rhobs/obo-prometheus-operator/blob/272df8a2411bcf877107b3251e79ae8aa8c24761/.github/workflows/e2e.yaml#L85-L94). Although we always run all tests in CI, skipping irrelevant tests are great during development as they shorten the feedback loop.
 
 The following Makefile targets can run specific end-to-end tests:
 
