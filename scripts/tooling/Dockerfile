@@ -30,7 +30,7 @@ RUN apt-get update -y && apt-get install -y make git jq gawk python-yaml && \
 COPY --from=builder /usr/local/bin/jsonnetfmt /usr/local/bin/jsonnetfmt
 COPY --from=builder /go/bin/* /go/bin/
 
-RUN mkdir -p /go/src/github.com/prometheus-operator/prometheus-operator /.cache && \
+RUN mkdir -p /go/src/github.com/rhobs/obo-prometheus-operator /.cache && \
 	chmod -R 777 /go /.cache
 
-WORKDIR /go/src/github.com/prometheus-operator/prometheus-operator
+WORKDIR /go/src/github.com/rhobs/obo-prometheus-operator
