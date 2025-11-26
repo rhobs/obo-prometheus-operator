@@ -24,8 +24,8 @@ import (
 	"k8s.io/client-go/kubernetes"
 	corev1 "k8s.io/client-go/kubernetes/typed/core/v1"
 
-	sortutil "github.com/prometheus-operator/prometheus-operator/internal/sortutil"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
+	sortutil "github.com/rhobs/obo-prometheus-operator/internal/sortutil"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
 )
 
 // MaxSecretDataSizeBytes is the maximum data size that a single secret shard
