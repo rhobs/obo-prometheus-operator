@@ -38,16 +38,16 @@ import (
 	"k8s.io/client-go/tools/cache"
 	"k8s.io/utils/ptr"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/assets"
-	monitoringv1ac "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
-	monitoringclient "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned"
-	"github.com/prometheus-operator/prometheus-operator/pkg/informers"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
-	"github.com/prometheus-operator/prometheus-operator/pkg/listwatch"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	prompkg "github.com/prometheus-operator/prometheus-operator/pkg/prometheus"
-	"github.com/prometheus-operator/prometheus-operator/pkg/webconfig"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/assets"
+	monitoringv1ac "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
+	monitoringclient "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned"
+	"github.com/rhobs/obo-prometheus-operator/pkg/informers"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
+	"github.com/rhobs/obo-prometheus-operator/pkg/listwatch"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	prompkg "github.com/rhobs/obo-prometheus-operator/pkg/prometheus"
+	"github.com/rhobs/obo-prometheus-operator/pkg/webconfig"
 )
 
 const (
@@ -257,7 +257,7 @@ func New(ctx context.Context, restConfig *rest.Config, c operator.Config, logger
 				// ThanosRuler statefulsets otherwise the informer won't select
 				// any object.
 				//
-				// [1] https://github.com/prometheus-operator/prometheus-operator/pull/7786
+				// [1] https://github.com/rhobs/obo-prometheus-operator/pull/7786
 				options.LabelSelector = operator.ManagedByOperatorLabelSelector()
 			},
 		),
@@ -736,7 +736,7 @@ func createSSetInputHash(tr monitoringv1.ThanosRuler, c Config, tlsAssets *opera
 
 	// The controller should ignore any changes to RevisionHistoryLimit field because
 	// it may be modified by external actors.
-	// See https://github.com/prometheus-operator/prometheus-operator/issues/5712
+	// See https://github.com/rhobs/obo-prometheus-operator/issues/5712
 	ss.RevisionHistoryLimit = nil
 
 	hash, err := hashstructure.Hash(struct {
