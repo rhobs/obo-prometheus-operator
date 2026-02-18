@@ -82,7 +82,7 @@ label (in this case `team: frontend`) to identify which team is responsible for
 monitoring the application/service.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/example-app-service-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-app
@@ -100,7 +100,7 @@ Similarly, the Prometheus object defines which ServiceMonitors get selected with
 `spec.serviceMonitorSelector` field.
 
 ```
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -116,7 +116,7 @@ spec:
 While `ServiceMonitor` requires a `Service` object, `PodMonitor` can bypass the service and find targets based on Pod labels. The `spec.selector` field in the `PodMonitor` resource specifies which Pods Prometheus should scrape.
 
 ```yaml mdox-exec="cat example/user-guides/getting-started/example-app-pod-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: PodMonitor
 metadata:
   name: example-app
@@ -134,7 +134,7 @@ Similarly, the Prometheus object defines which PodMonitors get selected with the
 `spec.podMonitorSelector` field.
 
 ```
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -148,7 +148,7 @@ spec:
 ## What's Next
 
 {{<
-link-card title="ServiceMonitor" href="https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1.ServiceMonitor" description="Check out the specifications to learn more about ServiceMonitor">}}
+link-card title="ServiceMonitor" href="https://prometheus-operator.dev/docs/api-reference/api/#monitoring.rhobs/v1.ServiceMonitor" description="Check out the specifications to learn more about ServiceMonitor">}}
 
 {{<
-link-card title="PodMonitor" href="https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1.PodMonitor" description="Check out the specifications to learn more about PodMonitor">}}
+link-card title="PodMonitor" href="https://prometheus-operator.dev/docs/api-reference/api/#monitoring.rhobs/v1.PodMonitor" description="Check out the specifications to learn more about PodMonitor">}}

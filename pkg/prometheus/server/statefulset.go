@@ -26,10 +26,10 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/utils/ptr"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	prompkg "github.com/prometheus-operator/prometheus-operator/pkg/prometheus"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	prompkg "github.com/rhobs/obo-prometheus-operator/pkg/prometheus"
 )
 
 const (
@@ -236,7 +236,7 @@ func makeStatefulSetSpec(
 		promArgs = append(promArgs, monitoringv1.Argument{Name: "storage.tsdb.min-block-duration", Value: thanosBlockDuration})
 	}
 
-	// ref: https://github.com/prometheus-operator/prometheus-operator/issues/6829
+	// ref: https://github.com/rhobs/obo-prometheus-operator/issues/6829
 	// automatically set --no-storage.tsdb.allow-overlapping-compaction when all the conditions are met:
 	//   1. Prometheus >= v2.55.0
 	//   2. Thanos sidecar configured for uploading blocks to object storage

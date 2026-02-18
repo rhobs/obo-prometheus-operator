@@ -22,8 +22,8 @@ import (
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/runtime"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/informers"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8sutil"
+	"github.com/rhobs/obo-prometheus-operator/pkg/informers"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8sutil"
 )
 
 type InformerGetter interface {

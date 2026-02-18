@@ -4,18 +4,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.19.0
-    operator.prometheus.io/version: 0.89.0
-  name: alertmanagerconfigs.monitoring.coreos.com
+    operator.prometheus.io/version: 0.89.0-rhobs1
+  name: alertmanagerconfigs.monitoring.rhobs
 spec:
-  group: monitoring.coreos.com
+  group: monitoring.rhobs
   names:
     categories:
-    - prometheus-operator
+    - rhobs-prometheus-operator
     kind: AlertmanagerConfig
     listKind: AlertmanagerConfigList
     plural: alertmanagerconfigs
-    shortNames:
-    - amcfg
     singular: alertmanagerconfig
   scope: Namespaced
   versions:
@@ -12275,7 +12273,7 @@ spec:
                     group:
                       description: group defines the group of the referenced resource.
                       enum:
-                      - monitoring.coreos.com
+                      - monitoring.rhobs
                       type: string
                     name:
                       description: name defines the name of the referenced object.
@@ -24332,7 +24330,7 @@ spec:
                     group:
                       description: group defines the group of the referenced resource.
                       enum:
-                      - monitoring.coreos.com
+                      - monitoring.rhobs
                       type: string
                     name:
                       description: name defines the name of the referenced object.
