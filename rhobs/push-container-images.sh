@@ -88,23 +88,11 @@ done
 export DOCKER_CLI_EXPERIMENTAL=enabled
 for r in ${OPERATORS} ${RELOADERS} ${WEBHOOKS}; do
 	# Images need to be on remote registry before creating manifests
-	for arch in $CPU_ARCHS; do
-		docker push "${r}:${TAG}-$arch"
-	done
-
 	arches=(  )
 	for arch in $CPU_ARCHS; do
 		arches+=("${r}:${TAG}-$arch")
 		docker push "${r}:${TAG}-$arch"
 	done
 
-
-	# Create manifest to join all images under one virtual tag
-	docker manifest create -a "${r}:${TAG}" "${arches[@]}"
-
-	# Annotate to set which image is build for which CPU architecture
-	for arch in $CPU_ARCHS; do
-		docker manifest annotate --arch "$arch" "${r}:${TAG}" "${r}:${TAG}-$arch"
-	done
-	docker manifest push "${r}:${TAG}"
+	docker buildx imagetools create --tag "${r}:${TAG}" "${arches[@]}"
 done
