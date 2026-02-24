@@ -17,10 +17,10 @@
 package monitoring
 
 import (
-	internalinterfaces "github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions/internalinterfaces"
-	v1 "github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions/monitoring/v1"
-	v1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions/monitoring/v1alpha1"
-	v1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions/monitoring/v1beta1"
+	internalinterfaces "github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions/internalinterfaces"
+	v1 "github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions/monitoring/v1"
+	v1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions/monitoring/v1alpha1"
+	v1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions/monitoring/v1beta1"
 )
 
 // Interface provides access to each of this group's versions.
