@@ -21,8 +21,8 @@ import (
 	"github.com/blang/semver/v4"
 	"github.com/prometheus/prometheus/model/relabel"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
 )
 
 // LabelConfigValidator validates relabel configurations.

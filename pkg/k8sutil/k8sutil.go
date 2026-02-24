@@ -51,9 +51,9 @@ import (
 	"k8s.io/client-go/util/retry"
 	"k8s.io/utils/ptr"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	monitoringv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1beta1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	monitoringv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1beta1"
 )
 
 const (
@@ -62,7 +62,7 @@ const (
 
 	// StatusCleanupFinalizerName is the name of the finalizer used to garbage
 	// collect status bindings on configuration resources.
-	StatusCleanupFinalizerName = "monitoring.coreos.com/status-cleanup"
+	StatusCleanupFinalizerName = "monitoring.rhobs/status-cleanup"
 
 	// PrometheusOperatorFieldManager is the field manager name used by the
 	// operator.
