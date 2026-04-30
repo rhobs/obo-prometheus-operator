@@ -21,8 +21,8 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"k8s.io/utils/ptr"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 func TestEnforceNamespaceLabelOnPrometheusRules(t *testing.T) {
@@ -149,7 +149,7 @@ func TestEnforceNamespaceLabelOnPrometheusRules(t *testing.T) {
 			ExcludedFromEnforcement: []monitoringv1.ObjectReference{
 				{
 					Namespace: "foo",
-					Group:     "monitoring.coreos.com",
+					Group:     "monitoring.rhobs",
 					Resource:  monitoringv1.PrometheusRuleName,
 				},
 			},
