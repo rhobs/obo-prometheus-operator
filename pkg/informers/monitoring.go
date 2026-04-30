@@ -21,8 +21,8 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/util/sets"
 
-	informers "github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions"
-	monitoring "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned"
+	informers "github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions"
+	monitoring "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned"
 )
 
 // NewMonitoringInformerFactories creates factories for monitoring resources

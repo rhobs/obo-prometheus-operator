@@ -64,11 +64,11 @@ linters:
         - pkg: sigs.k8s.io/controller-runtime
           alias: ctrl
         # Prometheus Operator
-        - pkg: github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1
+        - pkg: github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1
           alias: monitoringv1
-        - pkg: github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1
+        - pkg: github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1
           alias: monitoringv1alpha1
-        - pkg: github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1beta1
+        - pkg: github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1beta1
           alias: monitoringv1beta1
     modernize:
       disable:
@@ -99,7 +99,7 @@ formatters:
       sections:
         - standard
         - default
-        - prefix(github.com/prometheus-operator/prometheus-operator)
+        - prefix(github.com/rhobs/obo-prometheus-operator)
   exclusions:
     generated: strict
     paths:

@@ -81,7 +81,7 @@ spec:
 
 **Tier-2** (maintainers review issues/PRs but don't actively maintain): includes cloud provider SDs like Azure, EC2, GCE, DigitalOcean and others. See the [ScrapeConfig graduation proposal](https://prometheus-operator.dev/docs/proposals/accepted/scrapeconfig-graduation/) for the complete list.
 
-For the full list of supported fields and service discoveries, check the [API documentation](https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1alpha1.ScrapeConfig).
+For the full list of supported fields and service discoveries, check the [API documentation](https://prometheus-operator.dev/docs/api-reference/api/#monitoring.rhobs/v1alpha1.ScrapeConfig).
 
 If you have an interest in another service discovery mechanism or you see something missing in the implementation, please
 [open an issue](https://github.com/prometheus-operator/prometheus-operator/issues).
@@ -91,7 +91,7 @@ If you have an interest in another service discovery mechanism or you see someth
 For example, to scrape the target located at `http://prometheus.demo.do.prometheus.io:9090`, use the following:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: ScrapeConfig
 metadata:
   name: static-config
@@ -133,7 +133,7 @@ data:
 This `ConfigMap` will then need to be mounted in the `Prometheus` spec:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: your-prometheus
@@ -151,7 +151,7 @@ spec:
 You can then use ScrapeConfig to reference that file and scrape the associated targets:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: ScrapeConfig
 metadata:
   name: file-sd
@@ -170,7 +170,7 @@ spec:
 `http_sd` uses an endpoint for data, unlike `file_sd` which uses a file, removing the need for a configmap. For instance:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: ScrapeConfig
 metadata:
   name: http-sd

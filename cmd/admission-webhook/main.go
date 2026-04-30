@@ -27,12 +27,12 @@ import (
 	"github.com/prometheus/common/model"
 	"golang.org/x/sync/errgroup"
 
-	"github.com/prometheus-operator/prometheus-operator/internal/goruntime"
-	logging "github.com/prometheus-operator/prometheus-operator/internal/log"
-	"github.com/prometheus-operator/prometheus-operator/internal/metrics"
-	"github.com/prometheus-operator/prometheus-operator/pkg/admission"
-	"github.com/prometheus-operator/prometheus-operator/pkg/server"
-	"github.com/prometheus-operator/prometheus-operator/pkg/versionutil"
+	"github.com/rhobs/obo-prometheus-operator/internal/goruntime"
+	logging "github.com/rhobs/obo-prometheus-operator/internal/log"
+	"github.com/rhobs/obo-prometheus-operator/internal/metrics"
+	"github.com/rhobs/obo-prometheus-operator/pkg/admission"
+	"github.com/rhobs/obo-prometheus-operator/pkg/server"
+	"github.com/rhobs/obo-prometheus-operator/pkg/versionutil"
 )
 
 const defaultGOMemlimitRatio = 0.0
