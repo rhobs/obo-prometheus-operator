@@ -4,22 +4,19 @@
   "metadata": {
     "annotations": {
       "controller-gen.kubebuilder.io/version": "v0.20.1",
-      "operator.prometheus.io/version": "0.91.0"
+      "operator.prometheus.io/version": "0.91.0-rhobs1"
     },
-    "name": "prometheusrules.monitoring.coreos.com"
+    "name": "prometheusrules.monitoring.rhobs"
   },
   "spec": {
-    "group": "monitoring.coreos.com",
+    "group": "monitoring.rhobs",
     "names": {
       "categories": [
-        "prometheus-operator"
+        "rhobs-prometheus-operator"
       ],
       "kind": "PrometheusRule",
       "listKind": "PrometheusRuleList",
       "plural": "prometheusrules",
-      "shortNames": [
-        "promrule"
-      ],
       "singular": "prometheusrule"
     },
     "scope": "Namespaced",
@@ -214,7 +211,7 @@
                         "group": {
                           "description": "group defines the group of the referenced resource.",
                           "enum": [
-                            "monitoring.coreos.com"
+                            "monitoring.rhobs"
                           ],
                           "type": "string"
                         },
