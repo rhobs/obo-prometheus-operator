@@ -20,7 +20,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
 )
 
 func TestConvertTLSConfig(t *testing.T) {

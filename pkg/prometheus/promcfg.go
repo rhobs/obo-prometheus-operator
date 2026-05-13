@@ -39,13 +39,13 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"k8s.io/utils/ptr"
 
-	sortutil "github.com/prometheus-operator/prometheus-operator/internal/sortutil"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/assets"
-	namespacelabeler "github.com/prometheus-operator/prometheus-operator/pkg/namespacelabeler"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	"github.com/prometheus-operator/prometheus-operator/pkg/prometheus/validation"
+	sortutil "github.com/rhobs/obo-prometheus-operator/internal/sortutil"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/assets"
+	namespacelabeler "github.com/rhobs/obo-prometheus-operator/pkg/namespacelabeler"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	"github.com/rhobs/obo-prometheus-operator/pkg/prometheus/validation"
 )
 
 const (
@@ -1218,7 +1218,7 @@ func (cg *ConfigGenerator) BuildCommonPrometheusArgs() []monitoringv1.Argument {
 
 	// Since metadata-wal-records is in the process of being deprecated as part of remote write v2 stabilization as described in issue.
 	// Also seems to be cause some increase in resource usage overall, will stop being automatically added on prometheus 3.4.0 onwards.
-	// For more context see https://github.com/prometheus-operator/prometheus-operator/issues/7889
+	// For more context see https://github.com/rhobs/obo-prometheus-operator/issues/7889
 	for _, rw := range cpf.RemoteWrite {
 		if ptr.Deref(rw.MessageVersion, monitoringv1.RemoteWriteMessageVersion1_0) == monitoringv1.RemoteWriteMessageVersion2_0 {
 			cg = cg.WithMinimumVersion("2.54.0")
