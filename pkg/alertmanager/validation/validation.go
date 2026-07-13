@@ -18,15 +18,15 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/prometheus/alertmanager/config"
+	"github.com/prometheus/alertmanager/config/common"
 )
 
-// ValidateURL against the config.URL
+// ValidateURL against the common.URL
 // This could potentially become a regex and be validated via OpenAPI
 // but right now, since we know we need to unmarshal into an upstream type
 // after conversion, we validate we don't error when doing so.
-func ValidateURL(url string) (*config.URL, error) {
-	var u config.URL
+func ValidateURL(url string) (*common.URL, error) {
+	var u common.URL
 	err := json.Unmarshal(fmt.Appendf(nil, `"%s"`, url), &u)
 	if err != nil {
 		return nil, fmt.Errorf("validate url from string failed for %s: %w", url, err)
@@ -34,11 +34,11 @@ func ValidateURL(url string) (*config.URL, error) {
 	return &u, nil
 }
 
-// ValidateSecretURL against config.URL
+// ValidateSecretURL against common.URL
 // This is for URLs which are retrieved from secrets and should not
 // logged as part of the err.
 func ValidateSecretURL(url string) error {
-	var u config.SecretURL
+	var u common.SecretURL
 
 	err := u.UnmarshalJSON(fmt.Appendf(nil, `"%s"`, url))
 	if err != nil {
