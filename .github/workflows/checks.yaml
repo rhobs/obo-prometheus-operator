@@ -53,6 +53,8 @@ jobs:
     name: Golang linter
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
       - name: Import environment variables from file
         run: cat ".github/env" >> "$GITHUB_ENV"
       - uses: actions/setup-go@v6

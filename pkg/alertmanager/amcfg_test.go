@@ -26,6 +26,7 @@ import (
 	"github.com/blang/semver/v4"
 	"github.com/prometheus/alertmanager/config"
 	"github.com/prometheus/alertmanager/timeinterval"
+	commoncfg "github.com/prometheus/common/config"
 	"github.com/prometheus/common/model"
 	"github.com/stretchr/testify/require"
 	"gopkg.in/yaml.v2"
@@ -2980,7 +2981,7 @@ func TestGenerateConfig(t *testing.T) {
 			kclient: fake.NewSimpleClientset(),
 			baseConfig: alertmanagerConfig{
 				Global: &globalConfig{
-					SlackAPIURL: &config.URL{URL: globalSlackAPIURL},
+					SlackAPIURL: &commoncfg.URL{URL: globalSlackAPIURL},
 				},
 				Route: &route{
 					Receiver: "null",
@@ -3930,7 +3931,7 @@ func TestSanitizeConfig(t *testing.T) {
 			againstVersion: versionFileURLAllowed,
 			in: &alertmanagerConfig{
 				Global: &globalConfig{
-					SlackAPIURL: &config.URL{
+					SlackAPIURL: &commoncfg.URL{
 						URL: &url.URL{
 							Host: "www.test.com",
 						}},
