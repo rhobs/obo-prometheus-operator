@@ -53,7 +53,7 @@ instead of making the following change to your `Prometheus` resource, see the
 example).
 
 ```yaml mdox-exec="cat example/storage/persisted-prometheus.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: persisted
@@ -89,7 +89,7 @@ For example, using an NFS volume might be accomplished with the following
 manifests:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: my-example-prometheus-name
@@ -128,7 +128,7 @@ spec:
 Using a hostPath volume requires ensuring that the container has the appropriate permissions to access and modify files at the specified path on the host machine, example:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: example

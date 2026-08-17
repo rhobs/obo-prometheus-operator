@@ -15,11 +15,11 @@
 package monitoring
 
 // GroupName is set to var instead of const, since this provides the ability for clients importing the module -
-// github.com/prometheus-operator/prometheus-operator/pkg/apis to manage the operator's objects in a different
+// github.com/rhobs/obo-prometheus-operator/pkg/apis to manage the operator's objects in a different
 // API group
 //
 // Use `ldflags` in the client side, e.g.:
-// go run -ldflags="-s -X github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring.GroupName=monitoring.example.com" ./example/client/.
+// go run -ldflags="-s -X github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring.GroupName=monitoring.example.com" ./example/client/.
 var (
-	GroupName = "monitoring.coreos.com"
+	GroupName = "monitoring.rhobs"
 )

@@ -31,8 +31,8 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/client-go/kubernetes"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8s"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8s"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
 )
 
 const (
