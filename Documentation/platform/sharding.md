@@ -38,7 +38,7 @@ To implement a custom distribution, set the `__tmp_hash` label during target dis
 For example, to shard targets by pod namespace and name rather than by address:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-app
@@ -63,7 +63,7 @@ The relabeling can also be applied at the scrape class level to affect multiple 
 By default, each target is assigned to exactly one shard. To have all shards scrape the same target — useful for singleton services such as kube-state-metrics where every shard needs the full set of metrics — set the `__tmp_disable_sharding` label to a non-empty value using relabeling configuration.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: kube-state-metrics
@@ -92,7 +92,7 @@ When `mode: Topology` is set, the operator:
 The number of shards must be greater than or equal to the number of topology values. When `spec.shards` is a multiple of the number of zones, the shards are evenly distributed across zones. Otherwise, some zones receive more shards than others.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -116,7 +116,7 @@ With this configuration and 4 shards across 2 zones, shards 0 and 2 are schedule
 When scaling down the number of shards, the pods from the removed shards are deleted by default along with access to their historical data. To preserve scaled-down shards so their data remains queryable until the retention duration expires, set `.spec.shardRetentionPolicy.whenScaled` to `Retain`:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -129,7 +129,7 @@ spec:
 Retained shards continue running and can be queried via the Thanos sidecar and querier alongside the active shards. By default, the operator deletes them once the Prometheus retention time has been reached. This can be overridden with the `retain.retentionPeriod` field:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: prometheus
@@ -149,7 +149,7 @@ spec:
 The following manifest creates a Prometheus server with two replicas:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   labels:
@@ -220,7 +220,7 @@ spec:
 ```
 
 ```yaml mdox-exec="cat example/shards/example-app-service-monitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-app
@@ -246,7 +246,7 @@ We find the prometheus server scrapes three targets.
 Now let's expand the Prometheus resource to two shards as shown below:
 
 ```yaml mdox-exec="cat example/shards/prometheus.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   labels:

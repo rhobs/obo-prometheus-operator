@@ -26,10 +26,10 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/utils/ptr"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8s"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	prompkg "github.com/prometheus-operator/prometheus-operator/pkg/prometheus"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8s"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	prompkg "github.com/rhobs/obo-prometheus-operator/pkg/prometheus"
 )
 
 const (
@@ -40,7 +40,7 @@ const (
 	// Minimum Prometheus and Thanos versions supporting coordinated (delayed)
 	// compaction, which lets Prometheus keep local compaction enabled while the
 	// Thanos sidecar uploads blocks to object storage.
-	// ref: https://github.com/prometheus-operator/prometheus-operator/issues/8266
+	// ref: https://github.com/rhobs/obo-prometheus-operator/issues/8266
 	minVersionPrometheusDelayedCompaction = "3.9.0"
 	minVersionThanosDelayedCompaction     = "0.41.0"
 
@@ -259,14 +259,14 @@ func makeStatefulSetSpec(
 		// Keep local compaction enabled and let Prometheus coordinate with the
 		// Thanos sidecar through the shipper meta file: Prometheus only compacts
 		// level-1 blocks that have already been uploaded.
-		// ref: https://github.com/prometheus-operator/prometheus-operator/issues/8266
+		// ref: https://github.com/rhobs/obo-prometheus-operator/issues/8266
 		promArgs = append(promArgs, monitoringv1.Argument{
 			Name:  "storage.tsdb.delay-compact-file.path",
 			Value: filepath.Join(prompkg.StorageDir, thanosShipperMetaFileName),
 		})
 	}
 
-	// ref: https://github.com/prometheus-operator/prometheus-operator/issues/6829
+	// ref: https://github.com/rhobs/obo-prometheus-operator/issues/6829
 	// automatically set --no-storage.tsdb.allow-overlapping-compaction when all the conditions are met:
 	//   1. Prometheus >= v2.55.0
 	//   2. Thanos sidecar configured for uploading blocks to object storage
@@ -670,7 +670,7 @@ func createThanosContainer(p *monitoringv1.Prometheus, c prompkg.Config, compact
 		// Prometheus reads via --storage.tsdb.delay-compact-file.path and allow
 		// the shipper to upload blocks even though min/max block durations
 		// differ (compaction is enabled).
-		// ref: https://github.com/prometheus-operator/prometheus-operator/issues/8266
+		// ref: https://github.com/rhobs/obo-prometheus-operator/issues/8266
 		if compaction == compactionModeDelayed {
 			thanosArgs = append(thanosArgs,
 				monitoringv1.Argument{Name: "shipper.meta-file-name", Value: thanosShipperMetaFileName},
@@ -793,7 +793,7 @@ const (
 	// compactionModeDelayed keeps local compaction enabled and coordinates
 	// uploads with the Thanos sidecar through the shipper meta file, so that
 	// Prometheus only compacts blocks that have already been uploaded.
-	// ref: https://github.com/prometheus-operator/prometheus-operator/issues/8266
+	// ref: https://github.com/rhobs/obo-prometheus-operator/issues/8266
 	compactionModeDelayed
 )
 

@@ -19,7 +19,7 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 func TestBuildArgs(t *testing.T) {

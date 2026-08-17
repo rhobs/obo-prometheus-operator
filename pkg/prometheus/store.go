@@ -18,8 +18,8 @@ import (
 	"context"
 	"fmt"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/assets"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/assets"
 )
 
 func addRemoteWritesToStore(ctx context.Context, store *assets.StoreBuilder, namespace string, rw monitoringv1.RemoteWriteSpec) error {

@@ -35,9 +35,9 @@ import (
 	"k8s.io/client-go/kubernetes/fake"
 	"k8s.io/utils/ptr"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
-	prompkg "github.com/prometheus-operator/prometheus-operator/pkg/prometheus"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
+	prompkg "github.com/rhobs/obo-prometheus-operator/pkg/prometheus"
 )
 
 var defaultTestConfig = prompkg.Config{
@@ -1177,7 +1177,7 @@ func containerByName(t *testing.T, sset *appsv1.StatefulSet, name string) corev1
 // uploads with the sidecar through the shipper meta file instead of disabling
 // compaction. Otherwise (versions too old, or compaction explicitly disabled) it
 // falls back to disabling compaction.
-// ref: https://github.com/prometheus-operator/prometheus-operator/issues/8266
+// ref: https://github.com/rhobs/obo-prometheus-operator/issues/8266
 func TestThanosDelayedCompaction(t *testing.T) {
 	for _, tc := range []struct {
 		name              string

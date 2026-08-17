@@ -20,10 +20,10 @@ import (
 	context "context"
 	time "time"
 
-	apismonitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	internalinterfaces "github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions/internalinterfaces"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/client/listers/monitoring/v1alpha1"
-	versioned "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned"
+	apismonitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	internalinterfaces "github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions/internalinterfaces"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/client/listers/monitoring/v1alpha1"
+	versioned "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -62,7 +62,7 @@ func NewFilteredAlertmanagerConfigInformer(client versioned.Interface, namespace
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
 func NewAlertmanagerConfigInformerWithOptions(client versioned.Interface, namespace string, options internalinterfaces.InformerOptions) cache.SharedIndexInformer {
-	gvr := schema.GroupVersionResource{Group: "monitoring.coreos.com", Version: "v1alpha1", Resource: "alertmanagerconfigs"}
+	gvr := schema.GroupVersionResource{Group: "monitoring.rhobs", Version: "v1alpha1", Resource: "alertmanagerconfigs"}
 	identifier := options.InformerName.WithResource(gvr)
 	tweakListOptions := options.TweakListOptions
 	return cache.NewSharedIndexInformerWithOptions(

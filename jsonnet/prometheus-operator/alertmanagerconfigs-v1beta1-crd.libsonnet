@@ -11061,7 +11061,7 @@
                     group: {
                       description: 'group defines the group of the referenced resource.',
                       enum: [
-                        'monitoring.coreos.com',
+                        'monitoring.rhobs',
                       ],
                       type: 'string',
                     },
