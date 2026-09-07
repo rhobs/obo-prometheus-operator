@@ -4,6 +4,7 @@ This directory hosts scripts that helps with creation of forked Prometheus
 Operator with only differs from the [upstream
 repository](https://github.com/prometheus-operator/prometheus-operator) by the
 API Group being `monitoring.rhobs` instead of `monitoring.coreos.com`.
+Additionally the downstream build Dockerfiles are added through this branch.
 
 ## Making a Release
 
