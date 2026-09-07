@@ -1,0 +1,37 @@
+FROM brew.registry.redhat.io/rh-osbs/openshift-golang-builder:rhel_9_1.26 as builder
+WORKDIR /workspace
+
+# Copy source files
+COPY obo-prometheus-operator/ .
+
+ENV GOFLAGS='-mod=readonly -tags=timetzdata'
+ENV CGO_ENABLED=1
+ENV GOEXPERIMENT=strictfipsruntime
+
+# CGO required for FIPS/check-payload; upstream Makefile uses CGO_ENABLED=0 — build here instead
+RUN go build -tags strictfipsruntime -ldflags "-s -w" -o prometheus-config-reloader ./cmd/prometheus-config-reloader
+
+FROM registry.redhat.io/ubi9/ubi-minimal:latest@sha256:8eb2830d0936237fc13a1f2f7e45aecf90d69043380ad167fad0343632937f41
+
+COPY --from=builder workspace/prometheus-config-reloader /bin/prometheus-config-reloader
+COPY --from=builder /workspace/LICENSE      /licenses/.
+
+USER nobody
+
+ENTRYPOINT ["/bin/prometheus-config-reloader"]
+
+ARG VERSION=v0.93.1
+LABEL com.redhat.component="coo-po-prometheus-config-reloader" \
+      name="cluster-observability-operator/obo-prometheus-operator-prometheus-config-reloader-rhel9" \
+      cpe="cpe:/a:redhat:cluster_observability_operator:1.5::el9" \
+      version="${VERSION}" \
+      release="${VERSION}" \
+      vendor="Red Hat, Inc." \
+      distribution-scope="public" \
+      url="https://github.com/rhobs/obo-prometheus-operator" \
+      summary="Prometheus Config Reloader for Prometheus Operator" \
+      io.openshift.tags="monitoring" \
+      io.k8s.display-name="Prometheus Config Reloader for Prometheus Operator" \
+      io.k8s.description="Prometheus Config Reloader for Prometheus Operator" \
+      maintainer="OpenShift Monitoring team <team-monitoring-incluster@redhat.com>" \
+      description="Prometheus Config Reloader for Prometheus Operator"
