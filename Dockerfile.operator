@@ -2,7 +2,7 @@ FROM brew.registry.redhat.io/rh-osbs/openshift-golang-builder:rhel_9_1.26 as bui
 WORKDIR /workspace
 
 # Copy source files
-COPY obo-prometheus-operator/ .
+COPY . .
 
 ENV GOFLAGS='-mod=readonly -tags=timetzdata'
 
