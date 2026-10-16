@@ -326,7 +326,7 @@ func testPrometheusInstanceNamespacesAllowList(t *testing.T) {
 
 		// Remove the selecting label on the "allowed" namespace and check that
 		// the target is removed.
-		// See https://github.com/prometheus-operator/prometheus-operator/issues/3847
+		// See https://github.com/rhobs/obo-prometheus-operator/issues/3847
 		if err := framework.RemoveLabelsFromNamespace(context.Background(), allowedNs, "monitored"); err != nil {
 			t.Fatal(err)
 		}
@@ -360,7 +360,7 @@ func testPrometheusInstanceNamespacesAllowList(t *testing.T) {
 // testPrometheusInstanceNamespacesNamespaceNotFound verifies that the
 // operator can reconcile Prometheus and associated resources even when
 // it's configured to watch namespaces that don't exist.
-// See https://github.com/prometheus-operator/prometheus-operator/issues/3347
+// See https://github.com/rhobs/obo-prometheus-operator/issues/3347
 func testPrometheusInstanceNamespacesNamespaceNotFound(t *testing.T) {
 	testCtx := framework.NewTestCtx(t)
 	defer testCtx.Cleanup(t)

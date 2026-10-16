@@ -24,7 +24,7 @@ import (
 
 	"github.com/go-test/deep"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
 )
 
 var cases = []struct {

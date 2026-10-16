@@ -58,7 +58,7 @@ local service(name, namespace, labels, selector, ports) = {
     thanosSidecarName:: $._config.thanosSidecarName,
 
     prometheus+:: {
-      apiVersion: 'monitoring.coreos.com/v1',
+      apiVersion: 'monitoring.rhobs/v1',
       kind: 'Prometheus',
       metadata: {
         labels: po.prometheusLabels,
@@ -136,7 +136,7 @@ local service(name, namespace, labels, selector, ports) = {
 
     serviceMonitor:
       {
-        apiVersion: 'monitoring.coreos.com/v1',
+        apiVersion: 'monitoring.rhobs/v1',
         kind: 'ServiceMonitor',
         metadata: {
           name: po.prometheusName,
@@ -230,7 +230,7 @@ local service(name, namespace, labels, selector, ports) = {
 
     thanosRuler:
       {
-        apiVersion: 'monitoring.coreos.com/v1',
+        apiVersion: 'monitoring.rhobs/v1',
         kind: 'ThanosRuler',
         metadata: {
           labels: po.rulerLabels,
@@ -269,7 +269,7 @@ local service(name, namespace, labels, selector, ports) = {
 
     prometheusRule:
       {
-        apiVersion: 'monitoring.coreos.com/v1',
+        apiVersion: 'monitoring.rhobs/v1',
         kind: 'PrometheusRule',
         metadata: {
           labels: {

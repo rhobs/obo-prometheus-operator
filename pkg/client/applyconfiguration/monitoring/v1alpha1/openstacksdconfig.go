@@ -17,9 +17,9 @@
 package v1alpha1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	applyconfigurationmonitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	applyconfigurationmonitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
 	v1 "k8s.io/api/core/v1"
 )
 
@@ -32,6 +32,7 @@ type OpenStackSDConfigApplyConfiguration struct {
 	// role defines the OpenStack role of entities that should be discovered.
 	//
 	// Note: The `LoadBalancer` role requires Prometheus >= v3.2.0.
+	//
 	Role *monitoringv1alpha1.OpenStackRole `json:"role,omitempty"`
 	// region defines the OpenStack Region.
 	Region *string `json:"region,omitempty"`

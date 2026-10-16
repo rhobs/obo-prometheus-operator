@@ -17,7 +17,7 @@
 package v1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 	corev1 "k8s.io/api/core/v1"
 	resource "k8s.io/apimachinery/pkg/api/resource"
 )
@@ -59,6 +59,7 @@ type ProbeSpecApplyConfiguration struct {
 	// If unset, Prometheus uses its default value.
 	//
 	// It requires Prometheus >= v2.49.0.
+	//
 	ScrapeProtocols []monitoringv1.ScrapeProtocol `json:"scrapeProtocols,omitempty"`
 	// fallbackScrapeProtocol defines the protocol to use if a scrape returns blank, unparseable, or otherwise invalid Content-Type.
 	//
@@ -78,6 +79,7 @@ type ProbeSpecApplyConfiguration struct {
 	// that will be kept in memory. 0 means no limit.
 	//
 	// It requires Prometheus >= v2.47.0.
+	//
 	KeepDroppedTargets *int64 `json:"keepDroppedTargets,omitempty"`
 	// scrapeClass defines the scrape class to apply.
 	ScrapeClassName *string `json:"scrapeClass,omitempty"`

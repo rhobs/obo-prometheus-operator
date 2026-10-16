@@ -17,9 +17,9 @@
 package v1alpha1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
-	v1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	v1 "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
 	corev1 "k8s.io/api/core/v1"
 )
 
@@ -44,6 +44,7 @@ type DockerSDConfigApplyConfiguration struct {
 	// matchFirstNetwork defines whether to match the first network if the container has multiple networks defined.
 	// If unset, Prometheus uses true by default.
 	// It requires Prometheus >= v2.54.1.
+	//
 	MatchFirstNetwork *bool `json:"matchFirstNetwork,omitempty"`
 	// filters defines filters to limit the discovery process to a subset of the available resources.
 	Filters *monitoringv1alpha1.Filters `json:"filters,omitempty"`

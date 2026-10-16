@@ -17,7 +17,7 @@
 package v1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // QueueConfigApplyConfiguration represents a declarative configuration of the QueueConfig type for use
@@ -50,6 +50,7 @@ type QueueConfigApplyConfiguration struct {
 	RetryOnRateLimit *bool `json:"retryOnRateLimit,omitempty"`
 	// sampleAgeLimit drops samples older than the limit.
 	// It requires Prometheus >= v2.50.0 or Thanos >= v0.32.0.
+	//
 	SampleAgeLimit *monitoringv1.Duration `json:"sampleAgeLimit,omitempty"`
 }
 

@@ -4,11 +4,11 @@ metadata:
   labels:
     app.kubernetes.io/component: controller
     app.kubernetes.io/name: prometheus-operator
-    app.kubernetes.io/version: 0.94.1
+    app.kubernetes.io/version: 0.94.1-rhobs1
   name: prometheus-operator
 rules:
 - apiGroups:
-  - monitoring.coreos.com
+  - monitoring.rhobs
   resources:
   - alertmanagers
   - alertmanagers/finalizers
@@ -21,7 +21,7 @@ rules:
   verbs:
   - patch
 - apiGroups:
-  - monitoring.coreos.com
+  - monitoring.rhobs
   resources:
   - alertmanagers/finalizers
   - prometheusagents/finalizers
@@ -30,7 +30,7 @@ rules:
   verbs:
   - update
 - apiGroups:
-  - monitoring.coreos.com
+  - monitoring.rhobs
   resources:
   - alertmanagers/status
   - podmonitors/status
@@ -47,7 +47,7 @@ rules:
   - patch
   - delete
 - apiGroups:
-  - monitoring.coreos.com
+  - monitoring.rhobs
   resources:
   - alertmanagers
   - alertmanagerconfigs

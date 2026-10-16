@@ -17,7 +17,7 @@
 package v1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 	corev1 "k8s.io/api/core/v1"
 )
 
@@ -29,14 +29,17 @@ type GlobalRocketChatConfigApplyConfiguration struct {
 	// apiURL defines the default Rocket Chat API URL.
 	//
 	// It requires Alertmanager >= v0.28.0.
+	//
 	APIURL *monitoringv1.URL `json:"apiURL,omitempty"`
 	// token defines the default Rocket Chat token.
 	//
 	// It requires Alertmanager >= v0.28.0.
+	//
 	Token *corev1.SecretKeySelector `json:"token,omitempty"`
 	// tokenID defines the default Rocket Chat Token ID.
 	//
 	// It requires Alertmanager >= v0.28.0.
+	//
 	TokenID *corev1.SecretKeySelector `json:"tokenID,omitempty"`
 }
 

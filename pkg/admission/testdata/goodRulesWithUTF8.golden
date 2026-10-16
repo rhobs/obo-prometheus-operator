@@ -4,12 +4,12 @@
   "request": {
     "uid": "87c5df7f-5090-11e9-b9b4-02425473f309",
     "kind": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "kind": "PrometheusRule"
     },
     "resource": {
-      "group": "monitoring.coreos.com",
+      "group": "monitoring.rhobs",
       "version": "v1",
       "resource": "prometheusrules"
     },
@@ -23,7 +23,7 @@
       ]
     },
     "object": {
-      "apiVersion": "monitoring.coreos.com/v1",
+      "apiVersion": "monitoring.rhobs/v1",
       "kind": "PrometheusRule",
       "metadata": {
         "creationTimestamp": "2019-03-27T13:02:09Z",

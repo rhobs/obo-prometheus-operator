@@ -9,7 +9,7 @@ Moving kube-prometheus into its own repository is going to allow us to move more
 As an example, we are now going to publish versioned kube-prometheus releases, something that was not possible before.
 
 Take a look at this issue for more information:
-https://github.com/prometheus-operator/prometheus-operator/issues/2553
+https://github.com/rhobs/obo-prometheus-operator/issues/2553
 
 
 **What do I need to do?**
@@ -22,7 +22,7 @@ Users depending on kube-prometheus with jsonnet-bundler, should change this thei
              "name": "kube-prometheus",
              "source": {
                  "git": {
--                    "remote": "https://github.com/prometheus-operator/prometheus-operator",
+-                    "remote": "https://github.com/rhobs/obo-prometheus-operator",
 -                    "subdir": "contrib/kube-prometheus/jsonnet/kube-prometheus"
 +                    "remote": "https://github.com/prometheus-operator/kube-prometheus",
 +                    "subdir": "jsonnet/kube-prometheus"
