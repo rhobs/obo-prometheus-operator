@@ -17,7 +17,7 @@
 package v1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // GlobalJiraConfigApplyConfiguration represents a declarative configuration of the GlobalJiraConfig type for use
@@ -28,6 +28,7 @@ type GlobalJiraConfigApplyConfiguration struct {
 	// apiURL defines the default Jira API URL.
 	//
 	// It requires Alertmanager >= v0.28.0.
+	//
 	APIURL *monitoringv1.URL `json:"apiURL,omitempty"`
 }
 

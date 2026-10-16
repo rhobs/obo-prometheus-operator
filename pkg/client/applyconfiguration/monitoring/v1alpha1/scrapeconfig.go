@@ -17,7 +17,7 @@
 package v1alpha1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
 	v1 "k8s.io/client-go/applyconfigurations/meta/v1"
@@ -51,7 +51,7 @@ func ScrapeConfig(name, namespace string) *ScrapeConfigApplyConfiguration {
 	b.WithName(name)
 	b.WithNamespace(namespace)
 	b.WithKind("ScrapeConfig")
-	b.WithAPIVersion("monitoring.coreos.com/v1alpha1")
+	b.WithAPIVersion("monitoring.rhobs/v1alpha1")
 	return b
 }
 

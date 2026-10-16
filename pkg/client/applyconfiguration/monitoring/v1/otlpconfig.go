@@ -17,7 +17,7 @@
 package v1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // OTLPConfigApplyConfiguration represents a declarative configuration of the OTLPConfig type for use
@@ -37,6 +37,7 @@ type OTLPConfigApplyConfiguration struct {
 	IgnoreResourceAttributes []string `json:"ignoreResourceAttributes,omitempty"`
 	// promoteResourceAttributes defines the list of OpenTelemetry Attributes that should be promoted to metric labels, defaults to none.
 	// Cannot be defined when `promoteAllResourceAttributes` is true.
+	//
 	PromoteResourceAttributes []string `json:"promoteResourceAttributes,omitempty"`
 	// translationStrategy defines how the OTLP receiver endpoint translates the incoming metrics.
 	//

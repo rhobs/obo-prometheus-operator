@@ -17,7 +17,7 @@
 package v1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 	appsv1 "k8s.io/api/apps/v1"
 	corev1 "k8s.io/api/core/v1"
 	resource "k8s.io/apimachinery/pkg/api/resource"
@@ -55,6 +55,7 @@ type PrometheusSpecApplyConfiguration struct {
 	// shardRetentionPolicy defines the retention policy for the Prometheus shards.
 	//
 	// (Beta) Using this mode requires the `PrometheusShardRetentionPolicy` feature gate (enabled by default).
+	//
 	ShardRetentionPolicy *ShardRetentionPolicyApplyConfiguration `json:"shardRetentionPolicy,omitempty"`
 	// disableCompaction when true, the Prometheus compaction is disabled.
 	//
@@ -94,7 +95,7 @@ type PrometheusSpecApplyConfiguration struct {
 	//
 	// https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs
 	//
-	// # The user is responsible for making sure that the configurations are valid
+	// The user is responsible for making sure that the configurations are valid
 	//
 	// Note that using this feature may expose the possibility to break
 	// upgrades of Prometheus. It is advised to review Prometheus release notes
@@ -109,7 +110,7 @@ type PrometheusSpecApplyConfiguration struct {
 	//
 	// https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alertmanager_config
 	//
-	// # The user is responsible for making sure that the configurations are valid
+	// The user is responsible for making sure that the configurations are valid
 	//
 	// Note that using this feature may expose the possibility to break
 	// upgrades of Prometheus. It is advised to review Prometheus release notes
@@ -119,6 +120,7 @@ type PrometheusSpecApplyConfiguration struct {
 	// remoteRead defines the list of remote read configurations.
 	RemoteRead []RemoteReadSpecApplyConfiguration `json:"remoteRead,omitempty"`
 	// thanos defines the configuration of the optional Thanos sidecar.
+	//
 	Thanos *ThanosSpecApplyConfiguration `json:"thanos,omitempty"`
 	// queryLogFile specifies where the file to which PromQL queries are logged.
 	//

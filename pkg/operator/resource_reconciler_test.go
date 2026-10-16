@@ -24,7 +24,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8s"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8s"
 )
 
 type noopSyncer struct{}

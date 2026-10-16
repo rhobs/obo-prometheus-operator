@@ -17,7 +17,7 @@
 package v1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // RetainConfigApplyConfiguration represents a declarative configuration of the RetainConfig type for use
@@ -25,6 +25,7 @@ import (
 type RetainConfigApplyConfiguration struct {
 	// retentionPeriod defines how long the scaled-down shard(s) need to be
 	// kept before being deleted.
+	//
 	RetentionPeriod *monitoringv1.Duration `json:"retentionPeriod,omitempty"`
 }
 

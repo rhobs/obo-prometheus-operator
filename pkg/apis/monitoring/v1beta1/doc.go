@@ -13,6 +13,6 @@
 // limitations under the License.
 
 // +k8s:deepcopy-gen=package
-// +groupName=monitoring.coreos.com
+// +groupName=monitoring.rhobs
 
 package v1beta1

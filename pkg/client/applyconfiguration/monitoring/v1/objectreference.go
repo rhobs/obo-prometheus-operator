@@ -21,7 +21,7 @@ package v1
 //
 // ObjectReference references a PodMonitor, ServiceMonitor, Probe or PrometheusRule object.
 type ObjectReferenceApplyConfiguration struct {
-	// group of the referent. When not specified, it defaults to `monitoring.coreos.com`
+	// group of the referent. When not specified, it defaults to `monitoring.rhobs`
 	Group *string `json:"group,omitempty"`
 	// resource of the referent.
 	Resource *string `json:"resource,omitempty"`

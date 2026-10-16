@@ -17,7 +17,7 @@
 package v1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // GlobalWebexConfigApplyConfiguration represents a declarative configuration of the GlobalWebexConfig type for use
@@ -29,6 +29,7 @@ type GlobalWebexConfigApplyConfiguration struct {
 	// apiURL defines the is the default Webex API URL.
 	//
 	// It requires Alertmanager >= v0.25.0.
+	//
 	APIURL *monitoringv1.URL `json:"apiURL,omitempty"`
 }
 
