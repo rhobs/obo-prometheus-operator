@@ -1,4 +1,4 @@
-module github.com/prometheus-operator/prometheus-operator
+module github.com/rhobs/obo-prometheus-operator
 
 go 1.26.0
 
@@ -19,13 +19,13 @@ require (
 	github.com/mitchellh/hashstructure v1.1.0
 	github.com/oklog/run v1.2.0
 	github.com/prometheus-community/prom-label-proxy v0.15.0
-	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.94.1
-	github.com/prometheus-operator/prometheus-operator/pkg/client v0.94.1
 	github.com/prometheus/alertmanager v0.34.0
 	github.com/prometheus/client_golang v1.24.1
 	github.com/prometheus/common v0.71.0
 	github.com/prometheus/exporter-toolkit v0.19.0
 	github.com/prometheus/prometheus v0.314.0
+	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.94.1-rhobs1
+	github.com/rhobs/obo-prometheus-operator/pkg/client v0.94.1-rhobs1
 	github.com/stretchr/testify v1.12.1
 	github.com/thanos-io/thanos v0.42.4
 	golang.org/x/net v0.58.0
@@ -189,6 +189,6 @@ require (
 )
 
 replace (
-	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring => ./pkg/apis/monitoring
-	github.com/prometheus-operator/prometheus-operator/pkg/client => ./pkg/client
+	github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring => ./pkg/apis/monitoring
+	github.com/rhobs/obo-prometheus-operator/pkg/client => ./pkg/client
 )

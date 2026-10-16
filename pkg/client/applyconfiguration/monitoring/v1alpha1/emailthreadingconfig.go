@@ -17,7 +17,7 @@
 package v1alpha1
 
 import (
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
 )
 
 // EmailThreadingConfigApplyConfiguration represents a declarative configuration of the EmailThreadingConfig type for use

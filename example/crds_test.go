@@ -35,7 +35,7 @@ func TestPrintAll(t *testing.T) {
 	// Verify all are valid CRDs
 	for _, crd := range crds {
 		require.Equal(t, "CustomResourceDefinition", crd.Kind)
-		require.Contains(t, crd.Name, "monitoring.coreos.com")
+		require.Contains(t, crd.Name, "monitoring.rhobs")
 	}
 }
 
@@ -50,7 +50,7 @@ func TestPrintAllFull(t *testing.T) {
 	// Verify all are valid CRDs
 	for _, crd := range crds {
 		require.Equal(t, "CustomResourceDefinition", crd.Kind)
-		require.Contains(t, crd.Name, "monitoring.coreos.com")
+		require.Contains(t, crd.Name, "monitoring.rhobs")
 	}
 }
 

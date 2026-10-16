@@ -17,7 +17,7 @@
 package v1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // StatefulSetUpdateStrategyApplyConfiguration represents a declarative configuration of the StatefulSetUpdateStrategy type for use
@@ -30,8 +30,10 @@ type StatefulSetUpdateStrategyApplyConfiguration struct {
 	// type indicates the type of the StatefulSetUpdateStrategy.
 	//
 	// Default is RollingUpdate.
+	//
 	Type *monitoringv1.StatefulSetUpdateStrategyType `json:"type,omitempty"`
 	// rollingUpdate is used to communicate parameters when type is RollingUpdate.
+	//
 	RollingUpdate *RollingUpdateStatefulSetStrategyApplyConfiguration `json:"rollingUpdate,omitempty"`
 }
 

@@ -6,7 +6,7 @@ body:
   attributes:
     label: Is there an existing issue for this?
     description: |
-      Before filing a bug, please be sure you have searched through [existing bugs](https://github.com/prometheus-operator/prometheus-operator/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug) to see if an existing issue covers your bug.
+      Before filing a bug, please be sure you have searched through [existing bugs](https://github.com/rhobs/obo-prometheus-operator/issues?q=is%3Aopen+is%3Aissue+label%3Akind%2Fbug) to see if an existing issue covers your bug.
     options:
     - label: I have searched the existing issues
       required: true

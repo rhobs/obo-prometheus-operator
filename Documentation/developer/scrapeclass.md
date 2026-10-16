@@ -29,7 +29,7 @@ One use-case is to configure authentication with TLS certificates when running `
 Below is an example of defining a scrape class in `Prometheus/PrometheusAgent` resource:
 
 ```yaml mdox-exec="cat example/user-guides/scrapeclass/scrapeclass-example-definition.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 spec:
   scrapeClasses:
@@ -54,7 +54,7 @@ spec:
 An administrator can set the `default:true` so that the scrape applies to all scrape objects that don't configure an explicit scrape class. Only one scrape class can be set as default. If there are multiple default scrape classes, the operator will fail the reconciliation and the failure will be reported in the status conditions of the resource.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 spec:
   scrapeClasses:
@@ -75,7 +75,7 @@ status:
 Once the `ScrapeClasses` is defined in the `Prometheus` resource, the `ScrapeClass` field can be used in the scrape resource to reference the particular `ScrapeClass`.
 
 ```yaml mdox-exec="cat example/user-guides/scrapeclass/scrapeclass-example-servicemonitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: servicemonitor-example
@@ -89,7 +89,7 @@ spec:
 If the monitor resource specifies a scrape class name that isn't defined in the `Prometheus/PrometheusAgent` object, then the operator will emit a Kubernetes event. Consider the following example where a `Prometheus` instance defines a scrapeClass, but a `ServiceMonitor` references a different one.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 metadata:
   name: my-prometheus
@@ -103,7 +103,7 @@ spec:
 The `ServiceMonitor` references a scrapeClass named **istio**, which is not defined in the Prometheus object.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-service-monitor
@@ -128,7 +128,7 @@ scrapeClass "istio" not found in Prometheus scrapeClasses
 Similarly, we can select the scrape class for `PodMonitor` resource.
 
 ```yaml mdox-exec="cat example/user-guides/scrapeclass/scrapeclass-example-podmonitor.yaml"
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: PodMonitor
 spec:
   scrapeClass: istio-mtls
@@ -144,4 +144,4 @@ If a monitor resource includes a `tlsConfig` field, the Operator applies a **fie
 ## What's Next
 
 {{<
-link-card title="Scrape Class" href="https://prometheus-operator.dev/docs/api-reference/api/#monitoring.coreos.com/v1.ScrapeClass" description="Check out the specifications to learn more about scrape classes">}}
+link-card title="Scrape Class" href="https://prometheus-operator.dev/docs/api-reference/api/#monitoring.rhobs/v1.ScrapeClass" description="Check out the specifications to learn more about scrape classes">}}

@@ -17,8 +17,8 @@ package v1
 import (
 	"fmt"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/alertmanager/validation"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/alertmanager/validation"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 func ValidateAlertmanagerGlobalConfig(gc *monitoringv1.AlertmanagerGlobalConfig) error {

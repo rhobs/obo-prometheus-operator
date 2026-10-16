@@ -17,8 +17,8 @@
 package v1alpha1
 
 import (
-	v1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	monitoringv1alpha1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	v1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1alpha1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
 )
 
 // DNSSDConfigApplyConfiguration represents a declarative configuration of the DNSSDConfig type for use
@@ -38,6 +38,7 @@ type DNSSDConfigApplyConfiguration struct {
 	//
 	// When set to NS, it requires Prometheus >= v2.49.0.
 	// When set to MX, it requires Prometheus >= v2.38.0
+	//
 	Type *monitoringv1alpha1.DNSRecordType `json:"type,omitempty"`
 	// port defines the port to scrape metrics from. If using the public IP address, this must
 	// Ignored for SRV records

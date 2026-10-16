@@ -17,7 +17,7 @@
 package v1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // AlertmanagerLimitsSpecApplyConfiguration represents a declarative configuration of the AlertmanagerLimitsSpec type for use
@@ -28,10 +28,12 @@ type AlertmanagerLimitsSpecApplyConfiguration struct {
 	// maxSilences defines the maximum number active and pending silences. This corresponds to the
 	// Alertmanager's `--silences.max-silences` flag.
 	// It requires Alertmanager >= v0.28.0.
+	//
 	MaxSilences *int32 `json:"maxSilences,omitempty"`
 	// maxPerSilenceBytes defines the maximum size of an individual silence as stored on disk. This corresponds to the Alertmanager's
 	// `--silences.max-per-silence-bytes` flag.
 	// It requires Alertmanager >= v0.28.0.
+	//
 	MaxPerSilenceBytes *monitoringv1.ByteSize `json:"maxPerSilenceBytes,omitempty"`
 }
 

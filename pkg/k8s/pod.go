@@ -19,7 +19,7 @@ import (
 
 	corev1 "k8s.io/api/core/v1"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // PodRunningAndReady returns whether a pod is running and each container has

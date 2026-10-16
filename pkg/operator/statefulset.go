@@ -17,7 +17,7 @@ package operator
 import (
 	appsv1 "k8s.io/api/apps/v1"
 
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // UpdateStrategyForStatefulSet converts a monitoring update strategy to a statefulset update strategy.

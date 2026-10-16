@@ -74,7 +74,7 @@ There are different challenges that influence the API design:
 #### `ServiceMonitor`/`PodMonitor`/`Probes`/`ScrapeConfig`
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 metadata:
   name: example-servicemonitor
@@ -103,7 +103,7 @@ spec:
           key: basic-auth-password
   status:
     bindings:
-      - group: monitoring.coreos.com
+      - group: monitoring.rhobs
         resource: prometheuses
         name: main
         namespace: monitoring
@@ -114,7 +114,7 @@ spec:
             lastTransitionTime: "2025-05-20T12:34:56Z"
             reason: ""
             message: ""
-      - group: monitoring.coreos.com
+      - group: monitoring.rhobs
         resource: prometheuses
         name: example
         namespace: default
@@ -125,7 +125,7 @@ spec:
             lastTransitionTime: "2024-02-08T23:52:22Z"
             reason: InvalidConfiguration
             message: "'KeepEqual' relabel action is only supported with Prometheus >= 2.41.0"
-      - group: monitoring.coreos.com
+      - group: monitoring.rhobs
         resource: prometheusagents
         name: agent
         namespace: monitoring
@@ -141,7 +141,7 @@ spec:
 #### `PrometheusRule`
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: PrometheusRule
 metadata:
   name: example-prometheus-rules
@@ -165,7 +165,7 @@ spec:
             description: "Pod {{ $labels.pod }} is using more than 0.5 cores for 5 minutes."
   status:
     bindings:
-      - group: monitoring.coreos.com
+      - group: monitoring.rhobs
         resource: prometheuses
         name: prometheus-main
         namespace: monitoring
@@ -181,7 +181,7 @@ spec:
 #### `AlertmanagerConfig`
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: AlertmanagerConfig
 metadata:
   name: minimal-alertmanager-config
@@ -197,7 +197,7 @@ spec:
           sendResolved: true
   status:
     bindings:
-      - group: monitoring.coreos.com
+      - group: monitoring.rhobs
         resource: alertmanagers
         name: alertmanager-main
         namespace: monitoring

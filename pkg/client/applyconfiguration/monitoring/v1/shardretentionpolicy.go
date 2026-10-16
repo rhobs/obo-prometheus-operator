@@ -17,7 +17,7 @@
 package v1
 
 import (
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // ShardRetentionPolicyApplyConfiguration represents a declarative configuration of the ShardRetentionPolicy type for use
@@ -28,6 +28,7 @@ type ShardRetentionPolicyApplyConfiguration struct {
 	// * `Retain`, the operator will keep the pods from the scaled-down shard(s), so the data can still be queried.
 	//
 	// If not defined, the operator assumes the `Delete` value.
+	//
 	WhenScaled *monitoringv1.WhenScaledRetentionType `json:"whenScaled,omitempty"`
 	// retain defines the config for retention when the retention policy is set
 	// to `Retain`.
@@ -35,6 +36,7 @@ type ShardRetentionPolicyApplyConfiguration struct {
 	// If not defined, the operator will use the retention duration configured
 	// for the Prometheus data. If the resource uses size-based retention, the
 	// shard(s) are kept forever (unless manually deleted).
+	//
 	Retain *RetainConfigApplyConfiguration `json:"retain,omitempty"`
 }
 
