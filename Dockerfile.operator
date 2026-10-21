@@ -12,7 +12,8 @@ ENV GOEXPERIMENT=strictfipsruntime
 
 RUN GOOS=$TARGETOS GOARCH=$TARGETARCH go build $GOFLAGS -o operator ./cmd/operator/
 
-FROM registry.redhat.io/ubi9/ubi-minimal:latest@sha256:c4c285d42941ebb2bd4da878479008e1e4536bb599aad1dbe568f89de9053661
+# ART/Doozer handles base image pinning
+FROM registry.redhat.io/ubi9/ubi-minimal:latest
 
 COPY --from=builder /workspace/operator /bin/operator
 COPY --from=builder /workspace/LICENSE      /licenses/.
