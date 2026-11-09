@@ -1,0 +1,29 @@
+# Generated from openshift/prometheus-operator@67895c7c968f42e97efec58f4140fffae4832028.
+# Downstream changes: rhobs/ci.patch; refresh with rhobs/release.sh sync-ci.
+
+name: Lint GitHub action workflows
+on:
+  workflow_call:
+  push:
+    paths:
+      - ".github/workflows/**"
+  pull_request :
+    paths:
+      - ".github/workflows/**"
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7.0.1
+      - name: Download actionlint
+        id: get_actionlint
+        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/v1.7.12/scripts/download-actionlint.bash)
+        shell: bash
+      - name: Check workflow files
+        run: ${{ steps.get_actionlint.outputs.executable }} -color
+        shell: bash
