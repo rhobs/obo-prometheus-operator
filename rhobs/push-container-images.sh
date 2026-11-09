@@ -46,7 +46,7 @@ IMAGE_SUFFIX="-dev"
 # Use the main image repository if TAG is a semver tag or it is a main or master branch.
 # Otherwise assemble the image tag from VERSION file + short commit SHA and
 # push them to the dev image repository.
-if [[ "$TAG" =~ ^v[0-9]+\.[0-9]+ ]] || [ "${TAG}" == "master" ] || [ "${TAG}" == "main" ]; then
+if [[ "${RELEASE_BUILD:-false}" == true ]] || [[ "$TAG" =~ ^v[0-9]+\.[0-9]+ ]] || [ "${TAG}" == "master" ] || [ "${TAG}" == "main" ]; then
 	# Reset suffixes as images are not development ones
 	IMAGE_SUFFIX=""
 else

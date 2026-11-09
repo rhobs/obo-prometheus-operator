@@ -1,0 +1,64 @@
+# Only fork-specific validation belongs here. Operator CI comes from upstream.
+name: RHOBS checks
+on:
+  pull_request:
+    branches: ['rhobs-scripts', 'rhobs-rel-**']
+  push:
+    branches: ['rhobs-scripts']
+  workflow_call:
+    inputs:
+      require-project:
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  release-tools:
+    name: Release tooling
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-go@v7.0.0
+        with:
+          go-version: stable
+          cache: false
+      - run: bash rhobs/ci.sh tools
+
+  downstream:
+    name: RHOBS artifacts and provenance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+      - id: project
+        env:
+          REQUIRE_PROJECT: ${{ inputs.require-project || false }}
+        run: |
+          if [[ -f VERSION && -f rhobs/release.json ]]; then
+            echo 'available=true' >> "$GITHUB_OUTPUT"
+            cat .github/env >> "$GITHUB_ENV"
+          elif [[ "$REQUIRE_PROJECT" == true ]]; then
+            echo 'Release validation requires a prepared RHOBS source snapshot' >&2
+            exit 1
+          fi
+      - uses: actions/setup-go@v7.0.0
+        if: steps.project.outputs.available == 'true'
+        with:
+          go-version: ${{ env.golang-version }}
+          cache-dependency-path: '**/go.sum'
+      - if: steps.project.outputs.available == 'true'
+        run: bash rhobs/ci.sh downstream
+
+  result:
+    name: RHOBS validation result
+    if: always()
+    needs: [release-tools, downstream]
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          TOOLS_RESULT: ${{ needs.release-tools.result }}
+          DOWNSTREAM_RESULT: ${{ needs.downstream.result }}
+        run: '[[ "$TOOLS_RESULT" == success && "$DOWNSTREAM_RESULT" == success ]]'

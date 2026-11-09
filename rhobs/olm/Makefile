@@ -11,7 +11,7 @@ IMAGE_REPO ?= "local-registry"
 IMAGE_BASE = $(IMAGE_REPO)/obo
 
 VERSION ?= $(shell cat $(PRJ_DIR)/VERSION)
-RELEASE_SHA ?= $(shell git rev-parse downstream/main)
+RELEASE_SHA ?= HEAD
 OPERATOR_IMG = $(IMAGE_BASE)-prometheus-operator:v$(VERSION)
 CONFIG_RELOADER_IMG = $(IMAGE_BASE)-prometheus-config-reloader:v$(VERSION)
 ADMISSION_WEBHOOK_IMG = $(IMAGE_BASE)-admission-webhook:v$(VERSION)
@@ -142,7 +142,7 @@ bundle: copy-examples
 
 .PHONY: bundle-image
 bundle-image: bundle ## Build the bundle image.
-	$(CONTAINER_RUNTIME) build -f $(OLM_DIR)/bundle.Dockerfile -t $(BUNDLE_IMG) .
+	$(CONTAINER_RUNTIME) build --label org.opencontainers.image.revision=$(shell git rev-parse HEAD) --label org.opencontainers.image.version=$(VERSION) -f $(OLM_DIR)/bundle.Dockerfile -t $(BUNDLE_IMG) .
 
 .PHONY: bundle-push
 bundle-push: ## Build the bundle image.
