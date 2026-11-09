@@ -1,0 +1,87 @@
+# Install this workflow on rhobs-main as well to enable dispatch and cron.
+# Keep its implementation on rhobs-scripts; the default branch stays lightweight.
+name: Prepare RHOBS release
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: New series selects the highest release-x.y; rebuild keeps the recorded branch
+        type: choice
+        options: [new, rebuild]
+        default: rebuild
+      previous-version:
+        description: Upgrade baseline (empty selects the latest published downstream tag)
+        type: string
+      source-commit:
+        description: Optional full source commit SHA on the selected branch
+        type: string
+      force:
+        description: Rebuild even if the source commit is unchanged
+        type: boolean
+        default: false
+      execute:
+        description: Push release branches and open a PR; otherwise print the plan only
+        type: boolean
+        default: false
+  schedule:
+    - cron: '41 5 * * 2'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhobs-release-preparation
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    # Scheduling is opt-in after the first new-series release has been validated.
+    if: github.event_name != 'schedule' || vars.RHOBS_AUTOMATIC_REBUILDS == 'true'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.RHOBS_RELEASE_TOKEN }}
+      EXECUTE: ${{ inputs.execute || github.event_name == 'schedule' }}
+      FORK_REPOSITORY: ${{ vars.RHOBS_RELEASE_FORK }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: rhobs-scripts
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install bootstrap Go toolchain
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: stable
+          cache: false
+      - name: Configure release preparation identity
+        if: env.EXECUTE == 'true'
+        run: |
+          [[ -n "$GH_TOKEN" && -n "$FORK_REPOSITORY" ]]
+          gh auth setup-git
+          git config user.name rhobs-release-bot
+          git config user.email release-bot@monitoring.rhobs.io
+      - name: Resolve and pin source before installing the toolchain
+        env:
+          MODE: ${{ inputs.mode || 'rebuild' }}
+          PREVIOUS_VERSION: ${{ inputs.previous-version }}
+          SOURCE_COMMIT: ${{ inputs.source-commit }}
+          FORCE: ${{ inputs.force }}
+        run: |
+          args=(--mode "$MODE")
+          if [[ -n "$PREVIOUS_VERSION" ]]; then args+=(--previous-version "$PREVIOUS_VERSION"); fi
+          if [[ -n "$SOURCE_COMMIT" ]]; then args+=(--source-commit "$SOURCE_COMMIT"); fi
+          if [[ "$FORCE" == true ]]; then args+=(--force); fi
+          bash rhobs/release.sh plan "${args[@]}" > "$RUNNER_TEMP/release-plan.json"
+          cat "$RUNNER_TEMP/release-plan.json"
+          echo "RELEASE_GO_VERSION=$(bash rhobs/release.sh go-version --plan "$RUNNER_TEMP/release-plan.json")" >> "$GITHUB_ENV"
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        if: env.EXECUTE == 'true'
+        with:
+          go-version: ${{ env.RELEASE_GO_VERSION }}
+          cache: false
+      - name: Prepare release PR
+        if: env.EXECUTE == 'true'
+        run: |
+          # The JSON plan is reused, so discovery and preparation cannot select different tips.
+          bash rhobs/release.sh prepare --plan "$RUNNER_TEMP/release-plan.json" \
+            --execute --publish-pr --fork-repository "$FORK_REPOSITORY"

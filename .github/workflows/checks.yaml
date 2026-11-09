@@ -1,0 +1,96 @@
+# Generated from openshift/prometheus-operator@67895c7c968f42e97efec58f4140fffae4832028.
+# Downstream changes: rhobs/ci.patch; refresh with rhobs/release.sh sync-ci.
+
+name: checks
+on:
+  pull_request:
+    branches: ['rhobs-rel-**']
+  workflow_call:
+
+permissions:
+  contents: read
+# To cancel running workflow when new commits pushed in a pull request
+concurrency:
+  group: upstream-checks-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  generate:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+    name: Generate and format
+    steps:
+    - uses: actions/checkout@v7.0.1
+    - name: Import environment variables from file
+      run: cat ".github/env" >> "$GITHUB_ENV"
+    - uses: actions/setup-go@v7.0.0
+      with:
+        go-version: '${{ env.golang-version }}'
+        check-latest: true
+    - run: make --always-make format generate && git diff --exit-code
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  check-golang:
+    runs-on: ubuntu-latest
+    name: Golang linter
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Import environment variables from file
+        run: cat ".github/env" >> "$GITHUB_ENV"
+      - uses: actions/setup-go@v7.0.0
+        with:
+          go-version: '${{ env.golang-version }}'
+          check-latest: true
+      - name: Check go.mod
+        run: make tidy && git diff --exit-code
+      - name: Run golangci-lint
+        run: make check-golang
+      - name: Lint API
+        run: make check-api
+
+  check-metrics:
+    runs-on: ubuntu-latest
+    name: Check prometheus metrics
+    steps:
+    - uses: actions/checkout@v7.0.1
+    - name: Import environment variables from file
+      run: cat ".github/env" >> "$GITHUB_ENV"
+    - uses: actions/setup-go@v7.0.0
+      with:
+        go-version: '${{ env.golang-version }}'
+        check-latest: true
+    - run: make check-metrics
+
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+    name: Build operator binary
+    steps:
+    - uses: actions/checkout@v7.0.1
+    - name: Import environment variables from file
+      run: cat ".github/env" >> "$GITHUB_ENV"
+    - uses: actions/setup-go@v7.0.0
+      with:
+        go-version: '${{ env.golang-version }}'
+        check-latest: true
+    - run: make build
+
+  po-rule-migration:
+    runs-on: ubuntu-latest
+    name: Build Prometheus Operator rule config map to rule file CRDs CLI tool
+    steps:
+    - uses: actions/checkout@v7.0.1
+    - name: Import environment variables from file
+      run: cat ".github/env" >> "$GITHUB_ENV"
+    - uses: actions/setup-go@v7.0.0
+      with:
+        go-version: '${{ env.golang-version }}'
+        check-latest: true
+    - run: cd cmd/po-rule-migration && go install

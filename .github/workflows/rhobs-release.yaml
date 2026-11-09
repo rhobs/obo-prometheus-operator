@@ -1,80 +1,126 @@
-# This workflow creates a git tag and publishes container images
-name: rhobs release
+name: RHOBS release
 on:
   push:
-    branches:
-      - 'rhobs-rel-**'
+    branches: ['rhobs-rel-**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rhobs-publication
+  cancel-in-progress: false
 
 jobs:
-  debug:
+  candidate:
     runs-on: ubuntu-latest
-    if: "!startsWith(github.event.head_commit.message, 'chore(release):')"
+    outputs:
+      publish: ${{ steps.candidate.outputs.publish }}
+      validate: ${{ steps.candidate.outputs.validate }}
     steps:
-      - name: Debug
-        run: |
-          echo "Skipping release workflow since commit message does match the convention"
-
-  create-release:
-    runs-on: ubuntu-latest
-    if: "startsWith(github.event.head_commit.message, 'chore(release):')"
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-
-      - name: Import common environment variables
-        run: cat ".github/env" >> "$GITHUB_ENV"
-
-      - name: Install Go
-        uses: actions/setup-go@v3
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
-          go-version: '${{ env.golang-version }}'
+          go-version: stable
+          cache: false
+      - id: candidate
+        env:
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          publish=false
+          validate=false
+          if [[ "$GITHUB_REF" == refs/heads/rhobs-rel-* && -f rhobs/release.json ]]; then
+            bash rhobs/release.sh verify
+            validate=true
+            if [[ "$REPOSITORY" == rhobs/obo-prometheus-operator && "$(git log -1 --format=%s)" == 'chore(release): '* ]]; then
+              publish=true
+            fi
+          fi
+          echo "publish=$publish" >> "$GITHUB_OUTPUT"
+          echo "validate=$validate" >> "$GITHUB_OUTPUT"
 
-      - name: login to quay.io
-        uses: docker/login-action@v2
+  downstream:
+    needs: candidate
+    if: needs.candidate.outputs.validate == 'true'
+    uses: ./.github/workflows/rhobs-checks.yaml
+    with:
+      require-project: true
+
+  e2e:
+    needs: candidate
+    if: needs.candidate.outputs.validate == 'true'
+    uses: ./.github/workflows/e2e.yaml
+
+  checks:
+    needs: candidate
+    if: needs.candidate.outputs.validate == 'true'
+    uses: ./.github/workflows/checks.yaml
+
+  unit:
+    needs: candidate
+    if: needs.candidate.outputs.validate == 'true'
+    uses: ./.github/workflows/unit.yaml
+
+  feature-gates:
+    needs: candidate
+    if: needs.candidate.outputs.validate == 'true'
+    uses: ./.github/workflows/e2e-feature-gated.yaml
+
+  prometheus-upgrades:
+    needs: candidate
+    if: needs.candidate.outputs.validate == 'true'
+    uses: ./.github/workflows/test-prom-version-upgrade.yaml
+
+  prometheus-v2:
+    needs: candidate
+    if: needs.candidate.outputs.validate == 'true'
+    uses: ./.github/workflows/e2e-prometheus-v2.yaml
+
+  workflow-lint:
+    needs: candidate
+    if: needs.candidate.outputs.validate == 'true'
+    uses: ./.github/workflows/actionlint.yml
+
+  publish:
+    needs: [candidate, downstream, checks, unit, e2e, feature-gates, prometheus-upgrades, prometheus-v2, workflow-lint]
+    if: needs.candidate.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      IMAGE_ORG: ${{ secrets.IMAGE_ORG }}
+      CPU_ARCHS: amd64
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Import upstream tool versions
+        run: cat .github/env >> "$GITHUB_ENV"
+      - uses: actions/setup-go@v7.0.0
+        with:
+          go-version: ${{ env.golang-version }}
+          cache-dependency-path: '**/go.sum'
+      - name: Verify publication destination
+        run: |
+          [[ "$IMAGE_ORG" == rhobs ]]
+          bash rhobs/release.sh verify
+          bash rhobs/release.sh assert-clean
+      - name: Log in to Quay
+        uses: docker/login-action@v3
         with:
           registry: quay.io
           username: ${{ secrets.quay_repo_username }}
           password: ${{ secrets.quay_repo_password }}
-
-      - name: create git tag
-        id: git_tag
+      - name: Publish images without overwriting existing releases
+        run: bash rhobs/publish-images.sh
+      - name: Publish only the three release tags, atomically
         run: |
-          version="$(head -1 VERSION)"
           git config user.name rhobs-release-bot
           git config user.email release-bot@monitoring.rhobs.io
-
-          git tag -a "v${version}" -m "v${version}"
-          git tag -a "pkg/apis/monitoring/v${version}" -m "v${version}"
-          git tag -a "pkg/client/v${version}" -m "v${version}"
-
-
-      - name: Build RHOBS images and push
+          bash rhobs/release.sh publish-tags
+      - name: Verify published Go imports
         env:
-          IMAGE_ORG: ${{ secrets.IMAGE_ORG }}
-        run: |
-          REGISTRIES="quay.io" \
-          IMAGE_ORG="$IMAGE_ORG" \
-          CPU_ARCHS="amd64" \
-          TAG="v$(head -1 VERSION)" \
-          ./rhobs/push-container-images.sh
-
-          cd rhobs/olm
-          make tools
-          make bundle-image bundle-push IMAGE_REPO=quay.io/"$IMAGE_ORG"
-
-      - name: push git tags
-        run: |
-          git push --tags
-
-      - name: test if rhobs fork can be imported
-        run: |
-          [[ "$IMAGE_ORG" != "rhobs" ]] && {
-              echo "Skipping import tests on forked repos"
-              exit 0
-          }
-
-          cd rhobs/test/import
-          go mod tidy
-          go test ./...
+          GOPROXY: direct
+        run: bash rhobs/release.sh check-import --published
