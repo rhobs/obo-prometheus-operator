@@ -24,7 +24,7 @@ import (
 
 // StatusCleanupFinalizerName is the name of the finalizer used to garbage
 // collect status bindings on configuration resources.
-const StatusCleanupFinalizerName = "monitoring.coreos.com/status-cleanup"
+const StatusCleanupFinalizerName = "monitoring.rhobs/status-cleanup"
 
 // FinalizerAddPatch generates the JSON patch payload which adds the finalizer to the object's metadata.
 // If the finalizer is already present, it returns an empty []byte slice.

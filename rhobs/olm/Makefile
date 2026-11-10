@@ -119,6 +119,7 @@ clean-examples:
 			$(PRJ_DIR)/manifests/crds/example ;\
 	}
 
+# operator-sdk replaces createdAt on every run; retain the release's pinned time.
 .PHONY: bundle
 bundle: copy-examples
 	@{ \
@@ -136,6 +137,10 @@ bundle: copy-examples
 				--version $(VERSION) \
 				--package=$(OPERATOR_NAME) \
 				$(BUNDLE_METADATA_OPTS) ;\
+		\
+		created_at="$$(sed -n 's/^    createdAt: //p' manifests/csv/$(OPERATOR_NAME).clusterserviceversion.yaml)" ;\
+		[[ -n "$${created_at}" ]] || { echo "Missing bundle creation time" >&2; exit 1; } ;\
+		sed -i "s|^    createdAt: .*|    createdAt: $${created_at}|" bundle/manifests/$(OPERATOR_NAME).clusterserviceversion.yaml ;\
 		\
 		$(OPERATOR_SDK) bundle validate ./bundle ;\
 	}

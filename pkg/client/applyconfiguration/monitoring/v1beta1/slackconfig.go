@@ -17,7 +17,7 @@
 package v1beta1
 
 import (
-	v1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
+	v1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
 )
 
 // SlackConfigApplyConfiguration represents a declarative configuration of the SlackConfig type for use

@@ -4,6 +4,7 @@ metadata:
   annotations:
     alm-examples: '[]'
     capabilities: Basic Install
+    createdAt: "2026-11-10T09:37:03Z"
   name: rhobs-prometheus-operator.v0.0.0
   namespace: placeholder
 spec:

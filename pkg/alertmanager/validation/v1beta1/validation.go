@@ -22,8 +22,8 @@ import (
 
 	"k8s.io/utils/ptr"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/alertmanager/validation"
-	monitoringv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1beta1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/alertmanager/validation"
+	monitoringv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1beta1"
 )
 
 // ValidateAlertmanagerConfig checks that the given resource complies with the

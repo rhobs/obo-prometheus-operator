@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source_repository": "https://github.com/openshift/prometheus-operator.git",
+  "source_branch": "release-5.2",
+  "source_commit": "642070bf0faa0a0271923adca02e614a63822b7a",
+  "source_version": "0.94.2",
+  "base_version": "0.94.2",
+  "version": "0.94.2-rhobs1",
+  "previous_version": "0.94.1-rhobs1",
+  "previous_source_commit": null,
+  "scripts_commit": "9db5985cabbb169f73dd42a38c9adc2c3fde26d1",
+  "ci_commit": "67895c7c968f42e97efec58f4140fffae4832028"
+}

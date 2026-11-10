@@ -451,37 +451,6 @@ github.com/pmezard/go-difflib/difflib
 # github.com/prometheus-community/prom-label-proxy v0.15.0
 ## explicit; go 1.25.0
 github.com/prometheus-community/prom-label-proxy/injectproxy
-# github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.94.2 => ./pkg/apis/monitoring
-## explicit; go 1.26.0
-github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
-github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1
-github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1
-github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1beta1
-# github.com/prometheus-operator/prometheus-operator/pkg/client v0.94.2 => ./pkg/client
-## explicit; go 1.26.0
-github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration
-github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/internal
-github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1
-github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1alpha1
-github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1beta1
-github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions
-github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions/internalinterfaces
-github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions/monitoring
-github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions/monitoring/v1
-github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions/monitoring/v1alpha1
-github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions/monitoring/v1beta1
-github.com/prometheus-operator/prometheus-operator/pkg/client/listers/monitoring/v1
-github.com/prometheus-operator/prometheus-operator/pkg/client/listers/monitoring/v1alpha1
-github.com/prometheus-operator/prometheus-operator/pkg/client/listers/monitoring/v1beta1
-github.com/prometheus-operator/prometheus-operator/pkg/client/versioned
-github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/fake
-github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/scheme
-github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1
-github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1/fake
-github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1
-github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1/fake
-github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1
-github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1/fake
 # github.com/prometheus/alertmanager v0.34.0
 ## explicit; go 1.25.0
 github.com/prometheus/alertmanager/alert
@@ -591,6 +560,37 @@ github.com/prometheus/prometheus/util/zeropool
 # github.com/prometheus/sigv4 v0.4.1
 ## explicit; go 1.24.0
 github.com/prometheus/sigv4
+# github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring v0.94.2-rhobs1 => ./pkg/apis/monitoring
+## explicit; go 1.26.0
+github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring
+github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1
+github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1
+github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1beta1
+# github.com/rhobs/obo-prometheus-operator/pkg/client v0.94.2-rhobs1 => ./pkg/client
+## explicit; go 1.26.0
+github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration
+github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/internal
+github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1
+github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1alpha1
+github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1beta1
+github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions
+github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions/internalinterfaces
+github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions/monitoring
+github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions/monitoring/v1
+github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions/monitoring/v1alpha1
+github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions/monitoring/v1beta1
+github.com/rhobs/obo-prometheus-operator/pkg/client/listers/monitoring/v1
+github.com/rhobs/obo-prometheus-operator/pkg/client/listers/monitoring/v1alpha1
+github.com/rhobs/obo-prometheus-operator/pkg/client/listers/monitoring/v1beta1
+github.com/rhobs/obo-prometheus-operator/pkg/client/versioned
+github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/fake
+github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/scheme
+github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1
+github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1/fake
+github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1
+github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1alpha1/fake
+github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1
+github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1/fake
 # github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529
 ## explicit
 github.com/sean-/seed
@@ -1510,5 +1510,5 @@ sigs.k8s.io/structured-merge-diff/v6/value
 # sigs.k8s.io/yaml v1.6.0
 ## explicit; go 1.22
 sigs.k8s.io/yaml
-# github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring => ./pkg/apis/monitoring
-# github.com/prometheus-operator/prometheus-operator/pkg/client => ./pkg/client
+# github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring => ./pkg/apis/monitoring
+# github.com/rhobs/obo-prometheus-operator/pkg/client => ./pkg/client

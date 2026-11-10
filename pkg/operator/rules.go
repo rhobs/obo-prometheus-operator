@@ -35,11 +35,11 @@ import (
 	"k8s.io/utils/ptr"
 	"sigs.k8s.io/yaml"
 
-	sortutil "github.com/prometheus-operator/prometheus-operator/internal/sortutil"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	"github.com/prometheus-operator/prometheus-operator/pkg/informers"
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8s"
-	namespacelabeler "github.com/prometheus-operator/prometheus-operator/pkg/namespacelabeler"
+	sortutil "github.com/rhobs/obo-prometheus-operator/internal/sortutil"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/informers"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8s"
+	namespacelabeler "github.com/rhobs/obo-prometheus-operator/pkg/namespacelabeler"
 )
 
 type RuleConfigurationFormat int

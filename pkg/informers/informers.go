@@ -26,7 +26,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/sets"
 	"k8s.io/client-go/tools/cache"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/listwatch"
+	"github.com/rhobs/obo-prometheus-operator/pkg/listwatch"
 )
 
 // InformLister is the interface that both exposes a shared index informer

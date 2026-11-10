@@ -19,10 +19,10 @@ GODEBUG :=
 
 CONTAINER_CLI ?= docker
 
-GO_PKG=github.com/prometheus-operator/prometheus-operator
-IMAGE_OPERATOR?=quay.io/prometheus-operator/prometheus-operator
-IMAGE_RELOADER?=quay.io/prometheus-operator/prometheus-config-reloader
-IMAGE_WEBHOOK?=quay.io/prometheus-operator/admission-webhook
+GO_PKG=github.com/rhobs/obo-prometheus-operator
+IMAGE_OPERATOR?=quay.io/rhobs/obo-prometheus-operator
+IMAGE_RELOADER?=quay.io/rhobs/obo-prometheus-config-reloader
+IMAGE_WEBHOOK?=quay.io/rhobs/obo-admission-webhook
 TAG?=$(shell git rev-parse --short HEAD)
 VERSION?=$(shell cat VERSION | tr -d " \t\n\r")
 GO_VERSION?=$(shell grep golang-version .github/env | sed "s/golang-version=//")
@@ -241,15 +241,15 @@ image: operator-image prometheus-config-reloader-image admission-webhook-image
 
 .PHONY: operator-image
 operator-image: ## Build the operator container image.
-	$(CONTAINER_CLI) build --build-arg ARCH=$(ARCH) --build-arg GOARCH=$(GOARCH) --build-arg OS=$(GOOS) -t $(IMAGE_OPERATOR):$(TAG) .
+	$(CONTAINER_CLI) build --label org.opencontainers.image.revision=$(BUILD_REVISION) --label org.opencontainers.image.version=$(VERSION) --build-arg ARCH=$(ARCH) --build-arg GOARCH=$(GOARCH) --build-arg OS=$(GOOS) -t $(IMAGE_OPERATOR):$(TAG) .
 
 .PHONY: prometheus-config-reloader-image
 prometheus-config-reloader-image: ## Build the prometheus-config-reloader container image.
-	$(CONTAINER_CLI) build --build-arg ARCH=$(ARCH) --build-arg GOARCH=$(GOARCH) --build-arg OS=$(GOOS) -t $(IMAGE_RELOADER):$(TAG) -f cmd/prometheus-config-reloader/Dockerfile .
+	$(CONTAINER_CLI) build --label org.opencontainers.image.revision=$(BUILD_REVISION) --label org.opencontainers.image.version=$(VERSION) --build-arg ARCH=$(ARCH) --build-arg GOARCH=$(GOARCH) --build-arg OS=$(GOOS) -t $(IMAGE_RELOADER):$(TAG) -f cmd/prometheus-config-reloader/Dockerfile .
 
 .PHONY: admission-webhook-image
 admission-webhook-image: ## Build the admission-webhook container image.
-	$(CONTAINER_CLI) build --build-arg ARCH=$(ARCH) --build-arg GOARCH=$(GOARCH) --build-arg OS=$(GOOS) -t $(IMAGE_WEBHOOK):$(TAG) -f cmd/admission-webhook/Dockerfile .
+	$(CONTAINER_CLI) build --label org.opencontainers.image.revision=$(BUILD_REVISION) --label org.opencontainers.image.version=$(VERSION) --build-arg ARCH=$(ARCH) --build-arg GOARCH=$(GOARCH) --build-arg OS=$(GOOS) -t $(IMAGE_WEBHOOK):$(TAG) -f cmd/admission-webhook/Dockerfile .
 
 .PHONY: update-go-deps
 update-go-deps: ## Update Go dependencies.
@@ -272,7 +272,7 @@ tidy: ## Tidy Go modules.
 	cd scripts && go mod tidy -v -modfile=go.mod
 
 .PHONY: generate
-generate: k8s-gen generate-crds generate-metrics bundle.yaml example/mixin/alerts.yaml example/thanos/thanos.yaml example/admission-webhook example/alertmanager-crd-conversion generate-docs image-builder-version ## Generate all files (CRDs, client-go libraries, docs, etc.).
+generate: k8s-gen generate-crds generate-metrics bundle.yaml example/mixin/alerts.yaml example/thanos/thanos.yaml example/admission-webhook example/alertmanager-crd-conversion image-builder-version ## Generate all files (CRDs, client-go libraries, docs, etc.).
 
 # For now, the v1beta1 CRDs aren't part of the default bundle because they
 # require to deploy/run the conversion webhook.
@@ -286,7 +286,7 @@ generate-crds: $(CONTROLLER_GEN_BINARY) $(GOJSONTOYAML_BINARY) $(TYPES_V1_TARGET
 	VERSION=$(VERSION) ./scripts/generate/append-operator-version.sh
 	find example/prometheus-operator-crd/ -name '*.yaml' -print0 | xargs -0 -I{} sh -c '$(GOJSONTOYAML_BINARY) -yamltojson < "$$1" | jq > "$(PWD)/jsonnet/prometheus-operator/$$(basename $$1 | cut -d'_' -f2 | cut -d. -f1)-crd.json"' -- {}
 	echo "// Code generated using 'make generate-crds'. DO NOT EDIT." > $(PWD)/jsonnet/prometheus-operator/alertmanagerconfigs-v1beta1-crd.libsonnet
-	echo "{spec+: {versions+: $$($(GOJSONTOYAML_BINARY) -yamltojson < example/prometheus-operator-crd-full/monitoring.coreos.com_alertmanagerconfigs.yaml | jq '.spec.versions | map(select(.name == "v1beta1"))')}}" | $(JSONNETFMT_BINARY) - >> $(PWD)/jsonnet/prometheus-operator/alertmanagerconfigs-v1beta1-crd.libsonnet
+	echo "{spec+: {versions+: $$($(GOJSONTOYAML_BINARY) -yamltojson < example/prometheus-operator-crd-full/monitoring.rhobs_alertmanagerconfigs.yaml | jq '.spec.versions | map(select(.name == "v1beta1"))')}}" | $(JSONNETFMT_BINARY) - >> $(PWD)/jsonnet/prometheus-operator/alertmanagerconfigs-v1beta1-crd.libsonnet
 
 .PHONY: generate-metrics
 generate-metrics: $(METRICS_GEN_BINARY) .header ## Generate Prometheus condition collector code from API markers.
@@ -307,7 +307,7 @@ bundle.yaml: generate-crds $(shell find example/rbac/prometheus-operator/*.yaml 
 # description fields being removed. It is meant as a workaround for the issue
 # that `kubectl apply -f ...` might fail with the full version of the CRDs
 # because of too long annotations field.
-# See https://github.com/prometheus-operator/prometheus-operator/issues/4355
+# See https://github.com/rhobs/obo-prometheus-operator/issues/4355
 stripped-down-crds.yaml: $(shell find example/prometheus-operator-crd/*.yaml -type f) $(GOJSONTOYAML_BINARY) ## Generate stripped-down CRDs without description fields.
 	: > $@
 	for f in example/prometheus-operator-crd/*.yaml; do echo '---' >> $@; $(GOJSONTOYAML_BINARY) -yamltojson < $$f | jq 'walk(if type == "object" then with_entries(if .value|type=="object" then . else select(.key | test("description") | not) end) else . end)' | $(GOJSONTOYAML_BINARY) >> $@; done
@@ -344,22 +344,22 @@ Documentation/getting-started/compatibility.md: operator ## Format compatibility
 	$(MDOX_BINARY) fmt $@
 
 Documentation/api-reference/api.md: $(TYPES_V1_TARGET) $(TYPES_V1ALPHA1_TARGET) $(TYPES_V1BETA1_TARGET) $(API_DOC_GEN_BINARY) ## Generate API reference documentation.
-	GODEBUG=$(GODEBUG) $(API_DOC_GEN_BINARY) -api-dir "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/" -config "$(PWD)/scripts/docs/config.json" -template-dir "$(PWD)/scripts/docs/templates" -out-file "$(PWD)/Documentation/api-reference/api.md"
+	GODEBUG=$(GODEBUG) $(API_DOC_GEN_BINARY) -api-dir "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/" -config "$(PWD)/scripts/docs/config.json" -template-dir "$(PWD)/scripts/docs/templates" -out-file "$(PWD)/Documentation/api-reference/api.md"
 
 ##############
 ##@ Formatting
 ##############
 
 .PHONY: format
-format: go-fmt jsonnet-fmt fix-license shellcheck docs ## Format all files.
+format: go-fmt jsonnet-fmt fix-license shellcheck ## Format all files.
 
 .PHONY: go-fmt
 go-fmt: ## Run go fmt against code.
-	gofmt -s -w .
+	git ls-files -z '*.go' ':(exclude)vendor/**' | xargs -0 -r gofmt -s -w
 
 .PHONY: jsonnet-fmt
 jsonnet-fmt: $(JSONNETFMT_BINARY)
-	find . -name *.jsonnet -or -name *.libsonnet -not -path "*/vendor/*" -print0 | xargs -0 $(JSONNETFMT_BINARY) -i
+	find . -type f \( -name '*.jsonnet' -o -name '*.libsonnet' \) -not -path '*/vendor/*' -print0 | xargs -0 -r $(JSONNETFMT_BINARY) -i
 
 .PHONY: check-license
 check-license: ## Check license headers.
