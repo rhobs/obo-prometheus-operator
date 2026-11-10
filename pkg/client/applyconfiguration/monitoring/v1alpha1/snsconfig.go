@@ -17,7 +17,7 @@
 package v1alpha1
 
 import (
-	v1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
+	v1 "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1"
 )
 
 // SNSConfigApplyConfiguration represents a declarative configuration of the SNSConfig type for use

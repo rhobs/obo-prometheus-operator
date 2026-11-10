@@ -1,0 +1,326 @@
+diff --git a/.github/workflows/actionlint.yml b/.github/workflows/actionlint.yml
+index 3b9b537..c1f6e92 100644
+--- a/.github/workflows/actionlint.yml
++++ b/.github/workflows/actionlint.yml
+@@ -1,5 +1,6 @@
+ name: Lint GitHub action workflows
+ on:
++  workflow_call:
+   push:
+     paths:
+       - ".github/workflows/**"
+@@ -7,6 +8,9 @@ on:
+     paths:
+       - ".github/workflows/**"
+ 
++permissions:
++  contents: read
++
+ jobs:
+   lint:
+     runs-on: ubuntu-latest
+@@ -15,7 +19,7 @@ jobs:
+         uses: actions/checkout@v7.0.1
+       - name: Download actionlint
+         id: get_actionlint
+-        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/v1.7.4/scripts/download-actionlint.bash)
++        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/v1.7.12/scripts/download-actionlint.bash)
+         shell: bash
+       - name: Check workflow files
+         run: ${{ steps.get_actionlint.outputs.executable }} -color
+diff --git a/.github/workflows/changed-files.yaml b/.github/workflows/changed-files.yaml
+index f210c64..5f10af2 100644
+--- a/.github/workflows/changed-files.yaml
++++ b/.github/workflows/changed-files.yaml
+@@ -21,7 +21,16 @@ jobs:
+         fetch-depth: 0
+     - name: get changed files
+       id: changed-files
++      env:
++        BASE_SHA: ${{ github.event.pull_request.base.sha }}
++        HEAD_SHA: ${{ github.sha }}
+       run: |
+-        echo "non-markdown-files=$(git diff --name-only --diff-filter=ACMRT ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep -iv .md$ | xargs)" >> "$GITHUB_OUTPUT"
++        if [[ "$GITHUB_EVENT_NAME" == pull_request ]]; then
++          files="$(git diff --name-only --diff-filter=ACMRT "$BASE_SHA" "$HEAD_SHA")"
++          files="$(printf '%s\n' "$files" | { grep -iv '\.md$' || true; } | xargs)"
++        else
++          files=all
++        fi
++        echo "non-markdown-files=$files" >> "$GITHUB_OUTPUT"
+     - run: |
+         echo "${{ steps.changed-files.outputs.non-markdown-files}}"
+\ No newline at end of file
+diff --git a/.github/workflows/checks.yaml b/.github/workflows/checks.yaml
+index 687a5a3..6b5bf4c 100644
+--- a/.github/workflows/checks.yaml
++++ b/.github/workflows/checks.yaml
+@@ -1,24 +1,22 @@
+ name: checks
+ on:
+   pull_request:
+-  push:
+-    branches:
+-      - 'release-*'
+-      - 'master'
+-      - 'main'
+-    tags:
+-      - 'v*'
++    branches: ['rhobs-rel-**']
++  workflow_call:
++
++permissions:
++  contents: read
+ # To cancel running workflow when new commits pushed in a pull request
+ concurrency:
+-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+-  cancel-in-progress: true
++  group: upstream-checks-${{ github.event.pull_request.number || github.ref }}
++  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
++
+ jobs:
+   generate:
+     runs-on: ${{ matrix.os }}
+     strategy:
+       matrix:
+         os:
+-          - macos-latest
+           - ubuntu-latest
+     name: Generate and format
+     steps:
+@@ -33,21 +31,6 @@ jobs:
+       env:
+         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+ 
+-  check-docs:
+-    runs-on: ubuntu-latest
+-    name: Check Documentation formatting and links
+-    steps:
+-    - uses: actions/checkout@v7.0.1
+-    - name: Import environment variables from file
+-      run: cat ".github/env" >> "$GITHUB_ENV"
+-    - uses: actions/setup-go@v7.0.0
+-      with:
+-        go-version: '${{ env.golang-version }}'
+-        check-latest: true
+-    - run: make check-docs
+-      env:
+-        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+-
+   check-golang:
+     runs-on: ubuntu-latest
+     name: Golang linter
+@@ -84,7 +67,6 @@ jobs:
+     strategy:
+       matrix:
+         os:
+-          - macos-latest
+           - ubuntu-latest
+     name: Build operator binary
+     steps:
+@@ -95,7 +77,7 @@ jobs:
+       with:
+         go-version: '${{ env.golang-version }}'
+         check-latest: true
+-    - run: make operator
++    - run: make build
+ 
+   po-rule-migration:
+     runs-on: ubuntu-latest
+diff --git a/.github/workflows/e2e-feature-gated.yaml b/.github/workflows/e2e-feature-gated.yaml
+index d6411f1..38649ce 100644
+--- a/.github/workflows/e2e-feature-gated.yaml
++++ b/.github/workflows/e2e-feature-gated.yaml
+@@ -1,18 +1,16 @@
+ name: e2e-feature-gated
+ on:
+-  workflow_dispatch:
+   pull_request:
+-  push:
+-    branches:
+-      - 'release-*'
+-      - 'master'
+-      - 'main'
+-    tags:
+-      - 'v*'
++    branches: ['rhobs-rel-**']
++  workflow_call:
++
++permissions:
++  contents: read
+ # To cancel running workflow when new commits pushed in a pull request
+ concurrency:
+-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+-  cancel-in-progress: true
++  group: upstream-e2e-feature-gated-${{ github.event.pull_request.number || github.ref }}
++  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
++
+ jobs:
+   changed-files:
+      uses: ./.github/workflows/changed-files.yaml
+@@ -23,7 +21,7 @@ jobs:
+     runs-on: ubuntu-latest
+     steps:
+     - uses: actions/checkout@v7.0.1
+-    
++
+     - name: Setup E2E environment
+       uses: ./.github/actions/setup-e2e  # composite action with your setup steps
+ 
+@@ -36,6 +34,6 @@ jobs:
+       if: ${{ failure() }}
+       uses: actions/upload-artifact@v7.0.1
+       with:
+-        name: cluster-state
++        name: cluster-state-feature-gates
+         path: ${{ env.E2E_DIAGNOSTIC_DIRECTORY }}
+         retention-days: 15
+diff --git a/.github/workflows/e2e-prometheus-v2.yaml b/.github/workflows/e2e-prometheus-v2.yaml
+index 124eb66..d80a1be 100644
+--- a/.github/workflows/e2e-prometheus-v2.yaml
++++ b/.github/workflows/e2e-prometheus-v2.yaml
+@@ -1,15 +1,17 @@
+ name: e2e-prometheus-v2
+ 
+ on:
+-  workflow_dispatch:
+-  schedule:
+-    - cron:  '30 14 * * *' # Every day 14:30
++  pull_request:
++    branches: ['rhobs-rel-**']
++  workflow_call:
++
++permissions:
++  contents: read
+ 
+ jobs:
+   e2e-tests:
+     name: E2E Prometheus v2 tests
+     runs-on: ubuntu-latest
+-    if: github.repository == 'prometheus-operator/prometheus-operator'
+     strategy:
+       # since upgrade test was failing other tests were cancelled, setting this so that other test run
+       fail-fast: false
+@@ -42,8 +44,8 @@ jobs:
+ 
+   # Added to summarize the matrix and allow easy branch protection rules setup
+   e2e-tests-result:
+-    name: End-to-End Test Results
+-    if: github.repository == 'prometheus-operator/prometheus-operator'
++    if: always()
++    name: End-to-End Test Results (Prometheus v2)
+     needs:
+       - e2e-tests
+     runs-on: ubuntu-latest
+diff --git a/.github/workflows/e2e.yaml b/.github/workflows/e2e.yaml
+index d56913c..486c94e 100644
+--- a/.github/workflows/e2e.yaml
++++ b/.github/workflows/e2e.yaml
+@@ -1,19 +1,16 @@
+ name: e2e
+ on:
+-  workflow_dispatch:
+   pull_request:
+-  push:
+-    branches:
+-      - 'release-*'
+-      - 'master'
+-      - 'main'
+-      - 'reusable_e2e'
+-    tags:
+-      - 'v*'
++    branches: ['rhobs-rel-**']
++  workflow_call:
++
++permissions:
++  contents: read
+ # To cancel running workflow when new commits pushed in a pull request
+ concurrency:
+-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+-  cancel-in-progress: true
++  group: upstream-e2e-${{ github.event.pull_request.number || github.ref }}
++  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
++
+ jobs:
+   changed-files:
+     uses: ./.github/workflows/changed-files.yaml
+@@ -51,14 +48,14 @@ jobs:
+       if: ${{ failure() }}
+       uses: actions/upload-artifact@v7.0.1
+       with:
+-        name: cluster-state
++        name: cluster-state-${{ matrix.suite }}
+         path: ${{ env.E2E_DIAGNOSTIC_DIRECTORY }}
+         retention-days: 15
+ 
+   # Added to summarize the matrix and allow easy branch protection rules setup
+   e2e-tests-result:
+     name: End-to-End Test Results
+-    if: ${{ needs.changed-files.outputs.non-markdown-files }}
++    if: ${{ always() && needs.changed-files.outputs.non-markdown-files }}
+     needs:
+       - changed-files
+       - e2e-tests
+diff --git a/.github/workflows/test-prom-version-upgrade.yaml b/.github/workflows/test-prom-version-upgrade.yaml
+index 47f5066..92de068 100644
+--- a/.github/workflows/test-prom-version-upgrade.yaml
++++ b/.github/workflows/test-prom-version-upgrade.yaml
+@@ -1,14 +1,16 @@
+ name: Test Prometheus upgrades
+ on:
+-  workflow_dispatch:
+-  schedule:
+-    - cron:  '37 15 * * *' # Every day 15:37
++  pull_request:
++    branches: ['rhobs-rel-**']
++  workflow_call:
++
++permissions:
++  contents: read
+ 
+ jobs:
+   upgrade-prometheus:
+     name: Upgrade Prometheus
+     runs-on: ubuntu-latest
+-    if: github.repository == 'prometheus-operator/prometheus-operator'
+     steps:
+     - name: Reclaim disk space
+       run: |
+@@ -51,6 +53,6 @@ jobs:
+       if: ${{ failure() }}
+       uses: actions/upload-artifact@v7.0.1
+       with:
+-        name: cluster-state
++        name: cluster-state-prometheus-upgrades
+         path: ${{ env.E2E_DIAGNOSTIC_DIRECTORY }}
+         retention-days: 15
+diff --git a/.github/workflows/unit.yaml b/.github/workflows/unit.yaml
+index 783f01a..4e885e1 100644
+--- a/.github/workflows/unit.yaml
++++ b/.github/workflows/unit.yaml
+@@ -1,17 +1,16 @@
+ name: unit
+ on:
+   pull_request:
+-  push:
+-    branches:
+-      - 'release-*'
+-      - 'master'
+-      - 'main'
+-    tags:
+-      - 'v*'
++    branches: ['rhobs-rel-**']
++  workflow_call:
++
++permissions:
++  contents: read
+ # To cancel running workflow when new commits pushed in a pull request
+ concurrency:
+-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+-  cancel-in-progress: true
++  group: upstream-unit-${{ github.event.pull_request.number || github.ref }}
++  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
++
+ jobs:
+   changed-files:
+      uses: ./.github/workflows/changed-files.yaml

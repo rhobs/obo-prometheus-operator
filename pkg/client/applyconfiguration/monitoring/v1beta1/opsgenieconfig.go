@@ -17,7 +17,7 @@
 package v1beta1
 
 import (
-	monitoringv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1beta1"
+	monitoringv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1beta1"
 )
 
 // OpsGenieConfigApplyConfiguration represents a declarative configuration of the OpsGenieConfig type for use

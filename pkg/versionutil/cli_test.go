@@ -25,7 +25,7 @@ import (
 	"github.com/prometheus/common/version"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/versionutil"
+	"github.com/rhobs/obo-prometheus-operator/pkg/versionutil"
 )
 
 func TestShouldPrintVersion(t *testing.T) {

@@ -20,10 +20,10 @@ import (
 	context "context"
 	time "time"
 
-	apismonitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1"
-	internalinterfaces "github.com/prometheus-operator/prometheus-operator/pkg/client/informers/externalversions/internalinterfaces"
-	monitoringv1 "github.com/prometheus-operator/prometheus-operator/pkg/client/listers/monitoring/v1"
-	versioned "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned"
+	apismonitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1"
+	internalinterfaces "github.com/rhobs/obo-prometheus-operator/pkg/client/informers/externalversions/internalinterfaces"
+	monitoringv1 "github.com/rhobs/obo-prometheus-operator/pkg/client/listers/monitoring/v1"
+	versioned "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -114,7 +114,7 @@ func NewPodMonitorInformerWithOptions(client versioned.Interface, namespace stri
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
 func NewTypedPodMonitorInformerWithOptions(client versioned.Interface, namespace string, options internalinterfaces.InformerOptions) PodMonitorIndexInformer {
-	gvr := schema.GroupVersionResource{Group: "monitoring.coreos.com", Version: "v1", Resource: "podmonitors"}
+	gvr := schema.GroupVersionResource{Group: "monitoring.rhobs", Version: "v1", Resource: "podmonitors"}
 	identifier := options.InformerName.WithResource(gvr)
 	tweakListOptions := options.TweakListOptions
 	return cache.NewTypedSharedIndexInformer[*apismonitoringv1.PodMonitor](cache.NewSharedIndexInformerWithOptions(

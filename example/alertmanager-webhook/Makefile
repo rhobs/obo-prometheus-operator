@@ -1,4 +1,4 @@
-IMAGE ?= quay.io/prometheus-operator/prometheus-alertmanager-test-webhook
+IMAGE ?= quay.io/rhobs/obo-prometheus-alertmanager-test-webhook
 TAG ?= latest
 
 .PHONY: build
