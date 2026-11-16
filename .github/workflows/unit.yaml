@@ -1,0 +1,47 @@
+# Generated from openshift/prometheus-operator@67895c7c968f42e97efec58f4140fffae4832028.
+# Downstream changes: rhobs/ci.patch; refresh with rhobs/release.sh sync-ci.
+
+name: unit
+on:
+  pull_request:
+    branches: ['rhobs-rel-**']
+  workflow_call:
+
+permissions:
+  contents: read
+# To cancel running workflow when new commits pushed in a pull request
+concurrency:
+  group: upstream-unit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  changed-files:
+     uses: ./.github/workflows/changed-files.yaml
+  unit-tests:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    needs: changed-files
+    if: ${{ needs.changed-files.outputs.non-markdown-files }}
+    steps:
+    - uses: actions/checkout@v7.0.1
+    - name: Import environment variables from file
+      run: cat ".github/env" >> "$GITHUB_ENV"
+    - uses: actions/setup-go@v7.0.0
+      with:
+        go-version: '${{ env.golang-version }}'
+        check-latest: true
+    - run: make test-unit
+  extended-tests:
+    runs-on: ubuntu-latest
+    name: Extended tests
+    needs: changed-files
+    if: ${{ needs.changed-files.outputs.non-markdown-files }}
+    steps:
+    - uses: actions/checkout@v7.0.1
+    - name: Import environment variables from file
+      run: cat ".github/env" >> "$GITHUB_ENV"
+    - uses: actions/setup-go@v7.0.0
+      with:
+        go-version: ${{ env.golang-version }}
+        check-latest: true
+    - run: make test-long

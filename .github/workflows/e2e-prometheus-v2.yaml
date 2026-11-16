@@ -1,0 +1,61 @@
+# Generated from openshift/prometheus-operator@67895c7c968f42e97efec58f4140fffae4832028.
+# Downstream changes: rhobs/ci.patch; refresh with rhobs/release.sh sync-ci.
+
+name: e2e-prometheus-v2
+
+on:
+  pull_request:
+    branches: ['rhobs-rel-**']
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  e2e-tests:
+    name: E2E Prometheus v2 tests
+    runs-on: ubuntu-latest
+    strategy:
+      # since upgrade test was failing other tests were cancelled, setting this so that other test run
+      fail-fast: false
+      matrix:
+        suite: [alertmanager, prometheus, prometheusAllNS, thanosruler, operatorUpgrade]
+        include:
+          - suite: alertmanager
+            target: test-e2e-alertmanager
+          - suite: prometheus
+            target: test-e2e-prometheus
+          - suite: prometheusAllNS
+            target: test-e2e-prometheus-all-namespaces
+          - suite: thanosruler
+            target: test-e2e-thanos-ruler
+          - suite: operatorUpgrade
+            target: test-e2e-operator-upgrade
+    steps:
+    - uses: actions/checkout@v7.0.1
+
+    - name: Setup E2E environment
+      uses: ./.github/actions/setup-e2e  # composite action with your setup steps
+
+
+    - name: Run tests
+      env:
+        E2E_DIAGNOSTIC_DIRECTORY: ${{ env.E2E_DIAGNOSTIC_DIRECTORY }}
+        TEST_PROMETHEUS_V2: "true"
+      run: |
+        make ${{ matrix.target }}
+
+  # Added to summarize the matrix and allow easy branch protection rules setup
+  e2e-tests-result:
+    if: always()
+    name: End-to-End Test Results (Prometheus v2)
+    needs:
+      - e2e-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark the job as a success
+        if: needs.e2e-tests.result == 'success'
+        run: exit 0
+      - name: Mark the job as a failure
+        if: needs.e2e-tests.result != 'success'
+        run: exit 1
