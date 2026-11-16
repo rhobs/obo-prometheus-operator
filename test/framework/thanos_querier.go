@@ -20,7 +20,7 @@ import (
 
 	appsv1 "k8s.io/api/apps/v1"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/operator"
+	"github.com/rhobs/obo-prometheus-operator/pkg/operator"
 )
 
 func MakeThanosQuerier(endpoints ...string) (*appsv1.Deployment, error) {

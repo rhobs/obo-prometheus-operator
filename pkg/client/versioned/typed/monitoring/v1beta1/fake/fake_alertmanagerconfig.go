@@ -17,9 +17,9 @@
 package fake
 
 import (
-	v1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1beta1"
-	monitoringv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/client/applyconfiguration/monitoring/v1beta1"
-	typedmonitoringv1beta1 "github.com/prometheus-operator/prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1"
+	v1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1beta1"
+	monitoringv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/client/applyconfiguration/monitoring/v1beta1"
+	typedmonitoringv1beta1 "github.com/rhobs/obo-prometheus-operator/pkg/client/versioned/typed/monitoring/v1beta1"
 	gentype "k8s.io/client-go/gentype"
 )
 

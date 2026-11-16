@@ -34,7 +34,7 @@ import (
 	"k8s.io/client-go/util/workqueue"
 	"k8s.io/utils/ptr"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8s"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8s"
 )
 
 // Syncer knows how to synchronize statefulset-based or daemonset-based resources.

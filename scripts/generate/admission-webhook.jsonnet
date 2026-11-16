@@ -1,7 +1,7 @@
 local admissionWebhook = (import 'prometheus-operator/admission-webhook.libsonnet');
 local config = (import 'config.jsonnet');
 local aw = admissionWebhook(config {
-  image: 'quay.io/prometheus-operator/admission-webhook:v' + config.version,
+  image: 'quay.io/rhobs/obo-admission-webhook:v' + config.version,
   tlsSecretName: 'admission-webhook-certs',
 });
 

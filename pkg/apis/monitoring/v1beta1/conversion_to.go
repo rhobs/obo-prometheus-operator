@@ -22,7 +22,7 @@ import (
 	apiextensionsv1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
 	"sigs.k8s.io/controller-runtime/pkg/conversion"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring/v1alpha1"
+	"github.com/rhobs/obo-prometheus-operator/pkg/apis/monitoring/v1alpha1"
 )
 
 func convertRouteTo(in *Route) (*v1alpha1.Route, error) {
