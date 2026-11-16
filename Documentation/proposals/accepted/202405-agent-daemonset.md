@@ -220,7 +220,7 @@ To enable ServiceMonitor support for DaemonSet mode while addressing the perform
 The PrometheusAgent CRD already supports a `serviceDiscoveryRole` field that can be set to `EndpointSlice`:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: PrometheusAgent
 spec:
   mode: DaemonSet

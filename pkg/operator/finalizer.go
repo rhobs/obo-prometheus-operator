@@ -23,7 +23,7 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/client-go/metadata"
 
-	"github.com/prometheus-operator/prometheus-operator/pkg/k8s"
+	"github.com/rhobs/obo-prometheus-operator/pkg/k8s"
 )
 
 // FinalizerSyncer holds the configuration and dependencies
@@ -47,7 +47,7 @@ func NewNoopFinalizerSyncer() *FinalizerSyncer {
 	}
 }
 
-// Sync ensures the `monitoring.coreos.com/status-cleanup` finalizer is correctly set on the given workload resource
+// Sync ensures the `monitoring.rhobs/status-cleanup` finalizer is correctly set on the given workload resource
 // (Prometheus, PrometheusAgent, Alertmanager, or ThanosRuler). It adds the finalizer if necessary, or removes it when appropriate.
 //
 // Returns true if the finalizer was added, otherwise false.

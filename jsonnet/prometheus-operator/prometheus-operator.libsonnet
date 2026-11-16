@@ -80,7 +80,7 @@ function(params) {
     },
     rules: [
              {
-               apiGroups: ['monitoring.coreos.com'],
+               apiGroups: ['monitoring.rhobs'],
                resources: [
                  'alertmanagers',
                  'alertmanagers/finalizers',
@@ -94,7 +94,7 @@ function(params) {
                verbs: ['patch'],
              },
              {
-               apiGroups: ['monitoring.coreos.com'],
+               apiGroups: ['monitoring.rhobs'],
                resources: [
                  'alertmanagers/finalizers',
                  'prometheusagents/finalizers',
@@ -104,7 +104,7 @@ function(params) {
                verbs: ['update'],
              },
              {
-               apiGroups: ['monitoring.coreos.com'],
+               apiGroups: ['monitoring.rhobs'],
                resources: [
                  'alertmanagers/status',
                  'podmonitors/status',
@@ -119,7 +119,7 @@ function(params) {
                verbs: ['create', 'update', 'patch', 'delete'],
              },
              {
-               apiGroups: ['monitoring.coreos.com'],
+               apiGroups: ['monitoring.rhobs'],
                resources: [
                  'alertmanagers',
                  'alertmanagerconfigs',
@@ -326,7 +326,7 @@ function(params) {
   },
 
   serviceMonitor: {
-    apiVersion: 'monitoring.coreos.com/v1',
+    apiVersion: 'monitoring.rhobs/v1',
     kind: 'ServiceMonitor',
     metadata: {
       name: 'prometheus-operator',

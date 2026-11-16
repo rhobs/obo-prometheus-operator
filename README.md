@@ -1,7 +1,7 @@
 # Prometheus Operator
 
-[![Build Status](https://github.com/prometheus-operator/prometheus-operator/actions/workflows/checks.yaml/badge.svg)](https://github.com/prometheus-operator/prometheus-operator/actions)
-[![Go Reference](https://pkg.go.dev/badge/github.com/prometheus-operator/prometheus-operator.svg)](https://pkg.go.dev/github.com/prometheus-operator/prometheus-operator)
+[![Build Status](https://github.com/rhobs/obo-prometheus-operator/actions/workflows/checks.yaml/badge.svg)](https://github.com/rhobs/obo-prometheus-operator/actions)
+[![Go Reference](https://pkg.go.dev/badge/github.com/rhobs/obo-prometheus-operator.svg)](https://pkg.go.dev/github.com/rhobs/obo-prometheus-operator)
 [![Latest Release](https://img.shields.io/github/v/release/prometheus-operator/prometheus-operator)](https://quay.io/repository/prometheus-operator/prometheus-operator?tab=tags)
 [![Slack](https://img.shields.io/badge/join%20slack-%23prometheus--operator-brightgreen.svg)](https://kubernetes.slack.com)
 
@@ -22,15 +22,15 @@ The Prometheus operator includes, but is not limited to, the following features:
 * **Prometheus Target Configuration**: Automatically generate monitoring target configurations based
   on familiar Kubernetes label queries; no need to learn a Prometheus specific configuration language.
 
-For an introduction to the Prometheus Operator, see the [getting started](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/developer/getting-started.md) guide.
+For an introduction to the Prometheus Operator, see the [getting started](https://github.com/rhobs/obo-prometheus-operator/blob/main/Documentation/developer/getting-started.md) guide.
 
 ## Project Status
 
 The operator in itself is considered to be production ready. Please refer to the Custom Resource Definition (CRD) versions for the status of each CRD:
 
-* `monitoring.coreos.com/v1`: **stable** CRDs and API, changes are made in a backward-compatible way.
-* `monitoring.coreos.com/v1beta1`: **unstable** CRDs and API, changes can happen but the team is focused on avoiding them. We encourage usage in production for users that accept the risk of breaking changes.
-* `monitoring.coreos.com/v1alpha1`: **unstable** CRDs and API, changes can happen frequently, and we suggest avoiding its usage on mission-critical environments.
+* `monitoring.rhobs/v1`: **stable** CRDs and API, changes are made in a backward-compatible way.
+* `monitoring.rhobs/v1beta1`: **unstable** CRDs and API, changes can happen but the team is focused on avoiding them. We encourage usage in production for users that accept the risk of breaking changes.
+* `monitoring.rhobs/v1alpha1`: **unstable** CRDs and API, changes can happen frequently, and we suggest avoiding its usage on mission-critical environments.
 
 ## Prometheus Operator vs. kube-prometheus vs. community Helm chart
 
@@ -56,7 +56,7 @@ For more information, please see the [chart's readme](https://github.com/prometh
 The Prometheus Operator requires at least Kubernetes version `1.16.0`. If you
 are just starting out with the Prometheus Operator, it is highly recommended to
 use the latest [stable
-release](https://github.com/prometheus-operator/prometheus-operator/releases/latest).
+release](https://github.com/rhobs/obo-prometheus-operator/releases/latest).
 
 ## CustomResourceDefinitions
 
@@ -157,13 +157,13 @@ for n in $(kubectl get namespaces -o jsonpath={..metadata.name}); do
 done
 
 kubectl delete --ignore-not-found customresourcedefinitions \
-  prometheuses.monitoring.coreos.com \
-  servicemonitors.monitoring.coreos.com \
-  podmonitors.monitoring.coreos.com \
-  alertmanagers.monitoring.coreos.com \
-  prometheusrules.monitoring.coreos.com \
-  alertmanagerconfigs.monitoring.coreos.com \
-  scrapeconfigs.monitoring.coreos.com
+  prometheuses.monitoring.rhobs \
+  servicemonitors.monitoring.rhobs \
+  podmonitors.monitoring.rhobs \
+  alertmanagers.monitoring.rhobs \
+  prometheusrules.monitoring.rhobs \
+  alertmanagerconfigs.monitoring.rhobs \
+  scrapeconfigs.monitoring.rhobs
 ```
 
 ## Testing

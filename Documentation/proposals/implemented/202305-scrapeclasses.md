@@ -74,7 +74,7 @@ One (and only one) scrape class may be designated as the default class.
 When a resource defines several default scrape classes, it should fail the reconciliation.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 spec:
   scrapeClasses:
@@ -111,7 +111,7 @@ To ensure users will have proper information about the error, the operator may (
 Allow the user to select a scrape class which applies to all endpoints.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: PodMonitor
 spec:
   scrapeClassName: istio-mtls
@@ -127,7 +127,7 @@ If the `Monitor` resource has a `tlsConfig` field defined, the Operator will use
 Allow the user to select a scrape class for the prober service.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Probe
 spec:
   scrapeClassName: istio-mtls
@@ -138,7 +138,7 @@ spec:
 Allow the user to select a scrape class for all endpoints.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: ServiceMonitor
 spec:
   scrapeClassName: istio-mtls
@@ -152,7 +152,7 @@ spec:
 Allow the user to select a scrape class for the whole scrape configuration.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: ScrapeConfig
 metadata:
   name: scrape-config
@@ -181,7 +181,7 @@ An alternative solution would be to apply a default TLS configuration to all mon
 For example, via a hypothetical field `spec.scrapeTlsConfig`:
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1
+apiVersion: monitoring.rhobs/v1
 kind: Prometheus
 spec:
   scrapeTlsConfig:
@@ -209,7 +209,7 @@ Objections:
 A variant of the proposed solution is to introduce a new custom resource for defining scrape classes.
 
 ```yaml
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: ScrapeClass
 metadata:
   name: istio-mtls

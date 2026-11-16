@@ -606,7 +606,7 @@ ScrapeClasses is an experimental feature that allows declaring multiple scrape c
 
 This release is built using Go 1.21.4 which addresses CVE-2023-45283 and CVE-2023-45284.
 
-* [BUGFIX] Rename test files to resolve Go import failures of `github.com/prometheus-operator/prometheus-operator`. #6070
+* [BUGFIX] Rename test files to resolve Go import failures of `github.com/rhobs/obo-prometheus-operator`. #6070
 
 ## 0.69.0 / 2023-11-03
 
@@ -706,14 +706,14 @@ After research, we noticed how the default CPU requests of the config-reloader c
 ## 0.65.0 / 2023-05-04
 
 The main change introduced by this release is the new v1alpha1 `ScrapeConfig` CRD.
-This implements the [proposal](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/proposals/202212-scrape-config.md)
-documented in [#5279](https://github.com/prometheus-operator/prometheus-operator/pull/5279)
+This implements the [proposal](https://github.com/rhobs/obo-prometheus-operator/blob/main/Documentation/proposals/202212-scrape-config.md)
+documented in [#5279](https://github.com/rhobs/obo-prometheus-operator/pull/5279)
 and provides a Kubernetes native API to create and manage additional scrape configurations.
 
 To try it, follow the following steps:
 
 1. Install the new CRD in the cluster (see
-   `example/prometheus-operator-crd/monitoring.coreos.com_scrapeconfigs.yaml`).
+   `example/prometheus-operator-crd/monitoring.rhobs_scrapeconfigs.yaml`).
 2. Update the Prometheus operator's RBAC permissions to manage `ScrapeConfig` resources
    (see `example/rbac/prometheus-operator/prometheus-operator-cluster-role.yaml`).
 
@@ -743,7 +743,7 @@ recommend using it in production but we're eager to hear all possible feedback.
 To try it, follow the following steps:
 
 1. Install the new CRD in the cluster (see
-   `example/prometheus-operator-crd/monitoring.coreos.com_prometheusagents.yaml`).
+   `example/prometheus-operator-crd/monitoring.rhobs_prometheusagents.yaml`).
 2. Update the Prometheus operator's RBAC permissions to manage PrometheusAgents resources
    (see `example/rbac/prometheus-operator/prometheus-operator-cluster-role.yaml`).
 
@@ -1162,7 +1162,7 @@ and will be removed in v0.49.0. They are replaced respectively by the
 This release introduces a new `AlertmanagerConfig` CRD that allows to split the
 Alertmanager configuration in different objects. For now the CRD only supports
 the PagerDuty, OpsGenie and webhook receivers, [other
-integrations](https://github.com/prometheus-operator/prometheus-operator/issues?q=is%3Aissue+is%3Aopen+%22receiver+type%22)
+integrations](https://github.com/rhobs/obo-prometheus-operator/issues?q=is%3Aissue+is%3Aopen+%22receiver+type%22)
 will follow in future releases of the operator. The current version of the CRD
 is `v1alpha1` meaning that testing/feedback is encouraged and welcome but the
 feature is not yet considered stable and the API is subject to change in the

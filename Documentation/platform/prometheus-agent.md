@@ -30,7 +30,7 @@ metadata:
   name: prometheus-operator
 rules:
 - apiGroups:
-  - monitoring.coreos.com
+  - monitoring.rhobs
   resources:
   - alertmanagers
   - alertmanagers/finalizers
@@ -43,7 +43,7 @@ rules:
   verbs:
   - patch
 - apiGroups:
-  - monitoring.coreos.com
+  - monitoring.rhobs
   resources:
   - alertmanagers/finalizers
   - prometheusagents/finalizers
@@ -52,7 +52,7 @@ rules:
   verbs:
   - update
 - apiGroups:
-  - monitoring.coreos.com
+  - monitoring.rhobs
   resources:
   - alertmanagers/status
   - podmonitors/status
@@ -69,7 +69,7 @@ rules:
   - patch
   - delete
 - apiGroups:
-  - monitoring.coreos.com
+  - monitoring.rhobs
   resources:
   - alertmanagers
   - alertmanagerconfigs
@@ -227,7 +227,7 @@ subjects:
 Lastly, we can deploy the Agent. The `spec` field is very similar to the Prometheus CRD but the features that aren't applicable to the agent mode (like alerting, retention, Thanos, ...) are not available.
 
 ```yaml mdox-exec="cat example/rbac/prometheus-agent/prometheus.yaml"
-apiVersion: monitoring.coreos.com/v1alpha1
+apiVersion: monitoring.rhobs/v1alpha1
 kind: PrometheusAgent
 metadata:
   name: prometheus-agent
