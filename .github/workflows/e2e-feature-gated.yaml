@@ -1,0 +1,42 @@
+# Generated from openshift/prometheus-operator@67895c7c968f42e97efec58f4140fffae4832028.
+# Downstream changes: rhobs/ci.patch; refresh with rhobs/release.sh sync-ci.
+
+name: e2e-feature-gated
+on:
+  pull_request:
+    branches: ['rhobs-rel-**']
+  workflow_call:
+
+permissions:
+  contents: read
+# To cancel running workflow when new commits pushed in a pull request
+concurrency:
+  group: upstream-e2e-feature-gated-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  changed-files:
+     uses: ./.github/workflows/changed-files.yaml
+  e2e-tests:
+    name: E2E tests for feature gates
+    needs: changed-files
+    if: ${{ needs.changed-files.outputs.non-markdown-files }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v7.0.1
+
+    - name: Setup E2E environment
+      uses: ./.github/actions/setup-e2e  # composite action with your setup steps
+
+    - name: Run tests
+      env:
+        E2E_DIAGNOSTIC_DIRECTORY: ${{ env.E2E_DIAGNOSTIC_DIRECTORY }}
+      run: |
+        make test-e2e-feature-gates
+    - name: Upload diagnostics artifact
+      if: ${{ failure() }}
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: cluster-state-feature-gates
+        path: ${{ env.E2E_DIAGNOSTIC_DIRECTORY }}
+        retention-days: 15
